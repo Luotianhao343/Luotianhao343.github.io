@@ -259,6 +259,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/7.19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/7.19/" itemprop="url">Android学习（五）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T21:18:18+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>RelativeLayout可支持的两个Xml属性   </p>
+<ul>
+<li>android:gravity设置该布局容器内各子组件的对齐方式</li>
+<li>android:ignoreGravity设置哪个组件不受gravity属性影响</li>
+</ul>
+<p>为了扩展RelativeLayout中各子组件的分布布局，RelativeLayout提供了一个内部类：RelativeLayout.LayoutParams，该类提供了大量的Xml属性来控制子组件的布局分布。</p>
+<p>相对布局子组件的布局分布里只能设置true或false的XML属性。  </p>
+<ul>
+<li>android:layout_centerHorizontal控制该子组件是否位于布局容器的水平居中</li>
+<li>android:layout_centerVertical控制该子组件是否位于布局容器的垂直居中</li>
+<li>android:layout_centerInParent控制该子组件是否位于布局容器的中央位置</li>
+<li>android:layout_alignParentBottom控制该子组件是否与布局容器的底端对齐</li>
+<li>android:layout_alignParentLeft控制该子组件是否与布局容器的左端对齐</li>
+<li>android:layout_alignParentRight控制该子组件是否与布局容器的右端对齐</li>
+<li>android:layout_alignParentTop控制该子组件是否与布局容器的顶端对齐</li>
+</ul>
+<p>相对布局子组件的布局分布里属性值为其他UI组件ID的XML属性。</p>
+<ul>
+<li>android:layout_toRightOf控制该子组件位于给出ID组件的右侧</li>
+<li>android:layout_toLeftOf控制该子组件位于给出ID组件的左侧</li>
+<li>android:layout_above控制该子组件位于给出ID组件的上方</li>
+<li>android:layout_below控制该子组件位于给出ID组件的下方</li>
+<li>android:layout_alignTop控制该子组件与给出ID组件的上边界对齐</li>
+<li>android:layout_alignBottom控制该子组件与给出ID组件的下边界对齐</li>
+<li>android:layout_alignLeft控制该子组件与给出ID组件的左边界对齐</li>
+<li>android:layout_alignRight控制该子组件与给出ID组件的右边界对齐</li>
+</ul>
+<p><em>ps：align对齐，to在什么侧</em></p>
+<h2 id="GridLayout"><a href="#GridLayout" class="headerlink" title="GridLayout"></a>GridLayout</h2><p>GridLayout的作用类似于HTML中的table标签，它将整个容器划分为rows*columns个网格，每个网格可以放置一个组件。除此之外，也可以设置一个组件横跨多少列、一个组件纵跨多少行。<br>GridLayout常用的XML属性：</p>
+<ul>
+<li>android:alignmentMode设置该布局管理器采用的对齐模式</li>
+<li>android:columnCount设置该网格的列数量</li>
+<li>android:columnOrderPreserved设置该网格容器是否保留序号</li>
+<li>android:rowCount设置该网格的行数量</li>
+<li>android:rowOrderPreserved设置该网格容器是否保留行序号</li>
+<li>android:useDefaultMargins设置该布局管理器是否使用默认的页边距</li>
+</ul>
+<p><em>ps：Margins边距，column列，row行</em><br>为了控制GridLayout布局容器中各子组件的布局分布，GridLayout提供了一个内部类：GridLayout.LayoutParams，该类提供了大量的XML属性来控制网格布局中子组件的布局分布。<br>GridLayout.LayoutParams常用的XML属性：    </p>
+<ul>
+<li>android:layout_column设置该子组件在GridLayout的第几列</li>
+<li>android:layout_columnSpan设置该子组件在GridLayout横向上跨几列</li>
+<li>android:layout_gravity设置该子组件采用何种方式占据该网格的空间</li>
+<li>android:layout_row设置该子组件在GridLayout的第几行</li>
+<li>android:layout_rowSpan设置该子组件在GridLayout纵向上跨几行</li>
+</ul>
+<p><em>ps：column列，row行，span跨越</em><br><em>setpadding(a,b,c,d)设置四周的空白区域</em></p>
+<h2 id="绝对布局"><a href="#绝对布局" class="headerlink" title="绝对布局"></a>绝对布局</h2><p>绝对布局由AbsoluteLayout所代表。就像Java中AWT编程中的空布局，Android不提供任何布局控制，而是由开发人员自己通过X、Y坐标来控制组件的位置，布局容器不再管理子组件的位置、大小。（绝对布局已经过时了）</p>
+<ul>
+<li>layout_x:子组件的X坐标</li>
+<li>layout_y:子组件的Y坐标</li>
+</ul>
+<h2 id="安卓布局中常用的距离单位"><a href="#安卓布局中常用的距离单位" class="headerlink" title="安卓布局中常用的距离单位"></a>安卓布局中常用的距离单位</h2><p><strong>px</strong>：每个px对应屏幕上的一个点<br><strong>dip或dp（设备独立像素，device independent pixels）</strong>：一种基于屏幕密度的抽象单位。在每英寸160点的显示器上，1dip=1px。但随着屏幕密度的改变，dip与px的换算会发生改变。<br><strong>sp（比例像素，scaled pixels）</strong>：主要是处理字体的大小，可以根据用户的字体大小首选项进行缩放。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/7.18/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -353,7 +546,7 @@
         
           
             <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h2><p>TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。<br>每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。<br>如果直接向TableLayout中添加组件，那么这个组件将直接占用一行。<br>在TableLayout中，列的宽度由最宽的TableRow决定，整个表格布局的宽度由父容器决定。<br>Shrinkable：一个TableRow中，列的单元格宽度可以收缩。从0开始计数<br>Stretchable：一个TableRow中，列的单元格宽度可以拉伸。从0开始计数</p>
-<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局由FrameLayout所代表，FrameLayout直接继承了ViewGroup组件。<br>帧布局容器为每个加入其中的组件创建一个空白的区域(一帧)，每个子组件占据一帧，这些帧都会根据gravity属性执行自动对齐。把组件一个个叠加在一起。<br>FrameLayout包含的子元素也可指定Layout_gravity。</p>
+<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局由FrameLayout所代表，FrameLayout直接继承了ViewGroup组件。<br>帧布局容器为每个加入其中的组件创建一个空白的区域(一帧)，每个子组件占据一帧，这些帧都会根据gravity属性执行自动对齐。把组件一个个叠加在一起，后加的组件覆盖前面加的组件。<br>FrameLayout包含的子元素也可指定Layout_gravity。<br>安卓不允许开发者启动线程访问用户界面的UI组件。</p>
 
           
         
@@ -1792,149 +1985,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/ViewPager认识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/10/ViewPager认识/" itemprop="url">ViewPager的认识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T00:00:00+08:00">
-                2018-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Fragment/" itemprop="url" rel="index">
-                    <span itemprop="name">Fragment</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ViewPager的认识"><a href="#ViewPager的认识" class="headerlink" title="ViewPager的认识"></a>ViewPager的认识</h1><h2 id="ViewPager是怎么样的一个控件"><a href="#ViewPager是怎么样的一个控件" class="headerlink" title="ViewPager是怎么样的一个控件    "></a>ViewPager是怎么样的一个控件    </h2><p>它是一个用于页面切换的组件，我们可以向它的布局内填充多个View，我们可以通过在触摸屏上左右滑动来切换不同的View。我们需要一个适配器Adapter，将要显示的View和我们的ViewPager进行绑定。ViewPager有自己的Adapter——PagerAdapter。其中，Google建议使用Fragment来填充ViewPager的，这样可以更加方便的生成每个Page以及管理每个Page的生命周期，就是FragmentPageAdapter和FragmentStatePagerAdapter两个不同的Adapter。<br>除此之外，ViewPager会缓存当前页，前一页，以及后一页，比如有1，2，3，4这四个页面，当我们处于第一页：缓存1，2；当我们处于第二页：缓存1，2，3；当我们处于第三页：缓存2，3，4；当我们处于第四页缓存3，4。</p>
-<h2 id="PagerAdapter使用重写方法："><a href="#PagerAdapter使用重写方法：" class="headerlink" title="PagerAdapter使用重写方法："></a>PagerAdapter使用重写方法：</h2><p><em>getCount()</em>：获得viewpager中有多少个view<br><em>destroyItem()</em>：移除一个给定位置的页面。适配器有责任从容器中删除这个视图。这是为了确保在finishUpdate(ViewGroup)返回时视图能被移除。<br><em>instantiateItem()</em>：①将给定位置的view添加到ViewGroup(容器)中，创建并显示出来②返回一个代表新增页面的Object(key),通常都是直接返回view本身就可以了。当然也可以自己自定义key，但是key和每一个view要一一对应。<br><em>isViewFromObject()</em>：判断instantiateItem(ViewGroup,int)函数所返回的key与一个页面视图是否是代表的同一个视图(即它俩是否是对应，对应的表示同一个View)，通常我们直接写return view ==object；就可以了。貌似因为ViewPager中有个存储view状态信息的ArrayList，根据View取出对应信息。<br><strong>ps</strong>：不一定要重写所有方法。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1985,7 +2035,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2007,7 +2057,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

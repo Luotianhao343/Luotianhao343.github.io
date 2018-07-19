@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="View,Tablelayout," />
+  <meta name="keywords" content="View,Tablelayout,FrameLayout," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="安卓基础表格布局TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。如果直接向TableLayout中添加组件，那么这个组件将直接占用一">
-<meta name="keywords" content="View,Tablelayout">
+<meta name="keywords" content="View,Tablelayout,FrameLayout">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习（四）">
 <meta property="og:url" content="http://yoursite.com/2018/07/18/7.18/index.html">
 <meta property="og:site_name" content="罗某">
 <meta property="og:description" content="安卓基础表格布局TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。如果直接向TableLayout中添加组件，那么这个组件将直接占用一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-18T14:47:18.240Z">
+<meta property="og:updated_time" content="2018-07-19T10:12:52.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习（四）">
 <meta name="twitter:description" content="安卓基础表格布局TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。如果直接向TableLayout中添加组件，那么这个组件将直接占用一">
@@ -353,7 +353,7 @@
 
       
         <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h2><p>TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。<br>每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。<br>如果直接向TableLayout中添加组件，那么这个组件将直接占用一行。<br>在TableLayout中，列的宽度由最宽的TableRow决定，整个表格布局的宽度由父容器决定。<br>Shrinkable：一个TableRow中，列的单元格宽度可以收缩。从0开始计数<br>Stretchable：一个TableRow中，列的单元格宽度可以拉伸。从0开始计数</p>
-<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局由FrameLayout所代表，FrameLayout直接继承了ViewGroup组件。<br>帧布局容器为每个加入其中的组件创建一个空白的区域(一帧)，每个子组件占据一帧，这些帧都会根据gravity属性执行自动对齐。把组件一个个叠加在一起。<br>FrameLayout包含的子元素也可指定Layout_gravity。</p>
+<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局由FrameLayout所代表，FrameLayout直接继承了ViewGroup组件。<br>帧布局容器为每个加入其中的组件创建一个空白的区域(一帧)，每个子组件占据一帧，这些帧都会根据gravity属性执行自动对齐。把组件一个个叠加在一起，后加的组件覆盖前面加的组件。<br>FrameLayout包含的子元素也可指定Layout_gravity。<br>安卓不允许开发者启动线程访问用户界面的UI组件。</p>
 
       
     </div>
@@ -375,6 +375,8 @@
           
             <a href="/tags/Tablelayout/" rel="tag"># Tablelayout</a>
           
+            <a href="/tags/FrameLayout/" rel="tag"># FrameLayout</a>
+          
         </div>
       
 
@@ -395,6 +397,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/19/7.19/" rel="prev" title="Android学习（五）">
+                Android学习（五） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -471,7 +477,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -493,7 +499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
