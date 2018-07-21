@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="TextView,EditText,Button," />
+  <meta name="keywords" content="TextView,EditText,Button,使用9Patch图片作为背景,RadioButton和CheckBox,状态开关按钮（ToggleButton）和开关（Switch）,时钟（AnalogClock和TextClock）,计时器(Chronometer)," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="安卓基础TextView默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。 EditTextEdit">
-<meta name="keywords" content="TextView,EditText,Button">
+<meta name="keywords" content="TextView,EditText,Button,使用9Patch图片作为背景,RadioButton和CheckBox,状态开关按钮（ToggleButton）和开关（Switch）,时钟（AnalogClock和TextClock）,计时器(Chronometer)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习（六）">
 <meta property="og:url" content="http://yoursite.com/2018/07/21/7.21/index.html">
 <meta property="og:site_name" content="罗某">
 <meta property="og:description" content="安卓基础TextView默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。 EditTextEdit">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-21T15:07:48.026Z">
+<meta property="og:updated_time" content="2018-07-21T15:09:57.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习（六）">
 <meta name="twitter:description" content="安卓基础TextView默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。 EditTextEdit">
@@ -376,8 +376,7 @@
 <p>Button的android:background=””属性，可以用XML实现，在XMl中可以用state_pressed=”true”表示按钮按下，state_pressed=”false”表示按钮松开，并且利用android:drawable=””表示背景。    </p>
 <h2 id="使用9Patch图片作为背景"><a href="#使用9Patch图片作为背景" class="headerlink" title="使用9Patch图片作为背景"></a>使用9Patch图片作为背景</h2><p>当按钮的内容太多时，Android会自动缩放整张图片，以保证背景图片能覆盖整个按钮。但是这种缩放的效果并不好。为了实现只缩放图片中某个部分，借助9Patch图片实现。<br>左侧和上侧的直线共同决定图片的缩放区域<br>右侧和下侧的直线共同决定图片的内容显示区域</p>
 <h2 id="RadioButton和CheckBox"><a href="#RadioButton和CheckBox" class="headerlink" title="RadioButton和CheckBox"></a>RadioButton和CheckBox</h2><p>两个都有一个可选中的功能，不过一组RadioButton只能选择其中一个，所以RadioButton通常要与RadioGroup一起使用，用于定于一组单选钮；CheckBox可以复选。都可额外指定一个android:checked属性，该属性用于指定RadioButton、checkBox初始时是否被选中。<br><strong>如果在XML布局文件中默认勾选了某个单选钮，则必须为该组单选钮的每个按钮指定android：id属性值；否则这组单选钮不能正常工作</strong></p>
-<p>##状态开关按钮（ToggleButton）和开关（Switch）</p>
-<p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
+<h2 id="状态开关按钮（ToggleButton）和开关（Switch）"><a href="#状态开关按钮（ToggleButton）和开关（Switch）" class="headerlink" title="状态开关按钮（ToggleButton）和开关（Switch）"></a>状态开关按钮（ToggleButton）和开关（Switch）</h2><p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
 <ul>
 <li>android:checked设置该按钮是否被选中</li>
 <li>android:textOff设置当按钮的状态关闭时显示的文本</li>
@@ -438,6 +437,16 @@
             <a href="/tags/EditText/" rel="tag"># EditText</a>
           
             <a href="/tags/Button/" rel="tag"># Button</a>
+          
+            <a href="/tags/使用9Patch图片作为背景/" rel="tag"># 使用9Patch图片作为背景</a>
+          
+            <a href="/tags/RadioButton和CheckBox/" rel="tag"># RadioButton和CheckBox</a>
+          
+            <a href="/tags/状态开关按钮（ToggleButton）和开关（Switch）/" rel="tag"># 状态开关按钮（ToggleButton）和开关（Switch）</a>
+          
+            <a href="/tags/时钟（AnalogClock和TextClock）/" rel="tag"># 时钟（AnalogClock和TextClock）</a>
+          
+            <a href="/tags/计时器-Chronometer/" rel="tag"># 计时器(Chronometer)</a>
           
         </div>
       
@@ -557,7 +566,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -593,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TextView"><span class="nav-number">1.1.</span> <span class="nav-text">TextView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EditText"><span class="nav-number">1.2.</span> <span class="nav-text">EditText</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Button"><span class="nav-number">1.3.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用9Patch图片作为背景"><span class="nav-number">1.4.</span> <span class="nav-text">使用9Patch图片作为背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RadioButton和CheckBox"><span class="nav-number">1.5.</span> <span class="nav-text">RadioButton和CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时钟（AnalogClock和TextClock）"><span class="nav-number">1.6.</span> <span class="nav-text">时钟（AnalogClock和TextClock）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计时器-Chronometer"><span class="nav-number">1.7.</span> <span class="nav-text">计时器(Chronometer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎知识点"><span class="nav-number">1.8.</span> <span class="nav-text">零碎知识点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TextView"><span class="nav-number">1.1.</span> <span class="nav-text">TextView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EditText"><span class="nav-number">1.2.</span> <span class="nav-text">EditText</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Button"><span class="nav-number">1.3.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用9Patch图片作为背景"><span class="nav-number">1.4.</span> <span class="nav-text">使用9Patch图片作为背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RadioButton和CheckBox"><span class="nav-number">1.5.</span> <span class="nav-text">RadioButton和CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态开关按钮（ToggleButton）和开关（Switch）"><span class="nav-number">1.6.</span> <span class="nav-text">状态开关按钮（ToggleButton）和开关（Switch）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时钟（AnalogClock和TextClock）"><span class="nav-number">1.7.</span> <span class="nav-text">时钟（AnalogClock和TextClock）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计时器-Chronometer"><span class="nav-number">1.8.</span> <span class="nav-text">计时器(Chronometer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎知识点"><span class="nav-number">1.9.</span> <span class="nav-text">零碎知识点</span></a></li></ol></li></ol></div>
             
 
           </div>
