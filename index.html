@@ -259,6 +259,337 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/7.24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/24/7.24/" itemprop="url">Android学习（八）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:09:51+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Adapter接口及实现类"><a href="#Adapter接口及实现类" class="headerlink" title="Adapter接口及实现类"></a>Adapter接口及实现类</h2><p>Adapter本身只是一个接口，它派生了ListAdapter和SpinnerAdapter两个子接口，其中ListAdapter为AbsListView提供列表项，而SpinnerAdapter为AbsSpinner提供列表项。<br>Adapter常用的实现类：</p>
+<ul>
+<li>ArrayAdapter：简单、易用的Adapter。通常用于将数组或List集合的多个值包装成多个列表项</li>
+<li>SimpleAdapter：并不简单、功能强大的Adapter，可以用于将List集合的多个对象包装成多个列表项</li>
+<li>SimpleCursorAdapter：与SimpleAdapter基本相似，只是用于包装Cursor提供的数据</li>
+<li>BaseAdapter：通常用于被扩展。扩展BaseAdapter可以对各列表项进行最大限度的定制</li>
+</ul>
+<h3 id="ArrayAdapter"><a href="#ArrayAdapter" class="headerlink" title="ArrayAdapter"></a>ArrayAdapter</h3><p>在布局文件中，定义ListView，但都没有指定android：entries属性，需要通过Adapter来提供列表项。Activity为两个ListView提供Adapter，Adapter决定ListView所显示的列表项。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListView list = (ListView)findViewById(R.id.list)</span><br><span class="line">String[] arr1 = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</span><br><span class="line">list.setAdapter(adapter);</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</code>中的参数：   </p>
+<ul>
+<li>Context：代表访问整个Android应用的接口。几乎创建所有组件都需要传入Context对象。</li>
+<li>textViewResourceId：一个资源ID，代表一个TextView，该TextView组件将作为ArrayAdapter的列表项组件</li>
+<li>数组或List：负责为多个列表项提供数据</li>
+</ul>
+<p><em>第二个参数控制每个列表项的组件，第三个负责为列表项提供数据。</em>   </p>
+<p>如果程序的窗口仅需要显示一个列表，则可以直接让Activity继承ListActivity来实现，无需调用setContentView()方法显示一个界面，而是可以直接传入一个内容Adapter，ListActivity的子类就呈现出一个列表。<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.simple_list_item_multiple_choice,arr);</span><br><span class="line">setAdapter(adapter);</span><br><span class="line">```    </span><br><span class="line">使用Android提供的R.Layout.simple_list_item_multiple_choice布局文件作为列表项组件。</span><br><span class="line"></span><br><span class="line">### SimpleAdapter创建ListView</span><br><span class="line"></span><br><span class="line">通过ArrayAdapter实现Adapter虽然简单、易用，但是ArrayAdapter功能比较有限，它的每个列表项只能是TextView。   </span><br><span class="line">如果想要实现更复杂的列表项，可以考虑使用SimpleAdapter。</span><br></pre></td></tr></table></figure></p>
+<p>//创建一个List集合，List集合的元素是Map<br>List&lt;Map&lt;String,Object&gt;&gt; listItems = new ArrayList&lt;Map&lt;String,Object&gt;&gt;();<br>for(int i=0;i&lt; names.length;i++){<br>  Map&lt;String,Object&gt; listItem=new HashMap&lt;String,Object&gt;();<br>  listItem.put(“header”,imageIds[i]);<br>  listItem.put(“personName”,names[i]);<br>  listItem.put(“desc”,descs[i]);<br>  listItems.add(listItem);}<br>//创建一个SimpleAdapter<br>SimpleAdapter simpleAdapter = new SimpleAdapter(this,listItems,R.layout.simple_item,new String[] {“personName”,”header”,”desc”},<br>new int[] {R.id.name,R.id.header,R.id.desc});<br>list.setAdapter(simpleAdapter);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用SimpleAdapter的难点在于创建SimpleAdapter对象，它需要5个参数，其中后四个最关键。</span><br><span class="line"></span><br><span class="line">+ 第二个参数：该参数应该是一个List&lt;?extends Map&lt;String,?&gt;&gt;类型的集合对象，该集合中每个Map&lt;String,?&gt;对象生成一个列表项。</span><br><span class="line">+ 第三个参数：该参数指定一个界面布局的ID。</span><br><span class="line">+ 第四个参数：该参数应该是一个String[]类型的参数，该参数决定提取Map&lt;String,?&gt;对象中那些key对应的value来生成列表项。</span><br><span class="line">+ 第五个参数：该参数应该是一个int[]类型的参数，该参数决定填充哪些组件。</span><br><span class="line"></span><br><span class="line">如果需要监听用户单击、选中某个列表项的事件，可以通过AdapterView的setOnItemClickListener()方法为单击事件添加监听器，或者通过setOnItemSelectedListener()方法为列表项的选中事件添加监听器。在Activity中为ListView通过如下代码绑定监听器</span><br></pre></td></tr></table></figure></p>
+<p>//为ListView的列表项的单击事件绑定事件监听器<br>list.setOnItemClickListener(new OnItemClickListener(){<br>});<br>//为ListView的列表项的选中事件绑定事件监听器<br>list.setOnItemSelectedListener(new OnItemSelectedListener(){<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**这种事件处理机制完全适用于AdapterView的其他子类**</span><br><span class="line"></span><br><span class="line">### BaseAdapter</span><br><span class="line"></span><br><span class="line">通过扩展BaseAdapter来实现Adapter，扩展BaseAdapter可以取得对Adapter的最大控制权；程序要创建多少个列表项、每个列表项的组件都由开发者决定。</span><br></pre></td></tr></table></figure></p>
+<p>BaseAdapter adapter = new BaseAdapter(){<br>   @Override<br>   public int getCount(){<br>//指定一共包含多少个选项<br>     return **;<br>}<br>   @Override<br>   public Object getItem(int position){<br>   return null;<br>}<br>//重写该方法，该方法返回值将作为列表项的ID<br>   @Override<br>   public long getItemId(int position){<br>   return position;<br>}<br>//重写该方法，该方法返回的View将作为列表框<br>   @Override<br>   public View getView(int position,View convertView,ViewGroup parent){<br>}<br>}<br><code>`</code></p>
+<ul>
+<li>getCount():该方法的返回值控制该Adapter将会包含多少个列表项。</li>
+<li>getItem(int position)：该方法的返回值决定第position处的列表项的内容。</li>
+<li>getItemId(int position)：该方法的返回值决定第position处的列表项的ID。</li>
+<li>getView(int position,View convertView,ViewGroup parent)：该方法的返回值决定第position处的列表项组件。</li>
+</ul>
+<p>上面4个方法中最重要的是第一个和第四个。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/7.23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/23/7.23/" itemprop="url">Android学习（八）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T10:27:52+08:00">
+                2018-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安卓基础</p>
+<h2 id="AdapterView"><a href="#AdapterView" class="headerlink" title="AdapterView"></a>AdapterView</h2><p>AdapterView是一组重要的组件，AdapterView是一个抽象基类。<br>AdapterView具有如下特征</p>
+<ul>
+<li>AdapterView继承了ViewGroup，它的本质是容器。</li>
+<li>AdapterView可以包括多个“列表项”，并将多个“列表项”以合适的形式显示出来。</li>
+<li>AdapterView显示的多个“列表项”由Adapter提供。调用AdapterView的setAdapter(Adapter)方法设置Adapter即可。     </li>
+</ul>
+<p>AdapterView派生了三个子类：AbsListView、AbsSpinner、AdapterViewAnimator，这三个子类依然是抽象的，实际使用过程中往往采用他们的子类。</p>
+<h2 id="列表视图-ListView-和ListActivity"><a href="#列表视图-ListView-和ListActivity" class="headerlink" title="列表视图(ListView)和ListActivity"></a>列表视图(ListView)和ListActivity</h2><p>ListView它以垂直列表的形式显示所有列表项。<br>生成列表视图有如下两种方式：</p>
+<ul>
+<li>直接使用ListView创建</li>
+<li>让Activity继承ListActivity(相当于该Activity显示的组件为ListView)</li>
+</ul>
+<p>一旦在程序中获得了ListView之后，接下来就需要为ListView设置它要显示的列表项。在这一点上，ListView显示出AdapterView的特征：通过setAdapter(Adapter)方法为之提供Adapter，并且由Adapter提供列表项即可。   </p>
+<p>ListView、GridView、Spinner、Gallery等AdapterView都是容器，而Adapter负责提供每个“列表项”组件，AdapterView则负责采用合适的方式显示这些列表项。</p>
+<p>ListView提供的常用XML属性如下：</p>
+<ul>
+<li>android:divider：设置List列表项的分隔条（可用颜色分隔，也可用Drawable分隔）</li>
+<li>android:dividerHeight：设置分隔条的高度</li>
+<li>android:entries：指定一个数组源，Android将根据该数组资源来生成ListView</li>
+<li>android:footerDividersEnabled：如果设置为false，则不再footerView之前绘制分隔条</li>
+<li>android:headerDividersEnabled：如果设置为false，则不在headerView之后绘制分隔条</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/7.22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,479 +1907,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14安卓学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/14/7.14安卓学习/" itemprop="url">Android学习（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T22:55:37+08:00">
-                2018-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android应用清单文件AndroidManifest-xml"><a href="#Android应用清单文件AndroidManifest-xml" class="headerlink" title="Android应用清单文件AndroidManifest.xml"></a>Android应用清单文件AndroidManifest.xml</h1><h2 id="AndroidManifest-xml清单文件通常包含如下信息："><a href="#AndroidManifest-xml清单文件通常包含如下信息：" class="headerlink" title="AndroidManifest.xml清单文件通常包含如下信息："></a>AndroidManifest.xml清单文件通常包含如下信息：</h2><ul>
-<li>应用程序包名</li>
-<li>应用程序所包含的组件，如Activity、Service、BroadcastReceiver<br>和ContentProvider等</li>
-<li>应用程序兼容的最低版本</li>
-<li>应用程序使用系统所需的权限声明</li>
-<li>其他程序访问该程序所需的权限声明</li>
-</ul>
-<h2 id="应用程序权限说明"><a href="#应用程序权限说明" class="headerlink" title="应用程序权限说明"></a>应用程序权限说明</h2><p><strong>1.声明运行该应用本身所需要的权限</strong><br>通过为&lt;Manifest…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可为程序本身声明权限。<br>例如：<br>&lt;! –声明该应用本身需要打电话的权限 –&gt;<br><code>&lt;uses-permission android:name=&quot;android.permission.CALL_PHONE&quot;/&gt;</code><br><strong>2.声明调用该应用所需的权限</strong><br>通过为应用的各组件元素，如&lt;activity…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可声明调用该程序所需的权限。<br>例如：<br>&lt;! –声明该应用本身需要发送短信的权限 –&gt;</p>
-<p><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;&gt;</code><br>常用权限如下表：    </p>
-<table>
-<thead>
-<tr>
-<th>权限</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ACCESS_NETWORK_STATE</td>
-<td>允许应用程序获取网络状态信息的权限</td>
-</tr>
-<tr>
-<td>ACCESS_WIFI_STATE</td>
-<td>允许应用程序获取Wi-Fi网络状态信息的权限</td>
-</tr>
-<tr>
-<td>BATTERY_STATS</td>
-<td>允许应用程序获取电池状态信息的权限</td>
-</tr>
-<tr>
-<td>BLUETOOTH</td>
-<td>允许应用程序连接匹配的蓝牙设备的权限</td>
-</tr>
-<tr>
-<td>BLUETOOTH_ADMIN</td>
-<td>允许应用程序发现匹配的蓝牙设备的权限</td>
-</tr>
-<tr>
-<td>BROADCAST_SMS</td>
-<td>允许应用程序广播收到短信提醒的权限</td>
-</tr>
-<tr>
-<td>CALL_PHONE</td>
-<td>允许应用程序拨打电话的权限</td>
-</tr>
-<tr>
-<td>CAMERA</td>
-<td>允许应用程序使用照相机的权限</td>
-</tr>
-<tr>
-<td>CHANGE_NETWORK_STATE</td>
-<td>允许应用程序改变网络连接状态的权限</td>
-</tr>
-<tr>
-<td>CHANGE_WIFI_STATE</td>
-<td>允许应用程序改变wifi网络连接状态的权限</td>
-</tr>
-<tr>
-<td>DELETE_CACHE_FILES</td>
-<td>允许应用程序删除缓存文件的权限</td>
-</tr>
-<tr>
-<td>DELETE_PACKAGES</td>
-<td>允许应用程序删除安装包的权限</td>
-</tr>
-<tr>
-<td>FLASHLIGHT</td>
-<td>允许应用程序访问闪光灯的权限</td>
-</tr>
-<tr>
-<td>INTERNET</td>
-<td>允许应用程序打开网络Socket的权限</td>
-</tr>
-<tr>
-<td>MODIFY_AUDIO_SETTINGS</td>
-<td>允许应用程序修改全局声音设置的权限</td>
-</tr>
-<tr>
-<td>PROCESS_OUTGOING_CALLS</td>
-<td>允许应用程序监听、控制、取消呼出电话的权限</td>
-</tr>
-<tr>
-<td>READ_CONTACTS</td>
-<td>允许应用程序读取用户的联系人数据的权限</td>
-</tr>
-<tr>
-<td>READ_HISTORY_BOOKMARKS</td>
-<td>允许应用程序读取历史书签的权限</td>
-</tr>
-<tr>
-<td>READ_OWNER_DATA</td>
-<td>允许应用程序读取用户数据的权限</td>
-</tr>
-<tr>
-<td>READ_PHONE_STATE</td>
-<td>允许应用程序读取电话状态的权限</td>
-</tr>
-<tr>
-<td>READ_PHONE_SMS</td>
-<td>允许应用程序读取短信的权限</td>
-</tr>
-<tr>
-<td>REBOOT</td>
-<td>允许应用程序重启系统的权限</td>
-</tr>
-<tr>
-<td>RECEIVE_MMS</td>
-<td>允许应用程序接收、监控、处理彩信的权限</td>
-</tr>
-<tr>
-<td>RECEIVE_SMS</td>
-<td>允许应用程序接收、监控、处理短信的权限</td>
-</tr>
-<tr>
-<td>RECORD_AUDIO</td>
-<td>允许应用程序录音的权限</td>
-</tr>
-<tr>
-<td>SEND_SMS</td>
-<td>允许应用程序发送短信的权限</td>
-</tr>
-<tr>
-<td>SET_ORIENTATION</td>
-<td>允许应用程序旋转屏幕的权限</td>
-</tr>
-<tr>
-<td>SET_TIME</td>
-<td>允许应用程序设置时间的权限</td>
-</tr>
-<tr>
-<td>SET_TIME_ZONE</td>
-<td>允许应用程序设置时区的权限</td>
-</tr>
-<tr>
-<td>SET_WALLPAPER</td>
-<td>允许应用程序设置桌面壁纸的权限</td>
-</tr>
-<tr>
-<td>VIBRATE</td>
-<td>允许应用程序控制振动器的权限</td>
-</tr>
-<tr>
-<td>WRITE_CONTACTS</td>
-<td>允许应用程序写入用户联系人的权限</td>
-</tr>
-<tr>
-<td>WRITE_HISTORY_BOOKMARKS</td>
-<td>允许应用程序写历史书签的权限</td>
-</tr>
-<tr>
-<td>WRITE_OWNER_DATA</td>
-<td>允许应用程序写用户数据的权限</td>
-</tr>
-<tr>
-<td>WRITE_SMS</td>
-<td>允许应用程序写短信的权限</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/14/7.14数据库/" itemprop="url">数据库系统概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T21:47:54+08:00">
-                2018-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-数据库的4个基本概念"><a href="#1-数据库的4个基本概念" class="headerlink" title="1.数据库的4个基本概念"></a>1.数据库的4个基本概念</h1><h2 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h2><p>描述数据的符号记录称为数据。</p>
-<h2 id="数据库-DataBase-DB"><a href="#数据库-DataBase-DB" class="headerlink" title="数据库(DataBase,DB)"></a>数据库(DataBase,DB)</h2><p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。</p>
-<h2 id="数据库管理系统-DataBase-Management-System-DBMS"><a href="#数据库管理系统-DataBase-Management-System-DBMS" class="headerlink" title="数据库管理系统(DataBase Management System,DBMS)"></a>数据库管理系统(DataBase Management System,DBMS)</h2><p>数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。<br>主要功能：</p>
-<ul>
-<li>数据定义功能</li>
-<li>数据组织、存储和管理</li>
-<li>数据操纵功能</li>
-<li>数据库的事务管理和运行管理</li>
-<li>数据库的建立和维护功能</li>
-<li>其他</li>
-</ul>
-<h2 id="数据库系统-DataBase-System-DBS"><a href="#数据库系统-DataBase-System-DBS" class="headerlink" title="数据库系统(DataBase System,DBS)"></a>数据库系统(DataBase System,DBS)</h2><p>数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员(DataBase Administrator,DBA)组成的存储、管理、处理和维护数据的系统。</p>
-<h1 id="2-数据管理技术的发展"><a href="#2-数据管理技术的发展" class="headerlink" title="2.数据管理技术的发展"></a>2.数据管理技术的发展</h1><ol>
-<li>人工管理阶段</li>
-<li>文件系统阶段</li>
-<li>数据库系统阶段</li>
-</ol>
-<h1 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3.数据模型"></a>3.数据模型</h1><h2 id="两类数据模型"><a href="#两类数据模型" class="headerlink" title="两类数据模型"></a>两类数据模型</h2><ol>
-<li>概念模型<ul>
-<li>按照用户的观点来对数据建模，用于数据库设计</li>
-</ul>
-</li>
-<li>逻辑模型和物理模型<ul>
-<li>包括层次模型、网状模型、关系模型等等，它是按照计算机系统观点对数据建模，用于数据库管理系统的实现。</li>
-</ul>
-</li>
-</ol>
-<h2 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="headerlink" title="数据模型的组成要素"></a>数据模型的组成要素</h2><ol>
-<li>数据结构</li>
-<li>数据操作</li>
-<li>数据的完整性约束条件</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2099,7 +1957,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2121,7 +1979,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
