@@ -392,6 +392,17 @@
 <li>getView(int position,View convertView,ViewGroup parent)：该方法的返回值决定第position处的列表项组件。</li>
 </ul>
 <p>上面4个方法中最重要的是第一个和第四个。</p>
+<h2 id="AutoCompleteTextView自动完成文本框"><a href="#AutoCompleteTextView自动完成文本框" class="headerlink" title="AutoCompleteTextView自动完成文本框"></a>AutoCompleteTextView自动完成文本框</h2><p>自动完成文本框（AutoCompleteTextView）从EditText派生而出，当用户输入一定字符之后，自动完成文本框会显示一个下拉菜单，供用户选择，当用户选择某个菜单项之后，AutoCompleteTextView按用户选择自动填充该文本框。<br>AutoCompleteTextView除了可以使用EditText提供的XML属性和方法之外，还支持以下的常用XML属性：</p>
+<ul>
+<li>android:completionHint：设置下拉菜单中的提示标题</li>
+<li>android:completionHintView：设置下拉菜单中提示标题的视图</li>
+<li>android:completionThreshold：设置用户至少要输入几个字符才会显示提示</li>
+<li>android:dropDownHeight：设置下拉菜单的高度</li>
+<li>android:dropDownHorizontalOffset：设置下拉菜单与文本框之间的水平偏移。下拉菜单默认与文本框左对齐</li>
+<li>android:dropDownVerticalOffset：设置下拉菜单与文本框之间的垂直偏移。下拉菜单默认紧跟文本框</li>
+<li>android:dropDownWidth：设置下拉菜单的宽度</li>
+<li>android:popupBackground：设置下拉菜单的背景</li>
+</ul>
 <h2 id="Markdow语法注意"><a href="#Markdow语法注意" class="headerlink" title="Markdow语法注意"></a>Markdow语法注意</h2><p>使用<code>`</code>标记代码块时，不要再它前后打空格，只要回车换行，留出空行就行。</p>
 
           
@@ -1994,7 +2005,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
