@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="罗某">
 <meta property="og:description" content="安卓基础ProgressBar及其子类ProgressBar本身代表了进度条组件，它还派生出了两个常用组件:SeekBar和RatingBar。ProgressBar及其子类在用法上十分相似，只是显示有一定的区别。（主要是用来动态地显示进度，提高用户界面的友好性） Android支持多种风格的进度条，通过style属性可以为ProgressBar指定风格。该属性可支持如下几个属性值：  @andr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T14:42:16.310Z">
+<meta property="og:updated_time" content="2018-07-28T11:31:49.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习（十二）">
 <meta name="twitter:description" content="安卓基础ProgressBar及其子类ProgressBar本身代表了进度条组件，它还派生出了两个常用组件:SeekBar和RatingBar。ProgressBar及其子类在用法上十分相似，只是显示有一定的区别。（主要是用来动态地显示进度，提高用户界面的友好性） Android支持多种风格的进度条，通过style属性可以为ProgressBar指定风格。该属性可支持如下几个属性值：  @andr">
@@ -377,6 +377,12 @@
 <li>incrementProgressBy（int）：设置进度条的进度增加或减小。当参数为正数时进度增加，为负数时进度减小。</li>
 </ul>
 <p>ps：Handler用来发送信息，当msg.what==0x111表示消息是由该程序发送的。math.random()函数是取从0至1之间的随机数,乘100以后就是取0到100之间的随机数 </p>
+<h2 id="显示在标题上的进度条"><a href="#显示在标题上的进度条" class="headerlink" title="显示在标题上的进度条"></a>显示在标题上的进度条</h2><p>有一种进度条，可以直接在窗口标题上显示，这种进度条甚至不需要使用ProgressBar组件，它是直接由Activity的方法启用的。为了在窗口标题上显示进度条，需要经过下列两步：</p>
+<ol>
+<li>调用Activity的requestWindowFeature（）方法，该方法根据传入的参数可启用特定的窗口特征。例如：传入Window.FEATURE_INDETERMINATE_PROGRESS在窗口标题上显示不带进度的进度条；传入Window.FEATURE_PROGRESS则显示带进度的进度条。</li>
+<li>调用Activity的setProgressBarVisibility(boolean)或setProgressBarIndeterminate Visibility(boolean)方法即可控制进度条的显示和隐藏。</li>
+</ol>
+<p>ps：Android5.0默认的主题：Material看不到标题上的进度条；因此要显示标题上的进度条需要将该应用主题设置为Holo。</p>
 
       
     </div>
@@ -416,6 +422,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/7.28/" rel="prev" title="Android学习（十三）">
+                Android学习（十三） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -514,7 +524,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -550,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ProgressBar及其子类"><span class="nav-number">1.1.</span> <span class="nav-text">ProgressBar及其子类</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ProgressBar及其子类"><span class="nav-number">1.1.</span> <span class="nav-text">ProgressBar及其子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示在标题上的进度条"><span class="nav-number">1.2.</span> <span class="nav-text">显示在标题上的进度条</span></a></li></ol></li></ol></div>
             
 
           </div>
