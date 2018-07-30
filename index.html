@@ -259,6 +259,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/7.30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/30/7.30/" itemprop="url">Android学习（十五）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T22:28:04+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="昨天未解决问题的补充解决"><a href="#昨天未解决问题的补充解决" class="headerlink" title="昨天未解决问题的补充解决"></a>昨天未解决问题的补充解决</h2><p>在XML布局Layout文件中，如果要为当前组件添加一个点击事件，使用android:onClick=”….”方法时，需要在MainActivity中生成。使用Alt+Enter，直接生成，避免无法关联？因为又可能会无法关联上，产生Could not find method next(View) in a parent or ancestor Context for android错误。</p>
+<h2 id="ViewFlipper的功能与用法"><a href="#ViewFlipper的功能与用法" class="headerlink" title="ViewFlipper的功能与用法"></a>ViewFlipper的功能与用法</h2><p>ViewFlipper组件继承了ViewAnimator，它可调用addView(View v)添加多个组件。可以使用动画控制多个组件之间的切换效果。</p>
+<p>ViewFlipper与前面的AdapterViewFlipper有较大相似性，它们可以控制组件切换的动画效果。它们的区别是：ViewFlipper需要开发者通过addView(View v)方法添加多个View，而AdapterViewFlipper则只要传入一个Adaper，Adapter将会负责提供多个View。ViewFlipper可以指定与AdapterViewFlipper相同的XML属性。 </p>
+<h2 id="使用Toast显示提示信息"><a href="#使用Toast显示提示信息" class="headerlink" title="使用Toast显示提示信息"></a>使用Toast显示提示信息</h2><p>Toast有两个特点：Toast提示信息不会获得焦点；提示信息过一段时间会自动消失。</p>
+<p>使用Toast的步骤：</p>
+<ol>
+<li>调用Toast的构造器或makeText()静态方法创建一个Toast对象</li>
+<li>调用Toast的方法来设置该消息提示的对齐方式、页边距等</li>
+<li>调用Toast的show()方法将它显示出来</li>
+</ol>
+<p>Toast的功能和用法都比较简单，大部分时候它只能显示简单的文本提示；如果应用需要显示诸如图片、列表之类的复杂提示，一般建议使用对话框来完成；如果开发者确实想通过Toast来完成，也是可以的，此时就需要调用Toast构造器创建实例，再调用setView()方法设置该Toast显示的View组件。此方法允许开发者自己定义Toast显示的内容。 </p>
+<h2 id="日历视图（CalendarView）组件的功能和用法"><a href="#日历视图（CalendarView）组件的功能和用法" class="headerlink" title="日历视图（CalendarView）组件的功能和用法"></a>日历视图（CalendarView）组件的功能和用法</h2><p>日历视图可用于显示和选择日期，用户既可以选择一个日期，也可通过触摸来滚动日历。如果希望监控该组件的日期改变，则可调用CalendarView的setOnDateChangeListener()方法为此组件的点击事件添加事件监听器。</p>
+<p>使用CalendarView时常见的XML属性：</p>
+<ul>
+<li>android:dateTextAppearance：设置该日历视图的日期文字的样式</li>
+<li>android:firstDayOfWeek：设置每周的第一天，允许设置周一到周日任意一天作为每周的第一天</li>
+<li>android:focusedMonthDateColor：设置获得焦点的月份的日期文字的颜色</li>
+<li>android:maxDate：设置日历组件支持的最大日期。以mm/dd/yyyy格式指定最大日期</li>
+<li>android:minDate：设置该日历组件支持的最小日期。同上设置</li>
+<li>android:selectedDateVerticalBar：设置绘制在选中日期两边的竖线对应的Drawable</li>
+<li>android:selectedWeekBackgroundColor：设置被选中周的背景色</li>
+<li>android:showWeekNumber：设置是否显示第几周</li>
+<li>android:shownWeekCount：设置该日历组件总共显示几个星期</li>
+<li>android:unfocusedMonthDateColor：设置没有焦点的月份的日期文字的颜色</li>
+<li>android:weekDayTextAppearance：设置星期几的文字样式</li>
+<li>android:weekNumberColor：设置显示周编号的颜色</li>
+<li>android:weekSeparatorLineColor：设置周分割线的颜色</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/7.29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1813,151 +1982,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/7.20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/20/7.20/" itemprop="url">长征</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T23:55:58+08:00">
-                2018-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/历史/" itemprop="url" rel="index">
-                    <span itemprop="name">历史</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="回顾历史"><a href="#回顾历史" class="headerlink" title="回顾历史"></a>回顾历史</h1><h2 id="长征"><a href="#长征" class="headerlink" title="长征"></a>长征</h2><p>土地革命战争时期，中国工农红军主力撤离长江南北各苏区，转战两年，到达陕甘苏区的战略转移行动。<br>1934年10月，第五次反围剿失败后，中央主力红军为摆脱国民党军队的包围追击，被迫实行战略性转移，退出中央根据地，进行长征。<br>长征是人类历史上的伟大奇迹，中央红军共进行了380余次战斗，攻占700多座县城，红军牺牲了营以上干部多达430余人，平均年龄不到30岁，共击溃国民党军数百个团，其间共经过14个省，翻越18座大山，跨过24条大河，走过荒草地，翻过雪山，行程约二万五千里，红一方面军于1935年10月到达陕北，与陕北红军胜利会师。1936年10月，红二、四方面军到达甘肃会宁地区，同红一方面军会师。红军三大主力会师，标志着万里长征的胜利结束。</p>
-<h2 id="基本路线"><a href="#基本路线" class="headerlink" title="基本路线"></a>基本路线</h2><p>瑞金→突破敌四道防线→强渡乌江→占领遵义→四渡赤水→巧渡金沙江→强渡大渡河→飞夺泸定桥→翻雪山→过草地→陕北吴起会师(1935年10月)→甘肃会宁会师(1936年10月)，宣告长征的胜利结束。</p>
-<h2 id="各阶段"><a href="#各阶段" class="headerlink" title="各阶段"></a>各阶段</h2><p>长征准备阶段（1934年7月7日～1934年10月10日）<br>长征失利阶段（1934年10月10日～1935年1月15日）<br>长征转折阶段（1935年1月15日～1935年6月14日）<br>坚持北上和南下分裂阶段（1935年6月14日～1935年10月19日）<br>发展巩固和南下受挫阶段（1935年10月19日～1936年7月1日）<br>大会师阶段（1936年7月1日～1936年12月12日）   </p>
-<h2 id="各部队"><a href="#各部队" class="headerlink" title="各部队"></a>各部队</h2><p>第一支是中央红军（后改称红一方面军），于1934年10月10日由福建的长汀等地出发，1935年10月19日到达陕西的吴起镇（今吴起县），行程达二万五千里；<br>第二支是红二十五军（后编入红一方面军），于1934年11月16日由河南罗山何家冲出发，1935年9月15日到达陕西延川永坪镇，同陕甘红军会师，合编为红十五军团，行程近万里，最早到达陕北的一支红军 。<br>第三支是红四方面军，于1935年5月初放弃川陕苏区，由彰明、中坝、青川、平武等地出发，向岷江地区西进，1936年10月9日到达甘肃会宁，与红一方面军会师，行程一万余里；<br>第四支是红二、红六军团（后同红一方面军第三十二军合编为红二方面军），于1935年11月19日由湖南桑植刘家坪等地出发，1936年10月22日到达会宁以东的将台堡，同红一方面军会师，行程两万余里。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2008,7 +2032,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2030,7 +2054,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
