@@ -259,6 +259,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/25/7.25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/25/7.25/" itemprop="url">Android学习（十）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T12:54:11+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="GridView（网格视图）"><a href="#GridView（网格视图）" class="headerlink" title="GridView（网格视图）"></a>GridView（网格视图）</h2><p>GridView用于在界面上按行、列分布的方式显示多个组件。<br>GridView和ListView都是AbsListView的子类，它们都有列表项。它们的区别就是：GridView能显示多列，ListView只能显示一列。GridView也需要通过Adapter来提供显示的数据。<br>GridView提供的常用XML属性及相关方法如下：   </p>
+<ul>
+<li>android:columnWidth:设置列的宽度</li>
+<li>android:gravity:设置对齐方式</li>
+<li>android:horizontalSpacing:设置各元素之间的水平间距</li>
+<li>android:numColums:设置列数</li>
+<li>android:stretchMode:设置拉伸模式</li>
+<li>android:verticalSpacing:设置各元素之间的垂直间距</li>
+</ul>
+<p>其中的android:stretchMode属性支持下列几个属性值：</p>
+<ul>
+<li>NO_STRETCH：不拉伸</li>
+<li>STRETCH_SPACING：仅拉伸元素之间的间距</li>
+<li>STRETCH_SPACING_UNIFORM：表格元素本身、元素之间的间距一起拉伸</li>
+<li>STRETCH_COLUMN_WIDTH仅拉伸表格元素本身</li>
+</ul>
+<p>GridView包含的多少行由Adapter决定。</p>
+<h2 id="ExpandableListView可展开的列表组件"><a href="#ExpandableListView可展开的列表组件" class="headerlink" title="ExpandableListView可展开的列表组件"></a>ExpandableListView可展开的列表组件</h2><p>ExpandableListView时ListView的子类，它在普通ListView基础上进行了扩展，它把列表项分为几组，每组里又可包含多个列表项。<br>ExpandableListView的用法与普通的ListView的用法十分相似，只是ExpandableListView所显示的列表项应该由ExpandableListAdapter提供，ExpandableListView也是一个接口。<br>ExpandableListView额外支持的常用XML属性：   </p>
+<ul>
+<li>android:childDivider：指定各组内各子列表项之间的分隔条</li>
+<li>android:childIndicator：显示在子列表项旁边的Drawable对象</li>
+<li>android:groupIndicator：显示在组列表项旁边的Drawable对象  </li>
+</ul>
+<p>扩展BaseExpandableListAdapter来实现ExpandableListAdapter，当扩展BaseExpandableListAdapter时，关键是实现如下4个方法：</p>
+<ul>
+<li>getGroupCount():该方法返回包含的组列表项的数量</li>
+<li>getGroupView():该方法返回的View对象作为组列表项</li>
+<li>getChildCount():该方法返回特定组所包含的子列表项的数量</li>
+<li>getChildView():该方法返回的View对象将作为特定组、特定位置的子列表项</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/7.24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1761,183 +1932,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/7-15/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/7-15/" itemprop="url">Android学习（二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T16:45:26+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Activity和View"><a href="#Activity和View" class="headerlink" title="Activity和View"></a>Activity和View</h2><p>Activity只能通过setContentView(View)来显示指定组件。<br>setContentView()的参数有两种：</p>
-<ol>
-<li>view对象</li>
-<li>布局管理器的id值，即R.layout.main等等</li>
-</ol>
-<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service也代表一个单独的Android组件。Service与Activity的区别在于：Service通常位于后台运行，它一般不需要与用户交互，因而Service没有图形用户界面。<br>Service组件需要继承Service基类，Service被运行起来之后，它将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
-<h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>BroadcastReceiver也是Android应用中的组件，代表广播消息接收器。BroadcastReceiver非常类似于事件编程中的监听器，与普通事件监听器不同的是，普通事件监听器监听的事件源是程序中的对象；而BroadcastReceiver监听的事件源是Android应用中的其他组件。<br>使用BroadcastReceiver组件接受广播消息比较简单，开发者只需要实现自己的BroadcastReceiver子类，并重写<strong>onReceive(Context context,Intent intent)</strong>方法即可。当其他组件通过sendBroadcast(),sendStickyBroadcast(),sendOrderedBroadcast()方法发送广播消息时，如果该BroadcastReceiver也对该消息感兴趣（通过IntentFilter配置），BroadcastReceiver的<strong>onReceive(Context context,Intent intent)</strong>方法将会被触发。<br>开发者实现了BroadcastReceiver后，通常有两种方式来注册这个系统级的“事件监听器”。</p>
-<ul>
-<li>在Java代码中通过Context.registReceiver()方法注册BroadcastReceiver.</li>
-<li>在AndroidManifest.xml文件中使用&lt;receiver…/&gt;元素完成注册。</li>
-</ul>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>Android应用运行在各自独立的进程中，如果这些Android应用之间需要实现实时的数据交换——例如，我们开发了一个发送短信的程序，当发送短信时需要从联系人管理应用中读取指定联系人的数据——这就需要多个应用程序之间进行数据交换，开发者可以编写自己的ContentProvider来实现数据交换。<br>开发者需要实现如下的抽象方法：</p>
-<ul>
-<li>insert(Uri,ContentValues)：向ContentProvider插入数据</li>
-<li>delete(Uri,ContentValues)：删除ContentProvider中指定数据</li>
-<li>update(Uri,ContentValues,String,String[])：更新ContentProvider中指定数据</li>
-<li>query(Uri,String[],String,String[],String)：从ContentProvider查询数据</li>
-</ul>
-<p>通常与ContentProvider结合使用的时ContentResolver，一个应用程序使用ContentProvider暴露自己的数据，而另一个应用程序则通过ContentResolver来访问数据。</p>
-<h2 id="Intent和IntentFilter"><a href="#Intent和IntentFilter" class="headerlink" title="Intent和IntentFilter"></a>Intent和IntentFilter</h2><p>Intent可以启动另一个Activity，也可以启动一个Service组件，还可以发送一条广播消息来触发系统中的BroadcastRecevier。也就说这三种组件之间的通信都以Intent作为载体。</p>
-<ul>
-<li>当需要启动一个Activity时，可以调用Context的startActivity(Intent intent)或startActivityForResult(Intent intent,int requestCode)方法，这两个方法中intent中封装了需要启动的Activity的信息。</li>
-<li>启动Service时，调用Context的startService(Intent intent)方法或者bindService(Intent service,ServiceConnection conn,int flags)方法，这两个方法中intent封装了需要启动的目标service的信息。</li>
-<li>当需要触发一个BroadcastReceiver时，可调用Context的sendBroadcast(Intent intent),sendStickyBroadcast(Intent intent)或sendOrderedBroadcast(Intent intent,String receiverPermission)方法来发送广播消息，这三个方法中Intent参数封装了需要触发的目标BroadcastReceiver的信息。</li>
-</ul>
-<p>当一个组件通过Intent表示了启动或触发另一个组件的“意图”之后，这个意图可以分为两类。</p>
-<ul>
-<li>显式Intent：显式Intent明确指定需要启动或者触发的组件的类名。</li>
-<li>隐式Intent：隐式Intent只是指定需要启动或者触发的组件应满足怎样的条件。  </li>
-</ul>
-<p>被调用的组件通过IntentFilter来声明自己所满足的条件——也就是声明自己到底能处理哪些隐式Intent。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1983,7 +1982,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2005,7 +2004,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

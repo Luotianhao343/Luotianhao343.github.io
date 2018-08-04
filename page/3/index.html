@@ -259,6 +259,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/7-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/15/7-15/" itemprop="url">Android学习（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T16:45:26+08:00">
+                2018-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Activity和View"><a href="#Activity和View" class="headerlink" title="Activity和View"></a>Activity和View</h2><p>Activity只能通过setContentView(View)来显示指定组件。<br>setContentView()的参数有两种：</p>
+<ol>
+<li>view对象</li>
+<li>布局管理器的id值，即R.layout.main等等</li>
+</ol>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service也代表一个单独的Android组件。Service与Activity的区别在于：Service通常位于后台运行，它一般不需要与用户交互，因而Service没有图形用户界面。<br>Service组件需要继承Service基类，Service被运行起来之后，它将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
+<h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>BroadcastReceiver也是Android应用中的组件，代表广播消息接收器。BroadcastReceiver非常类似于事件编程中的监听器，与普通事件监听器不同的是，普通事件监听器监听的事件源是程序中的对象；而BroadcastReceiver监听的事件源是Android应用中的其他组件。<br>使用BroadcastReceiver组件接受广播消息比较简单，开发者只需要实现自己的BroadcastReceiver子类，并重写<strong>onReceive(Context context,Intent intent)</strong>方法即可。当其他组件通过sendBroadcast(),sendStickyBroadcast(),sendOrderedBroadcast()方法发送广播消息时，如果该BroadcastReceiver也对该消息感兴趣（通过IntentFilter配置），BroadcastReceiver的<strong>onReceive(Context context,Intent intent)</strong>方法将会被触发。<br>开发者实现了BroadcastReceiver后，通常有两种方式来注册这个系统级的“事件监听器”。</p>
+<ul>
+<li>在Java代码中通过Context.registReceiver()方法注册BroadcastReceiver.</li>
+<li>在AndroidManifest.xml文件中使用&lt;receiver…/&gt;元素完成注册。</li>
+</ul>
+<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>Android应用运行在各自独立的进程中，如果这些Android应用之间需要实现实时的数据交换——例如，我们开发了一个发送短信的程序，当发送短信时需要从联系人管理应用中读取指定联系人的数据——这就需要多个应用程序之间进行数据交换，开发者可以编写自己的ContentProvider来实现数据交换。<br>开发者需要实现如下的抽象方法：</p>
+<ul>
+<li>insert(Uri,ContentValues)：向ContentProvider插入数据</li>
+<li>delete(Uri,ContentValues)：删除ContentProvider中指定数据</li>
+<li>update(Uri,ContentValues,String,String[])：更新ContentProvider中指定数据</li>
+<li>query(Uri,String[],String,String[],String)：从ContentProvider查询数据</li>
+</ul>
+<p>通常与ContentProvider结合使用的时ContentResolver，一个应用程序使用ContentProvider暴露自己的数据，而另一个应用程序则通过ContentResolver来访问数据。</p>
+<h2 id="Intent和IntentFilter"><a href="#Intent和IntentFilter" class="headerlink" title="Intent和IntentFilter"></a>Intent和IntentFilter</h2><p>Intent可以启动另一个Activity，也可以启动一个Service组件，还可以发送一条广播消息来触发系统中的BroadcastRecevier。也就说这三种组件之间的通信都以Intent作为载体。</p>
+<ul>
+<li>当需要启动一个Activity时，可以调用Context的startActivity(Intent intent)或startActivityForResult(Intent intent,int requestCode)方法，这两个方法中intent中封装了需要启动的Activity的信息。</li>
+<li>启动Service时，调用Context的startService(Intent intent)方法或者bindService(Intent service,ServiceConnection conn,int flags)方法，这两个方法中intent封装了需要启动的目标service的信息。</li>
+<li>当需要触发一个BroadcastReceiver时，可调用Context的sendBroadcast(Intent intent),sendStickyBroadcast(Intent intent)或sendOrderedBroadcast(Intent intent,String receiverPermission)方法来发送广播消息，这三个方法中Intent参数封装了需要触发的目标BroadcastReceiver的信息。</li>
+</ul>
+<p>当一个组件通过Intent表示了启动或触发另一个组件的“意图”之后，这个意图可以分为两类。</p>
+<ul>
+<li>显式Intent：显式Intent明确指定需要启动或者触发的组件的类名。</li>
+<li>隐式Intent：隐式Intent只是指定需要启动或者触发的组件应满足怎样的条件。  </li>
+</ul>
+<p>被调用的组件通过IntentFilter来声明自己所满足的条件——也就是声明自己到底能处理哪些隐式Intent。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14安卓学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1697,139 +1869,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/08/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/08/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-08T09:13:08+08:00">
-                2018-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1875,7 +1919,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1897,7 +1941,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
