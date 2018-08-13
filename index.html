@@ -259,6 +259,366 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/8.13.2/" itemprop="url">Android学习（二十四）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T18:17:07+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Android事件处理概述"><a href="#Android事件处理概述" class="headerlink" title="Android事件处理概述"></a>Android事件处理概述</h2><p>Android提供了两套事件处理机制：</p>
+<ul>
+<li>基于监听的事件处理</li>
+<li>基于回调的事件处理</li>
+</ul>
+<p>对于Android基于监听的事件崔而言，主要做法就是为Android界面组件绑定特定的事件监听器。<br>ps：Android还允许用户在界面布局文件中为UI组件的android:onClick属性指定事件监听方法，通过这种方式指定事件监听方法时，开发者需要在Activity中定义该事件监听方法（该方法必须有一个View类型的形参，该形参代表被单击的UI组件），当用户单击该UI组件时，系统将会激发android:onClick属性所指定的方法。<br>对于Android基于回调的事件处理而言，主要做法就是重写Android组件特定的回调方法，或者重写Activity的回调方法。一般来说，基于回调的事件处理可以用于一些具有通用性的事件，基于回调的事件处理代码会显得比较简洁。</p>
+<h2 id="基于监听的事件处理"><a href="#基于监听的事件处理" class="headerlink" title="基于监听的事件处理"></a>基于监听的事件处理</h2><p>基于监听的事件处理是一种更“面向对象”的事件处理，这种处理方式与Java的AWT、Swing的处理方式几乎完全相同。</p>
+<h3 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h3><p>在事件监听的处理模型中，主要涉及如下三类对象。</p>
+<ul>
+<li>Event Source（事件源）：事件发生的场所，通常就是各个组件</li>
+<li>Event（事件）：事件封装了界面组件上发生的特定事情（通常就是一次用户操作）。如果程序需要获得界面组件上所发生事件的相关信息，一般通过Event对象取得</li>
+<li>Event Listener（事件监听器）：负责监听时间原所发生的事件，并对各种事件做出相应的响应</li>
+</ul>
+<p>Java是面向对象的语言，方法不能独立存在，方法用来组织起来事件响应的动作，所以必须以类的形式组织这些方法，所以事件监听器的核心就是它所包含的方法-这些方法也被称为事件处理器（Event Handler）。</p>
+<p>每个组件均可以针对特定的事件指定一个事件监听器，每个事件监听器也可监听一个或多个事件源。</p>
+<p>用于监听的事件处理模型的步骤是：</p>
+<ol>
+<li>获取普通界面组件（事件源），也就是被监听的对象</li>
+<li>实现事件监听器类，该监听器类是一个特殊的Java类，必须实现一个XxxListener接口</li>
+<li>调用事件源的setXxxListener方法将事件监听器对象注册给一个普通组件（事件源）</li>
+</ol>
+<p>Android为不同的界面组件提供了不同的事件监听器接口，这些接口通常以内部类的形式存在。以View为例，它包含如下几个内部接口：</p>
+<ul>
+<li>View.OnClickListener：单击</li>
+<li>View.OnCreateContextMenuListener：创建上下文菜单</li>
+<li>View.OnFocusChangeListener：焦点改变事件</li>
+<li>View.OnKeyListener：按键事件</li>
+<li>View.OnLongClickListener：长按事件</li>
+<li>View.OnTouchListener：触摸事件</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/8.13.1/" itemprop="url">Android学习（二十三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T11:58:51+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="使用ActionBar显示选项菜单项"><a href="#使用ActionBar显示选项菜单项" class="headerlink" title="使用ActionBar显示选项菜单项"></a>使用ActionBar显示选项菜单项</h2><p>Android不再要求手机必须提供MENU按键，这样可能导致用户无法打开选项菜单。为了解决这个问题，Android已经提供了ActionBar作为解决方案，ActionBar可以将选项菜单显示成Action Item。<br>Menuitem新增了如下方法：</p>
+<ul>
+<li>setShowAsAction(int actionEnum)：该方法设置是否将该菜单项显示在ActionBar上，作为Action Item。</li>
+</ul>
+<p>该方法支持如下参数值：</p>
+<ul>
+<li>SHOW_AS_ACTION_ALWAYS：总是将该MenuItem显示在ActionBar上</li>
+<li>SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW：将该Action View折叠成普通菜单项</li>
+<li>SHOW_AS_ACTION_IF_ROOM：当ActionBar位置足够时才显示MenuItem</li>
+<li>SHOW_AS_ACTION_NEVER：不将该MenuItem显示在ActionBar上</li>
+<li>SHOW_AS_ACTION_WITH_TEXT：将该MenuItem显示在ActionBar上，并且显示该菜单项的文本</li>
+</ul>
+<p>Android允许在XML菜单资源文件中为&lt;item…/&gt;元素指定如下属性</p>
+<ul>
+<li>android：showAsAction：该属性的作用类似于setShowAsAction(int actionEnum)方法。因此该属性也能支持类似上面的属性值。</li>
+</ul>
+<h2 id="启用程序图标导航"><a href="#启用程序图标导航" class="headerlink" title="启用程序图标导航"></a>启用程序图标导航</h2><p>为了将应用程序图标转变为可以点击的图标，可以调用ActionBar的如下方法：</p>
+<ul>
+<li>setDisplayHomeAsUpEnable(boolean showHomeAsUp)：设置是否将应用程序图标转变为可点击的图标，并在图标上添加一个向左的箭头</li>
+<li>setDisplayOptions(int options)：通过传入int类型常量来控制该ActionBar的显示选项</li>
+<li>setDisplayShowHomeEnabled(boolean showHome)：设置是否显示应用程序图标</li>
+<li>setHomeButtonEnabled(boolean enabled)：设置是否将应用程序图标变为可点击的按钮</li>
+</ul>
+<h2 id="添加Action-View"><a href="#添加Action-View" class="headerlink" title="添加Action View"></a>添加Action View</h2><p>ActionBar上除了可以显示普通的Action Item之外，还可以显示普通的UI组件。为了在ActionBar上添加Action View，可以用来如下两种方式。</p>
+<ul>
+<li>定义Action Item时使用android:actionViewClass属性指定Action View的实现类</li>
+<li>定义Action Item时使用android:actionLayout属性指定ActionView对应的视图资源</li>
+</ul>
+<h2 id="使用ActionBar实现Tab导航"><a href="#使用ActionBar实现Tab导航" class="headerlink" title="使用ActionBar实现Tab导航"></a>使用ActionBar实现Tab导航</h2><p>为了使用ActionBar实现Tab导航，按如下步骤进行即可</p>
+<ol>
+<li>调用ActionBar的setNavigationMode(ActionBar.NAVIGATION_MODE_TABS)方法设置使用Tab导航方式</li>
+<li>调用ActionBar的addTab()方法添加多个标签，并为每个Tab标签添加事件监听器</li>
+</ol>
+<p>在实际项目中为了更好地展现Tab导航效果，ActionBar通常会与Fragment结合使用。</p>
+<h3 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h3><p>Fragment是Android3.0新增的API，Fragment相当于Activity片段，通常我们使用单独的Activity组合多个Fragment，这样即可在一个Activity中创建多个用户界面。除此之外，也可以让多个Activity复用同一个Fragment。总之，Fragment相当于Activity的模块化区域。（多对多）<br>Fragment拥有自己的生命周期，它可以接收、处理属于它自己的事件，并允许Activity运行期间动态地添加、删除Fragment。<br>Fragment允许定义自己的布局，也可以通过生命周期回调定义自己的行为。<br>与开发Activity类似的是，开发者自定义的Fragment也需要继承Fragment，并重写它的生命周期方法，通常会重写Fragment的onCreatView()生命周期方法。<br><strong>ps</strong>：viewPager用来给Fragment添加滑动功能；可以使用下面这个方法viewPager.setOffscreenPageLimit(3)设置缓存view 的个数为3。通常我们的ViewPager只会缓存当前页面的前后俩个页面，如果我切换到最后一个页面，则只会缓存前面的一个页面，会导致页面数据的重新加载。我们可以通过上面第三行的方法设置缓存页面的个数。当然，这只使用与页面较少的情况。</p>
+<h3 id="Android3-0以前的Fragment支持"><a href="#Android3-0以前的Fragment支持" class="headerlink" title="Android3.0以前的Fragment支持"></a>Android3.0以前的Fragment支持</h3><p>该Fragment不是继承android.app.Fragment，而是继承android.support.v4.app.Fragment。除此之外，Android还为该android.support.v4.app.Fragment提供了如下配套类。</p>
+<ul>
+<li>FragmentActivity：只有该类提供的getSupportFragmentManager()方法才能获取Fragment管理器</li>
+<li>ViewPager：它是Fragment容器，可以同时管理多个Fragment，并允许多个Fragment切换时提供动画效果</li>
+<li>FragmentPagerAdapter：Adapter类，用于为ViewPager提供多个Fragment。通常用于被扩展</li>
+<li>PagerTitleStrip：与ViewPager结合使用，用于在ViewPager上显示“导航条”。</li>
+</ul>
+<h2 id="使用ActionBar实现下拉式导航"><a href="#使用ActionBar实现下拉式导航" class="headerlink" title="使用ActionBar实现下拉式导航"></a>使用ActionBar实现下拉式导航</h2><p>为了使用ActionBar实现下拉式导航，按如下步骤进行即可</p>
+<ol>
+<li>调用ActionBar的actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST)方法设置使用下拉列表的导航方式。</li>
+<li>调用ActionBar的setListNavigationCallbacks(SpinnerAdapter adapter,ActionBar.OnNavigationListener callback)方法添加多个列表项，并为每个列表项设置事件监听器。其中第一个参数Adapter负责提供多个列表项，第二个参数为事件监听器。</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>AnalogClock在XML中是虚拟时钟。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/8.5.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1703,319 +2063,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/7.29/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/29/7.29/" itemprop="url">Android学习（十四）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T23:27:10+08:00">
-                2018-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="ViewAnimator及其子类"><a href="#ViewAnimator及其子类" class="headerlink" title="ViewAnimator及其子类"></a>ViewAnimator及其子类</h1><p>ViewAnimator继承了FrameLayout，因此它表现出FrameLayout的特征，可以将多个View组件叠在一起，ViewAnimator可以在View切换时表现出动画效果。</p>
-<p>ViewAnimator的XML属性如下：</p>
-<ul>
-<li>android:animateFirstView：设置ViewAnimator显示第一个View组件时是否使用动画</li>
-<li>android:inAnimation：设置ViewAnimator显示组件时所使用的动画</li>
-<li>android:outAnimation：设置ViewAnimator隐藏组件时所使用的动画</li>
-</ul>
-<h2 id="ViewSwitcher的功能及用法"><a href="#ViewSwitcher的功能及用法" class="headerlink" title="ViewSwitcher的功能及用法"></a>ViewSwitcher的功能及用法</h2><p>ViewSwitcher代表了视图切换组件，因此可以将多个View层叠在一起，每次只显示一个组件。当程序控制从一个View切换到另一个View时，ViewSwitcher支持指定动画效果。</p>
-<p>为了给ViewSwitcher添加多个组件，一般通过调用ViewSwitcher的setFactory(ViewSwitcher.ViewFactory)方法为之设置ViewFactory，并由该ViewFactory为之创建View即可。  </p>
-<h2 id="图像切换器（ImageSwitcher）的功能和用法"><a href="#图像切换器（ImageSwitcher）的功能和用法" class="headerlink" title="图像切换器（ImageSwitcher）的功能和用法"></a>图像切换器（ImageSwitcher）的功能和用法</h2><p>ImageSwitcher继承了ViewSwitcher，并重写了ViewSwitcher的showNext()和showPrevious()方法，因此ImageSwitcher使用起来更简单。使用ImageSwitcher只需如下两步：</p>
-<ol>
-<li>为ImageSwitcher提供一个ViewFactory，该ViewFactory生成的View组件必须是ImageView。</li>
-<li>需要切换图片时，只要调用ImageSwitcher的setImageDrawable(Drawable drawable)、setImageResource(int resid)和setImageURI(Uri uri)方法切换图片。</li>
-</ol>
-<p>ImageSwitcher效果更炫，他可以指定图片切换时的动画效果。 </p>
-<h2 id="文本切换器（TextSwitcher）的功能和用法"><a href="#文本切换器（TextSwitcher）的功能和用法" class="headerlink" title="文本切换器（TextSwitcher）的功能和用法"></a>文本切换器（TextSwitcher）的功能和用法</h2><p>TextSwitcher继承了ViewSwitcher，因此它具有与ViewSwitcher相同的特征：可以在在切换View组件时使用动画效果。它也需要设置一个ViewFactory，它的ViewFactory的makeView()方法必须返回一个TextView组件。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/7.28/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/28/7.28/" itemprop="url">Android学习（十三）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T21:06:32+08:00">
-                2018-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="拖动条（SeekBar）的功能与用法"><a href="#拖动条（SeekBar）的功能与用法" class="headerlink" title="拖动条（SeekBar）的功能与用法"></a>拖动条（SeekBar）的功能与用法</h2><p>SeekBar继承了ProgressBar，因此ProgressBar所支持的XML属性和方法完全适用于SeekBar。</p>
-<p>SeekBar允许用户改变拖动条的滑块外观，改变滑块外观通过如下属性来指定。  </p>
-<ul>
-<li>android：thumb：指定一个Drawable对象，该对象将作为自定义滑块。</li>
-</ul>
-<p>为了让程序响应滑块位置的改变，程序可以考虑为他绑定一个OnSeekBarChangeListener监听器。  </p>
-<h2 id="星级评分条（RatingBar）的功能和用法"><a href="#星级评分条（RatingBar）的功能和用法" class="headerlink" title="星级评分条（RatingBar）的功能和用法"></a>星级评分条（RatingBar）的功能和用法</h2><p>星级评分条和拖动条有相同的父类：AbsSeekBar，因此它们相似；它们的区别就是RatingBar通过星星来表示进度。</p>
-<p>下面是RatingBar所支持的常见XML属性：</p>
-<ul>
-<li>android:isIndicator：设置该星级评分条是否允许用户改变（true为不允许修改）</li>
-<li>android:numStars：设置该星级评分条总共有多少个星级</li>
-<li>android:rating：设置该星级评分条默认的星级</li>
-<li>android:stepSize：设置每次最少需要改变多少个星级</li>
-</ul>
-<p>为了让程序能响应星级评分条评分的改变，可以考虑为它绑定一个OnRatingBarChangeListener监听器。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2066,7 +2113,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2088,7 +2135,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
