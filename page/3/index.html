@@ -259,6 +259,355 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/7.21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/7.21/" itemprop="url">Android学习（六）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T22:47:25+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><p>默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。<br>由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。</p>
+<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><p>EditText最重要的属性是inputType，该属性相当于HTML的&lt;input…/&gt;元素的type属性，用于将EditText设置为指定类型的输入组件。<br>android:inputType属性（系统自动显示哪种类型的输入键盘）：</p>
+<ul>
+<li>numberPassword：表示只能接受数字密码（使用安卓系统自带安全的数字输入法）</li>
+<li>number：表示是数字输入框（使用输入法的数字输入法）</li>
+<li>date：表示是日期输入框（使用输入法的数字输入法）</li>
+<li>phone：表示是输入电话号码的输入框（使用输入法的数字输入法）</li>
+</ul>
+<p>android:selectAllOnFocu属性</p>
+<ul>
+<li>=true为如果文本框的内容能选择，设置是否当它获得焦点时自动选中所有文本。</li>
+<li>=false不选中。</li>
+</ul>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><p>Button继承了TextView，主要是生成一个按钮，该按钮能提供被用户点击时触发一个onClick事件。如果需要让按钮的背景颜色、背景图片随用户动作动态改变，考虑使用自定义Drawable实现。</p>
+<p>Button常用属性：</p>
+<ul>
+<li>android:shadowColor设置文本框内文本的阴影颜色</li>
+<li>android:shadowRadius设置阴影的模糊程度，该值越大越模糊</li>
+<li>android:shadowDx阴影在水平方向的偏移</li>
+<li>android:shadowDy阴影在垂直方向的偏移</li>
+</ul>
+<p>Button的android:background=””属性，可以用XML实现，在XMl中可以用state_pressed=”true”表示按钮按下，state_pressed=”false”表示按钮松开，并且利用android:drawable=””表示背景。    </p>
+<h2 id="使用9Patch图片作为背景"><a href="#使用9Patch图片作为背景" class="headerlink" title="使用9Patch图片作为背景"></a>使用9Patch图片作为背景</h2><p>当按钮的内容太多时，Android会自动缩放整张图片，以保证背景图片能覆盖整个按钮。但是这种缩放的效果并不好。为了实现只缩放图片中某个部分，借助9Patch图片实现。<br>左侧和上侧的直线共同决定图片的缩放区域<br>右侧和下侧的直线共同决定图片的内容显示区域</p>
+<h2 id="RadioButton和CheckBox"><a href="#RadioButton和CheckBox" class="headerlink" title="RadioButton和CheckBox"></a>RadioButton和CheckBox</h2><p>两个都有一个可选中的功能，不过一组RadioButton只能选择其中一个，所以RadioButton通常要与RadioGroup一起使用，用于定于一组单选钮；CheckBox可以复选。都可额外指定一个android:checked属性，该属性用于指定RadioButton、checkBox初始时是否被选中。<br><strong>如果在XML布局文件中默认勾选了某个单选钮，则必须为该组单选钮的每个按钮指定android：id属性值；否则这组单选钮不能正常工作</strong></p>
+<h2 id="状态开关按钮（ToggleButton）和开关（Switch）"><a href="#状态开关按钮（ToggleButton）和开关（Switch）" class="headerlink" title="状态开关按钮（ToggleButton）和开关（Switch）"></a>状态开关按钮（ToggleButton）和开关（Switch）</h2><p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
+<ul>
+<li>android:checked设置该按钮是否被选中</li>
+<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
+<li>android:textOn设置当按钮的状态打开时显示的文本    </li>
+</ul>
+<p>Switch支持的XML属性：</p>
+<ul>
+<li>android:checked设置该按钮是否被选中</li>
+<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
+<li>android:textOn设置当按钮的状态打开时显示的文本 </li>
+<li>android:switchTextAppearnce设置该开关图标上的文本样式</li>
+<li>android:textStyle设置该开关的文本风格</li>
+<li>android:thumb指定使用自定义Drawable绘制该开关按钮</li>
+<li>android:track指定使用自定义Drawable绘制该开关的开关轨迹</li>
+<li>android:typeface设置该开关的文本的字体风格</li>
+</ul>
+<h2 id="时钟（AnalogClock和TextClock）"><a href="#时钟（AnalogClock和TextClock）" class="headerlink" title="时钟（AnalogClock和TextClock）"></a>时钟（AnalogClock和TextClock）</h2><p>TextClock是数字时钟，继承了TextView，不能设置android:text。它的属性：</p>
+<ul>
+<li>android:format12Hour设置该时钟的12小时制的格式字符串</li>
+<li>android:format24Hour设置该时钟的24小时制的格式字符串</li>
+<li>android:timeZone设置该时钟的时区</li>
+</ul>
+<p>AnalogClock是模拟时钟，继承了View，重写了View的OnDraw方法。它的属性：</p>
+<ul>
+<li>android:dial设置该模拟时钟的表盘使用的图片</li>
+<li>android:hand_hour设置该模拟时钟的时针使用的图片</li>
+<li>android:hand_minute设置该模拟时钟的分针使用的图片</li>
+</ul>
+<h2 id="计时器-Chronometer"><a href="#计时器-Chronometer" class="headerlink" title="计时器(Chronometer)"></a>计时器(Chronometer)</h2><p>Chronometer继承TextView，但是它不会显示当前时间，它显示的是从某一个起始时间开始，一共过去了多长时间。<br>Chronometer的方法：</p>
+<ul>
+<li>setBase(long base)：设置计时器的起始时间</li>
+<li>setFormat(String format)：设置显示时间的格式</li>
+<li>start()：开始计时</li>
+<li>stop()：停止计时</li>
+<li>setOnChronometerTickListener(Chronometer.OnChronometerTickListener listener)：绑定事件监听器，当事件改变时触发该监听器</li>
+</ul>
+<p><em>SystemClock.elapsedRealtime()，系统启动至今的时间/计算某个时间经历了多长时间有意义</em></p>
+<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h2><p><code>String words = checkId == R.id.male ? &quot;你的性别是男性&quot;:&quot;你的性别是女性&quot;</code>这句代表如果RadioButton的checkId值是等于R.id.male就把”你的性别是男性”赋给words。 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/7.20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/7.20/" itemprop="url">长征</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T23:55:58+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/历史/" itemprop="url" rel="index">
+                    <span itemprop="name">历史</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="回顾历史"><a href="#回顾历史" class="headerlink" title="回顾历史"></a>回顾历史</h1><h2 id="长征"><a href="#长征" class="headerlink" title="长征"></a>长征</h2><p>土地革命战争时期，中国工农红军主力撤离长江南北各苏区，转战两年，到达陕甘苏区的战略转移行动。<br>1934年10月，第五次反围剿失败后，中央主力红军为摆脱国民党军队的包围追击，被迫实行战略性转移，退出中央根据地，进行长征。<br>长征是人类历史上的伟大奇迹，中央红军共进行了380余次战斗，攻占700多座县城，红军牺牲了营以上干部多达430余人，平均年龄不到30岁，共击溃国民党军数百个团，其间共经过14个省，翻越18座大山，跨过24条大河，走过荒草地，翻过雪山，行程约二万五千里，红一方面军于1935年10月到达陕北，与陕北红军胜利会师。1936年10月，红二、四方面军到达甘肃会宁地区，同红一方面军会师。红军三大主力会师，标志着万里长征的胜利结束。</p>
+<h2 id="基本路线"><a href="#基本路线" class="headerlink" title="基本路线"></a>基本路线</h2><p>瑞金→突破敌四道防线→强渡乌江→占领遵义→四渡赤水→巧渡金沙江→强渡大渡河→飞夺泸定桥→翻雪山→过草地→陕北吴起会师(1935年10月)→甘肃会宁会师(1936年10月)，宣告长征的胜利结束。</p>
+<h2 id="各阶段"><a href="#各阶段" class="headerlink" title="各阶段"></a>各阶段</h2><p>长征准备阶段（1934年7月7日～1934年10月10日）<br>长征失利阶段（1934年10月10日～1935年1月15日）<br>长征转折阶段（1935年1月15日～1935年6月14日）<br>坚持北上和南下分裂阶段（1935年6月14日～1935年10月19日）<br>发展巩固和南下受挫阶段（1935年10月19日～1936年7月1日）<br>大会师阶段（1936年7月1日～1936年12月12日）   </p>
+<h2 id="各部队"><a href="#各部队" class="headerlink" title="各部队"></a>各部队</h2><p>第一支是中央红军（后改称红一方面军），于1934年10月10日由福建的长汀等地出发，1935年10月19日到达陕西的吴起镇（今吴起县），行程达二万五千里；<br>第二支是红二十五军（后编入红一方面军），于1934年11月16日由河南罗山何家冲出发，1935年9月15日到达陕西延川永坪镇，同陕甘红军会师，合编为红十五军团，行程近万里，最早到达陕北的一支红军 。<br>第三支是红四方面军，于1935年5月初放弃川陕苏区，由彰明、中坝、青川、平武等地出发，向岷江地区西进，1936年10月9日到达甘肃会宁，与红一方面军会师，行程一万余里；<br>第四支是红二、红六军团（后同红一方面军第三十二军合编为红二方面军），于1935年11月19日由湖南桑植刘家坪等地出发，1936年10月22日到达会宁以东的将台堡，同红一方面军会师，行程两万余里。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/7.19/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1693,298 +2042,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/7.12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/12/7.12/" itemprop="url">博客编写格式注意（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T16:49:07+08:00">
-                2018-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MarkDown语法/" itemprop="url" rel="index">
-                    <span itemprop="name">MarkDown语法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
-<h1 id="第一个注意事项"><a href="#第一个注意事项" class="headerlink" title="第一个注意事项"></a>第一个注意事项</h1><h2 id="title标题"><a href="#title标题" class="headerlink" title="title标题"></a>title标题</h2><blockquote>
-<p>“—”<br>title: 博客编写格式注意<br>categories: MarkDown语法<br>tags: 博客编写<br>“—”<br>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
-</blockquote>
-<p>在这段md语句中title的“—” “—”包裹需要在第二个—后面加一段文字性描述；否则GitHub博客上不会识别出这个md文件的标题，博客上显示的标题是未命名，且title下面的分类、标签都没有加上，变成了文字性的描述了。</p>
-<h2 id="‘-gt-’引用的使用"><a href="#‘-gt-’引用的使用" class="headerlink" title="‘&gt;’引用的使用"></a>‘&gt;’引用的使用</h2><p>‘&gt;’的结尾需要回车打出一个空白行来结束引用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/一口气读三国1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/11/一口气读三国1/" itemprop="url">读三国</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T22:38:48+08:00">
-                2018-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>总结一下三国演义中出现的关键人物及事迹   </p>
-<h2 id="读三国（一）"><a href="#读三国（一）" class="headerlink" title="读三国（一）"></a>读三国（一）</h2><h3 id="汉室倾颓，讨伐董卓"><a href="#汉室倾颓，讨伐董卓" class="headerlink" title="汉室倾颓，讨伐董卓"></a>汉室倾颓，讨伐董卓</h3><p>刘关张桃园三结义、曹孟德献七星宝刀、虎牢关三英战吕布、董卓火烧洛阳、王允利用貂蝉美人计离间吕布董卓         </p>
-<h3 id="群雄逐鹿，吕布覆灭"><a href="#群雄逐鹿，吕布覆灭" class="headerlink" title="群雄逐鹿，吕布覆灭"></a>群雄逐鹿，吕布覆灭</h3><p>曹操挟天子以令诸侯、孙策小霸王平定江东八十一县、吕布白门楼殒命      </p>
-<h3 id="内阁密诏，千里独行"><a href="#内阁密诏，千里独行" class="headerlink" title="内阁密诏，千里独行"></a>内阁密诏，千里独行</h3><p>刘备曹操青梅煮酒论英雄、董承联合众汉臣密谋杀曹操、关云长千里走单骑、刘玄德赵子龙相见情义比桃园</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2035,7 +2092,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
