@@ -259,6 +259,498 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/8.4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/8.4/" itemprop="url">Android学习（十九）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T12:21:56+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Notification的功能和用法"><a href="#Notification的功能和用法" class="headerlink" title="Notification的功能和用法"></a>Notification的功能和用法</h2><p>Notification是显示在手机状态栏的通知。Notification所代表的是一种具有全局效果的通知，程序一般通过NotificationManager服务发送Notification。<br>应用可通过NotificationManager向系统全局发送通知。</p>
+<p>Android为Notification增加了Notification.Builder类，通过该类允许开发者更轻松地创建Notification对象。Notification.Builder提供了如下常用方法。</p>
+<ul>
+<li>setDefaults()：设置通知LED灯、音乐、振动等</li>
+<li>setAutoCancel()：设置点击通知后，状态栏自动删除通知</li>
+<li>setContentTitle()：设置通知标题</li>
+<li>setContentText()：设置通知内容</li>
+<li>setSmallcon()：为通知设置图标</li>
+<li>setLargelcon()：为通知设置大图标</li>
+<li>setTick()：设置通知在状态栏的提示文本</li>
+<li>setContentlntent()：设置点击通知后将要启动的程序组件对应的PendingIntent。</li>
+</ul>
+<p>发送Notification有如下步骤：</p>
+<ol>
+<li>调用getSystemService(NOTIFICATION_SERVICE)方法获取系统的NotificationManager服务。</li>
+<li>通过构造器创建一个Notification对象</li>
+<li>为Notification设置各种属性</li>
+<li>通过NotificationManager发送Notification</li>
+</ol>
+<p>下面是一个简单的通知实例：<br>MainActivity.java中代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    static final int NOTIFICATION_ID = 0x123;</span><br><span class="line">    NotificationManager nm;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void send(View view) &#123;</span><br><span class="line">        Intent intent = new Intent(MainActivity.this,OtherActivity.class);</span><br><span class="line">        PendingIntent pi =PendingIntent.getActivity(MainActivity.this,0,intent,0);</span><br><span class="line">        //下面方法中的setDefaults()中有三种参数Notification.DEFAULT_SOUNDS,DEFAULT_VIBRATE,DEFAULT_LIGHTS。</span><br><span class="line">        // DEFAULT_ALL表示三个都默认。如果只是选择其中两个参数用 \ 符号连接。</span><br><span class="line">        Notification notification = new Notification.Builder(this)</span><br><span class="line">                .setAutoCancel(true).setTicker(&quot;新消息&quot;)</span><br><span class="line">                .setSmallIcon(R.mipmap.ic_launcher)</span><br><span class="line">                .setContentTitle(&quot;一条新通知&quot;)</span><br><span class="line">                .setContentText(&quot;您中奖了！&quot;)</span><br><span class="line">                .setDefaults(Notification.DEFAULT_ALL)</span><br><span class="line">                .setWhen(System.currentTimeMillis())</span><br><span class="line">                .setContentIntent(pi)</span><br><span class="line">                .build();</span><br><span class="line">        //发送通知</span><br><span class="line">        nm.notify(NOTIFICATION_ID,notification);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void del(View view) &#123;</span><br><span class="line">        //取消通知</span><br><span class="line">        nm.cancel(NOTIFICATION_ID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>activity_main.xml中的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=&quot;@+id/send&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;发送&quot;</span><br><span class="line">        android:onClick=&quot;send&quot;/&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=&quot;@+id/del&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;取消&quot;</span><br><span class="line">        android:onClick=&quot;del&quot;/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>AndroidManifest.xml文件中代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    package=&quot;com.example.notification&quot;&gt;</span><br><span class="line">    &lt;!--添加操作闪光灯的权限--&gt;</span><br><span class="line">    &lt;uses-permission android:name=&quot;android.permission.FLASHLIGHT&quot;/&gt;</span><br><span class="line">    &lt;!--添加手机振动的权限--&gt;</span><br><span class="line">    &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        android:supportsRtl=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</span><br><span class="line">        &lt;activity android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line">        &lt;!--声明新建的Activity，此Activity必须继承AppCompatActivity--&gt;</span><br><span class="line">        &lt;activity android:name=&quot;.OtherActivity&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/application&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="PendingIntent详解"><a href="#PendingIntent详解" class="headerlink" title="PendingIntent详解"></a>PendingIntent详解</h3><p>Intent是一个意图，一个描述了想要启动一个Activity、Broadcast或是Service的意图。它主要持有的信息是它想要启动的组件（Activity、Broadcast或是Service），在开发操作中，需要通过 startActivity，startService 或sendBroadcast 方法来启动这个意图执行某些操作！！  </p>
+<p>PendingIntent可以认为是对Intent的包装，实际上就是，供当前App或之外的其他App调用，而常见的是供外部App使用，外部App执行这个PendingIntent时，间接地调用里面的Intent,即外部App延时执行PendingIntent中描述的Intent及其最终行为,PendingIntent主要持有的信息是它所包装的Intent和当前AppContext，即使当前App已经不存在了，也能通过存在于PendingIntent里的Context来执行Intent。当你把PendingIntent递交给别的程序进行处理时,PendingIntent仍然拥有PendingIntent原程序所拥有的权限，当你从系统取得一个PendingIntent时，一定要非常小心才行，比如，通常，如果Intent目的地是你自己的component（Activity/Service/BroadcastReceiver）的话，你最好采用在Intent中显示指定目的component名字的方式，以确保Intent最终能发到目的，否则Intent最后可能不知道发到哪里了。  </p>
+<p>可以这样理解：当你想在A activity中启动另一个B activity,那么你可以选择两种情况[立即启动或延时启动]：  </p>
+<ol>
+<li>通过intent配置需要启动的B activity，然后调用startActivity()方法，让他立即执行启动操作，跳转过去  </li>
+<li>另一种情况是，你虽然想启动另一个B activity，可是你并不想马上跳转到Bactivity页面，你想静等5分钟之后再跳转到Bactivity，那么你可以通过PendingIntent来实现[当然实现方式有很多啦，这里仅是想说明PendingIntent与intent的区别]，PendingIntent可以包装第1步中的intent，然后通过AlarmManager这个定时器，定制5分钟之后启PendingIntent，实现这种延时操作，如果你还是听着似懂非懂，一头雾水，我表示很有压力了，我该怎么说你才能清楚呢，理论终究是抽象的，后见将会通过一个程序说明一下，程序中是启动一个BroadcastReceiver，其实原理都是一样的！！  </li>
+</ol>
+<p>如何获得一个PendingIntent呢？其实很简单：  </p>
+<ol>
+<li>你可以通过getActivity(Context context, int requestCode, Intent intent, int flags)系列方法从系统取得一个用于启动一个Activity的PendingIntent对象  </li>
+<li>可以通过getService(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于启动一个Service的PendingIntent对象  </li>
+<li>可以通过getBroadcast(Context context, int requestCode, Intent intent, int flags)方法从系统取得一个用于向BroadcastReceiver的发送广播的PendingIntent对象  </li>
+</ol>
+<p>PendingIntent几个常量： </p>
+<ol>
+<li>FLAG_CANCEL_CURRENT：如果AlarmManager管理的PendingIntent已经存在，那么将会取消当前的PendingIntent，从而创建一个新的PendingIntent  </li>
+<li>FLAG_UPDATE_CURRENT：如果AlarmManager管理的PendingIntent已经存在，可以让新的Intent更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras，另外，我们也可以在PendingIntent的原进程中调用PendingIntent的cancel ()把其从系统中移除掉   </li>
+<li>FLAG_NO_CREATE：如果AlarmManager管理的PendingIntent已经存在，那么将不进行任何操作，直接返回已经存在的PendingIntent，如果PendingIntent不存在了，那么返回null</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/8.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/02/8.2/" itemprop="url">Android学习（十八）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T22:05:44+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="滚动视图（ScrollView）的功能和用法"><a href="#滚动视图（ScrollView）的功能和用法" class="headerlink" title="滚动视图（ScrollView）的功能和用法"></a>滚动视图（ScrollView）的功能和用法</h2><p>ScrollView由FrameLayout派生而出，他就是一个用于为普通组件添加滚动条的组件。ScrollView里最多只能包含一个组件，而ScrollView的作用就是为该组件添加垂直滚动条。<br>ScrollView的作用和Swing编程中的JScrollPane十分相似，它们甚至不能被称为真正的容器，它们只是为其他容器添加滚动条。<br>如果应用需要添加水平滚动条，则可借助于另一个滚动视图——HorizontalScrollView来实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/8.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/01/8.1/" itemprop="url">Android学习（十七）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T22:36:51+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="选项卡（TabHost）的功能和用法"><a href="#选项卡（TabHost）的功能和用法" class="headerlink" title="选项卡（TabHost）的功能和用法"></a>选项卡（TabHost）的功能和用法</h2><p>TabHost是一种非常实用的组件，TabHost可以很方便地在窗口上放置多个标签，每个标签页相当于获得了一个与外部容器相同大小的组件摆放区域。通过这种方式，就可以在一个容器里放置更多组件。</p>
+<p>与TabHost结合使用的还有如下组件：</p>
+<ul>
+<li>TabWidget：代表选项卡的标题条</li>
+<li>TabSpec：代表选项卡的一个Tab页面。TabHost仅仅是一个简单的容器，它提供了如下两个方法来创建、添加标签页<ul>
+<li>newTabSpec(String tag)：创建选项卡</li>
+<li>addTab(TabHost.TabSpec tabSpec)：添加选项卡</li>
+</ul>
+</li>
+</ul>
+<p>使用TabHost的一般步骤如下：</p>
+<ol>
+<li>在界面布局文件中定义TabHost组件，并为该组件定义该选项卡的内容</li>
+<li>Activity应该继承TabActivity</li>
+<li>通过TabActivity的getTabHost（）方法获取TabHost对象</li>
+<li>通过TabHost对象的方法来创建、添加选项卡</li>
+</ol>
+<p><strong>ps：</strong>布局文件中的ID有如下要求：</p>
+<ul>
+<li>TabHost的ID是@android:id/tabhost</li>
+<li>TabWidget的ID应该为@android:id/tabs</li>
+<li>FrameLayout的ID应该为@android:id/tabcontent</li>
+</ul>
+<p>上面这三个ID并不是开发者自己定义的，而是引用了Android系统已有的ID。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/7.31/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1410,539 +1902,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/7.24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/24/7.24/" itemprop="url">Android学习（九）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:09:51+08:00">
-                2018-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Adapter接口及实现类"><a href="#Adapter接口及实现类" class="headerlink" title="Adapter接口及实现类"></a>Adapter接口及实现类</h2><p>Adapter本身只是一个接口，它派生了ListAdapter和SpinnerAdapter两个子接口，其中ListAdapter为AbsListView提供列表项，而SpinnerAdapter为AbsSpinner提供列表项。<br>Adapter常用的实现类：</p>
-<ul>
-<li>ArrayAdapter：简单、易用的Adapter。通常用于将数组或List集合的多个值包装成多个列表项</li>
-<li>SimpleAdapter：并不简单、功能强大的Adapter，可以用于将List集合的多个对象包装成多个列表项</li>
-<li>SimpleCursorAdapter：与SimpleAdapter基本相似，只是用于包装Cursor提供的数据</li>
-<li>BaseAdapter：通常用于被扩展。扩展BaseAdapter可以对各列表项进行最大限度的定制</li>
-</ul>
-<h3 id="ArrayAdapter"><a href="#ArrayAdapter" class="headerlink" title="ArrayAdapter"></a>ArrayAdapter</h3><p>在布局文件中，定义ListView，但都没有指定android：entries属性，需要通过Adapter来提供列表项。Activity为两个ListView提供Adapter，Adapter决定ListView所显示的列表项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListView list = (ListView)findViewById(R.id.list)</span><br><span class="line">String[] arr1 = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</span><br><span class="line">list.setAdapter(adapter);</span><br></pre></td></tr></table></figure>
-<p>其中<code>ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</code>中的参数：   </p>
-<ul>
-<li>Context：代表访问整个Android应用的接口。几乎创建所有组件都需要传入Context对象。</li>
-<li>textViewResourceId：一个资源ID，代表一个TextView，该TextView组件将作为ArrayAdapter的列表项组件</li>
-<li>数组或List：负责为多个列表项提供数据</li>
-</ul>
-<p><em>第二个参数控制每个列表项的组件，第三个负责为列表项提供数据。</em>   </p>
-<p>如果程序的窗口仅需要显示一个列表，则可以直接让Activity继承ListActivity来实现，无需调用setContentView()方法显示一个界面，而是可以直接传入一个内容Adapter，ListActivity的子类就呈现出一个列表。<br>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.simple_list_item_multiple_choice,arr);</span><br><span class="line">setAdapter(adapter);</span><br></pre></td></tr></table></figure>
-<p>使用Android提供的R.Layout.simple_list_item_multiple_choice布局文件作为列表项组件。</p>
-<h3 id="SimpleAdapter创建ListView"><a href="#SimpleAdapter创建ListView" class="headerlink" title="SimpleAdapter创建ListView"></a>SimpleAdapter创建ListView</h3><p>通过ArrayAdapter实现Adapter虽然简单、易用，但是ArrayAdapter功能比较有限，它的每个列表项只能是TextView。<br>如果想要实现更复杂的列表项，可以考虑使用SimpleAdapter。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建一个List集合，List集合的元素是Map</span><br><span class="line">List&lt;Map&lt;String,Object&gt;&gt; listItems = new ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br><span class="line">for(int i=0;i&lt; names.length;i++)&#123;</span><br><span class="line">  Map&lt;String,Object&gt; listItem=new HashMap&lt;String,Object&gt;();</span><br><span class="line">  listItem.put(&quot;header&quot;,imageIds[i]);</span><br><span class="line">  listItem.put(&quot;personName&quot;,names[i]);</span><br><span class="line">  listItem.put(&quot;desc&quot;,descs[i]);</span><br><span class="line">  listItems.add(listItem);&#125;</span><br><span class="line">//创建一个SimpleAdapter</span><br><span class="line">SimpleAdapter simpleAdapter = new SimpleAdapter(this,listItems,R.layout.simple_item,new String[] &#123;&quot;personName&quot;,&quot;header&quot;,&quot;desc&quot;&#125;,</span><br><span class="line">new int[] &#123;R.id.name,R.id.header,R.id.desc&#125;);</span><br><span class="line">list.setAdapter(simpleAdapter);</span><br></pre></td></tr></table></figure>
-<p>使用SimpleAdapter的难点在于创建SimpleAdapter对象，它需要5个参数，其中后四个最关键。</p>
-<ul>
-<li>第二个参数：该参数应该是一个List&lt;?extends Map&lt;String,?&gt;&gt;类型的集合对象，该集合中每个Map&lt;String,?&gt;对象生成一个列表项。</li>
-<li>第三个参数：该参数指定一个界面布局的ID。</li>
-<li>第四个参数：该参数应该是一个String[]类型的参数，该参数决定提取Map&lt;String,?&gt;对象中那些key对应的value来生成列表项。</li>
-<li>第五个参数：该参数应该是一个int[]类型的参数，该参数决定填充哪些组件。</li>
-</ul>
-<p>如果需要监听用户单击、选中某个列表项的事件，可以通过AdapterView的setOnItemClickListener()方法为单击事件添加监听器，或者通过setOnItemSelectedListener()方法为列表项的选中事件添加监听器。在Activity中为ListView通过如下代码绑定监听器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//为ListView的列表项的单击事件绑定事件监听器</span><br><span class="line">list.setOnItemClickListener(new OnItemClickListener()&#123;</span><br><span class="line">&#125;);</span><br><span class="line">//为ListView的列表项的选中事件绑定事件监听器</span><br><span class="line">list.setOnItemSelectedListener(new OnItemSelectedListener()&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p> <strong>这种事件处理机制完全适用于AdapterView的其他子类</strong></p>
-<h3 id="BaseAdapter"><a href="#BaseAdapter" class="headerlink" title="BaseAdapter"></a>BaseAdapter</h3><p>通过扩展BaseAdapter来实现Adapter，扩展BaseAdapter可以取得对Adapter的最大控制权；程序要创建多少个列表项、每个列表项的组件都由开发者决定。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">BaseAdapter adapter = new BaseAdapter()&#123;</span><br><span class="line">   @Override</span><br><span class="line">   public int getCount()&#123;</span><br><span class="line">//指定一共包含多少个选项     </span><br><span class="line">     return **;</span><br><span class="line">&#125;</span><br><span class="line">   @Override</span><br><span class="line">   public Object getItem(int position)&#123;</span><br><span class="line">   return null;</span><br><span class="line">&#125;</span><br><span class="line">//重写该方法，该方法返回值将作为列表项的ID</span><br><span class="line">   @Override</span><br><span class="line">   public long getItemId(int position)&#123;</span><br><span class="line">   return position;</span><br><span class="line">&#125;</span><br><span class="line">//重写该方法，该方法返回的View将作为列表框</span><br><span class="line">   @Override</span><br><span class="line">   public View getView(int position,View convertView,ViewGroup parent)&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>getCount():该方法的返回值控制该Adapter将会包含多少个列表项。</li>
-<li>getItem(int position)：该方法的返回值决定第position处的列表项的内容。</li>
-<li>getItemId(int position)：该方法的返回值决定第position处的列表项的ID。</li>
-<li>getView(int position,View convertView,ViewGroup parent)：该方法的返回值决定第position处的列表项组件。</li>
-</ul>
-<p>上面4个方法中最重要的是第一个和第四个。</p>
-<h2 id="AutoCompleteTextView自动完成文本框"><a href="#AutoCompleteTextView自动完成文本框" class="headerlink" title="AutoCompleteTextView自动完成文本框"></a>AutoCompleteTextView自动完成文本框</h2><p>自动完成文本框（AutoCompleteTextView）从EditText派生而出，当用户输入一定字符之后，自动完成文本框会显示一个下拉菜单，供用户选择，当用户选择某个菜单项之后，AutoCompleteTextView按用户选择自动填充该文本框。<br>AutoCompleteTextView除了可以使用EditText提供的XML属性和方法之外，还支持以下的常用XML属性：</p>
-<ul>
-<li>android:completionHint：设置下拉菜单中的提示标题</li>
-<li>android:completionHintView：设置下拉菜单中提示标题的视图</li>
-<li>android:completionThreshold：设置用户至少要输入几个字符才会显示提示</li>
-<li>android:dropDownHeight：设置下拉菜单的高度</li>
-<li>android:dropDownHorizontalOffset：设置下拉菜单与文本框之间的水平偏移。下拉菜单默认与文本框左对齐</li>
-<li>android:dropDownVerticalOffset：设置下拉菜单与文本框之间的垂直偏移。下拉菜单默认紧跟文本框</li>
-<li>android:dropDownWidth：设置下拉菜单的宽度</li>
-<li>android:popupBackground：设置下拉菜单的背景</li>
-</ul>
-<h2 id="Markdow语法注意"><a href="#Markdow语法注意" class="headerlink" title="Markdow语法注意"></a>Markdow语法注意</h2><p>使用<code>`</code>标记代码块时，不要再它前后打空格，只要回车换行，留出空行就行。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/7.23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/23/7.23/" itemprop="url">Android学习（八）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T10:27:52+08:00">
-                2018-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安卓基础</p>
-<h2 id="AdapterView"><a href="#AdapterView" class="headerlink" title="AdapterView"></a>AdapterView</h2><p>AdapterView是一组重要的组件，AdapterView是一个抽象基类。<br>AdapterView具有如下特征</p>
-<ul>
-<li>AdapterView继承了ViewGroup，它的本质是容器。</li>
-<li>AdapterView可以包括多个“列表项”，并将多个“列表项”以合适的形式显示出来。</li>
-<li>AdapterView显示的多个“列表项”由Adapter提供。调用AdapterView的setAdapter(Adapter)方法设置Adapter即可。     </li>
-</ul>
-<p>AdapterView派生了三个子类：AbsListView、AbsSpinner、AdapterViewAnimator，这三个子类依然是抽象的，实际使用过程中往往采用他们的子类。</p>
-<h2 id="列表视图-ListView-和ListActivity"><a href="#列表视图-ListView-和ListActivity" class="headerlink" title="列表视图(ListView)和ListActivity"></a>列表视图(ListView)和ListActivity</h2><p>ListView它以垂直列表的形式显示所有列表项。<br>生成列表视图有如下两种方式：</p>
-<ul>
-<li>直接使用ListView创建</li>
-<li>让Activity继承ListActivity(相当于该Activity显示的组件为ListView)</li>
-</ul>
-<p>一旦在程序中获得了ListView之后，接下来就需要为ListView设置它要显示的列表项。在这一点上，ListView显示出AdapterView的特征：通过setAdapter(Adapter)方法为之提供Adapter，并且由Adapter提供列表项即可。   </p>
-<p>ListView、GridView、Spinner、Gallery等AdapterView都是容器，而Adapter负责提供每个“列表项”组件，AdapterView则负责采用合适的方式显示这些列表项。</p>
-<p>ListView提供的常用XML属性如下：</p>
-<ul>
-<li>android:divider：设置List列表项的分隔条（可用颜色分隔，也可用Drawable分隔）</li>
-<li>android:dividerHeight：设置分隔条的高度</li>
-<li>android:entries：指定一个数组源，Android将根据该数组资源来生成ListView</li>
-<li>android:footerDividersEnabled：如果设置为false，则不再footerView之前绘制分隔条</li>
-<li>android:headerDividersEnabled：如果设置为false，则不在headerView之后绘制分隔条</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/7.22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/22/7.22/" itemprop="url">Android学习（七）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T21:50:45+08:00">
-                2018-07-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安卓基础</p>
-<h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><p>ImageView继承View，主要用来显示图片，它能显示的不仅仅是图片，任何Drawable对象都可以使用ImageView来显示。<br>ImageView支持的XML属性：   </p>
-<ul>
-<li>android:adjustViewBounds设置ImageView是否调整自己的边界来保持所显示图片的长宽比</li>
-<li>android:cropToPadding如果将该属性设置为true，该组件将会被裁剪到保留该ImageView的padding</li>
-<li>android:scaleType设置所显示的图片如何缩放或移动以适应ImageView的大小</li>
-<li>android:src设置ImageView所显示的图片的ID</li>
-</ul>
-<p>android:scaleType支持的属性值：</p>
-<ul>
-<li>matrix:使用matrix方式进行缩放</li>
-<li>fitXY对图片、纵向独立缩放</li>
-<li>fitStart保持纵横比缩放图片</li>
-<li>fitCenter保持纵横比缩放图片，缩放后放在ImageView中央</li>
-<li>fitEnd保持纵横比缩放图片，缩放后放在ImageView的右下角</li>
-<li>center放在ImageView中央</li>
-<li>centerCrop保持纵横比缩放图片，只要图片的最短边能显示出来即可</li>
-<li>centerInside保持纵横比缩放图片，ImageView能完全显示该图片</li>
-</ul>
-<p>为了控制ImageView显示的图片，ImageView提供了如下方法</p>
-<ul>
-<li>setImageBitmap(Bitmap bit):使用Bitmap位图设置图片</li>
-<li>setImageDrawable(Drawable drawable)：使用Drawable对象设置图片</li>
-<li>setImageResource(int resId)：使用图片资源ID设置图片</li>
-<li>setImageURI(Uri uri)：使用图片的URI设置该ImageView显示设置的图片</li>
-</ul>
-<p><strong>ps：</strong>如果要实现放大图片的局部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有两个ImageView，第一个放原图Image1，第二个放发大的部分图片Image2。</span><br><span class="line">第一步：获取原图与放大部分的比例，即double scale = 1.0*Image1.getHeight()/Image2.getHeight()。</span><br><span class="line">第二步：获取需要显示的图片的起始位置:int X=(int)(event.getX()*scale);</span><br><span class="line">int Y=(int)(event.getY()*scale);还要注意在原图中右边和下边的宽度大于Image2的，必须固定起始位置为Image1.getWidth()-Image2.getWidth()。</span><br></pre></td></tr></table></figure>
-<h2 id="ImageButton"><a href="#ImageButton" class="headerlink" title="ImageButton"></a>ImageButton</h2><p>ImageButton派生了一个ZoomButton，ZoomButton可以代表“放大”“缩小”两个按钮，ZoomButton的行为基本类似于ImageButton<br>ZoomControls组件，该组件相当于同时组合了“放大”“缩小”两个按钮，并允许分别为两个按钮绑定不同的事件监听器。</p>
-<h2 id="使用QuickContactBadge关联联系人"><a href="#使用QuickContactBadge关联联系人" class="headerlink" title="使用QuickContactBadge关联联系人"></a>使用QuickContactBadge关联联系人</h2><p>QuickContactBadge继承了ImageView，因此它的本质也是图片按钮，也可以通过android:src来指定它显示的图片。它额外增加的功能是：该图片可以关联到手机中指定联系人，当用户单机该图片时，系统将会打开相应联系人的联系方式界面。<br>可以调用如下方法：</p>
-<ul>
-<li>assignContactFromEmail(String emailAddapp\src\main\ress,boolean lazyLookup):将该图片关联到指定E-mail地址对应的联系人</li>
-<li>assignContactFromPhone(String phoneNumber,boolean lazyLookup):将该图片关联到指定电话号码对应的联系人</li>
-<li>assignContactUri(Uri contactUri):将图片关联到特定Uri对应的联系人<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><em>改变查看图片的透明度，可以调用ImageView的setImageAlpha()方法来实现</em><br><em>i+=a 就是i=i+a</em></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1993,7 +1952,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2015,7 +1974,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
