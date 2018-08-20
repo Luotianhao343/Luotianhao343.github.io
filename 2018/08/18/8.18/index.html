@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="应用资源概述," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安卓基础属性动画资源（Property Animation)它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。  &amp;lt;set../&amp;gt;：它是父元素，可以用于包含这三种元素作为子元素 &amp;lt;objectAnimator…/&amp;gt;：">
+<meta name="keywords" content="应用资源概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android学习（三十一之Android应用的资源）">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/8.18/index.html">
+<meta property="og:site_name" content="罗某">
+<meta property="og:description" content="安卓基础属性动画资源（Property Animation)它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。  &amp;lt;set../&amp;gt;：它是父元素，可以用于包含这三种元素作为子元素 &amp;lt;objectAnimator…/&amp;gt;：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-18T08:02:10.867Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android学习（三十一之Android应用的资源）">
+<meta name="twitter:description" content="安卓基础属性动画资源（Property Animation)它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。  &amp;lt;set../&amp;gt;：它是父元素，可以用于包含这三种元素作为子元素 &amp;lt;objectAnimator…/&amp;gt;：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/18/8.18/"/>
+
+
+
+
+
+  <title>Android学习（三十一之Android应用的资源） | 罗某</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">罗某</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home//首页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user//我的"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags//标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th//分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive//归档"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/8.18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android学习（三十一之Android应用的资源）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T12:11:51+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="属性动画资源（Property-Animation"><a href="#属性动画资源（Property-Animation" class="headerlink" title="属性动画资源（Property Animation)"></a>属性动画资源（Property Animation)</h2><p>它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。</p>
+<ul>
+<li>&lt;set../&gt;：它是父元素，可以用于包含这三种元素作为子元素</li>
+<li>&lt;objectAnimator…/&gt;：用于定义ObjectAnimator动画</li>
+<li>&lt;animator…/&gt;：用于定义ValueAnimator动画</li>
+</ul>
+<p><code>ObjectAnimator colorAnim = (ObjectAnimator) AnimatorInflater.loadAnimator(MainActivity.this,R.animator.color_anima</code><br>使用AnimatorInflater工具类加载了指定动画资源文件，并将该动画资源文件转化为ObjectAnimator对象。</p>
+<h2 id="使用原始XML资源"><a href="#使用原始XML资源" class="headerlink" title="使用原始XML资源"></a>使用原始XML资源</h2><p>Android应用推荐用XML文件保存一些初始化的配置信息、应用相关的数据资源。这种资源就叫原始XML资源。</p>
+<h3 id="定义原始XML资源"><a href="#定义原始XML资源" class="headerlink" title="定义原始XML资源"></a>定义原始XML资源</h3><p>原始XML资源一般保存在/res/xml/路径下，需要开发者手动创建xml子目录。<br>为了在Java代码中获取实际的XML文档，可以通过Resource的如下两个方法实现：</p>
+<ul>
+<li>XmlResourceParser getXml(int id)：获取XML文档，并使用一个XmlPullParser来解析该XML文档，该方法返回一个解析器对象。（XmlResourceParser是XmlPullParser的子类）</li>
+<li>InputStream openRawResource(int id)：获取XML文档对应的输入流</li>
+</ul>
+<h3 id="使用原始XML文件"><a href="#使用原始XML文件" class="headerlink" title="使用原始XML文件"></a>使用原始XML文件</h3><h2 id="使用布局（Layout）资源"><a href="#使用布局（Layout）资源" class="headerlink" title="使用布局（Layout）资源"></a>使用布局（Layout）资源</h2><h2 id="使用菜单（Menu）资源"><a href="#使用菜单（Menu）资源" class="headerlink" title="使用菜单（Menu）资源"></a>使用菜单（Menu）资源</h2><h2 id="样式（Style）和主题（Theme）资源"><a href="#样式（Style）和主题（Theme）资源" class="headerlink" title="样式（Style）和主题（Theme）资源"></a>样式（Style）和主题（Theme）资源</h2><h3 id="样式资源"><a href="#样式资源" class="headerlink" title="样式资源"></a>样式资源</h3><p>Android的样式资源文件在/res/values/目录下，根元素是&lt;resources…/&gt;元素，该元素内可包含多个&lt;style../&gt;子元素，每个&lt;style…/&gt;子元素定义一个样式。   </p>
+<p>&lt;style../&gt;元素内可包含多个&lt;item../&gt;子元素，每个&lt;item../&gt;子元素定义一个格式项。</p>
+<h3 id="主题资源"><a href="#主题资源" class="headerlink" title="主题资源"></a>主题资源</h3><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，同样使用&lt;style../&gt;元素来定义主题。<br>主题与样式的区别主要体现在：</p>
+<ul>
+<li>主题不能作用于单个的View组件，主体应该对整个应用中的所有Activity起作用，或对指定的Activity起作用</li>
+<li>主题定义的格式应该是改变窗口外观的格式，例如窗口标题，窗口边框等</li>
+</ul>
+<p>如果想让应用中全部窗口使用该主题，那么只要在AndroidManifest.xml文件中&lt;application../&gt;元素加android:theme属性即可。如果只想让程序中的某个Activity拥有这个主题，那么可以修改&lt;activity…/&gt;元素，同样通过android:theme指定主题即可。</p>
+<p>Android提供的几种内置的主题资源，同样支持继承。</p>
+<h2 id="属性-Attribute-资源"><a href="#属性-Attribute-资源" class="headerlink" title="属性(Attribute)资源"></a>属性(Attribute)资源</h2><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，该元素包含如下两个子元素：</p>
+<ul>
+<li>attr子元素：定义一个属性</li>
+<li>declare-styleable子元素：定义一个styleable对象，每个styleable对象就是一组attr属性的集合</li>
+</ul>
+<h3 id="使用原始资源"><a href="#使用原始资源" class="headerlink" title="使用原始资源"></a>使用原始资源</h3><p>Android的原始资源可以放在如下两个地方：</p>
+<ul>
+<li>位于/res/raw/目录下，Android SDK会处理该目录下的原始资源，Android SDK会在R清单类中为该目录下的资源生成一个索引项</li>
+<li>位于/assets/目录下，该目录下的资源是一个更彻底的原始资源。Android应用通过AssetManager来管理该目录下的原始资源</li>
+</ul>
+<p>AssetManager是一个专门管理/assets/目录下原始资源的管理器类，AssetManager提供了如下两个常用方法来访问Assets资源。</p>
+<ul>
+<li>InputStream open(String fileName)：根据文件名来获取原始资源对应的输入流</li>
+<li>AssetFileDescriptor openFd(String fileName)：根据文件名来获取原始资源对应的AssetFileDesciptor。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/应用资源概述/" rel="tag"># 应用资源概述</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/17/8.17/" rel="next" title="Android学习（三十之Android应用的资源）">
+                <i class="fa fa-chevron-left"></i> Android学习（三十之Android应用的资源）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/18/8.18.2/" rel="prev" title="Android学习（三十二之Android数据存储与IO）">
+                Android学习（三十二之Android数据存储与IO） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+		  width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2113043&
+		  auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性动画资源（Property-Animation"><span class="nav-number">1.1.</span> <span class="nav-text">属性动画资源（Property Animation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用原始XML资源"><span class="nav-number">1.2.</span> <span class="nav-text">使用原始XML资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义原始XML资源"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义原始XML资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用原始XML文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用原始XML文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用布局（Layout）资源"><span class="nav-number">1.3.</span> <span class="nav-text">使用布局（Layout）资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用菜单（Menu）资源"><span class="nav-number">1.4.</span> <span class="nav-text">使用菜单（Menu）资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式（Style）和主题（Theme）资源"><span class="nav-number">1.5.</span> <span class="nav-text">样式（Style）和主题（Theme）资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样式资源"><span class="nav-number">1.5.1.</span> <span class="nav-text">样式资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题资源"><span class="nav-number">1.5.2.</span> <span class="nav-text">主题资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-Attribute-资源"><span class="nav-number">1.6.</span> <span class="nav-text">属性(Attribute)资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用原始资源"><span class="nav-number">1.6.1.</span> <span class="nav-text">使用原始资源</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">法外狂徒罗某人</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

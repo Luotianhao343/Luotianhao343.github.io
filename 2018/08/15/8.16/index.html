@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安卓基础">
+<meta name="description" content="安卓基础Intent对象简述使用Intent启动不同组件的方法：    组件类型 启动方法     Activity startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)   Service ComponentName startService(Intent service) boole">
 <meta name="keywords" content="Intent对象简述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习（二十九之使用Intent和IntentFilter进行通信）">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/8.16/index.html">
 <meta property="og:site_name" content="罗某">
-<meta property="og:description" content="安卓基础">
+<meta property="og:description" content="安卓基础Intent对象简述使用Intent启动不同组件的方法：    组件类型 启动方法     Activity startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)   Service ComponentName startService(Intent service) boole">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-15T14:23:35.462Z">
+<meta property="og:updated_time" content="2018-08-16T03:24:32.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习（二十九之使用Intent和IntentFilter进行通信）">
-<meta name="twitter:description" content="安卓基础">
+<meta name="twitter:description" content="安卓基础Intent对象简述使用Intent启动不同组件的方法：    组件类型 启动方法     Activity startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)   Service ComponentName startService(Intent service) boole">
 
 
 
@@ -352,7 +352,57 @@
       
 
       
-        <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1>
+        <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Intent对象简述"><a href="#Intent对象简述" class="headerlink" title="Intent对象简述"></a>Intent对象简述</h2><p>使用Intent启动不同组件的方法：</p>
+<table>
+<thead>
+<tr>
+<th>组件类型</th>
+<th>启动方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>ComponentName startService(Intent service) boolean bindService(Intent service,ServiceConnection conn,int flags)</td>
+</tr>
+<tr>
+<td>BroadcastReceiver</td>
+<td>sendBroadcast(Intent intent) sendBroadcast(Intent intent,String receiverPermission) sendOrderedBroadcast(Intent intent,String receiverPermission,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras) sendOrderedBroadcast(Intent intent,String receiverPermission)</td>
+</tr>
+<tr>
+<td>BroadcastReceiver</td>
+<td>sendStickyBroadcast(Intent intent) sendStickyOrderedBroadcast(Intent intent,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras)</td>
+</tr>
+</tbody>
+</table>
+<p>Intent对象大致包含Component、Action、Category、Data、Type、Extra、Flag这7种属性，其中Component用于明确指定需要启动的目标组件，而Extra则用于“携带”需要交换的数据</p>
+<h2 id="Intent的属性及Intent-filter配置"><a href="#Intent的属性及Intent-filter配置" class="headerlink" title="Intent的属性及Intent-filter配置"></a>Intent的属性及Intent-filter配置</h2><p>启动组件，取决于Intent的各属性</p>
+<h3 id="Component属性"><a href="#Component属性" class="headerlink" title="Component属性"></a>Component属性</h3><p>指定了Component属性的Intent是显式Intent，没有指定的是隐式Intent——隐式Intent没有指出明确的对象，只要是符合筛选条件就行。</p>
+<p>Intent的Component属性需要接受一个ComponentName对象。</p>
+<p>当程序通过Intent的Component属性（明确指定了启动哪个组件）启动特定组件时，被启动组件几乎不需要使用&lt;intent_filter…/&gt;元素进行配置</p>
+<h3 id="Action、Category属性与intent-filter配置"><a href="#Action、Category属性与intent-filter配置" class="headerlink" title="Action、Category属性与intent-filter配置"></a>Action、Category属性与intent-filter配置</h3><p>&lt;intent-filter…/&gt;元素是AndroidManifest.xml文件中&lt;activity…/&gt;元素的子元素，&lt;activity…/&gt;元素用于为应用程序配置Activity，&lt;activity../&gt;的&lt;intent-filter…/&gt;子元素则用于配置该Activity所能“响应”的Intent。</p>
+<p>当&lt;activity../&gt;元素的&lt;intent-filter…/&gt;子元素里包含多个&lt;action../&gt;子元素时，就表明该Activity能响应Action属性值为其中任意一个字符串的Intent。</p>
+<p>一个Intent对象最多只能包含一个Action属性，程序调用Intent的setAction(String str)方法设置Action属性值；一个Intent对象可以包括多个Category属性，程序调用Intent的addCategory(String str)方法来为Intent添加Category属性。</p>
+<p>Activity到底启动哪个Activity，需要看&lt;intent-filter…/&gt;中元素的配置。（可以想成启动符合条件的Activity）</p>
+<h3 id="指定Action、Category调用Activity"><a href="#指定Action、Category调用Activity" class="headerlink" title="指定Action、Category调用Activity"></a>指定Action、Category调用Activity</h3><p>Intent不仅可以启动本应用程序内程序组件，也可以启动Android系统的其他应用的程序组件。</p>
+<h3 id="Data、Type属性与intent-filter配置"><a href="#Data、Type属性与intent-filter配置" class="headerlink" title="Data、Type属性与intent-filter配置"></a>Data、Type属性与intent-filter配置</h3><p>Data属性通常用于向Action属性提供操作的数据。Type属性用于指定该Data属性所指定Uri对应的MIME的类型。</p>
+<p>Data属性与Type属性会相互覆盖：</p>
+<ul>
+<li>Intent先设置Data属性，那么Type属性将会覆盖Data属性</li>
+<li>Intent先设置Type属性，那么Data属性将会覆盖Type属性</li>
+<li>如果希望Intent有两种属性，调用Intent的setDataAndType()方法</li>
+</ul>
+<p>在AndroidManifest.xml中为组件声明Data、Type属性都通过&lt;data../&gt;元素</p>
+<h2 id="使用Intent创建Tab页"><a href="#使用Intent创建Tab页" class="headerlink" title="使用Intent创建Tab页"></a>使用Intent创建Tab页</h2><p>使用TabActivity创建Activity布局，添加Tab页使用了TabHost.TabSpec提供的如下方法：</p>
+<ul>
+<li>setContent(int viewId)：直接将指定View组件设置成Tab页的Content</li>
+<li>setContent(Intent intent)：直接将指定Intent对应的Activity设置成Tab页的Content</li>
+</ul>
+
       
     </div>
     
@@ -391,6 +441,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/16/8.16.2/" rel="prev" title="Android学习（三十之Android应用的资源）">
+                Android学习（三十之Android应用的资源） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -467,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -489,7 +543,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -525,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intent对象简述"><span class="nav-number">1.1.</span> <span class="nav-text">Intent对象简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intent的属性及Intent-filter配置"><span class="nav-number">1.2.</span> <span class="nav-text">Intent的属性及Intent-filter配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Component属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">Component属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action、Category属性与intent-filter配置"><span class="nav-number">1.2.2.</span> <span class="nav-text">Action、Category属性与intent-filter配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定Action、Category调用Activity"><span class="nav-number">1.2.3.</span> <span class="nav-text">指定Action、Category调用Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data、Type属性与intent-filter配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">Data、Type属性与intent-filter配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Intent创建Tab页"><span class="nav-number">1.3.</span> <span class="nav-text">使用Intent创建Tab页</span></a></li></ol></li></ol></div>
             
 
           </div>

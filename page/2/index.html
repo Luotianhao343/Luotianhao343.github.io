@@ -259,6 +259,1227 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/8.14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/14/8.14/" itemprop="url">Android学习（二十五之Android的事件处理）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T11:42:29+08:00">
+                2018-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>实际上不推荐将业务逻辑实现写在事件监听器中，包含业务逻辑的事件监听器将导致程序的显示逻辑和业务逻辑耦合，从而增加程序后期的维护难度。如果确实有多个事件监听器需要实现相同的业务逻辑功能，则可以考虑使用业务逻辑组件来定义逻辑功能，再让事件监听器来调用业务逻辑组件的业务逻辑方法。</p>
+<h3 id="Activity本身作为事件监听器类"><a href="#Activity本身作为事件监听器类" class="headerlink" title="Activity本身作为事件监听器类"></a>Activity本身作为事件监听器类</h3><p>可以直接在Activity类中定义事件处理器的方法。这种形式非常简洁，但这种做法有两个缺点：</p>
+<ul>
+<li>造成程序结构的混乱，Activity的主要职责应该是完成界面初始化工作，但此时还需要包含事件处理器方法，从而引起混乱。</li>
+<li>如果Activity界面类需要实现监听器接口，让人感觉比较怪异。</li>
+</ul>
+<h3 id="匿名内部类作为事件监听器"><a href="#匿名内部类作为事件监听器" class="headerlink" title="匿名内部类作为事件监听器"></a>匿名内部类作为事件监听器</h3><p>大部分事件监听器只是临时使用一次，所以使用匿名内部类最为合适。</p>
+<h3 id="直接绑定到标签"><a href="#直接绑定到标签" class="headerlink" title="直接绑定到标签"></a>直接绑定到标签</h3><p>对于很多Android界面组件标签而言，他们都支持onClick属性，该属性的属性值就是一个形如xxx（View source）方法的方法名。</p>
+<h2 id="基于回调的事件处理"><a href="#基于回调的事件处理" class="headerlink" title="基于回调的事件处理"></a>基于回调的事件处理</h2><p>从模型来看，基于回调的事件处理模型更加简单</p>
+<h3 id="回调机制和监听机制"><a href="#回调机制和监听机制" class="headerlink" title="回调机制和监听机制"></a>回调机制和监听机制</h3><p>对于基于监听的事件处理模型来说，事件源和事件监听器是分离的，当事件源上发生特定事件时，该事件交给事件监听器负责处理；对于基于回调的事件处理模型来说，事件源和事件监听器是统一的，当事件源发生特定事件时，该事件还是由事件源本身负责处理。</p>
+<h3 id="基于回调的事件传播"><a href="#基于回调的事件传播" class="headerlink" title="基于回调的事件传播"></a>基于回调的事件传播</h3><p>几乎所有基于回调的事件处理方法都有一个boolean类型的返回值，该返回值用于标识该方法是否能完全处理该事件。</p>
+<ul>
+<li>如果处理事件的回调方法返回true，表明该处理方法已完全处理该事件，该事件不会传播出去</li>
+<li>如果处理事件的回调方法返回false，表明该处理方法并未完全处理该事件，该事件会传播出去</li>
+</ul>
+<p>返回值全为false时，当组件上发生某个按键被按下的事件时，Android系统最先触发的是该按键上绑定的事件监听器，然后才触发该组件上提供的事件回调方法，最后还会传播到该组件的Activity。</p>
+<h3 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h3><p>通过为View提供事件处理的回调方法，可以很好地把事件处理方法封装在该View内部，从而提高程序的内聚性——基于回调的事件处理更适合应付那种事件处理逻辑比较固定的View，比如跟随手指的View。</p>
+<h2 id="响应系统设置的事件"><a href="#响应系统设置的事件" class="headerlink" title="响应系统设置的事件"></a>响应系统设置的事件</h2><p>在开发Android应用时，有时候可能需要让应用程序随系统设置而进行调整，比如判断系统的屏幕方向、判断系统方向的方向导航设备等。</p>
+<h3 id="Configuration类简介"><a href="#Configuration类简介" class="headerlink" title="Configuration类简介"></a>Configuration类简介</h3><p>Configuration类专门用于描述手机设备上的配置信息，这些配置信息既包括用户特定的配置项，也包括系统的动态设备配置。<br>程序可调用Activity的如下方法来获取系统的Configuration对象：<br><code>Configuration cfg = getResources().getConfiguration();</code></p>
+<h3 id="重写onConfigurationChanged方法响应系统设置更改"><a href="#重写onConfigurationChanged方法响应系统设置更改" class="headerlink" title="重写onConfigurationChanged方法响应系统设置更改"></a>重写onConfigurationChanged方法响应系统设置更改</h3><p>如果程序需要监听系统设置的更改，则可以考虑重写Activity的onConfigurationChanged(Configuration newConfig)方法，该方法是一个基于回调的事件处理方法：当系统设置发生更改时，该方法会被自动触发。</p>
+<p>实例：监听屏幕方向的改变（该界面就只有一个按钮，用来动态的修改系统屏幕的方向）<br>MainActivity.java源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">package com.example.changecfg;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.content.pm.ActivityInfo;</span><br><span class="line">import android.content.res.Configuration;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void ChangeCfg(View view) &#123;</span><br><span class="line">        Configuration config = getResources().getConfiguration();</span><br><span class="line">        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE)&#123;</span><br><span class="line">            MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</span><br><span class="line">        &#125;</span><br><span class="line">        if (config.orientation == Configuration.ORIENTATION_PORTRAIT)&#123;</span><br><span class="line">            MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onConfigurationChanged(Configuration newConfig) &#123;</span><br><span class="line">        super.onConfigurationChanged(newConfig);</span><br><span class="line">        String screen = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT?&quot;竖屏&quot;:&quot;横屏&quot;;</span><br><span class="line">        Toast.makeText(this,&quot;系统的屏幕方向发生改变&quot;+&quot;\n修改后的屏幕方向为：&quot;+screen,Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AndroidManifest.xml增加的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;</span><br><span class="line">            android:configChanges=&quot;orientation|screenSize&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>在AndroidManifest中的配置代码指定了Activity可以监听屏幕方向改变的事件，当程序改变手机屏幕时，Activity中的onConfigurationChanged()方法就会被回调。</p>
+<h2 id="Handler消息传递机制"><a href="#Handler消息传递机制" class="headerlink" title="Handler消息传递机制"></a>Handler消息传递机制</h2><p>出于性能优化考虑，Android的UI操作并不是线程安全的，这意味着如果有多个线程并发操作UI组件，则可能导致线程安全问题。为了解决这个问题，Android中制定了一条规则：只允许UI线程修改Activity里的UI组件。</p>
+<p>当一个程序第一次启动时，Android会同时启动一条主线程（Main Thread），主线程主要负责处理与UI相关的事件，如用户的按键事件、用户接触屏幕的事件及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以，主线程通常又被叫做UI线程。</p>
+<p>Android的消息传递机制是另一种形式的“事件处理”，这种机制主要是为了解决Android应用的多线程问题——Android平台只允许UI线程修改Activity里的UI组件，这样就会导致新启动的线程无法动态改变界面组件的属性值。但在实际Android应用开发中，尤其是涉及动画的游戏开发中，需要让新启动的线程周期性地改变界面组件的属性值，这就需要借助于Handler的消息传递机制了。</p>
+<h3 id="Handler类简介"><a href="#Handler类简介" class="headerlink" title="Handler类简介"></a>Handler类简介</h3><p>Handler类的主要作用有两个：</p>
+<ul>
+<li>在新启动的线程中发送消息</li>
+<li>在主线程中获取、处理消息</li>
+</ul>
+<p>为了让主线程能“适时”地处理新启动的线程所发送的消息，显然只能通过回调的方式来实现——开发者只要重写Handler类中处理消息的方法，当新启动的线程发送消息时，消息会发送到与之关联的MessageQueue，而Handler会不断地从MessageQueue中获取并处理消息——这将导致Handler类中处理消息的方法被回调。</p>
+<p>在自动播放图片实例中，定时器通过Timer周期性地执行指定任务，Timer可调度TimerTask对象，TimerTask对象的本质就是启动一条新线程，<strong>由于Android不允许在新线程中访问Activity里的界面组件，因此程序只能在新线程中发送一条消息，通知系统更新ImageView组件</strong>。</p>
+<h3 id="Handler、Loop、MessageQueue的工作原理"><a href="#Handler、Loop、MessageQueue的工作原理" class="headerlink" title="Handler、Loop、MessageQueue的工作原理"></a>Handler、Loop、MessageQueue的工作原理</h3><p>Looper、MessageQueue、Handler各自的作用如下：</p>
+<ul>
+<li>Looper：每个线程只有一个Looper，它负责管理MessageQueue，会不断地从MessageQueue中取出消息，并将消息分给对应的Handler处理</li>
+<li>MessageQueue：由Looper负责管理。它采用先进先出的方式来管理Message</li>
+<li>Handler：它能把消息发送给Looper管理的MessageQueue，并负责处理Looper分给它的消息</li>
+</ul>
+<p>在线程中使用Handler的步骤如下：</p>
+<ol>
+<li>调用Looper的prepare（）方法为当前线程创建Looper对象，创建Looper对象时，它的构造器会创建与之配套的MessageQueue</li>
+<li>有了Looper之后，创建Handler子类的实例，重写handleMessage（）方法，该方法负责处理来自其他线程的消息</li>
+<li>调用Looper的Loop（）方法启动Looper</li>
+</ol>
+<p>实例：使用新线程计算质数</p>
+<p>Ps：尽量避免在UI线程中执行耗时操作，因为这样可能导致一个“著名”的异常：ANR异常。只要在UI线程中执行需要消耗大量时间的操作，都会引发ANR，因为这会导致Android应用程序无法响应输入事件和Broadcast。</p>
+<p>由于在新线程中创建Handler时必须先创建Looper因此程序先调用Looper的prepare（）方法为当前线程创建了一个Looper实例，并创建了配套的MessageQueue。新线程中有了Looper对象之后，接下来程序创建了一个Handler对象，该Handler可以处理其他线程发送过来的消息。程序最后还调用了Looper的loop（）方法。</p>
+<h2 id="异步任务（AsyncTask）"><a href="#异步任务（AsyncTask）" class="headerlink" title="异步任务（AsyncTask）"></a>异步任务（AsyncTask）</h2><p>为了避免UI线程失去响应的问题，Android建议将耗时操作放在新线程中完成，但新线程也可能需要动态更新UI组件，比如需要从网上获取一个网页，然后在TextView中将其源码显示出来，此时就应该将连接网络、获取网络数据的操作放在新线程中完成。但获取网络数据之后，新线程不允许直接更新UI组件。<br>为了解决新线程不能更新UI组件的问题，Android提供了如下几种方法：</p>
+<ul>
+<li>使用Handler实现线程之间的通信</li>
+<li>Activity.runOnUiThread(Runnable)</li>
+<li>View.post(Runnable)</li>
+<li>View.postDelayed(Runnable,long)</li>
+</ul>
+<p>后面三种方式比较烦琐，异步任务可以简化操作。异步任务，不需要借助线程和Handler即可实现。<br>AsyncTask&lt;Params,Progress,Result&gt;是一个抽象类，通常用于被继承，继承时要指定如下三个泛型参数：</p>
+<ul>
+<li>Params：启动任务执行的输入参数的类型</li>
+<li>Progress：后台任务完成的进度值的类型</li>
+<li>Result：后台执行任务完成后返回结果的类型</li>
+</ul>
+<p>使用AsyncTask只要如下三步即可：</p>
+<ol>
+<li>创建AsyncTask的子类，并为三个泛型参数指定类型。如果某个泛型参数不需要指定类型，则可将它指定为Void</li>
+<li>实现AsyncTask的如下方法<ul>
+<li>doInBackground(params)：重写该方法就是后台线程将要完成的任务。该方法可以调用publishProgress（Progress.. values）方法更新任务的执行进度</li>
+<li>onProgressUpdate(progress.. values)：在doInBackground（）方法中调用publishProgress（）方法更新任务的执行进度后，将会触发该方法</li>
+<li>onPreExceute()：该方法将在执行后台耗时操作前被调用。通常该方法用于完成一些初始化的准备工作，比如在界面上显示任务进度条等</li>
+<li>onPostExecute(Result result)：当doInBackground（）完成后，系统会自动调用onPostExecute（）方法，并将doInBackground（）方法的返回值传给该方法</li>
+</ul>
+</li>
+<li>调用AsyncTask子类的实例的excute(Params.. params)开始执行耗时任务</li>
+</ol>
+<p>使用AsyncTask时必须遵守如下规则</p>
+<ul>
+<li>必须在UI线程中创建AsyncTask的实例</li>
+<li>必须在UI线程中调用AsyncTask的execute（）方法</li>
+<li>AsyncTask的onPreExecute(),onPostExecute(Result result),doInBackground(Params.. params),onProgressUpdate(Progress.. values)方法，不应该由程序员代码调用，而是由Andriod系统负责调用</li>
+<li>每个AsyncTask只能被执行一次，多次调用将会引发异常</li>
+</ul>
+<p>实现AsyncTask的子类，实现该子类时出现的如下4个方法：</p>
+<ul>
+<li>doInBackground()：完成实际的下载任务</li>
+<li>onPreExecute()：在下载开始的时候显示一个进度条</li>
+<li>onProgressUpdate()：随着下载进度的改变更新进度条的进度值</li>
+<li>onPostExecute()：当下载完成之后，将下载的代码显示出来</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/8.13.2/" itemprop="url">Android学习（二十四）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T18:17:07+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Android事件处理概述"><a href="#Android事件处理概述" class="headerlink" title="Android事件处理概述"></a>Android事件处理概述</h2><p>Android提供了两套事件处理机制：</p>
+<ul>
+<li>基于监听的事件处理</li>
+<li>基于回调的事件处理</li>
+</ul>
+<p>对于Android基于监听的事件崔而言，主要做法就是为Android界面组件绑定特定的事件监听器。<br>ps：Android还允许用户在界面布局文件中为UI组件的android:onClick属性指定事件监听方法，通过这种方式指定事件监听方法时，开发者需要在Activity中定义该事件监听方法（该方法必须有一个View类型的形参，该形参代表被单击的UI组件），当用户单击该UI组件时，系统将会激发android:onClick属性所指定的方法。<br>对于Android基于回调的事件处理而言，主要做法就是重写Android组件特定的回调方法，或者重写Activity的回调方法。一般来说，基于回调的事件处理可以用于一些具有通用性的事件，基于回调的事件处理代码会显得比较简洁。</p>
+<h2 id="基于监听的事件处理"><a href="#基于监听的事件处理" class="headerlink" title="基于监听的事件处理"></a>基于监听的事件处理</h2><p>基于监听的事件处理是一种更“面向对象”的事件处理，这种处理方式与Java的AWT、Swing的处理方式几乎完全相同。</p>
+<h3 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h3><p>在事件监听的处理模型中，主要涉及如下三类对象。</p>
+<ul>
+<li>Event Source（事件源）：事件发生的场所，通常就是各个组件</li>
+<li>Event（事件）：事件封装了界面组件上发生的特定事情（通常就是一次用户操作）。如果程序需要获得界面组件上所发生事件的相关信息，一般通过Event对象取得</li>
+<li>Event Listener（事件监听器）：负责监听时间原所发生的事件，并对各种事件做出相应的响应</li>
+</ul>
+<p>Java是面向对象的语言，方法不能独立存在，方法用来组织起来事件响应的动作，所以必须以类的形式组织这些方法，所以事件监听器的核心就是它所包含的方法-这些方法也被称为事件处理器（Event Handler）。</p>
+<p>每个组件均可以针对特定的事件指定一个事件监听器，每个事件监听器也可监听一个或多个事件源。</p>
+<p>用于监听的事件处理模型的步骤是：</p>
+<ol>
+<li>获取普通界面组件（事件源），也就是被监听的对象</li>
+<li>实现事件监听器类，该监听器类是一个特殊的Java类，必须实现一个XxxListener接口</li>
+<li>调用事件源的setXxxListener方法将事件监听器对象注册给一个普通组件（事件源）</li>
+</ol>
+<p>Android为不同的界面组件提供了不同的事件监听器接口，这些接口通常以内部类的形式存在。以View为例，它包含如下几个内部接口：</p>
+<ul>
+<li>View.OnClickListener：单击</li>
+<li>View.OnCreateContextMenuListener：创建上下文菜单</li>
+<li>View.OnFocusChangeListener：焦点改变事件</li>
+<li>View.OnKeyListener：按键事件</li>
+<li>View.OnLongClickListener：长按事件</li>
+<li>View.OnTouchListener：触摸事件</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/8.13.1/" itemprop="url">Android学习（二十三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T11:58:51+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="使用ActionBar显示选项菜单项"><a href="#使用ActionBar显示选项菜单项" class="headerlink" title="使用ActionBar显示选项菜单项"></a>使用ActionBar显示选项菜单项</h2><p>Android不再要求手机必须提供MENU按键，这样可能导致用户无法打开选项菜单。为了解决这个问题，Android已经提供了ActionBar作为解决方案，ActionBar可以将选项菜单显示成Action Item。<br>Menuitem新增了如下方法：</p>
+<ul>
+<li>setShowAsAction(int actionEnum)：该方法设置是否将该菜单项显示在ActionBar上，作为Action Item。</li>
+</ul>
+<p>该方法支持如下参数值：</p>
+<ul>
+<li>SHOW_AS_ACTION_ALWAYS：总是将该MenuItem显示在ActionBar上</li>
+<li>SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW：将该Action View折叠成普通菜单项</li>
+<li>SHOW_AS_ACTION_IF_ROOM：当ActionBar位置足够时才显示MenuItem</li>
+<li>SHOW_AS_ACTION_NEVER：不将该MenuItem显示在ActionBar上</li>
+<li>SHOW_AS_ACTION_WITH_TEXT：将该MenuItem显示在ActionBar上，并且显示该菜单项的文本</li>
+</ul>
+<p>Android允许在XML菜单资源文件中为&lt;item…/&gt;元素指定如下属性</p>
+<ul>
+<li>android：showAsAction：该属性的作用类似于setShowAsAction(int actionEnum)方法。因此该属性也能支持类似上面的属性值。</li>
+</ul>
+<h2 id="启用程序图标导航"><a href="#启用程序图标导航" class="headerlink" title="启用程序图标导航"></a>启用程序图标导航</h2><p>为了将应用程序图标转变为可以点击的图标，可以调用ActionBar的如下方法：</p>
+<ul>
+<li>setDisplayHomeAsUpEnable(boolean showHomeAsUp)：设置是否将应用程序图标转变为可点击的图标，并在图标上添加一个向左的箭头</li>
+<li>setDisplayOptions(int options)：通过传入int类型常量来控制该ActionBar的显示选项</li>
+<li>setDisplayShowHomeEnabled(boolean showHome)：设置是否显示应用程序图标</li>
+<li>setHomeButtonEnabled(boolean enabled)：设置是否将应用程序图标变为可点击的按钮</li>
+</ul>
+<h2 id="添加Action-View"><a href="#添加Action-View" class="headerlink" title="添加Action View"></a>添加Action View</h2><p>ActionBar上除了可以显示普通的Action Item之外，还可以显示普通的UI组件。为了在ActionBar上添加Action View，可以用来如下两种方式。</p>
+<ul>
+<li>定义Action Item时使用android:actionViewClass属性指定Action View的实现类</li>
+<li>定义Action Item时使用android:actionLayout属性指定ActionView对应的视图资源</li>
+</ul>
+<h2 id="使用ActionBar实现Tab导航"><a href="#使用ActionBar实现Tab导航" class="headerlink" title="使用ActionBar实现Tab导航"></a>使用ActionBar实现Tab导航</h2><p>为了使用ActionBar实现Tab导航，按如下步骤进行即可</p>
+<ol>
+<li>调用ActionBar的setNavigationMode(ActionBar.NAVIGATION_MODE_TABS)方法设置使用Tab导航方式</li>
+<li>调用ActionBar的addTab()方法添加多个标签，并为每个Tab标签添加事件监听器</li>
+</ol>
+<p>在实际项目中为了更好地展现Tab导航效果，ActionBar通常会与Fragment结合使用。</p>
+<h3 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h3><p>Fragment是Android3.0新增的API，Fragment相当于Activity片段，通常我们使用单独的Activity组合多个Fragment，这样即可在一个Activity中创建多个用户界面。除此之外，也可以让多个Activity复用同一个Fragment。总之，Fragment相当于Activity的模块化区域。（多对多）<br>Fragment拥有自己的生命周期，它可以接收、处理属于它自己的事件，并允许Activity运行期间动态地添加、删除Fragment。<br>Fragment允许定义自己的布局，也可以通过生命周期回调定义自己的行为。<br>与开发Activity类似的是，开发者自定义的Fragment也需要继承Fragment，并重写它的生命周期方法，通常会重写Fragment的onCreatView()生命周期方法。<br><strong>ps</strong>：viewPager用来给Fragment添加滑动功能；可以使用下面这个方法viewPager.setOffscreenPageLimit(3)设置缓存view 的个数为3。通常我们的ViewPager只会缓存当前页面的前后俩个页面，如果我切换到最后一个页面，则只会缓存前面的一个页面，会导致页面数据的重新加载。我们可以通过上面第三行的方法设置缓存页面的个数。当然，这只使用与页面较少的情况。</p>
+<h3 id="Android3-0以前的Fragment支持"><a href="#Android3-0以前的Fragment支持" class="headerlink" title="Android3.0以前的Fragment支持"></a>Android3.0以前的Fragment支持</h3><p>该Fragment不是继承android.app.Fragment，而是继承android.support.v4.app.Fragment。除此之外，Android还为该android.support.v4.app.Fragment提供了如下配套类。</p>
+<ul>
+<li>FragmentActivity：只有该类提供的getSupportFragmentManager()方法才能获取Fragment管理器</li>
+<li>ViewPager：它是Fragment容器，可以同时管理多个Fragment，并允许多个Fragment切换时提供动画效果</li>
+<li>FragmentPagerAdapter：Adapter类，用于为ViewPager提供多个Fragment。通常用于被扩展</li>
+<li>PagerTitleStrip：与ViewPager结合使用，用于在ViewPager上显示“导航条”。</li>
+</ul>
+<h2 id="使用ActionBar实现下拉式导航"><a href="#使用ActionBar实现下拉式导航" class="headerlink" title="使用ActionBar实现下拉式导航"></a>使用ActionBar实现下拉式导航</h2><p>为了使用ActionBar实现下拉式导航，按如下步骤进行即可</p>
+<ol>
+<li>调用ActionBar的actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST)方法设置使用下拉列表的导航方式。</li>
+<li>调用ActionBar的setListNavigationCallbacks(SpinnerAdapter adapter,ActionBar.OnNavigationListener callback)方法添加多个列表项，并为每个列表项设置事件监听器。其中第一个参数Adapter负责提供多个列表项，第二个参数为事件监听器。</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>AnalogClock在XML中是虚拟时钟。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/8.5.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/05/8.5.1/" itemprop="url">Android学习（二十二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T20:57:35+08:00">
+                2018-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="使用活动条-ActionBar"><a href="#使用活动条-ActionBar" class="headerlink" title="使用活动条(ActionBar)"></a>使用活动条(ActionBar)</h1><p>活动条（ActionBar）是Android3.0的重要更新之一。ActionBar显示在屏幕的顶部。ActionBar可显示应用的图标和Activity标题。除此之外，ActionBar的右边还可以显示活动项（Action Item）。</p>
+<p>ActionBar提供了如下功能：</p>
+<ul>
+<li>显示选项菜单的菜单项（将菜单项显示成ActionItem）</li>
+<li>使用程序图标作为返回Home主屏或向上的导航操作</li>
+<li>提供交互式View作为ActionView</li>
+<li>提供基于Tab的导航方式，可用于切换多个Fragment</li>
+<li>提供基于下拉的导航方式</li>
+</ul>
+<h2 id="启用ActionBar"><a href="#启用ActionBar" class="headerlink" title="启用ActionBar"></a>启用ActionBar</h2><p>最新的Android版本已经默认启用了ActionBar。因此只要在AndroidManifest.xml文件的SDK配置中指定该应用的目标版本高于11（Android3.0的版本号），默认就会启用ActionBar。</p>
+<p>如果希望关闭ActionBar，则可以设置该应用的主题为Xxx.NoActionBar。在实际项目中，通常推荐使用代码控制ActionBar的显示、隐藏。ActionBar提供了如下方法来控制显示、隐藏。</p>
+<ul>
+<li>show()：显示ActionBar</li>
+<li>hide()：隐藏ActionBar</li>
+</ul>
+<p>下面是一个简单的实例，通过点击按钮实现显示或者隐藏：<br>MainActivity.java源代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package com.example.actionbartest;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.View;</span><br><span class="line">import androidx.appcompat.app.ActionBar;</span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">     ActionBar actionBar;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        actionBar=getSupportActionBar();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showActionBar(View view) &#123;</span><br><span class="line">        actionBar.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void hideActionBar(View view) &#123;</span><br><span class="line">        actionBar.hide();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>ps：</strong>activity_main.xml比较简单就不给源代码了。在MainActivity.java中，尤其要注意MainActivity继承AppCompatActivity，使得actionBar对象必须通过getSupportActionBar()来实例化。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/8.5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/05/8.5/" itemprop="url">Android学习（二十一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T11:52:16+08:00">
+                2018-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h1><p>Android应用中的菜单默认是看不见的，只有当用户按下手机上的“MENU”键时，系统才会显示该应用关联的菜单，这种菜单叫选项菜单（Option Menu）。从3.0系统开始，Android推荐ActionBar来代替菜单。</p>
+<h2 id="选项菜单和子菜单（SubMenu）"><a href="#选项菜单和子菜单（SubMenu）" class="headerlink" title="选项菜单和子菜单（SubMenu）"></a>选项菜单和子菜单（SubMenu）</h2><p>Android系统的菜单支持主要通过4个接口来体现；Menu接口只是一个父接口，该接口下有如下两个接口。</p>
+<ul>
+<li>SubMenu：它代表一个子菜单。可以包含1~N个MenuItem（形成菜单项）</li>
+<li>ContextMenu：它代表一个上下文菜单。可以包含1~N个MenuItem（形成菜单项）</li>
+</ul>
+<p>Android的不同菜单有如下特征：</p>
+<ul>
+<li>选项菜单：选项菜单不支持勾选标记，并且只显示菜单的“浓缩（condensed）”标题</li>
+<li>子菜单（SubMenu）：不支持菜单项图标，不支持嵌套子菜单</li>
+<li>上下文菜单（ContextMenu）：不支持菜单快捷键和图标</li>
+</ul>
+<p>Menu接口定义了如下方法来添加子菜单或菜单项</p>
+<ul>
+<li>MenuItem add(int titleRes)：添加一个新的菜单项</li>
+<li>MenuItem add(int groupId,int itemId,int order,int titleRes)：添加一个新的处于groupId组的菜单项</li>
+<li>MenuItem add(int groupId,int itemId,int order,CharSequence title)：添加一个新的处于groupId组的菜单项</li>
+<li>MenuItem add(CharSequence title)：添加一个新的菜单项</li>
+<li>SubMenu addSubMenu(int titleRes)：添加一个新的子菜单</li>
+<li>SubMenu addSubMenu(int groupId,int itemId,int order,int titleRes)：添加一个新的处于groupId组的子菜单</li>
+<li>SubMenu addSubMenu(CharSequence title)：添加一个新的子菜单</li>
+<li>SubMenu addSubMenu(int groupId,int itemId,int order,CharSequence title)：添加一个新的处于groupId组的子菜单</li>
+</ul>
+<p><strong>ps：</strong>add（）方法用于添加菜单项，addSubMenu（）方法用来添加子菜单</p>
+<p>SubMenu继承了Menu，它就代表一个子菜单，额外提供了如下方法</p>
+<ul>
+<li>SubMenu setHeaderIcon(Drawable icon)：设置菜单头的图标</li>
+<li>SubMenu setHeaderIcon(int iconRes)：设置菜单头的图标</li>
+<li>SubMenu setHeaderTitle(int titleRes)：设置菜单头的标题</li>
+<li>SubMenu setHeaderTitle(CharSequence title)：设置菜单头的标题</li>
+<li>SubMenu setHeaderView(View view)：使用View来设置菜单头</li>
+</ul>
+<p>通过Menu、SubMenu、MenuItem来为Android应用添加菜单或子菜单。添加的步骤如下：</p>
+<ol>
+<li>重写Activity中onCreateOptionsMenu(Menu menu)方法，在该方法里调用Menu对象的方法来添加菜单项或子菜单</li>
+<li>如果希望应用程序能响应菜单项的单击事件，那么重写onOptionsItemSelected(MenuItem mi)方法即可。</li>
+</ol>
+<p>下面给出一个为Android应用添加菜单和子菜单的例子的源码：<br>activity_main.xml的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;试试菜单项&quot;/&gt;</span><br><span class="line">    &lt;EditText</span><br><span class="line">        android:id=&quot;@+id/txt&quot;</span><br><span class="line">        android:gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:hint=&quot;输入测试文字&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">package com.example.menutest;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.graphics.Color;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.Menu;</span><br><span class="line">import android.view.MenuItem;</span><br><span class="line">import android.view.SubMenu;</span><br><span class="line">import android.widget.EditText;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    //定义“字体大小”的菜单项</span><br><span class="line">    final int FONT_10 = 0x111;</span><br><span class="line">    final int FONT_12 = 0x112;</span><br><span class="line">    final int FONT_14 = 0x113;</span><br><span class="line">    final int FONT_16 = 0x114;</span><br><span class="line">    final int FONT_18 = 0x115;</span><br><span class="line">    //定义“恢复默认”的菜单项</span><br><span class="line">    final int PLAIN_ITEM = 0x11b;</span><br><span class="line">    //定义“字体颜色”的菜单项</span><br><span class="line">    final int FONT_RED = 0x116;</span><br><span class="line">    final int FONT_BLUE = 0x117;</span><br><span class="line">    final int FONT_GREEN = 0x118;</span><br><span class="line"></span><br><span class="line">    private EditText txt;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        txt = (EditText)findViewById(R.id.txt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    //当用户点击MENU键时触发该方法</span><br><span class="line">    public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">        //实例化一个菜单项对象</span><br><span class="line">        SubMenu fontMenu = menu.addSubMenu(&quot;字体大小&quot;);</span><br><span class="line">        fontMenu.setIcon(R.drawable.ic_launcher_background);</span><br><span class="line">        fontMenu.setHeaderIcon(R.drawable.ic_launcher_background);</span><br><span class="line">        //设置菜单头的标题</span><br><span class="line">        fontMenu.setHeaderTitle(&quot;设置字体大小&quot;);</span><br><span class="line">        //给菜单项添加子菜单</span><br><span class="line">        fontMenu.add(0,FONT_10,0,&quot;10号字体&quot;);</span><br><span class="line">        fontMenu.add(0,FONT_12,0,&quot;12号字体&quot;);</span><br><span class="line">        fontMenu.add(0,FONT_14,0,&quot;14号字体&quot;);</span><br><span class="line">        fontMenu.add(0,FONT_16,0,&quot;16号字体&quot;);</span><br><span class="line">        fontMenu.add(0,FONT_18,0,&quot;18号字体&quot;);</span><br><span class="line">        //给menu添加一个菜单项</span><br><span class="line">        menu.addSubMenu(0,PLAIN_ITEM,0,&quot;恢复默认&quot;);</span><br><span class="line"></span><br><span class="line">        SubMenu colorMenu = menu.addSubMenu(&quot;字体颜色&quot;);</span><br><span class="line"></span><br><span class="line">        colorMenu.setIcon(R.drawable.ic_launcher_background);</span><br><span class="line">        colorMenu.setHeaderIcon(R.drawable.ic_launcher_background);</span><br><span class="line">        colorMenu.setHeaderTitle(&quot;设置字体颜色&quot;);</span><br><span class="line">        colorMenu.add(0,FONT_RED,0,&quot;红色&quot;);</span><br><span class="line">        colorMenu.add(0,FONT_BLUE,0,&quot;蓝色&quot;);</span><br><span class="line">        colorMenu.add(0,FONT_GREEN,0,&quot;绿色&quot;);</span><br><span class="line"></span><br><span class="line">        return super.onCreateOptionsMenu(menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    //选项菜单的菜单项被单击后的回调方法</span><br><span class="line">    public boolean onOptionsItemSelected(MenuItem item) &#123;</span><br><span class="line">        //判断单击的是哪个菜单项，并有针对性地做出响应</span><br><span class="line">        switch (item.getItemId())&#123;</span><br><span class="line">            case FONT_10:</span><br><span class="line">                txt.setTextSize(10*2);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_12:</span><br><span class="line">                txt.setTextSize(12*2);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_14:</span><br><span class="line">                txt.setTextSize(14*2);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_16:</span><br><span class="line">                txt.setTextSize(16*2);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_18:</span><br><span class="line">                txt.setTextSize(18*2);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_RED:</span><br><span class="line">                txt.setTextColor(Color.RED);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_BLUE:</span><br><span class="line">                txt.setTextColor(Color.BLUE);</span><br><span class="line">                break;</span><br><span class="line">            case FONT_GREEN:</span><br><span class="line">                txt.setTextColor(Color.GREEN);</span><br><span class="line">                break;</span><br><span class="line">            case PLAIN_ITEM:</span><br><span class="line">                Toast.makeText(MainActivity.this,&quot;您点击了恢复默认&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">                txt.setTextColor(Color.BLACK);</span><br><span class="line">                txt.setTextSize(18);</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用监听器来监听菜单事件"><a href="#使用监听器来监听菜单事件" class="headerlink" title="使用监听器来监听菜单事件"></a>使用监听器来监听菜单事件</h2><p>为菜单项绑定监听器的方法为：</p>
+<ul>
+<li>setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener menuItemClickListener)：在这种方式下，我们可以采用简单的方法来添加菜单项，无须为每个菜单项指定ID。</li>
+</ul>
+<p>不过这种方式要为每个菜单项绑定监听器，会是代码更加臃肿。</p>
+<h2 id="创建多选菜单项和单选菜单项"><a href="#创建多选菜单项和单选菜单项" class="headerlink" title="创建多选菜单项和单选菜单项"></a>创建多选菜单项和单选菜单项</h2><p>调用如下方法实现：</p>
+<ul>
+<li>setCheckable(boolean checkable)：设置该菜单项是否可以被勾选，此方法使菜单项默认是多选菜单项</li>
+</ul>
+<p>如果希望一组菜单里的菜单项都设为可勾选的菜单项，则可调用如下方法：</p>
+<ul>
+<li>setGroupCheckable(int group,boolean checkable,boolean exclusive)：设置group组里的所有菜单项是否可勾选；如果将exclusive设为true，那么他们就是一组单选菜单项</li>
+</ul>
+<p>除此之外，Android还未MenuItem提供了如下方法来设置快捷键</p>
+<ul>
+<li>setAlphabeticShortcut(char alphaChar)：设置字母快捷键</li>
+<li>setNumericShortcut(char numericChar)：设置数字快捷键</li>
+<li>setShortcut(char numericChar,char alphaChar)：同时设置两种快捷键</li>
+</ul>
+<h2 id="设置与菜单项关联的Activity"><a href="#设置与菜单项关联的Activity" class="headerlink" title="设置与菜单项关联的Activity"></a>设置与菜单项关联的Activity</h2><p>有些时候，应用程序需要单击某个菜单项时启动其他Activity（包括其他Service）。对于这种需求，Android甚至不需要开发者编写任何事件处理代码，只要调用MenuItem的setIntent(Intent intent)方法即可——该方法将该菜单项与指定Intent关联在一起，当用户单击该菜单项时，该Intent所代表的组件将会被启动。</p>
+<h2 id="上下文菜单（ContextMenu）"><a href="#上下文菜单（ContextMenu）" class="headerlink" title="上下文菜单（ContextMenu）"></a>上下文菜单（ContextMenu）</h2><p>开发上下文菜单需要重写onCreateContextMenu(ContextMenu menu,View source,ContextMenu.ContextMenuInfo menuInfo)方法。其中source参数代表触发上下文菜单的组件。</p>
+<p>开发上下文菜单的步骤如下：</p>
+<ol>
+<li>重写Activity的onCreateContextMenu(ContextMenu menu,View source,ContextMenu.ContextMenuInfo menuInfo)方法</li>
+<li>调用Activity的registerForContextMenu(View view)方法为view组件注册上下文菜单</li>
+<li>如果希望应用程序能为菜单项提供响应，则可以重写onContextItemSelected(MenuItem mi)方法，或为指定菜单项绑定事件监听器</li>
+</ol>
+<p>实例一个为一个TextView添加上下文菜单源码（长按View弹出菜单）：<br>activity_main.xml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/txt&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;Hello World!可通过上下文菜单修改背景色&quot;</span><br><span class="line">        android:textSize=&quot;20sp&quot;</span><br><span class="line">        android:background=&quot;@color/colorAccent&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity.java源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">package com.example.contextmenutest;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.graphics.Color;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.ContextMenu;</span><br><span class="line">import android.view.Menu;</span><br><span class="line">import android.view.MenuItem;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    final int MENU1 = 0x111;</span><br><span class="line">    final int MENU2 = 0x112;</span><br><span class="line">    final int MENU3 = 0x113;</span><br><span class="line">    private TextView txt;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        txt = (TextView)findViewById(R.id.txt);</span><br><span class="line">        registerForContextMenu(txt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) &#123;</span><br><span class="line">        menu.add(0,MENU1,0,&quot;红色&quot;);</span><br><span class="line">        menu.add(0,MENU2,0,&quot;蓝色&quot;);</span><br><span class="line">        menu.add(0,MENU3,0,&quot;绿色&quot;);</span><br><span class="line"></span><br><span class="line">        menu.setGroupCheckable(0,true,true);</span><br><span class="line"></span><br><span class="line">        menu.setHeaderIcon(R.mipmap.ic_launcher);</span><br><span class="line">        menu.setHeaderTitle(&quot;选择背景色&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onContextItemSelected(MenuItem item) &#123;</span><br><span class="line">        switch (item.getItemId())&#123;</span><br><span class="line">            case MENU1:</span><br><span class="line">                txt.setBackgroundColor(Color.RED);</span><br><span class="line">                break;</span><br><span class="line">            case MENU2:</span><br><span class="line">                txt.setBackgroundColor(Color.BLUE);</span><br><span class="line">                break;</span><br><span class="line">            case MENU3:</span><br><span class="line">                txt.setBackgroundColor(Color.GREEN);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用XML文件定义菜单"><a href="#使用XML文件定义菜单" class="headerlink" title="使用XML文件定义菜单"></a>使用XML文件定义菜单</h2><p>Android提供了两种创建菜单的方式，一种是在Java代码中创建，一种是使用XML资源文件定义。在Java中定义菜单有如下不足：</p>
+<ul>
+<li>在Java代码中定义菜单、菜单项，必然导致程序代码臃肿</li>
+<li>需要程序员采用硬编码方式为每个菜单项分配ID，为每个菜单组分配ID，这种方式将导致应用可扩展性、可维护性降低。</li>
+</ul>
+<p>使用XML资源文件来定义，这种方式可以提供更好的解耦。</p>
+<p>菜单资源文件一般在res目录下新建的menu子目录，并在该子目录下提供menu_main.xml菜单资源文件。菜单资源的根元素通常是&lt;menu…/&gt;,&lt;menu…/&gt;元素无须指定任何属性。&lt;menu…/&gt;元素内可包含如下子元素。</p>
+<ul>
+<li>&lt;item…/&gt;元素：定义菜单项</li>
+<li>&lt;group…/&gt;子元素：将多个&lt;item…/&gt;定义的菜单项包装成一个菜单组</li>
+</ul>
+<p>&lt;group…/&gt;子元素用于控制整租菜单的行为，该元素可指定如下常用属性。</p>
+<ul>
+<li>checkableBehavior：指定该组菜单的选择行为。可指定为none（不可选）、all（多选）和single（单选）三个值</li>
+</ul>
+<p>在程序中定义了资源文件后，接下来还是重写onCreateOptionsMenu(用于创建选项菜单)、onCreateContextMenu(用于创建上下文菜单)方法，在这些方法中调用MenuInflater对象的inflate方法加载指定资源对应的菜单即可。</p>
+<p>下面的实例是将前面开发的菜单示例程序改为XML资源文件定义菜单。<br>activity_main.xml源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;请输入测试文字!&quot;</span><br><span class="line">        android:gravity=&quot;center_horizontal&quot; /&gt;</span><br><span class="line">    &lt;EditText</span><br><span class="line">        android:id=&quot;@+id/et&quot;</span><br><span class="line">        android:gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:hint=&quot;测试文字&quot;/&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/txt&quot;</span><br><span class="line">        android:gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;Hello World!可通过上下文菜单修改背景色&quot;</span><br><span class="line">        android:textSize=&quot;20sp&quot;</span><br><span class="line">        android:background=&quot;@color/colorAccent&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>menu_main.xml源码（菜单项）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;item android:title=&quot;@string/font_size&quot;&gt;</span><br><span class="line">        &lt;menu&gt;</span><br><span class="line">            &lt;group android:checkableBehavior=&quot;single&quot;&gt;</span><br><span class="line">                &lt;item android:title=&quot;@string/font_10&quot;</span><br><span class="line">                    android:id=&quot;@+id/font_10&quot;/&gt;</span><br><span class="line">                &lt;item android:title=&quot;@string/font_12&quot;</span><br><span class="line">                    android:id=&quot;@+id/font_12&quot;/&gt;</span><br><span class="line">                &lt;item android:title=&quot;@string/font_14&quot;</span><br><span class="line">                    android:id=&quot;@+id/font_14&quot;/&gt;</span><br><span class="line">                &lt;item android:title=&quot;@string/font_16&quot;</span><br><span class="line">                    android:id=&quot;@+id/font_16&quot;/&gt;</span><br><span class="line">                &lt;item android:title=&quot;@string/font_18&quot;</span><br><span class="line">                    android:id=&quot;@+id/font_18&quot;/&gt;</span><br><span class="line">            &lt;/group&gt;</span><br><span class="line">        &lt;/menu&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">    &lt;item android:title=&quot;@string/font_default&quot;</span><br><span class="line">        android:id=&quot;@+id/font_default&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/item&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=&quot;@+id/font_color&quot;</span><br><span class="line">        android:title=&quot;@string/font_color&quot;&gt;</span><br><span class="line">        &lt;menu&gt;</span><br><span class="line">            &lt;group android:checkableBehavior=&quot;single&quot;&gt;</span><br><span class="line">                &lt;item android:id=&quot;@+id/red_font&quot;</span><br><span class="line">                    android:title=&quot;@string/red_font&quot;/&gt;</span><br><span class="line">                &lt;item android:id=&quot;@+id/blue_font&quot;</span><br><span class="line">                    android:title=&quot;@string/blue_font&quot;/&gt;</span><br><span class="line">                &lt;item android:id=&quot;@+id/green_font&quot;</span><br><span class="line">                    android:title=&quot;@string/green_font&quot;/&gt;</span><br><span class="line">            &lt;/group&gt;</span><br><span class="line">        &lt;/menu&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line"></span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<p>context.xml源码（上下文菜单选项）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;group android:checkableBehavior=&quot;single&quot;&gt;</span><br><span class="line">        &lt;item android:id=&quot;@+id/red&quot;</span><br><span class="line">            android:title=&quot;@string/red&quot;</span><br><span class="line">            android:alphabeticShortcut=&quot;r&quot;/&gt;</span><br><span class="line">        &lt;item android:id=&quot;@+id/blue&quot;</span><br><span class="line">            android:title=&quot;@string/blue&quot;</span><br><span class="line">            android:alphabeticShortcut=&quot;b&quot;/&gt;</span><br><span class="line">        &lt;item android:id=&quot;@+id/green&quot;</span><br><span class="line">            android:title=&quot;@string/green&quot;</span><br><span class="line">            android:alphabeticShortcut=&quot;g&quot;/&gt;</span><br><span class="line">    &lt;/group&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<p>strings.xml资源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;string name=&quot;app_name&quot;&gt;MenuResTest&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_size&quot;&gt;字体大小&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_default&quot;&gt;恢复默认&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_color&quot;&gt;字体颜色&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_10&quot;&gt;10号字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_12&quot;&gt;12号字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_14&quot;&gt;14号字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_16&quot;&gt;16号字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;font_18&quot;&gt;18号字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;red_font&quot;&gt;红色字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;blue_font&quot;&gt;蓝色字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;green_font&quot;&gt;绿色字体&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;red&quot;&gt;红色背景&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;blue&quot;&gt;蓝色背景&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;green&quot;&gt;绿色背景&lt;/string&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity.java源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">package com.example.menurestest;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.graphics.Color;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.ContextMenu;</span><br><span class="line">import android.view.Menu;</span><br><span class="line">import android.view.MenuInflater;</span><br><span class="line">import android.view.MenuItem;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.EditText;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private TextView txt;</span><br><span class="line">    private EditText et;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        et = (EditText)findViewById(R.id.et);</span><br><span class="line">        txt = (TextView)findViewById(R.id.txt);</span><br><span class="line">        registerForContextMenu(txt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">        MenuInflater inflater = new MenuInflater(this);</span><br><span class="line">        inflater.inflate(R.menu.menu_main,menu);</span><br><span class="line">        return  super.onCreateOptionsMenu(menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) &#123;</span><br><span class="line">        MenuInflater inflater = new MenuInflater(this);</span><br><span class="line">        inflater.inflate(R.menu.context,menu);</span><br><span class="line">        menu.setHeaderTitle(&quot;选择背景色&quot;);</span><br><span class="line">        menu.setHeaderIcon(R.mipmap.ic_launcher);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onContextItemSelected(MenuItem item) &#123;</span><br><span class="line">        item.setChecked(true);</span><br><span class="line">        switch (item.getItemId())&#123;</span><br><span class="line">            case R.id.red:</span><br><span class="line">                txt.setBackgroundColor(Color.RED);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.blue:</span><br><span class="line">                txt.setBackgroundColor(Color.BLUE);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.green:</span><br><span class="line">                txt.setBackgroundColor(Color.GREEN);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onOptionsItemSelected(MenuItem item) &#123;</span><br><span class="line">        if (item.isCheckable())&#123;</span><br><span class="line">            item.setChecked(false);</span><br><span class="line">        &#125;</span><br><span class="line">        switch (item.getItemId())&#123;</span><br><span class="line">            case R.id.font_10:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextSize(10*2);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.font_12:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextSize(12*2);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.font_14:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextSize(14*2);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.font_16:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextSize(16*2);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.font_18:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextSize(18*2);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.red_font:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextColor(Color.RED);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.blue_font:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextColor(Color.BLUE);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.green_font:</span><br><span class="line">                item.setChecked(true);</span><br><span class="line">                et.setTextColor(Color.GREEN);</span><br><span class="line">                break;</span><br><span class="line">            case R.id.font_default:</span><br><span class="line">                et.setTextColor(Color.BLACK);</span><br><span class="line">                et.setTextSize(18);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用XML资源文件定义菜单有如下两个好处：</p>
+<ul>
+<li>XML资源文件不仅负责定义应用界面，也负责定义菜单，这样可把所有界面相关的内容交给XML文件管理，而Java代码的功能更集中。</li>
+<li>后期更新、维护应用时，如果需要更新、维护菜单，打开、编辑XML文件即可，避免对Java文件的修改。</li>
+</ul>
+<h2 id="使用PopupMenu创建弹出式菜单"><a href="#使用PopupMenu创建弹出式菜单" class="headerlink" title="使用PopupMenu创建弹出式菜单"></a>使用PopupMenu创建弹出式菜单</h2><p>PopupMenu代表弹出式菜单，它会在指定组件上弹出PopupMenu，在默认情况下，PopupMenu会显示在该组件的下方或者上方。PopupMenu可增加多个菜单项，并可为菜单项增加子菜单。</p>
+<p>使用PopupMenu创建菜单的步骤如下：</p>
+<ol>
+<li>调用new PopupMenu(Context context,View anchor)创建下拉菜单，anchor代表要激发该弹出菜单的组件。</li>
+<li>调用MenuInflater的inflate()方法将菜单资源填充到PopupMenu中。</li>
+<li>调用PopupMenu的show()方法显示弹出式菜单。</li>
+</ol>
+<p>下面给出一个Button的PopupMenu的源码：<br>activity_main.xml的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:gravity=&quot;center_horizontal&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:onClick=&quot;onPopupButtonClick&quot;</span><br><span class="line">        android:text=&quot;点击试试&quot;/&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>menu文件夹中的popup_menu.xml资源文件源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">&lt;item android:title=&quot;@string/query&quot;</span><br><span class="line">    android:id=&quot;@+id/query&quot;/&gt;</span><br><span class="line">    &lt;item android:title=&quot;@string/add&quot;</span><br><span class="line">        android:id=&quot;@+id/add&quot;/&gt;</span><br><span class="line">    &lt;item android:title=&quot;@string/edit&quot;</span><br><span class="line">        android:id=&quot;@+id/edit&quot;/&gt;</span><br><span class="line">    &lt;item android:title=&quot;@string/hide&quot;</span><br><span class="line">        android:id=&quot;@+id/hide&quot;/&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<p>strings.xml资源文件源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;string name=&quot;app_name&quot;&gt;PopupMenuTest&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;query&quot;&gt;查找&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;add&quot;&gt;添加&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;edit&quot;&gt;编辑&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;hide&quot;&gt;隐藏菜单&lt;/string&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity.java源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.example.popupmenutest;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.app.Activity;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.MenuItem;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.PopupMenu;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends Activity &#123;</span><br><span class="line"></span><br><span class="line">    PopupMenu popup = null;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void onPopupButtonClick(View view) &#123;</span><br><span class="line">        //创建PopupMenu对象</span><br><span class="line">        popup = new PopupMenu(this,view);</span><br><span class="line">        //将R.menu.popup_menu.xml菜单资源加载到popup菜单中</span><br><span class="line">        getMenuInflater().inflate(R.menu.popup_menu,popup.getMenu());</span><br><span class="line">        //为popup菜单的菜单项单击事件绑定事件监听器</span><br><span class="line">        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onMenuItemClick(MenuItem menuItem) &#123;</span><br><span class="line">                switch (menuItem.getItemId())&#123;</span><br><span class="line">                    case R.id.query:</span><br><span class="line">                        Toast.makeText(MainActivity.this,&quot;你点击了&quot;+menuItem.getTitle()+&quot;菜单项&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">                        break;</span><br><span class="line">                    case R.id.hide:</span><br><span class="line">                        //隐藏该对话框</span><br><span class="line">                        popup.dismiss();</span><br><span class="line">                        Toast.makeText(MainActivity.this,&quot;你点击了&quot;+menuItem.getTitle()+&quot;菜单项&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">                        break;</span><br><span class="line">                    case R.id.add:</span><br><span class="line">                        Toast.makeText(MainActivity.this,&quot;你点击了&quot;+menuItem.getTitle()+&quot;菜单项&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">                        break;</span><br><span class="line">                    case R.id.edit:</span><br><span class="line">                        Toast.makeText(MainActivity.this,&quot;你点击了&quot;+menuItem.getTitle()+&quot;菜单项&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        popup.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/8.4.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/8.4.1/" itemprop="url">Android学习（二十）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T17:50:01+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h1><p>Android有如下4种常用的对话框：</p>
+<ul>
+<li>AlertDialog：功能丰富、最实际的对话框</li>
+<li>ProgressDialog：进度对话框，这个对话框只是对进度条的包装</li>
+<li>DatePickerDialog:日期选择对话框，这个对话框只是对DatePicker的包装</li>
+<li>TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的包装</li>
+</ul>
+<h2 id="使用AlertDialog创建对话框"><a href="#使用AlertDialog创建对话框" class="headerlink" title="使用AlertDialog创建对话框"></a>使用AlertDialog创建对话框</h2><p>AlertDialog生成的对话框有4部分：</p>
+<ul>
+<li>图标区</li>
+<li>标题区</li>
+<li>内容区</li>
+<li>按钮区</li>
+</ul>
+<p>从对话框的结构来看，有下列几步创建对话框：</p>
+<ol>
+<li>创建AlerDialog.Builder对象</li>
+<li>调用AlertDialog.Builder的setTitle()或setCustomTitle()方法设置标题</li>
+<li>调用AlertDialog.Builder的setIcon()方法设置图标</li>
+<li>调用AlertDialog.Builder的相关设置方法设置对话框内容</li>
+<li>调用AlertDialog.Builder的setPositiveButton()、setNegativeButton()、setNeutralButton()方法添加多个按钮</li>
+<li>调用AlertDialog.Builder的creat()方法创建AlertDialog对象，再调用AlertDialog对象的show()方法将该对话框显示出来</li>
+</ol>
+<p>其中第4步是最灵活的，AlertDialog允许创建各种内容的对话框。AlertDialog提供了如下6中方法来指定对话框的内容。</p>
+<ul>
+<li>setMessage()：设置对话框内容为简单文本</li>
+<li>setItems()：设置对话框内容为简单列表项</li>
+<li>setSingleChoiceItems()：设置对话框内容为单选列表项</li>
+<li>setMultiChoiceItems()：设置对话框内容为多选列表项</li>
+<li>setAdapter()：设置对话框内容为自定义列表项</li>
+<li>setView()：设置对话框内容为自定义的View</li>
+</ul>
+<p><strong>ps：</strong>  </p>
+<ul>
+<li>调用setSingleChoiceItems()方法时既可以传入数组作为参数，也可传入Cursor（相当于数据库查询结果集）作为参数，还可传入ListAdapter作为参数。如果传入ListAdapter作为参数，则由ListAdapter来提供多个列表项组件。</li>
+<li>调用setMultiChoiceItems()方法添加多选列表项时，需要传入一个boolean[]参数，该参数有两个作用：①设置初始化时选中哪些列表项；②该boolean[]类型的参数还可用于动态地获取多选列表中列表项的选中状态。</li>
+<li>setAdapter()方法需要传入一个Adapter参数</li>
+<li>setView()方法可以接受一个View组件，通过这种方式，开发者可以定制对话框的内容因为在Android界面编程中，一切都是View。 </li>
+</ul>
+<p>如下是使用setView()方法的实例：<br>activity_main.xml文件代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;自定义View对话框&quot;</span><br><span class="line">        android:onClick=&quot;ViewBtn&quot;/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity.java代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void ViewBtn(View view) &#123;</span><br><span class="line">        LinearLayout login = (LinearLayout)getLayoutInflater().inflate(R.layout.layout,null);</span><br><span class="line">        new  AlertDialog.Builder(this).setIcon(R.mipmap.ic_launcher)</span><br><span class="line">                .setTitle(&quot;乱写一通&quot;)</span><br><span class="line">                .setView(login)</span><br><span class="line">                .setPositiveButton(&quot;是个瓜皮&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">                Toast.makeText(MainActivity.this,&quot;是个瓜娃子&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).setNegativeButton(&quot;dsaf&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">                Toast.makeText(MainActivity.this,&quot;sdfadfas&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).create().show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新建的一个layout代码（提供一个View）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;</span><br><span class="line">    android:id=&quot;@+id/login&quot;&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_gravity=&quot;center_horizontal&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;asdfafdsadfsafdsfd&quot;/&gt;</span><br><span class="line">    &lt;EditText</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:hint=&quot;adsfasdfafdasfasfdsaf&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="对话框风格的窗口"><a href="#对话框风格的窗口" class="headerlink" title="对话框风格的窗口"></a>对话框风格的窗口</h2><p>只是把显示窗口的Activity的风格设为对话框风格。</p>
+<h2 id="使用PopupWindow"><a href="#使用PopupWindow" class="headerlink" title="使用PopupWindow"></a>使用PopupWindow</h2><p>只用如下两步创建对话框风格的窗口：</p>
+<ol>
+<li>调用PopupWindow的构造器创建PopupWindow对象</li>
+<li>调用PopupWindow的showAsDropDown(View v)将PopupWindow作为v组件的下拉组件显示出来；或者调用PopupWindow的showAtLocation()方法将PopupWindow在指定位置显示出来</li>
+</ol>
+<p>PopupWindow.dismiss()方法用来销毁，隐藏PopupWindow对象。</p>
+<h2 id="使用DatePickerDialog、TimePickerDialog"><a href="#使用DatePickerDialog、TimePickerDialog" class="headerlink" title="使用DatePickerDialog、TimePickerDialog"></a>使用DatePickerDialog、TimePickerDialog</h2><p>DatePickerDialog和TimePickerDialog的用法需要下面两步：</p>
+<ol>
+<li>通过new关键词创建DatePickerDialog、TimePickerDialog实例，调用它们的show()方法即可将日期选择对话框、时间选择对话框显示出来。</li>
+<li>为DatePickerDialog和TimePickerDialog绑定监听器，这样可以保证用户通过DatePickerDialog和TimePickerDialog设置时间时触发监听器，从而通过监听器获得用户设置的时间。</li>
+</ol>
+<h2 id="使用ProgressDialog创建进度对话框"><a href="#使用ProgressDialog创建进度对话框" class="headerlink" title="使用ProgressDialog创建进度对话框"></a>使用ProgressDialog创建进度对话框</h2><p>ProgressDialog代表了进度对话框，程序只要创建ProgressDialog实例，并将它显示出来就是一个进度对话框。使用ProgressDialog创建进度对话框有如下两种方式。</p>
+<ul>
+<li>如果只是创建简单的进度对话框，那么调用ProgressDialog提供的静态方法show()方法显示对话框即可</li>
+<li>创建ProgressDialog，然后调用方法对话框里的进度条进行设置，设置完成后将对话框显示出来即可</li>
+</ul>
+<p>为了对进度对话框里的进度条进行设置，ProgressDialog包含了如下常用的方法：</p>
+<ul>
+<li>setIndeterminate(boolean indeterminate)：设置对话框里的进度条不显示进度值</li>
+<li>setMax(int max)：设置对话框里进度条的最大值</li>
+<li>setMessage(CharSequence message)：设置对话框里显示的消息</li>
+<li>setProgress(int value)：设置对话框里进度条的进度值</li>
+<li>setProgressStyle(int style)：设置对话框里进度条的风格</li>
+</ul>
+<p><strong>ps:</strong>下面给出三种进度对话框源代码：<br>activity_main.xml源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;环形进度条&quot;</span><br><span class="line">        android:onClick=&quot;showSpinner&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;不显示进度的进度条&quot;</span><br><span class="line">        android:onClick=&quot;showIndeterminate&quot;/&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;显示进度的进度条&quot;</span><br><span class="line">        android:onClick=&quot;showProgress&quot;/&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>MainActivity.java源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    final static int MAX_PROGRESS = 100;</span><br><span class="line">    private int[] data =new int[50];</span><br><span class="line">    int progressStatus =0;</span><br><span class="line">    int hasData =0;</span><br><span class="line">    ProgressDialog pd1,pd2;</span><br><span class="line">    //定义负责更新进度的Handler</span><br><span class="line">    Handler handler = new Handler()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            //表明消息是由程序发送的</span><br><span class="line">            if (msg.what==0x123)&#123;</span><br><span class="line">                pd2.setProgress(progressStatus);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showSpinner(View view) &#123;</span><br><span class="line">        //调用静态方法显示环形进度条</span><br><span class="line">        ProgressDialog.show(this,&quot;任务执行中&quot;,&quot;等一哈&quot;,false,true);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showIndeterminate(View view) &#123;</span><br><span class="line">        pd1 = new ProgressDialog(MainActivity.this);</span><br><span class="line">        pd1.setTitle(&quot;任务执行中&quot;);</span><br><span class="line">        //设置对话框显示的neir</span><br><span class="line">        pd1.setMessage(&quot;还未完成，请等待&quot;);</span><br><span class="line">        //设置对话框能用“返回”按钮关闭</span><br><span class="line">        pd1.setCancelable(true);</span><br><span class="line">        //设置对话框的进度条风格</span><br><span class="line">        pd1.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">        //设置对话框的进度条是否显示进度；true表示不显示进度</span><br><span class="line">        pd1.setIndeterminate(true);</span><br><span class="line">        pd1.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showProgress(View view) &#123;</span><br><span class="line">        progressStatus = 0;</span><br><span class="line">        hasData = 0;</span><br><span class="line">        pd2 = new ProgressDialog(MainActivity.this);</span><br><span class="line">        pd2.setMax(MAX_PROGRESS);</span><br><span class="line">        pd2.setTitle(&quot;任务完成百分比&quot;);</span><br><span class="line">        pd2.setMessage(&quot;耗时完成任务百分比&quot;);</span><br><span class="line">        //设置对话框不能用“返回”按钮关闭</span><br><span class="line">        pd2.setCancelable(false);</span><br><span class="line">        pd2.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">        //设置对话框的进度条是否显示进度；true表示不显示进度</span><br><span class="line">        pd2.setIndeterminate(false);</span><br><span class="line">        pd2.show();</span><br><span class="line">        new Thread()&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                while (progressStatus &lt; MAX_PROGRESS)&#123;</span><br><span class="line">                    //获取耗时操作完成的百分比</span><br><span class="line">                    progressStatus = MAX_PROGRESS * doWork() /data.length;</span><br><span class="line">                    handler.sendEmptyMessage(0x123);</span><br><span class="line">                &#125;</span><br><span class="line">                //如果任务完成</span><br><span class="line">                if (progressStatus&gt;= MAX_PROGRESS)&#123;</span><br><span class="line">                    //关闭对话框</span><br><span class="line">                    pd2.dismiss();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int doWork() &#123;</span><br><span class="line">        //为数组元素赋值</span><br><span class="line">        data[hasData++] = (int)(Math.random()*100);</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(100);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        //返回数组的“第几”</span><br><span class="line">        return hasData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/8.4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -903,1010 +2124,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/7.30/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/30/7.30/" itemprop="url">Android学习（十五）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T22:28:04+08:00">
-                2018-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="昨天未解决问题的补充解决"><a href="#昨天未解决问题的补充解决" class="headerlink" title="昨天未解决问题的补充解决"></a>昨天未解决问题的补充解决</h2><p>在XML布局Layout文件中，如果要为当前组件添加一个点击事件，使用android:onClick=”….”方法时，需要在MainActivity中生成。使用Alt+Enter，直接生成，避免无法关联？因为又可能会无法关联上，产生Could not find method next(View) in a parent or ancestor Context for android错误。</p>
-<h2 id="ViewFlipper的功能与用法"><a href="#ViewFlipper的功能与用法" class="headerlink" title="ViewFlipper的功能与用法"></a>ViewFlipper的功能与用法</h2><p>ViewFlipper组件继承了ViewAnimator，它可调用addView(View v)添加多个组件。可以使用动画控制多个组件之间的切换效果。</p>
-<p>ViewFlipper与前面的AdapterViewFlipper有较大相似性，它们可以控制组件切换的动画效果。它们的区别是：ViewFlipper需要开发者通过addView(View v)方法添加多个View，而AdapterViewFlipper则只要传入一个Adaper，Adapter将会负责提供多个View。ViewFlipper可以指定与AdapterViewFlipper相同的XML属性。 </p>
-<h2 id="使用Toast显示提示信息"><a href="#使用Toast显示提示信息" class="headerlink" title="使用Toast显示提示信息"></a>使用Toast显示提示信息</h2><p>Toast有两个特点：Toast提示信息不会获得焦点；提示信息过一段时间会自动消失。</p>
-<p>使用Toast的步骤：</p>
-<ol>
-<li>调用Toast的构造器或makeText()静态方法创建一个Toast对象</li>
-<li>调用Toast的方法来设置该消息提示的对齐方式、页边距等</li>
-<li>调用Toast的show()方法将它显示出来</li>
-</ol>
-<p>Toast的功能和用法都比较简单，大部分时候它只能显示简单的文本提示；如果应用需要显示诸如图片、列表之类的复杂提示，一般建议使用对话框来完成；如果开发者确实想通过Toast来完成，也是可以的，此时就需要调用Toast构造器创建实例，再调用setView()方法设置该Toast显示的View组件。此方法允许开发者自己定义Toast显示的内容。 </p>
-<h2 id="日历视图（CalendarView）组件的功能和用法"><a href="#日历视图（CalendarView）组件的功能和用法" class="headerlink" title="日历视图（CalendarView）组件的功能和用法"></a>日历视图（CalendarView）组件的功能和用法</h2><p>日历视图可用于显示和选择日期，用户既可以选择一个日期，也可通过触摸来滚动日历。如果希望监控该组件的日期改变，则可调用CalendarView的setOnDateChangeListener()方法为此组件的点击事件添加事件监听器。</p>
-<p>使用CalendarView时常见的XML属性：</p>
-<ul>
-<li>android:dateTextAppearance：设置该日历视图的日期文字的样式</li>
-<li>android:firstDayOfWeek：设置每周的第一天，允许设置周一到周日任意一天作为每周的第一天</li>
-<li>android:focusedMonthDateColor：设置获得焦点的月份的日期文字的颜色</li>
-<li>android:maxDate：设置日历组件支持的最大日期。以mm/dd/yyyy格式指定最大日期</li>
-<li>android:minDate：设置该日历组件支持的最小日期。同上设置</li>
-<li>android:selectedDateVerticalBar：设置绘制在选中日期两边的竖线对应的Drawable</li>
-<li>android:selectedWeekBackgroundColor：设置被选中周的背景色</li>
-<li>android:showWeekNumber：设置是否显示第几周</li>
-<li>android:shownWeekCount：设置该日历组件总共显示几个星期</li>
-<li>android:unfocusedMonthDateColor：设置没有焦点的月份的日期文字的颜色</li>
-<li>android:weekDayTextAppearance：设置星期几的文字样式</li>
-<li>android:weekNumberColor：设置显示周编号的颜色</li>
-<li>android:weekSeparatorLineColor：设置周分割线的颜色</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/7.29/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/29/7.29/" itemprop="url">Android学习（十四）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T23:27:10+08:00">
-                2018-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="ViewAnimator及其子类"><a href="#ViewAnimator及其子类" class="headerlink" title="ViewAnimator及其子类"></a>ViewAnimator及其子类</h1><p>ViewAnimator继承了FrameLayout，因此它表现出FrameLayout的特征，可以将多个View组件叠在一起，ViewAnimator可以在View切换时表现出动画效果。</p>
-<p>ViewAnimator的XML属性如下：</p>
-<ul>
-<li>android:animateFirstView：设置ViewAnimator显示第一个View组件时是否使用动画</li>
-<li>android:inAnimation：设置ViewAnimator显示组件时所使用的动画</li>
-<li>android:outAnimation：设置ViewAnimator隐藏组件时所使用的动画</li>
-</ul>
-<h2 id="ViewSwitcher的功能及用法"><a href="#ViewSwitcher的功能及用法" class="headerlink" title="ViewSwitcher的功能及用法"></a>ViewSwitcher的功能及用法</h2><p>ViewSwitcher代表了视图切换组件，因此可以将多个View层叠在一起，每次只显示一个组件。当程序控制从一个View切换到另一个View时，ViewSwitcher支持指定动画效果。</p>
-<p>为了给ViewSwitcher添加多个组件，一般通过调用ViewSwitcher的setFactory(ViewSwitcher.ViewFactory)方法为之设置ViewFactory，并由该ViewFactory为之创建View即可。  </p>
-<h2 id="图像切换器（ImageSwitcher）的功能和用法"><a href="#图像切换器（ImageSwitcher）的功能和用法" class="headerlink" title="图像切换器（ImageSwitcher）的功能和用法"></a>图像切换器（ImageSwitcher）的功能和用法</h2><p>ImageSwitcher继承了ViewSwitcher，并重写了ViewSwitcher的showNext()和showPrevious()方法，因此ImageSwitcher使用起来更简单。使用ImageSwitcher只需如下两步：</p>
-<ol>
-<li>为ImageSwitcher提供一个ViewFactory，该ViewFactory生成的View组件必须是ImageView。</li>
-<li>需要切换图片时，只要调用ImageSwitcher的setImageDrawable(Drawable drawable)、setImageResource(int resid)和setImageURI(Uri uri)方法切换图片。</li>
-</ol>
-<p>ImageSwitcher效果更炫，他可以指定图片切换时的动画效果。 </p>
-<h2 id="文本切换器（TextSwitcher）的功能和用法"><a href="#文本切换器（TextSwitcher）的功能和用法" class="headerlink" title="文本切换器（TextSwitcher）的功能和用法"></a>文本切换器（TextSwitcher）的功能和用法</h2><p>TextSwitcher继承了ViewSwitcher，因此它具有与ViewSwitcher相同的特征：可以在在切换View组件时使用动画效果。它也需要设置一个ViewFactory，它的ViewFactory的makeView()方法必须返回一个TextView组件。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/7.28/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/28/7.28/" itemprop="url">Android学习（十三）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T21:06:32+08:00">
-                2018-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="拖动条（SeekBar）的功能与用法"><a href="#拖动条（SeekBar）的功能与用法" class="headerlink" title="拖动条（SeekBar）的功能与用法"></a>拖动条（SeekBar）的功能与用法</h2><p>SeekBar继承了ProgressBar，因此ProgressBar所支持的XML属性和方法完全适用于SeekBar。</p>
-<p>SeekBar允许用户改变拖动条的滑块外观，改变滑块外观通过如下属性来指定。  </p>
-<ul>
-<li>android：thumb：指定一个Drawable对象，该对象将作为自定义滑块。</li>
-</ul>
-<p>为了让程序响应滑块位置的改变，程序可以考虑为他绑定一个OnSeekBarChangeListener监听器。  </p>
-<h2 id="星级评分条（RatingBar）的功能和用法"><a href="#星级评分条（RatingBar）的功能和用法" class="headerlink" title="星级评分条（RatingBar）的功能和用法"></a>星级评分条（RatingBar）的功能和用法</h2><p>星级评分条和拖动条有相同的父类：AbsSeekBar，因此它们相似；它们的区别就是RatingBar通过星星来表示进度。</p>
-<p>下面是RatingBar所支持的常见XML属性：</p>
-<ul>
-<li>android:isIndicator：设置该星级评分条是否允许用户改变（true为不允许修改）</li>
-<li>android:numStars：设置该星级评分条总共有多少个星级</li>
-<li>android:rating：设置该星级评分条默认的星级</li>
-<li>android:stepSize：设置每次最少需要改变多少个星级</li>
-</ul>
-<p>为了让程序能响应星级评分条评分的改变，可以考虑为它绑定一个OnRatingBarChangeListener监听器。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/27/7.27/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/27/7.27/" itemprop="url">Android学习（十二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T22:42:16+08:00">
-                2018-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="ProgressBar及其子类"><a href="#ProgressBar及其子类" class="headerlink" title="ProgressBar及其子类"></a>ProgressBar及其子类</h2><p>ProgressBar本身代表了进度条组件，它还派生出了两个常用组件:SeekBar和RatingBar。ProgressBar及其子类在用法上十分相似，只是显示有一定的区别。（主要是用来动态地显示进度，提高用户界面的友好性）</p>
-<p>Android支持多种风格的进度条，通过style属性可以为ProgressBar指定风格。该属性可支持如下几个属性值：</p>
-<ul>
-<li>@android:style/Widget.ProgressBar.Horizontal：水平进度条</li>
-<li>@android:style/Widget.ProgressBar.Inverse：普通大小的环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Large：大环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Large.Inverse：大环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Small：小环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Small.Inverse：小环形进度条</li>
-</ul>
-<p>ProgressBar支持的XML属性：</p>
-<ul>
-<li>android:max：设置该进度条的最大值</li>
-<li>android:progress：设置该进度条的已完成进度值</li>
-<li>android:progressDrawable：设置该进度条对应的Drawable对象</li>
-<li>android:indeterminate：该属性设为true，设置进度条不精确显示进度</li>
-<li>android:indeterminateDrawable：设置绘制不显示进度条的Drawable对象</li>
-<li>android:indeterminateDuration：设置不精确显示进度的持续时间</li>
-</ul>
-<p>ProgressBar提供了如下方法来操作进度</p>
-<ul>
-<li>setProgress（int）：设置进度的完成百分比</li>
-<li>incrementProgressBy（int）：设置进度条的进度增加或减小。当参数为正数时进度增加，为负数时进度减小。</li>
-</ul>
-<p>ps：Handler用来发送信息，当msg.what==0x111表示消息是由该程序发送的。math.random()函数是取从0至1之间的随机数,乘100以后就是取0到100之间的随机数 </p>
-<h2 id="显示在标题上的进度条"><a href="#显示在标题上的进度条" class="headerlink" title="显示在标题上的进度条"></a>显示在标题上的进度条</h2><p>有一种进度条，可以直接在窗口标题上显示，这种进度条甚至不需要使用ProgressBar组件，它是直接由Activity的方法启用的。为了在窗口标题上显示进度条，需要经过下列两步：</p>
-<ol>
-<li>调用Activity的requestWindowFeature（）方法，该方法根据传入的参数可启用特定的窗口特征。例如：传入Window.FEATURE_INDETERMINATE_PROGRESS在窗口标题上显示不带进度的进度条；传入Window.FEATURE_PROGRESS则显示带进度的进度条。</li>
-<li>调用Activity的setProgressBarVisibility(boolean)或setProgressBarIndeterminate Visibility(boolean)方法即可控制进度条的显示和隐藏。</li>
-</ol>
-<p>ps：Android5.0默认的主题：Material看不到标题上的进度条；因此要显示标题上的进度条需要将该应用主题设置为Holo。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/7.26/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/26/7.26/" itemprop="url">Android学习（十一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T12:04:08+08:00">
-                2018-07-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Spinner的功能和用法"><a href="#Spinner的功能和用法" class="headerlink" title="Spinner的功能和用法"></a>Spinner的功能和用法</h2><p>Spinner就是一个列表选择框，相当于弹出一个菜单供用户选择。<br>Spinner与Gallery都继承了AbsSpinner，AbsSpinner继承了AdapterView。因此它也表现出AdapterView的特征：只要为AdapterView提供Adapter即可。<br>Spinner支持的常用XML属性及相关方法如下：  </p>
-<ul>
-<li>android:entries：使用数组资源设置该下拉列表框的列表项</li>
-<li>android:dropDownHorizontalOffest：设置列表选择框的水平偏移距</li>
-<li>android:dropDownVerticalOffest：设置列表选择框的垂直偏移距</li>
-<li>android:dropDownWidth：设置列表选择框的宽度</li>
-<li>android:popupBackground：设置列表选择框的背景色</li>
-<li>android:prompt：设置该列表选择框的提示信息  </li>
-</ul>
-<p>android：entries属性不是Spinner定义的，而是在AbsSpinner中定义的，因此Gallery也支持该XML属性。  </p>
-<p>如果开发者在使用Spinner时已经确定了列表选择框里的列表项，只要为Spinner指定android:entries属性即可；如果程序需要在运行时动态地决定Spinner的列表项，或者程序需要对Spinner的列表项进行定制，则可使用Adapter为Spinner提供列表项。  </p>
-<p>Spinner与Gallery都继承了AbsSpinner，表明Gallery和Spinner都是一个列表选择框。它们的区别是在于，Spinner显示的是一个垂直的列表选择框，而Gallery显示的是一个水平的列表选择框；Spinner的作用是供用户选择，而Gallery则允许用户通过拖动来查看上一个、下一个列表项。如果程序需要监控到Gallery选择项的改变，通过为Gallery添加OnItemSelectedListener监听器即可实现。</p>
-<p>Android现在已经不推荐使用Gallery，而是用HorizontalScrollView和ViewPager来代替Gallery组件。</p>
-<h2 id="AdapterViewFlipper的功能与用法"><a href="#AdapterViewFlipper的功能与用法" class="headerlink" title="AdapterViewFlipper的功能与用法"></a>AdapterViewFlipper的功能与用法</h2><p>AdapterViewFlipper继承了AdapterViewAnimator，它也会显示Adapter提供的多个View组件，但它每次只能显示一个View组件，可通过showPrevious()和showNext()方法控制该组件显示上一个、下一个组件。</p>
-<p>AdapterViewFilpper可以在多个View切换过程中使用渐隐渐显的动画效果。除此之外，还可以调用该组件的startFlippering()控制它“自动播放”下一个View组件。</p>
-<p>AdapterViewAnimator支持的XML属性如下：</p>
-<ul>
-<li>android:animateFirstView：设置显示该组件的第一个View时是否使用动画</li>
-<li>android:inAnimation：设置组件显示时使用的动画</li>
-<li>android:loopViews：设置循环到最后一个组件后是否自动“转头”到第一个组件</li>
-<li>android:outAnimation：设置组件隐藏时使用的动画</li>
-</ul>
-<p>AdapterViewFilpper额外支持的XML属性：</p>
-<ul>
-<li>android:autoStart：设置显示该组件是否自动播放</li>
-<li>android:flipInterval：设置自动播放的时间间隔</li>
-</ul>
-<h2 id="StackView的功能与用法"><a href="#StackView的功能与用法" class="headerlink" title="StackView的功能与用法"></a>StackView的功能与用法</h2><p>StackView也是AdapterViewAnimator的子类，它也用于显示Adapter提供的一系列View。StackView将会以“堆叠(Stack)”的方式来显示多个列表项。<br>StackView提供了下面两种控制方式：  </p>
-<ul>
-<li>拖走StackView中处于顶端的View，下一个View将会显示出来。将上一个View拖进StackView，将使之显示出来。</li>
-<li>通过调用StackView的showNext()、showPrevious()控制显示下一个、上一个组件。</li>
-</ul>
-<p>ps：定义的图片数组中元素位置靠前的在程序运行结果的最上方。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/25/7.25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/25/7.25/" itemprop="url">Android学习（十）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T12:54:11+08:00">
-                2018-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="GridView（网格视图）"><a href="#GridView（网格视图）" class="headerlink" title="GridView（网格视图）"></a>GridView（网格视图）</h2><p>GridView用于在界面上按行、列分布的方式显示多个组件。<br>GridView和ListView都是AbsListView的子类，它们都有列表项。它们的区别就是：GridView能显示多列，ListView只能显示一列。GridView也需要通过Adapter来提供显示的数据。<br>GridView提供的常用XML属性及相关方法如下：   </p>
-<ul>
-<li>android:columnWidth:设置列的宽度</li>
-<li>android:gravity:设置对齐方式</li>
-<li>android:horizontalSpacing:设置各元素之间的水平间距</li>
-<li>android:numColums:设置列数</li>
-<li>android:stretchMode:设置拉伸模式</li>
-<li>android:verticalSpacing:设置各元素之间的垂直间距</li>
-</ul>
-<p>其中的android:stretchMode属性支持下列几个属性值：</p>
-<ul>
-<li>NO_STRETCH：不拉伸</li>
-<li>STRETCH_SPACING：仅拉伸元素之间的间距</li>
-<li>STRETCH_SPACING_UNIFORM：表格元素本身、元素之间的间距一起拉伸</li>
-<li>STRETCH_COLUMN_WIDTH仅拉伸表格元素本身</li>
-</ul>
-<p>GridView包含的多少行由Adapter决定。</p>
-<h2 id="ExpandableListView可展开的列表组件"><a href="#ExpandableListView可展开的列表组件" class="headerlink" title="ExpandableListView可展开的列表组件"></a>ExpandableListView可展开的列表组件</h2><p>ExpandableListView时ListView的子类，它在普通ListView基础上进行了扩展，它把列表项分为几组，每组里又可包含多个列表项。<br>ExpandableListView的用法与普通的ListView的用法十分相似，只是ExpandableListView所显示的列表项应该由ExpandableListAdapter提供，ExpandableListView也是一个接口。<br>ExpandableListView额外支持的常用XML属性：   </p>
-<ul>
-<li>android:childDivider：指定各组内各子列表项之间的分隔条</li>
-<li>android:childIndicator：显示在子列表项旁边的Drawable对象</li>
-<li>android:groupIndicator：显示在组列表项旁边的Drawable对象  </li>
-</ul>
-<p>扩展BaseExpandableListAdapter来实现ExpandableListAdapter，当扩展BaseExpandableListAdapter时，关键是实现如下4个方法：</p>
-<ul>
-<li>getGroupCount():该方法返回包含的组列表项的数量</li>
-<li>getGroupView():该方法返回的View对象作为组列表项</li>
-<li>getChildCount():该方法返回特定组所包含的子列表项的数量</li>
-<li>getChildView():该方法返回的View对象将作为特定组、特定位置的子列表项</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1952,7 +2174,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1974,7 +2196,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
