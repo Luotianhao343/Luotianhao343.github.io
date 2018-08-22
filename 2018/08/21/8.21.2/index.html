@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="创建配置Service,启动停止Service,绑定本地Service并与之通信," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安卓基础Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Servic">
+<meta name="keywords" content="创建配置Service,启动停止Service,绑定本地Service并与之通信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android学习（三十六之使用Service与BroadcastReceiver）">
+<meta property="og:url" content="http://yoursite.com/2018/08/21/8.21.2/index.html">
+<meta property="og:site_name" content="罗某">
+<meta property="og:description" content="安卓基础Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Servic">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456">
+<meta property="og:updated_time" content="2018-08-22T07:53:42.066Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android学习（三十六之使用Service与BroadcastReceiver）">
+<meta name="twitter:description" content="安卓基础Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Servic">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/21/8.21.2/"/>
+
+
+
+
+
+  <title>Android学习（三十六之使用Service与BroadcastReceiver） | 罗某</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">罗某</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home//首页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user//我的"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags//标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th//分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive//归档"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/8.21.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android学习（三十六之使用Service与BroadcastReceiver）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T12:03:44+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。<br>程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Service。</p>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service组件也是可执行的程序，它也有自己的生命周期。</p>
+<h3 id="创建配置Service"><a href="#创建配置Service" class="headerlink" title="创建配置Service"></a>创建配置Service</h3><p>步骤：</p>
+<ol>
+<li>定义一个继承Service的子类</li>
+<li>在AndroidManifest.xml文件中配置该Service</li>
+</ol>
+<p>Service和Activity都是从Context派生出来的，因此他们都可调用Context里定义的如getResources(),getContentResolver()等方法。</p>
+<p>Service生命周期图：<br><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456" alt="Service生命周期"></p>
+<p>Service生命周期方法：</p>
+<ul>
+<li>IBinder onBind(Intent intent)：该方法是Service子类必须实现的方法。该方法必须返回一个IBinder对象，应用程序可以通过该对象与Service组件通信。</li>
+<li>void onCreate()：在该Service第一次被创建后将会立即回调该方法</li>
+<li>void onDestroy()：在该Service被关闭之前回调该方法</li>
+<li>void onStartCommand(Intent intent,int flags,int startId)：该方法的早期版本是void onStart(Intent intent,int startId)，每次客户端调用startService(Intent intent)方法启动该Service时都会回调该方法</li>
+<li>boolean onUnbind(Intent intent)：当该Service上绑定的所有客户端都断开连接时将会回调该方法</li>
+</ul>
+<p>在AndroidManifest.xml中配置Service组件：</p>
+<figure class="highlight plain"><figcaption><span>配置一个Service组件 --></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name=&quot;&quot;&gt;</span><br><span class="line">&lt;/service&gt;</span><br></pre></td></tr></table></figure>
+<p>配置Service无须指定android:label属性——Service没有界面，指定标签意义不大。</p>
+<p>在Android系统中运行Service有如下两种方式。</p>
+<ul>
+<li>通过Context的startService()方法：访问者与Service之间没有关联，即使<br>访问者退出了，Service仍然运行</li>
+<li>通过Context的bindService()方法：访问者与Service之间绑定在一起，访问者退出，Service也就终止了</li>
+</ul>
+<h3 id="启动和停止Service"><a href="#启动和停止Service" class="headerlink" title="启动和停止Service"></a>启动和停止Service</h3><p>调用Context里定义的statService(),stopService()方法即可启动，关闭Service。<br>每当Service被创建时会回调onCreate()方法，每次Service被启动时都会回调onStartCommand()方法——多次启动一个已有的Service组件将不会再回调onCreate()方法，但每次启动时都会回调onStartCommand()方法。</p>
+<h3 id="绑定本地Service并与之通信"><a href="#绑定本地Service并与之通信" class="headerlink" title="绑定本地Service并与之通信"></a>绑定本地Service并与之通信</h3><p>当程序通过startService(),stopService()启动，关闭Service时，Service与访问者之间基本上不存在太多的关联，因此Service和访问者之间也无法进行通信、交换数据。<br>如果Service和访问者之间需要进行方法调用或交换数据，则应该使用bindService()和unbindService()方法启动、关闭Service。</p>
+<p>Context的bindService()方法的完整方法签名为：bindService(Intent service,ServiceConnection conn,int flags)，该方法的三个参数为：</p>
+<ul>
+<li>service:通过Intent指定要启动的Service。</li>
+<li>conn：该参数是一个ServiceConnection对象，该对象用于监听访问者与Service之间的连接情况。当访问者与Service之间连接成功时回调该ServiceConnection对象的onServiceConnected(ComponentName name,IBinder service)方法，该binder对象即可实现与被绑定Service之间的通信；当Service所在的宿主进程由于异常中止或其他原因终止，导致该Service与访问者之间断开连接时回调该ServiceConnection对象的onServiceDisconnected(ComponentName name)方法。</li>
+<li>flags：指定绑定时是否自动创建Service(如果Service还未创建）。该参数可指定为0（不自动创建）或BIND_AUTO_CREATE（自动创建）</li>
+</ul>
+<p>在开发子类时提供的一个IBinder onBinder(Intent intent)方法，在绑定本地Service的情况下，onBind(Intent intent)方法所返回的IBinder对象将会传给ServiceConnection对象里onServiceConnected(ComponentName name,IBinder service)方法的service参数，这样访问者就可以通过该IBinder对象与Service进行通信了。<br>IBinder对象相当于Service组件的内部钩子，该钩子关联到绑定的Service组件，当其他程序组件绑定到该Service时，Service将会把该IBinder对象返回给其他程序组件，其他程序组件通过该IBinder对象即可与Service组件进行实时通信。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/创建配置Service/" rel="tag"># 创建配置Service</a>
+          
+            <a href="/tags/启动停止Service/" rel="tag"># 启动停止Service</a>
+          
+            <a href="/tags/绑定本地Service并与之通信/" rel="tag"># 绑定本地Service并与之通信</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/8.21/" rel="next" title="Android学习（三十五之使用ContentProvider实现数据共享）">
+                <i class="fa fa-chevron-left"></i> Android学习（三十五之使用ContentProvider实现数据共享）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/8.22/" rel="prev" title="Android学习（三十七之使用Service与BroadcastReceiver）">
+                Android学习（三十七之使用Service与BroadcastReceiver） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+		  width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2113043&
+		  auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.1.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建配置Service"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建配置Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动和停止Service"><span class="nav-number">1.1.2.</span> <span class="nav-text">启动和停止Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定本地Service并与之通信"><span class="nav-number">1.1.3.</span> <span class="nav-text">绑定本地Service并与之通信</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">法外狂徒罗某人</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -259,6 +259,795 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14安卓学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/7.14安卓学习/" itemprop="url">Android学习（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T22:55:37+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android应用清单文件AndroidManifest-xml"><a href="#Android应用清单文件AndroidManifest-xml" class="headerlink" title="Android应用清单文件AndroidManifest.xml"></a>Android应用清单文件AndroidManifest.xml</h1><h2 id="AndroidManifest-xml清单文件通常包含如下信息："><a href="#AndroidManifest-xml清单文件通常包含如下信息：" class="headerlink" title="AndroidManifest.xml清单文件通常包含如下信息："></a>AndroidManifest.xml清单文件通常包含如下信息：</h2><ul>
+<li>应用程序包名</li>
+<li>应用程序所包含的组件，如Activity、Service、BroadcastReceiver<br>和ContentProvider等</li>
+<li>应用程序兼容的最低版本</li>
+<li>应用程序使用系统所需的权限声明</li>
+<li>其他程序访问该程序所需的权限声明</li>
+</ul>
+<h2 id="应用程序权限说明"><a href="#应用程序权限说明" class="headerlink" title="应用程序权限说明"></a>应用程序权限说明</h2><p><strong>1.声明运行该应用本身所需要的权限</strong><br>通过为&lt;Manifest…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可为程序本身声明权限。<br>例如：<br>&lt;! –声明该应用本身需要打电话的权限 –&gt;<br><code>&lt;uses-permission android:name=&quot;android.permission.CALL_PHONE&quot;/&gt;</code><br><strong>2.声明调用该应用所需的权限</strong><br>通过为应用的各组件元素，如&lt;activity…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可声明调用该程序所需的权限。<br>例如：<br>&lt;! –声明该应用本身需要发送短信的权限 –&gt;</p>
+<p><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;&gt;</code><br>常用权限如下表：    </p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCESS_NETWORK_STATE</td>
+<td>允许应用程序获取网络状态信息的权限</td>
+</tr>
+<tr>
+<td>ACCESS_WIFI_STATE</td>
+<td>允许应用程序获取Wi-Fi网络状态信息的权限</td>
+</tr>
+<tr>
+<td>BATTERY_STATS</td>
+<td>允许应用程序获取电池状态信息的权限</td>
+</tr>
+<tr>
+<td>BLUETOOTH</td>
+<td>允许应用程序连接匹配的蓝牙设备的权限</td>
+</tr>
+<tr>
+<td>BLUETOOTH_ADMIN</td>
+<td>允许应用程序发现匹配的蓝牙设备的权限</td>
+</tr>
+<tr>
+<td>BROADCAST_SMS</td>
+<td>允许应用程序广播收到短信提醒的权限</td>
+</tr>
+<tr>
+<td>CALL_PHONE</td>
+<td>允许应用程序拨打电话的权限</td>
+</tr>
+<tr>
+<td>CAMERA</td>
+<td>允许应用程序使用照相机的权限</td>
+</tr>
+<tr>
+<td>CHANGE_NETWORK_STATE</td>
+<td>允许应用程序改变网络连接状态的权限</td>
+</tr>
+<tr>
+<td>CHANGE_WIFI_STATE</td>
+<td>允许应用程序改变wifi网络连接状态的权限</td>
+</tr>
+<tr>
+<td>DELETE_CACHE_FILES</td>
+<td>允许应用程序删除缓存文件的权限</td>
+</tr>
+<tr>
+<td>DELETE_PACKAGES</td>
+<td>允许应用程序删除安装包的权限</td>
+</tr>
+<tr>
+<td>FLASHLIGHT</td>
+<td>允许应用程序访问闪光灯的权限</td>
+</tr>
+<tr>
+<td>INTERNET</td>
+<td>允许应用程序打开网络Socket的权限</td>
+</tr>
+<tr>
+<td>MODIFY_AUDIO_SETTINGS</td>
+<td>允许应用程序修改全局声音设置的权限</td>
+</tr>
+<tr>
+<td>PROCESS_OUTGOING_CALLS</td>
+<td>允许应用程序监听、控制、取消呼出电话的权限</td>
+</tr>
+<tr>
+<td>READ_CONTACTS</td>
+<td>允许应用程序读取用户的联系人数据的权限</td>
+</tr>
+<tr>
+<td>READ_HISTORY_BOOKMARKS</td>
+<td>允许应用程序读取历史书签的权限</td>
+</tr>
+<tr>
+<td>READ_OWNER_DATA</td>
+<td>允许应用程序读取用户数据的权限</td>
+</tr>
+<tr>
+<td>READ_PHONE_STATE</td>
+<td>允许应用程序读取电话状态的权限</td>
+</tr>
+<tr>
+<td>READ_PHONE_SMS</td>
+<td>允许应用程序读取短信的权限</td>
+</tr>
+<tr>
+<td>REBOOT</td>
+<td>允许应用程序重启系统的权限</td>
+</tr>
+<tr>
+<td>RECEIVE_MMS</td>
+<td>允许应用程序接收、监控、处理彩信的权限</td>
+</tr>
+<tr>
+<td>RECEIVE_SMS</td>
+<td>允许应用程序接收、监控、处理短信的权限</td>
+</tr>
+<tr>
+<td>RECORD_AUDIO</td>
+<td>允许应用程序录音的权限</td>
+</tr>
+<tr>
+<td>SEND_SMS</td>
+<td>允许应用程序发送短信的权限</td>
+</tr>
+<tr>
+<td>SET_ORIENTATION</td>
+<td>允许应用程序旋转屏幕的权限</td>
+</tr>
+<tr>
+<td>SET_TIME</td>
+<td>允许应用程序设置时间的权限</td>
+</tr>
+<tr>
+<td>SET_TIME_ZONE</td>
+<td>允许应用程序设置时区的权限</td>
+</tr>
+<tr>
+<td>SET_WALLPAPER</td>
+<td>允许应用程序设置桌面壁纸的权限</td>
+</tr>
+<tr>
+<td>VIBRATE</td>
+<td>允许应用程序控制振动器的权限</td>
+</tr>
+<tr>
+<td>WRITE_CONTACTS</td>
+<td>允许应用程序写入用户联系人的权限</td>
+</tr>
+<tr>
+<td>WRITE_HISTORY_BOOKMARKS</td>
+<td>允许应用程序写历史书签的权限</td>
+</tr>
+<tr>
+<td>WRITE_OWNER_DATA</td>
+<td>允许应用程序写用户数据的权限</td>
+</tr>
+<tr>
+<td>WRITE_SMS</td>
+<td>允许应用程序写短信的权限</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/7.14数据库/" itemprop="url">数据库系统概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T21:47:54+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-数据库的4个基本概念"><a href="#1-数据库的4个基本概念" class="headerlink" title="1.数据库的4个基本概念"></a>1.数据库的4个基本概念</h1><h2 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h2><p>描述数据的符号记录称为数据。</p>
+<h2 id="数据库-DataBase-DB"><a href="#数据库-DataBase-DB" class="headerlink" title="数据库(DataBase,DB)"></a>数据库(DataBase,DB)</h2><p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。</p>
+<h2 id="数据库管理系统-DataBase-Management-System-DBMS"><a href="#数据库管理系统-DataBase-Management-System-DBMS" class="headerlink" title="数据库管理系统(DataBase Management System,DBMS)"></a>数据库管理系统(DataBase Management System,DBMS)</h2><p>数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。<br>主要功能：</p>
+<ul>
+<li>数据定义功能</li>
+<li>数据组织、存储和管理</li>
+<li>数据操纵功能</li>
+<li>数据库的事务管理和运行管理</li>
+<li>数据库的建立和维护功能</li>
+<li>其他</li>
+</ul>
+<h2 id="数据库系统-DataBase-System-DBS"><a href="#数据库系统-DataBase-System-DBS" class="headerlink" title="数据库系统(DataBase System,DBS)"></a>数据库系统(DataBase System,DBS)</h2><p>数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员(DataBase Administrator,DBA)组成的存储、管理、处理和维护数据的系统。</p>
+<h1 id="2-数据管理技术的发展"><a href="#2-数据管理技术的发展" class="headerlink" title="2.数据管理技术的发展"></a>2.数据管理技术的发展</h1><ol>
+<li>人工管理阶段</li>
+<li>文件系统阶段</li>
+<li>数据库系统阶段</li>
+</ol>
+<h1 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3.数据模型"></a>3.数据模型</h1><h2 id="两类数据模型"><a href="#两类数据模型" class="headerlink" title="两类数据模型"></a>两类数据模型</h2><ol>
+<li>概念模型<ul>
+<li>按照用户的观点来对数据建模，用于数据库设计</li>
+</ul>
+</li>
+<li>逻辑模型和物理模型<ul>
+<li>包括层次模型、网状模型、关系模型等等，它是按照计算机系统观点对数据建模，用于数据库管理系统的实现。</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="headerlink" title="数据模型的组成要素"></a>数据模型的组成要素</h2><ol>
+<li>数据结构</li>
+<li>数据操作</li>
+<li>数据的完整性约束条件</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/7.13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/7.13/" itemprop="url">博客编写注意事项（2）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T14:38:03+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MarkDown语法/" itemprop="url" rel="index">
+                    <span itemprop="name">MarkDown语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>浅谈Markdown语法在GitHub博客中的应用      </p>
+<h1 id="第二个注意事项"><a href="#第二个注意事项" class="headerlink" title="第二个注意事项"></a>第二个注意事项</h1><h2 id="markdown语句书写细节"><a href="#markdown语句书写细节" class="headerlink" title="markdown语句书写细节"></a>markdown语句书写细节</h2><p>在诸如<code>#,:</code>等特殊符号后，应添加空格，以保证语句在编译时的正确性。</p>
+<h2 id="‘标亮’的使用"><a href="#‘标亮’的使用" class="headerlink" title="‘标亮’的使用"></a>‘标亮’的使用</h2><p>在输入法为英文的情况下，我们使用的tab键正上方的那个键<strong><code></code></strong>来表示标亮。<br>例如：<code>你好，我是标亮符号的表现形式。</code></p>
+<h2 id="‘加粗’的使用"><a href="#‘加粗’的使用" class="headerlink" title="‘加粗’的使用"></a>‘加粗’的使用</h2><p>我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。<br>例如： <strong>你好我是加粗的表现形式。</strong> </p>
+<h2 id="‘无序列表项’的使用"><a href="#‘无序列表项’的使用" class="headerlink" title="‘无序列表项’的使用"></a>‘无序列表项’的使用</h2><p>列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。<br>例如：（此处需要空一行才可以实现无序列表） </p>
+<ul>
+<li>无序列表项1<ul>
+<li>无序列表项1.1</li>
+</ul>
+</li>
+<li>无序列表项2  </li>
+<li>无序列表项3</li>
+</ul>
+<h2 id="‘有序列表项’的使用"><a href="#‘有序列表项’的使用" class="headerlink" title="‘有序列表项’的使用"></a>‘有序列表项’的使用</h2><p>有序列表项通过“1.”引号其中的数字+一个英文句点实现。<br>例如：</p>
+<ol>
+<li>有序列表项1</li>
+<li>有序列表项2</li>
+<li>有序列表项3</li>
+</ol>
+<h2 id="‘列表缩进’的使用"><a href="#‘列表缩进’的使用" class="headerlink" title="‘列表缩进’的使用"></a>‘列表缩进’的使用</h2><p>缩进的符号用“*/+/-”都可以实现，在缩进符号后面紧跟一个空格或者tab制表符。在文本中的换行用两个空格即可实现。<br>例如：</p>
+<ul>
+<li>蜀相<br>丞相祠堂何处寻，锦官城外白森森。<br>映阶碧草自春色，隔叶黄鹂空好音。<br>三顾频烦天下计，两朝开济老臣心。<br>出事未捷身先死，长使英雄泪满襟。</li>
+</ul>
+<h2 id="‘图片，超链接，视频’在博客中的插入"><a href="#‘图片，超链接，视频’在博客中的插入" class="headerlink" title="‘图片，超链接，视频’在博客中的插入"></a>‘图片，超链接，视频’在博客中的插入</h2><p><a href="https://baike.baidu.com/item/%E5%89%91%E9%97%A8%E5%85%B3%E9%A3%8E%E6%99%AF%E5%8C%BA/1356420?fromtitle=%E5%89%91%E9%97%A8%E5%85%B3&amp;fromid=31219&amp;fr=aladdin" target="_blank" rel="noopener">剑门关</a><br><img src="https://dimg05.c-ctrip.com/images/fd/tg/g2/M0B/8B/64/CghzgFWw3KKAThWhACtMPja6o6E510_R_1600_10000_Mtg_7.jpg" alt="image"><br><strong>ps</strong>：在网页中的图片，只需要右击鼠标，点击复制图片地址，再插入博客中，图片插入的网址粘贴上就行。    </p>
+<h2 id="‘代码块’的插入"><a href="#‘代码块’的插入" class="headerlink" title="‘代码块’的插入"></a>‘代码块’的插入</h2><p>在英文键盘输入的模式下,使用tab键上面的键，文本首尾连按三次就行。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Speak()&#123;     </span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">        System.out.println(&quot;你好&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="‘表格’的插入"><a href="#‘表格’的插入" class="headerlink" title="‘表格’的插入"></a>‘表格’的插入</h2><p>推荐一个能生成多种列表的网址：<a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">http://www.tablesgenerator.com/markdown_tables#</a><br><a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">点此进入</a></p>
+<h2 id="‘tags’多标签实现"><a href="#‘tags’多标签实现" class="headerlink" title="‘tags’多标签实现"></a>‘tags’多标签实现</h2><p>通过在tags的叙述中使用“- 标签1- 标签2”来实现，标签1与2之间需要换行。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags:    </span><br><span class="line">     - Activity</span><br><span class="line">     - View</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/7.12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/12/7.12/" itemprop="url">博客编写格式注意（1）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T16:49:07+08:00">
+                2018-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MarkDown语法/" itemprop="url" rel="index">
+                    <span itemprop="name">MarkDown语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
+<h1 id="第一个注意事项"><a href="#第一个注意事项" class="headerlink" title="第一个注意事项"></a>第一个注意事项</h1><h2 id="title标题"><a href="#title标题" class="headerlink" title="title标题"></a>title标题</h2><blockquote>
+<p>“—”<br>title: 博客编写格式注意<br>categories: MarkDown语法<br>tags: 博客编写<br>“—”<br>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
+</blockquote>
+<p>在这段md语句中title的“—” “—”包裹需要在第二个—后面加一段文字性描述；否则GitHub博客上不会识别出这个md文件的标题，博客上显示的标题是未命名，且title下面的分类、标签都没有加上，变成了文字性的描述了。</p>
+<h2 id="‘-gt-’引用的使用"><a href="#‘-gt-’引用的使用" class="headerlink" title="‘&gt;’引用的使用"></a>‘&gt;’引用的使用</h2><p>‘&gt;’的结尾需要回车打出一个空白行来结束引用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/一口气读三国1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1086,7 +1875,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1108,7 +1897,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
