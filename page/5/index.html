@@ -259,6 +259,724 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/7.22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/7.22/" itemprop="url">Android学习（七）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T21:50:45+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安卓基础</p>
+<h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><p>ImageView继承View，主要用来显示图片，它能显示的不仅仅是图片，任何Drawable对象都可以使用ImageView来显示。<br>ImageView支持的XML属性：   </p>
+<ul>
+<li>android:adjustViewBounds设置ImageView是否调整自己的边界来保持所显示图片的长宽比</li>
+<li>android:cropToPadding如果将该属性设置为true，该组件将会被裁剪到保留该ImageView的padding</li>
+<li>android:scaleType设置所显示的图片如何缩放或移动以适应ImageView的大小</li>
+<li>android:src设置ImageView所显示的图片的ID</li>
+</ul>
+<p>android:scaleType支持的属性值：</p>
+<ul>
+<li>matrix:使用matrix方式进行缩放</li>
+<li>fitXY对图片、纵向独立缩放</li>
+<li>fitStart保持纵横比缩放图片</li>
+<li>fitCenter保持纵横比缩放图片，缩放后放在ImageView中央</li>
+<li>fitEnd保持纵横比缩放图片，缩放后放在ImageView的右下角</li>
+<li>center放在ImageView中央</li>
+<li>centerCrop保持纵横比缩放图片，只要图片的最短边能显示出来即可</li>
+<li>centerInside保持纵横比缩放图片，ImageView能完全显示该图片</li>
+</ul>
+<p>为了控制ImageView显示的图片，ImageView提供了如下方法</p>
+<ul>
+<li>setImageBitmap(Bitmap bit):使用Bitmap位图设置图片</li>
+<li>setImageDrawable(Drawable drawable)：使用Drawable对象设置图片</li>
+<li>setImageResource(int resId)：使用图片资源ID设置图片</li>
+<li>setImageURI(Uri uri)：使用图片的URI设置该ImageView显示设置的图片</li>
+</ul>
+<p><strong>ps：</strong>如果要实现放大图片的局部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有两个ImageView，第一个放原图Image1，第二个放发大的部分图片Image2。</span><br><span class="line">第一步：获取原图与放大部分的比例，即double scale = 1.0*Image1.getHeight()/Image2.getHeight()。</span><br><span class="line">第二步：获取需要显示的图片的起始位置:int X=(int)(event.getX()*scale);</span><br><span class="line">int Y=(int)(event.getY()*scale);还要注意在原图中右边和下边的宽度大于Image2的，必须固定起始位置为Image1.getWidth()-Image2.getWidth()。</span><br></pre></td></tr></table></figure>
+<h2 id="ImageButton"><a href="#ImageButton" class="headerlink" title="ImageButton"></a>ImageButton</h2><p>ImageButton派生了一个ZoomButton，ZoomButton可以代表“放大”“缩小”两个按钮，ZoomButton的行为基本类似于ImageButton<br>ZoomControls组件，该组件相当于同时组合了“放大”“缩小”两个按钮，并允许分别为两个按钮绑定不同的事件监听器。</p>
+<h2 id="使用QuickContactBadge关联联系人"><a href="#使用QuickContactBadge关联联系人" class="headerlink" title="使用QuickContactBadge关联联系人"></a>使用QuickContactBadge关联联系人</h2><p>QuickContactBadge继承了ImageView，因此它的本质也是图片按钮，也可以通过android:src来指定它显示的图片。它额外增加的功能是：该图片可以关联到手机中指定联系人，当用户单机该图片时，系统将会打开相应联系人的联系方式界面。<br>可以调用如下方法：</p>
+<ul>
+<li>assignContactFromEmail(String emailAddapp\src\main\ress,boolean lazyLookup):将该图片关联到指定E-mail地址对应的联系人</li>
+<li>assignContactFromPhone(String phoneNumber,boolean lazyLookup):将该图片关联到指定电话号码对应的联系人</li>
+<li>assignContactUri(Uri contactUri):将图片关联到特定Uri对应的联系人<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><em>改变查看图片的透明度，可以调用ImageView的setImageAlpha()方法来实现</em><br><em>i+=a 就是i=i+a</em></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/7.21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/7.21/" itemprop="url">Android学习（六）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T22:47:25+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><p>默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。<br>由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。</p>
+<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><p>EditText最重要的属性是inputType，该属性相当于HTML的&lt;input…/&gt;元素的type属性，用于将EditText设置为指定类型的输入组件。<br>android:inputType属性（系统自动显示哪种类型的输入键盘）：</p>
+<ul>
+<li>numberPassword：表示只能接受数字密码（使用安卓系统自带安全的数字输入法）</li>
+<li>number：表示是数字输入框（使用输入法的数字输入法）</li>
+<li>date：表示是日期输入框（使用输入法的数字输入法）</li>
+<li>phone：表示是输入电话号码的输入框（使用输入法的数字输入法）</li>
+</ul>
+<p>android:selectAllOnFocu属性</p>
+<ul>
+<li>=true为如果文本框的内容能选择，设置是否当它获得焦点时自动选中所有文本。</li>
+<li>=false不选中。</li>
+</ul>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><p>Button继承了TextView，主要是生成一个按钮，该按钮能提供被用户点击时触发一个onClick事件。如果需要让按钮的背景颜色、背景图片随用户动作动态改变，考虑使用自定义Drawable实现。</p>
+<p>Button常用属性：</p>
+<ul>
+<li>android:shadowColor设置文本框内文本的阴影颜色</li>
+<li>android:shadowRadius设置阴影的模糊程度，该值越大越模糊</li>
+<li>android:shadowDx阴影在水平方向的偏移</li>
+<li>android:shadowDy阴影在垂直方向的偏移</li>
+</ul>
+<p>Button的android:background=””属性，可以用XML实现，在XMl中可以用state_pressed=”true”表示按钮按下，state_pressed=”false”表示按钮松开，并且利用android:drawable=””表示背景。    </p>
+<h2 id="使用9Patch图片作为背景"><a href="#使用9Patch图片作为背景" class="headerlink" title="使用9Patch图片作为背景"></a>使用9Patch图片作为背景</h2><p>当按钮的内容太多时，Android会自动缩放整张图片，以保证背景图片能覆盖整个按钮。但是这种缩放的效果并不好。为了实现只缩放图片中某个部分，借助9Patch图片实现。<br>左侧和上侧的直线共同决定图片的缩放区域<br>右侧和下侧的直线共同决定图片的内容显示区域</p>
+<h2 id="RadioButton和CheckBox"><a href="#RadioButton和CheckBox" class="headerlink" title="RadioButton和CheckBox"></a>RadioButton和CheckBox</h2><p>两个都有一个可选中的功能，不过一组RadioButton只能选择其中一个，所以RadioButton通常要与RadioGroup一起使用，用于定于一组单选钮；CheckBox可以复选。都可额外指定一个android:checked属性，该属性用于指定RadioButton、checkBox初始时是否被选中。<br><strong>如果在XML布局文件中默认勾选了某个单选钮，则必须为该组单选钮的每个按钮指定android：id属性值；否则这组单选钮不能正常工作</strong></p>
+<h2 id="状态开关按钮（ToggleButton）和开关（Switch）"><a href="#状态开关按钮（ToggleButton）和开关（Switch）" class="headerlink" title="状态开关按钮（ToggleButton）和开关（Switch）"></a>状态开关按钮（ToggleButton）和开关（Switch）</h2><p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
+<ul>
+<li>android:checked设置该按钮是否被选中</li>
+<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
+<li>android:textOn设置当按钮的状态打开时显示的文本    </li>
+</ul>
+<p>Switch支持的XML属性：</p>
+<ul>
+<li>android:checked设置该按钮是否被选中</li>
+<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
+<li>android:textOn设置当按钮的状态打开时显示的文本 </li>
+<li>android:switchTextAppearnce设置该开关图标上的文本样式</li>
+<li>android:textStyle设置该开关的文本风格</li>
+<li>android:thumb指定使用自定义Drawable绘制该开关按钮</li>
+<li>android:track指定使用自定义Drawable绘制该开关的开关轨迹</li>
+<li>android:typeface设置该开关的文本的字体风格</li>
+</ul>
+<h2 id="时钟（AnalogClock和TextClock）"><a href="#时钟（AnalogClock和TextClock）" class="headerlink" title="时钟（AnalogClock和TextClock）"></a>时钟（AnalogClock和TextClock）</h2><p>TextClock是数字时钟，继承了TextView，不能设置android:text。它的属性：</p>
+<ul>
+<li>android:format12Hour设置该时钟的12小时制的格式字符串</li>
+<li>android:format24Hour设置该时钟的24小时制的格式字符串</li>
+<li>android:timeZone设置该时钟的时区</li>
+</ul>
+<p>AnalogClock是模拟时钟，继承了View，重写了View的OnDraw方法。它的属性：</p>
+<ul>
+<li>android:dial设置该模拟时钟的表盘使用的图片</li>
+<li>android:hand_hour设置该模拟时钟的时针使用的图片</li>
+<li>android:hand_minute设置该模拟时钟的分针使用的图片</li>
+</ul>
+<h2 id="计时器-Chronometer"><a href="#计时器-Chronometer" class="headerlink" title="计时器(Chronometer)"></a>计时器(Chronometer)</h2><p>Chronometer继承TextView，但是它不会显示当前时间，它显示的是从某一个起始时间开始，一共过去了多长时间。<br>Chronometer的方法：</p>
+<ul>
+<li>setBase(long base)：设置计时器的起始时间</li>
+<li>setFormat(String format)：设置显示时间的格式</li>
+<li>start()：开始计时</li>
+<li>stop()：停止计时</li>
+<li>setOnChronometerTickListener(Chronometer.OnChronometerTickListener listener)：绑定事件监听器，当事件改变时触发该监听器</li>
+</ul>
+<p><em>SystemClock.elapsedRealtime()，系统启动至今的时间/计算某个时间经历了多长时间有意义</em></p>
+<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h2><p><code>String words = checkId == R.id.male ? &quot;你的性别是男性&quot;:&quot;你的性别是女性&quot;</code>这句代表如果RadioButton的checkId值是等于R.id.male就把”你的性别是男性”赋给words。 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/7.20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/7.20/" itemprop="url">长征</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T23:55:58+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/历史/" itemprop="url" rel="index">
+                    <span itemprop="name">历史</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="回顾历史"><a href="#回顾历史" class="headerlink" title="回顾历史"></a>回顾历史</h1><h2 id="长征"><a href="#长征" class="headerlink" title="长征"></a>长征</h2><p>土地革命战争时期，中国工农红军主力撤离长江南北各苏区，转战两年，到达陕甘苏区的战略转移行动。<br>1934年10月，第五次反围剿失败后，中央主力红军为摆脱国民党军队的包围追击，被迫实行战略性转移，退出中央根据地，进行长征。<br>长征是人类历史上的伟大奇迹，中央红军共进行了380余次战斗，攻占700多座县城，红军牺牲了营以上干部多达430余人，平均年龄不到30岁，共击溃国民党军数百个团，其间共经过14个省，翻越18座大山，跨过24条大河，走过荒草地，翻过雪山，行程约二万五千里，红一方面军于1935年10月到达陕北，与陕北红军胜利会师。1936年10月，红二、四方面军到达甘肃会宁地区，同红一方面军会师。红军三大主力会师，标志着万里长征的胜利结束。</p>
+<h2 id="基本路线"><a href="#基本路线" class="headerlink" title="基本路线"></a>基本路线</h2><p>瑞金→突破敌四道防线→强渡乌江→占领遵义→四渡赤水→巧渡金沙江→强渡大渡河→飞夺泸定桥→翻雪山→过草地→陕北吴起会师(1935年10月)→甘肃会宁会师(1936年10月)，宣告长征的胜利结束。</p>
+<h2 id="各阶段"><a href="#各阶段" class="headerlink" title="各阶段"></a>各阶段</h2><p>长征准备阶段（1934年7月7日～1934年10月10日）<br>长征失利阶段（1934年10月10日～1935年1月15日）<br>长征转折阶段（1935年1月15日～1935年6月14日）<br>坚持北上和南下分裂阶段（1935年6月14日～1935年10月19日）<br>发展巩固和南下受挫阶段（1935年10月19日～1936年7月1日）<br>大会师阶段（1936年7月1日～1936年12月12日）   </p>
+<h2 id="各部队"><a href="#各部队" class="headerlink" title="各部队"></a>各部队</h2><p>第一支是中央红军（后改称红一方面军），于1934年10月10日由福建的长汀等地出发，1935年10月19日到达陕西的吴起镇（今吴起县），行程达二万五千里；<br>第二支是红二十五军（后编入红一方面军），于1934年11月16日由河南罗山何家冲出发，1935年9月15日到达陕西延川永坪镇，同陕甘红军会师，合编为红十五军团，行程近万里，最早到达陕北的一支红军 。<br>第三支是红四方面军，于1935年5月初放弃川陕苏区，由彰明、中坝、青川、平武等地出发，向岷江地区西进，1936年10月9日到达甘肃会宁，与红一方面军会师，行程一万余里；<br>第四支是红二、红六军团（后同红一方面军第三十二军合编为红二方面军），于1935年11月19日由湖南桑植刘家坪等地出发，1936年10月22日到达会宁以东的将台堡，同红一方面军会师，行程两万余里。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/7.19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/7.19/" itemprop="url">Android学习（五）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T21:18:18+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>RelativeLayout可支持的两个Xml属性   </p>
+<ul>
+<li>android:gravity设置该布局容器内各子组件的对齐方式</li>
+<li>android:ignoreGravity设置哪个组件不受gravity属性影响</li>
+</ul>
+<p>为了扩展RelativeLayout中各子组件的分布布局，RelativeLayout提供了一个内部类：RelativeLayout.LayoutParams，该类提供了大量的Xml属性来控制子组件的布局分布。</p>
+<p>相对布局子组件的布局分布里只能设置true或false的XML属性。  </p>
+<ul>
+<li>android:layout_centerHorizontal控制该子组件是否位于布局容器的水平居中</li>
+<li>android:layout_centerVertical控制该子组件是否位于布局容器的垂直居中</li>
+<li>android:layout_centerInParent控制该子组件是否位于布局容器的中央位置</li>
+<li>android:layout_alignParentBottom控制该子组件是否与布局容器的底端对齐</li>
+<li>android:layout_alignParentLeft控制该子组件是否与布局容器的左端对齐</li>
+<li>android:layout_alignParentRight控制该子组件是否与布局容器的右端对齐</li>
+<li>android:layout_alignParentTop控制该子组件是否与布局容器的顶端对齐</li>
+</ul>
+<p>相对布局子组件的布局分布里属性值为其他UI组件ID的XML属性。</p>
+<ul>
+<li>android:layout_toRightOf控制该子组件位于给出ID组件的右侧</li>
+<li>android:layout_toLeftOf控制该子组件位于给出ID组件的左侧</li>
+<li>android:layout_above控制该子组件位于给出ID组件的上方</li>
+<li>android:layout_below控制该子组件位于给出ID组件的下方</li>
+<li>android:layout_alignTop控制该子组件与给出ID组件的上边界对齐</li>
+<li>android:layout_alignBottom控制该子组件与给出ID组件的下边界对齐</li>
+<li>android:layout_alignLeft控制该子组件与给出ID组件的左边界对齐</li>
+<li>android:layout_alignRight控制该子组件与给出ID组件的右边界对齐</li>
+</ul>
+<p><em>ps：align对齐，to在什么侧</em></p>
+<h2 id="GridLayout"><a href="#GridLayout" class="headerlink" title="GridLayout"></a>GridLayout</h2><p>GridLayout的作用类似于HTML中的table标签，它将整个容器划分为rows*columns个网格，每个网格可以放置一个组件。除此之外，也可以设置一个组件横跨多少列、一个组件纵跨多少行。<br>GridLayout常用的XML属性：</p>
+<ul>
+<li>android:alignmentMode设置该布局管理器采用的对齐模式</li>
+<li>android:columnCount设置该网格的列数量</li>
+<li>android:columnOrderPreserved设置该网格容器是否保留序号</li>
+<li>android:rowCount设置该网格的行数量</li>
+<li>android:rowOrderPreserved设置该网格容器是否保留行序号</li>
+<li>android:useDefaultMargins设置该布局管理器是否使用默认的页边距</li>
+</ul>
+<p><em>ps：Margins边距，column列，row行</em><br>为了控制GridLayout布局容器中各子组件的布局分布，GridLayout提供了一个内部类：GridLayout.LayoutParams，该类提供了大量的XML属性来控制网格布局中子组件的布局分布。<br>GridLayout.LayoutParams常用的XML属性：    </p>
+<ul>
+<li>android:layout_column设置该子组件在GridLayout的第几列</li>
+<li>android:layout_columnSpan设置该子组件在GridLayout横向上跨几列</li>
+<li>android:layout_gravity设置该子组件采用何种方式占据该网格的空间</li>
+<li>android:layout_row设置该子组件在GridLayout的第几行</li>
+<li>android:layout_rowSpan设置该子组件在GridLayout纵向上跨几行</li>
+</ul>
+<p><em>ps：column列，row行，span跨越</em><br><em>setpadding(a,b,c,d)设置四周的空白区域</em></p>
+<h2 id="绝对布局"><a href="#绝对布局" class="headerlink" title="绝对布局"></a>绝对布局</h2><p>绝对布局由AbsoluteLayout所代表。就像Java中AWT编程中的空布局，Android不提供任何布局控制，而是由开发人员自己通过X、Y坐标来控制组件的位置，布局容器不再管理子组件的位置、大小。（绝对布局已经过时了）</p>
+<ul>
+<li>layout_x:子组件的X坐标</li>
+<li>layout_y:子组件的Y坐标</li>
+</ul>
+<h2 id="安卓布局中常用的距离单位"><a href="#安卓布局中常用的距离单位" class="headerlink" title="安卓布局中常用的距离单位"></a>安卓布局中常用的距离单位</h2><p><strong>px</strong>：每个px对应屏幕上的一个点<br><strong>dip或dp（设备独立像素，device independent pixels）</strong>：一种基于屏幕密度的抽象单位。在每英寸160点的显示器上，1dip=1px。但随着屏幕密度的改变，dip与px的换算会发生改变。<br><strong>sp（比例像素，scaled pixels）</strong>：主要是处理字体的大小，可以根据用户的字体大小首选项进行缩放。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/7.18/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1331,610 +2049,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/7.13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/13/7.13/" itemprop="url">博客编写注意事项（2）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T14:38:03+08:00">
-                2018-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MarkDown语法/" itemprop="url" rel="index">
-                    <span itemprop="name">MarkDown语法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>浅谈Markdown语法在GitHub博客中的应用      </p>
-<h1 id="第二个注意事项"><a href="#第二个注意事项" class="headerlink" title="第二个注意事项"></a>第二个注意事项</h1><h2 id="markdown语句书写细节"><a href="#markdown语句书写细节" class="headerlink" title="markdown语句书写细节"></a>markdown语句书写细节</h2><p>在诸如<code>#,:</code>等特殊符号后，应添加空格，以保证语句在编译时的正确性。</p>
-<h2 id="‘标亮’的使用"><a href="#‘标亮’的使用" class="headerlink" title="‘标亮’的使用"></a>‘标亮’的使用</h2><p>在输入法为英文的情况下，我们使用的tab键正上方的那个键<strong><code></code></strong>来表示标亮。<br>例如：<code>你好，我是标亮符号的表现形式。</code></p>
-<h2 id="‘加粗’的使用"><a href="#‘加粗’的使用" class="headerlink" title="‘加粗’的使用"></a>‘加粗’的使用</h2><p>我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。<br>例如： <strong>你好我是加粗的表现形式。</strong> </p>
-<h2 id="‘无序列表项’的使用"><a href="#‘无序列表项’的使用" class="headerlink" title="‘无序列表项’的使用"></a>‘无序列表项’的使用</h2><p>列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。<br>例如：（此处需要空一行才可以实现无序列表） </p>
-<ul>
-<li>无序列表项1<ul>
-<li>无序列表项1.1</li>
-</ul>
-</li>
-<li>无序列表项2  </li>
-<li>无序列表项3</li>
-</ul>
-<h2 id="‘有序列表项’的使用"><a href="#‘有序列表项’的使用" class="headerlink" title="‘有序列表项’的使用"></a>‘有序列表项’的使用</h2><p>有序列表项通过“1.”引号其中的数字+一个英文句点实现。<br>例如：</p>
-<ol>
-<li>有序列表项1</li>
-<li>有序列表项2</li>
-<li>有序列表项3</li>
-</ol>
-<h2 id="‘列表缩进’的使用"><a href="#‘列表缩进’的使用" class="headerlink" title="‘列表缩进’的使用"></a>‘列表缩进’的使用</h2><p>缩进的符号用“*/+/-”都可以实现，在缩进符号后面紧跟一个空格或者tab制表符。在文本中的换行用两个空格即可实现。<br>例如：</p>
-<ul>
-<li>蜀相<br>丞相祠堂何处寻，锦官城外白森森。<br>映阶碧草自春色，隔叶黄鹂空好音。<br>三顾频烦天下计，两朝开济老臣心。<br>出事未捷身先死，长使英雄泪满襟。</li>
-</ul>
-<h2 id="‘图片，超链接，视频’在博客中的插入"><a href="#‘图片，超链接，视频’在博客中的插入" class="headerlink" title="‘图片，超链接，视频’在博客中的插入"></a>‘图片，超链接，视频’在博客中的插入</h2><p><a href="https://baike.baidu.com/item/%E5%89%91%E9%97%A8%E5%85%B3%E9%A3%8E%E6%99%AF%E5%8C%BA/1356420?fromtitle=%E5%89%91%E9%97%A8%E5%85%B3&amp;fromid=31219&amp;fr=aladdin" target="_blank" rel="noopener">剑门关</a><br><img src="https://dimg05.c-ctrip.com/images/fd/tg/g2/M0B/8B/64/CghzgFWw3KKAThWhACtMPja6o6E510_R_1600_10000_Mtg_7.jpg" alt="image"><br><strong>ps</strong>：在网页中的图片，只需要右击鼠标，点击复制图片地址，再插入博客中，图片插入的网址粘贴上就行。    </p>
-<h2 id="‘代码块’的插入"><a href="#‘代码块’的插入" class="headerlink" title="‘代码块’的插入"></a>‘代码块’的插入</h2><p>在英文键盘输入的模式下,使用tab键上面的键，文本首尾连按三次就行。<br>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Speak()&#123;     </span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">        System.out.println(&quot;你好&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="‘表格’的插入"><a href="#‘表格’的插入" class="headerlink" title="‘表格’的插入"></a>‘表格’的插入</h2><p>推荐一个能生成多种列表的网址：<a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">http://www.tablesgenerator.com/markdown_tables#</a><br><a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">点此进入</a></p>
-<h2 id="‘tags’多标签实现"><a href="#‘tags’多标签实现" class="headerlink" title="‘tags’多标签实现"></a>‘tags’多标签实现</h2><p>通过在tags的叙述中使用“- 标签1- 标签2”来实现，标签1与2之间需要换行。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags:    </span><br><span class="line">     - Activity</span><br><span class="line">     - View</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/7.12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/12/7.12/" itemprop="url">博客编写格式注意（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T16:49:07+08:00">
-                2018-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MarkDown语法/" itemprop="url" rel="index">
-                    <span itemprop="name">MarkDown语法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
-<h1 id="第一个注意事项"><a href="#第一个注意事项" class="headerlink" title="第一个注意事项"></a>第一个注意事项</h1><h2 id="title标题"><a href="#title标题" class="headerlink" title="title标题"></a>title标题</h2><blockquote>
-<p>“—”<br>title: 博客编写格式注意<br>categories: MarkDown语法<br>tags: 博客编写<br>“—”<br>浅谈GitHub博客的本地Markdown文件书写的语法及注意事项</p>
-</blockquote>
-<p>在这段md语句中title的“—” “—”包裹需要在第二个—后面加一段文字性描述；否则GitHub博客上不会识别出这个md文件的标题，博客上显示的标题是未命名，且title下面的分类、标签都没有加上，变成了文字性的描述了。</p>
-<h2 id="‘-gt-’引用的使用"><a href="#‘-gt-’引用的使用" class="headerlink" title="‘&gt;’引用的使用"></a>‘&gt;’引用的使用</h2><p>‘&gt;’的结尾需要回车打出一个空白行来结束引用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/一口气读三国1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/11/一口气读三国1/" itemprop="url">读三国</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T22:38:48+08:00">
-                2018-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>总结一下三国演义中出现的关键人物及事迹   </p>
-<h2 id="读三国（一）"><a href="#读三国（一）" class="headerlink" title="读三国（一）"></a>读三国（一）</h2><h3 id="汉室倾颓，讨伐董卓"><a href="#汉室倾颓，讨伐董卓" class="headerlink" title="汉室倾颓，讨伐董卓"></a>汉室倾颓，讨伐董卓</h3><p>刘关张桃园三结义、曹孟德献七星宝刀、虎牢关三英战吕布、董卓火烧洛阳、王允利用貂蝉美人计离间吕布董卓         </p>
-<h3 id="群雄逐鹿，吕布覆灭"><a href="#群雄逐鹿，吕布覆灭" class="headerlink" title="群雄逐鹿，吕布覆灭"></a>群雄逐鹿，吕布覆灭</h3><p>曹操挟天子以令诸侯、孙策小霸王平定江东八十一县、吕布白门楼殒命      </p>
-<h3 id="内阁密诏，千里独行"><a href="#内阁密诏，千里独行" class="headerlink" title="内阁密诏，千里独行"></a>内阁密诏，千里独行</h3><p>刘备曹操青梅煮酒论英雄、董承联合众汉臣密谋杀曹操、关云长千里走单骑、刘玄德赵子龙相见情义比桃园</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/ViewPager认识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/10/ViewPager认识/" itemprop="url">ViewPager的认识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T00:00:00+08:00">
-                2018-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Fragment/" itemprop="url" rel="index">
-                    <span itemprop="name">Fragment</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ViewPager的认识"><a href="#ViewPager的认识" class="headerlink" title="ViewPager的认识"></a>ViewPager的认识</h1><h2 id="ViewPager是怎么样的一个控件"><a href="#ViewPager是怎么样的一个控件" class="headerlink" title="ViewPager是怎么样的一个控件    "></a>ViewPager是怎么样的一个控件    </h2><p>它是一个用于页面切换的组件，我们可以向它的布局内填充多个View，我们可以通过在触摸屏上左右滑动来切换不同的View。我们需要一个适配器Adapter，将要显示的View和我们的ViewPager进行绑定。ViewPager有自己的Adapter——PagerAdapter。其中，Google建议使用Fragment来填充ViewPager的，这样可以更加方便的生成每个Page以及管理每个Page的生命周期，就是FragmentPageAdapter和FragmentStatePagerAdapter两个不同的Adapter。<br>除此之外，ViewPager会缓存当前页，前一页，以及后一页，比如有1，2，3，4这四个页面，当我们处于第一页：缓存1，2；当我们处于第二页：缓存1，2，3；当我们处于第三页：缓存2，3，4；当我们处于第四页缓存3，4。</p>
-<h2 id="PagerAdapter使用重写方法："><a href="#PagerAdapter使用重写方法：" class="headerlink" title="PagerAdapter使用重写方法："></a>PagerAdapter使用重写方法：</h2><p><em>getCount()</em>：获得viewpager中有多少个view<br><em>destroyItem()</em>：移除一个给定位置的页面。适配器有责任从容器中删除这个视图。这是为了确保在finishUpdate(ViewGroup)返回时视图能被移除。<br><em>instantiateItem()</em>：①将给定位置的view添加到ViewGroup(容器)中，创建并显示出来②返回一个代表新增页面的Object(key),通常都是直接返回view本身就可以了。当然也可以自己自定义key，但是key和每一个view要一一对应。<br><em>isViewFromObject()</em>：判断instantiateItem(ViewGroup,int)函数所返回的key与一个页面视图是否是代表的同一个视图(即它俩是否是对应，对应的表示同一个View)，通常我们直接写return view ==object；就可以了。貌似因为ViewPager中有个存储view状态信息的ArrayList，根据View取出对应信息。<br><strong>ps</strong>：不一定要重写所有方法。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1985,7 +2099,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1996,7 +2110,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
