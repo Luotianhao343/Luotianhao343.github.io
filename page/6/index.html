@@ -259,6 +259,651 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/7-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/15/7-15/" itemprop="url">Android学习（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T16:45:26+08:00">
+                2018-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Activity和View"><a href="#Activity和View" class="headerlink" title="Activity和View"></a>Activity和View</h2><p>Activity只能通过setContentView(View)来显示指定组件。<br>setContentView()的参数有两种：</p>
+<ol>
+<li>view对象</li>
+<li>布局管理器的id值，即R.layout.main等等</li>
+</ol>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service也代表一个单独的Android组件。Service与Activity的区别在于：Service通常位于后台运行，它一般不需要与用户交互，因而Service没有图形用户界面。<br>Service组件需要继承Service基类，Service被运行起来之后，它将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
+<h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>BroadcastReceiver也是Android应用中的组件，代表广播消息接收器。BroadcastReceiver非常类似于事件编程中的监听器，与普通事件监听器不同的是，普通事件监听器监听的事件源是程序中的对象；而BroadcastReceiver监听的事件源是Android应用中的其他组件。<br>使用BroadcastReceiver组件接受广播消息比较简单，开发者只需要实现自己的BroadcastReceiver子类，并重写<strong>onReceive(Context context,Intent intent)</strong>方法即可。当其他组件通过sendBroadcast(),sendStickyBroadcast(),sendOrderedBroadcast()方法发送广播消息时，如果该BroadcastReceiver也对该消息感兴趣（通过IntentFilter配置），BroadcastReceiver的<strong>onReceive(Context context,Intent intent)</strong>方法将会被触发。<br>开发者实现了BroadcastReceiver后，通常有两种方式来注册这个系统级的“事件监听器”。</p>
+<ul>
+<li>在Java代码中通过Context.registReceiver()方法注册BroadcastReceiver.</li>
+<li>在AndroidManifest.xml文件中使用&lt;receiver…/&gt;元素完成注册。</li>
+</ul>
+<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>Android应用运行在各自独立的进程中，如果这些Android应用之间需要实现实时的数据交换——例如，我们开发了一个发送短信的程序，当发送短信时需要从联系人管理应用中读取指定联系人的数据——这就需要多个应用程序之间进行数据交换，开发者可以编写自己的ContentProvider来实现数据交换。<br>开发者需要实现如下的抽象方法：</p>
+<ul>
+<li>insert(Uri,ContentValues)：向ContentProvider插入数据</li>
+<li>delete(Uri,ContentValues)：删除ContentProvider中指定数据</li>
+<li>update(Uri,ContentValues,String,String[])：更新ContentProvider中指定数据</li>
+<li>query(Uri,String[],String,String[],String)：从ContentProvider查询数据</li>
+</ul>
+<p>通常与ContentProvider结合使用的时ContentResolver，一个应用程序使用ContentProvider暴露自己的数据，而另一个应用程序则通过ContentResolver来访问数据。</p>
+<h2 id="Intent和IntentFilter"><a href="#Intent和IntentFilter" class="headerlink" title="Intent和IntentFilter"></a>Intent和IntentFilter</h2><p>Intent可以启动另一个Activity，也可以启动一个Service组件，还可以发送一条广播消息来触发系统中的BroadcastRecevier。也就说这三种组件之间的通信都以Intent作为载体。</p>
+<ul>
+<li>当需要启动一个Activity时，可以调用Context的startActivity(Intent intent)或startActivityForResult(Intent intent,int requestCode)方法，这两个方法中intent中封装了需要启动的Activity的信息。</li>
+<li>启动Service时，调用Context的startService(Intent intent)方法或者bindService(Intent service,ServiceConnection conn,int flags)方法，这两个方法中intent封装了需要启动的目标service的信息。</li>
+<li>当需要触发一个BroadcastReceiver时，可调用Context的sendBroadcast(Intent intent),sendStickyBroadcast(Intent intent)或sendOrderedBroadcast(Intent intent,String receiverPermission)方法来发送广播消息，这三个方法中Intent参数封装了需要触发的目标BroadcastReceiver的信息。</li>
+</ul>
+<p>当一个组件通过Intent表示了启动或触发另一个组件的“意图”之后，这个意图可以分为两类。</p>
+<ul>
+<li>显式Intent：显式Intent明确指定需要启动或者触发的组件的类名。</li>
+<li>隐式Intent：隐式Intent只是指定需要启动或者触发的组件应满足怎样的条件。  </li>
+</ul>
+<p>被调用的组件通过IntentFilter来声明自己所满足的条件——也就是声明自己到底能处理哪些隐式Intent。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14安卓学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/7.14安卓学习/" itemprop="url">Android学习（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T22:55:37+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android应用清单文件AndroidManifest-xml"><a href="#Android应用清单文件AndroidManifest-xml" class="headerlink" title="Android应用清单文件AndroidManifest.xml"></a>Android应用清单文件AndroidManifest.xml</h1><h2 id="AndroidManifest-xml清单文件通常包含如下信息："><a href="#AndroidManifest-xml清单文件通常包含如下信息：" class="headerlink" title="AndroidManifest.xml清单文件通常包含如下信息："></a>AndroidManifest.xml清单文件通常包含如下信息：</h2><ul>
+<li>应用程序包名</li>
+<li>应用程序所包含的组件，如Activity、Service、BroadcastReceiver<br>和ContentProvider等</li>
+<li>应用程序兼容的最低版本</li>
+<li>应用程序使用系统所需的权限声明</li>
+<li>其他程序访问该程序所需的权限声明</li>
+</ul>
+<h2 id="应用程序权限说明"><a href="#应用程序权限说明" class="headerlink" title="应用程序权限说明"></a>应用程序权限说明</h2><p><strong>1.声明运行该应用本身所需要的权限</strong><br>通过为&lt;Manifest…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可为程序本身声明权限。<br>例如：<br>&lt;! –声明该应用本身需要打电话的权限 –&gt;<br><code>&lt;uses-permission android:name=&quot;android.permission.CALL_PHONE&quot;/&gt;</code><br><strong>2.声明调用该应用所需的权限</strong><br>通过为应用的各组件元素，如&lt;activity…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可声明调用该程序所需的权限。<br>例如：<br>&lt;! –声明该应用本身需要发送短信的权限 –&gt;</p>
+<p><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;&gt;</code><br>常用权限如下表：    </p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCESS_NETWORK_STATE</td>
+<td>允许应用程序获取网络状态信息的权限</td>
+</tr>
+<tr>
+<td>ACCESS_WIFI_STATE</td>
+<td>允许应用程序获取Wi-Fi网络状态信息的权限</td>
+</tr>
+<tr>
+<td>BATTERY_STATS</td>
+<td>允许应用程序获取电池状态信息的权限</td>
+</tr>
+<tr>
+<td>BLUETOOTH</td>
+<td>允许应用程序连接匹配的蓝牙设备的权限</td>
+</tr>
+<tr>
+<td>BLUETOOTH_ADMIN</td>
+<td>允许应用程序发现匹配的蓝牙设备的权限</td>
+</tr>
+<tr>
+<td>BROADCAST_SMS</td>
+<td>允许应用程序广播收到短信提醒的权限</td>
+</tr>
+<tr>
+<td>CALL_PHONE</td>
+<td>允许应用程序拨打电话的权限</td>
+</tr>
+<tr>
+<td>CAMERA</td>
+<td>允许应用程序使用照相机的权限</td>
+</tr>
+<tr>
+<td>CHANGE_NETWORK_STATE</td>
+<td>允许应用程序改变网络连接状态的权限</td>
+</tr>
+<tr>
+<td>CHANGE_WIFI_STATE</td>
+<td>允许应用程序改变wifi网络连接状态的权限</td>
+</tr>
+<tr>
+<td>DELETE_CACHE_FILES</td>
+<td>允许应用程序删除缓存文件的权限</td>
+</tr>
+<tr>
+<td>DELETE_PACKAGES</td>
+<td>允许应用程序删除安装包的权限</td>
+</tr>
+<tr>
+<td>FLASHLIGHT</td>
+<td>允许应用程序访问闪光灯的权限</td>
+</tr>
+<tr>
+<td>INTERNET</td>
+<td>允许应用程序打开网络Socket的权限</td>
+</tr>
+<tr>
+<td>MODIFY_AUDIO_SETTINGS</td>
+<td>允许应用程序修改全局声音设置的权限</td>
+</tr>
+<tr>
+<td>PROCESS_OUTGOING_CALLS</td>
+<td>允许应用程序监听、控制、取消呼出电话的权限</td>
+</tr>
+<tr>
+<td>READ_CONTACTS</td>
+<td>允许应用程序读取用户的联系人数据的权限</td>
+</tr>
+<tr>
+<td>READ_HISTORY_BOOKMARKS</td>
+<td>允许应用程序读取历史书签的权限</td>
+</tr>
+<tr>
+<td>READ_OWNER_DATA</td>
+<td>允许应用程序读取用户数据的权限</td>
+</tr>
+<tr>
+<td>READ_PHONE_STATE</td>
+<td>允许应用程序读取电话状态的权限</td>
+</tr>
+<tr>
+<td>READ_PHONE_SMS</td>
+<td>允许应用程序读取短信的权限</td>
+</tr>
+<tr>
+<td>REBOOT</td>
+<td>允许应用程序重启系统的权限</td>
+</tr>
+<tr>
+<td>RECEIVE_MMS</td>
+<td>允许应用程序接收、监控、处理彩信的权限</td>
+</tr>
+<tr>
+<td>RECEIVE_SMS</td>
+<td>允许应用程序接收、监控、处理短信的权限</td>
+</tr>
+<tr>
+<td>RECORD_AUDIO</td>
+<td>允许应用程序录音的权限</td>
+</tr>
+<tr>
+<td>SEND_SMS</td>
+<td>允许应用程序发送短信的权限</td>
+</tr>
+<tr>
+<td>SET_ORIENTATION</td>
+<td>允许应用程序旋转屏幕的权限</td>
+</tr>
+<tr>
+<td>SET_TIME</td>
+<td>允许应用程序设置时间的权限</td>
+</tr>
+<tr>
+<td>SET_TIME_ZONE</td>
+<td>允许应用程序设置时区的权限</td>
+</tr>
+<tr>
+<td>SET_WALLPAPER</td>
+<td>允许应用程序设置桌面壁纸的权限</td>
+</tr>
+<tr>
+<td>VIBRATE</td>
+<td>允许应用程序控制振动器的权限</td>
+</tr>
+<tr>
+<td>WRITE_CONTACTS</td>
+<td>允许应用程序写入用户联系人的权限</td>
+</tr>
+<tr>
+<td>WRITE_HISTORY_BOOKMARKS</td>
+<td>允许应用程序写历史书签的权限</td>
+</tr>
+<tr>
+<td>WRITE_OWNER_DATA</td>
+<td>允许应用程序写用户数据的权限</td>
+</tr>
+<tr>
+<td>WRITE_SMS</td>
+<td>允许应用程序写短信的权限</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/7.14数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/7.14数据库/" itemprop="url">数据库系统概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T21:47:54+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-数据库的4个基本概念"><a href="#1-数据库的4个基本概念" class="headerlink" title="1.数据库的4个基本概念"></a>1.数据库的4个基本概念</h1><h2 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h2><p>描述数据的符号记录称为数据。</p>
+<h2 id="数据库-DataBase-DB"><a href="#数据库-DataBase-DB" class="headerlink" title="数据库(DataBase,DB)"></a>数据库(DataBase,DB)</h2><p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。</p>
+<h2 id="数据库管理系统-DataBase-Management-System-DBMS"><a href="#数据库管理系统-DataBase-Management-System-DBMS" class="headerlink" title="数据库管理系统(DataBase Management System,DBMS)"></a>数据库管理系统(DataBase Management System,DBMS)</h2><p>数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。<br>主要功能：</p>
+<ul>
+<li>数据定义功能</li>
+<li>数据组织、存储和管理</li>
+<li>数据操纵功能</li>
+<li>数据库的事务管理和运行管理</li>
+<li>数据库的建立和维护功能</li>
+<li>其他</li>
+</ul>
+<h2 id="数据库系统-DataBase-System-DBS"><a href="#数据库系统-DataBase-System-DBS" class="headerlink" title="数据库系统(DataBase System,DBS)"></a>数据库系统(DataBase System,DBS)</h2><p>数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员(DataBase Administrator,DBA)组成的存储、管理、处理和维护数据的系统。</p>
+<h1 id="2-数据管理技术的发展"><a href="#2-数据管理技术的发展" class="headerlink" title="2.数据管理技术的发展"></a>2.数据管理技术的发展</h1><ol>
+<li>人工管理阶段</li>
+<li>文件系统阶段</li>
+<li>数据库系统阶段</li>
+</ol>
+<h1 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3.数据模型"></a>3.数据模型</h1><h2 id="两类数据模型"><a href="#两类数据模型" class="headerlink" title="两类数据模型"></a>两类数据模型</h2><ol>
+<li>概念模型<ul>
+<li>按照用户的观点来对数据建模，用于数据库设计</li>
+</ul>
+</li>
+<li>逻辑模型和物理模型<ul>
+<li>包括层次模型、网状模型、关系模型等等，它是按照计算机系统观点对数据建模，用于数据库管理系统的实现。</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="headerlink" title="数据模型的组成要素"></a>数据模型的组成要素</h2><ol>
+<li>数据结构</li>
+<li>数据操作</li>
+<li>数据的完整性约束条件</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/7.13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1224,139 +1869,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/08/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/08/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-08T09:13:08+08:00">
-                2018-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1402,7 +1919,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1424,7 +1941,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

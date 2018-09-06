@@ -259,6 +259,697 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/8.23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/8.23/" itemprop="url">Android学习（三十九之多媒体应用开发）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T11:47:09+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="音频和视频的播放"><a href="#音频和视频的播放" class="headerlink" title="音频和视频的播放"></a>音频和视频的播放</h2><h3 id="使用MediaPlayer播放音频"><a href="#使用MediaPlayer播放音频" class="headerlink" title="使用MediaPlayer播放音频"></a>使用MediaPlayer播放音频</h3><p>当程序控制MediaPlayer对象装载音频完成之后，程序可以调用MediaPlayer的如下三个方法进行播放控制：</p>
+<ul>
+<li>start()：开始或恢复播放</li>
+<li>stop()</li>
+<li>pause()</li>
+</ul>
+<p>为了让MediaPlayer来装载指定音频文件，MediaPlayer提供了如下简单的静态方法：</p>
+<ul>
+<li>static MediaPlayer create(Context context,Uri uri)：从指定Uri来装载音频文件，并返回新创建的MediaPlayer对象</li>
+<li>static MediaPlayer create(Context context,int resid)：从resid资源ID对应的资源文件中装载音频文件，并返回新创建的MediaPlayer对象</li>
+</ul>
+<p>上面两个方法不适用于MediaPlayer循环播放多个音频文件，因为每次都会返回新创建的MediaPlayer对象。此时可通过MediaPlayer的setDataSource()方法来装载指定的音频文件。MediaPlayer提供了如下方法：</p>
+<ul>
+<li>setDataSource(String path)：指定装载path路径下所代表的文件</li>
+<li>setDataSource(FileDescriptor fd,long offset,long length)：指定装载fd所代表的文件中从offset开始、长度为length的文件内容</li>
+<li>setDataSource(FileDescriptor fd)：指定装载fd所代表的文件</li>
+<li>setDataSource(Context context,Uri uri)：指定装载uri所代表的文件</li>
+</ul>
+<p>执行了上面的setDataSource（）方法后，MediaPlayer并未真正去装载那些音频文件，还需要调用MediaPlayer的prepare（）方法去真正装载音频文件。</p>
+<p>MediaPlayer还提供了一些绑定事件监听器的方法，用于监听MediaPlayer播放过程中所发生的特定事件。绑定事件监听器的方法如下：</p>
+<ul>
+<li>setOnCompletionListener(MediaPlayer.OnCompletionListener listener)：为MediaPlayer的播放完成事件绑定事件监听器</li>
+<li>setOnErrorListener(MediaPlayer.OnErrorListener listener)：为MediaPlayer的播放错误事件绑定事件监听器</li>
+<li>setOnPreparedListener(MediaPlayer.OnpreparedListener listener)：当MediaPlayer调用prepare()方法时触发该监听器</li>
+<li>setOnSeekCompleteListener(MediaPlayer.OnSeekCompleteListener listener)：当MediaPlayer调用seek()方法时触发该监听器</li>
+</ul>
+<p>1.播放应用的资源文件，播放应用的资源文件需要两步（音频资源文件一般放在Android应用中的/res/raw目录下）：</p>
+<ol>
+<li>调用MediaPlayer的creat（Context Context,int resid）方法装载指定的资源文件</li>
+<li>调用MediaPlayer的start(),pause(),stop()等方法控制播放即可</li>
+</ol>
+<p>2.播放应用的原始资源文件：</p>
+<ol>
+<li>调用Context的getAssets（）方法获取应用的AsserManager</li>
+<li>调用AssetManager对象的openFd（String name）方法打开指定的原始资源文件，该方法返回一个AssetFileDescriptor对象</li>
+<li>调用AssetFileDescriptor的getFileDescriptor（）、getStartOffset（）、getLength（）方法来获取音频文件的FileDescriptor、开始位置、长度等。</li>
+<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource(FileDescriptor fd,long offset,long length)方法来装载音频资源</li>
+<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
+<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
+</ol>
+<p>3.播放外部存储器上的音频文件</p>
+<ol>
+<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource（String path）方法装载指定的音频文件</li>
+<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
+<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
+</ol>
+<p>4.播放来自网络的音频文件</p>
+<p>方式：①直接使用MediaPlayer的静态create（Context context，Uri uri<br>）方法②调用MediaPlayer的setDataSource(Context context,Uri uri)方法装载指定Uri对应的音频文件</p>
+<p>以第二种方式播放来自网络的音频文件的步骤如下：</p>
+<ol>
+<li>根据网络的音频文件所在的文字创建Uri对象</li>
+<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource(Context context,Uri uri)方法装载Uri对应的音频文件</li>
+<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
+<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
+</ol>
+<p>MediaPlayer除了调用prepare（）方法来准备声音之外，还可以调用prepareAsync（）来准备声音。prepareAsync（）是异步的，他不会阻塞当前的UI进程</p>
+<p>MediaPlayer的状态图：</p>
+<p><img src="https://img-blog.csdn.net/20160828235015958" alt="MediaPlayer状态图"></p>
+<h3 id="音乐特效控制"><a href="#音乐特效控制" class="headerlink" title="音乐特效控制"></a>音乐特效控制</h3><p>Android播放音乐的均衡器靠AudioEffect及其子类完成的。它的子类如下：</p>
+<ul>
+<li>AcousticEchoCanceler：取消回声控制器</li>
+<li>AutomaticGainControl：自动增益控制器</li>
+<li>NoiseSuppressor：噪声压制控制器</li>
+<li>BassBoost：重低音控制器（setStrength（short strength）方法来设置重低音的强度）</li>
+<li>Equalizer：均衡控制器（getNumberOfPresets()方法获取该均衡器所有预设的音场并提供了getPresetName()方法获取预设音场名称。获取Equalizer对象后，可调用它的getNumberOfBands()方法获取该均衡器支持的总频率，再调用getCenterFreq(short band)方法根据索引来获取频率。当用户想为某个频率的均衡器设置参数值时，可调用setBandLevel(Short band,short level)方法进行设置</li>
+<li>PresetReverb：预设音场控制器（调用setPreset(short preset)方法设置使用预设置的音场。</li>
+<li>Visualizer：示波器（它不用于控制音乐播放效果，他只是显示音乐的播放波形。为了实时显示该示波器的数据需要为该组件设置一个OnDataCaptureListener监听器，该监听器将负责更新波形显示组件的界面）</li>
+</ul>
+<p>上述前三个子类的用法很简单，只要调用它们的静态create（）方法创建相应的实例，然后调用它们的isAvailable（）方法判断是否可用，再调用setEnabled（boolean enable）方法启动相应效果即可。</p>
+<p>后四个类，都需要调用构造器来创建实例。创建实例时，同样需要传入一个audioSession参数，为了启用他们，同样需要调用AudioEffect基类的setEnabled（true）方法。</p>
+<h3 id="使用SoundPool播放音效"><a href="#使用SoundPool播放音效" class="headerlink" title="使用SoundPool播放音效"></a>使用SoundPool播放音效</h3><p>MediaPlayer存在如下缺点：</p>
+<ul>
+<li>资源占用量较高，延迟时间较长</li>
+<li>不支持多个音频同时播放</li>
+</ul>
+<p>Android系统SoundPool提供了一个Builder内部类，该内部类专门用于创建SoundPool。<br>SoundPool提供了如下4个load()重载方法：</p>
+<ul>
+<li>int load(Context context,int resId,int priority)：从resId所对应的资源加载声音</li>
+<li>int load(FileDescriptor fd,long offset,long length,int priority)：加载fd所对应的文件中从offset开始、长度为length的声音</li>
+<li>int load(AssetFileDescriptor afd,int priority)：从afd所对应的文件中加载声音</li>
+<li>int load(String path,int priority)：从path对应的文件去加载声音</li>
+</ul>
+<p>该priority参数目前没有任何作用，Android建议将该参数设为1，保持和未来的兼容性。上面4个方法加载声音之后，都会返回该声音的ID，以后程序就可以通过该声音的ID来播放指定声音了。SoundPool提供的播放指定声音的方法如下：</p>
+<ul>
+<li>int play(int soundID,float leftVolume,float rightVolume,int priority,int loop,float rate)：该方法的第一个参数指定播放哪个声音；priority指定播放声音的优先级，数值越大，优先级越高；loop指定是否循环，0为不循环，-1为循环；rate指定播放的比率，数字可从0.5到2,1为正常比率。</li>
+</ul>
+<p>归纳起来，使用SoundPool播放声音的步骤如下：</p>
+<ol>
+<li>调用SoundPool.Builder的构造器创建SoundPool.Builder对象，并可通过该Builder对象为SoundPool设置属性</li>
+<li>调用SoundPool的构造器创建SoundPool对象</li>
+<li>调用SoundPool对象的load()方法从指定资源、文件中加载声音。最好使用HashMap&lt;Integer,Integer&gt;来管理所加载的声音</li>
+<li>调用SoundPool的play()方法播放声音</li>
+</ol>
+<p>实际使用SoundPool播放声音时有如下几点需要注意：SoundPool虽然可以一次性加载多个声音，但由于内存限制，因此避免使用SoundPool来播放歌曲或者做游戏背景音乐，只有那些短促、密集的声音才考虑用SoundPool进行播放。</p>
+<h3 id="使用VideoView播放视频"><a href="#使用VideoView播放视频" class="headerlink" title="使用VideoView播放视频"></a>使用VideoView播放视频</h3><p>使用步骤：</p>
+<ol>
+<li>在界面布局文件中定义VideoView组件，或者在程序中创建VideoView组件</li>
+<li>调用VideoView的如下两个方法来加载指定视频<ul>
+<li>setVideoPath(String path)</li>
+<li>setVideoUri(Uri uri)</li>
+</ul>
+</li>
+<li>调用VideoView的start(),stop(),pause()方法来控制视频播放</li>
+</ol>
+<p>实际上与VideoView结合使用的还有一个MediaController类，它提供一个友好的图形控制界面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//获得对象</span><br><span class="line">MediaController mController = new MediaController(this);</span><br><span class="line">//设置videoView与mController建立关联</span><br><span class="line">videoView.setVideoPath(video.getAbsolutePath());</span><br><span class="line">videoView.setMediaController(mController);</span><br><span class="line">mController.setMediaPlayer(videoView);</span><br><span class="line">videoView.requestFocus();</span><br></pre></td></tr></table></figure>
+<h3 id="使用MediaRecorder录制音频"><a href="#使用MediaRecorder录制音频" class="headerlink" title="使用MediaRecorder录制音频"></a>使用MediaRecorder录制音频</h3><p>使用步骤：</p>
+<ol>
+<li>创建MediaRecorder对象</li>
+<li>调用MediaRecorder对象的setAudioSoruce()方法设置声音来源，一般传入MediaRecorder.AudioSource.MIC参数指定录制来自麦克风的声音</li>
+<li>调用MediaRecorder对象的setOutputFormat()方法设置所录制的音频文件格式</li>
+<li>调用MediaRecorder对象的setAudioEncoder(),setAudioEncodingBitRate(int bitRate),setAudioSamplingRate(int samplingRate)方法设置所录制的声音编码格式、编码位率、采样率等，这些参数将可以控制所录制的声音品质、文件大小。一般来说，声音品质越好，声音文件越大</li>
+<li>调用MediaRecorder的setOutputFile(String path)方法设置所录制的音频文件的保存位置</li>
+<li>调用MediaRecorder的prepare()方法准备录制</li>
+<li>调用MediaRecorder对象的start()方法开始录制</li>
+<li>录制完成，调用MediaRecorder对象的stop()方法停止录制，并调用release()方法释放资源</li>
+</ol>
+<p><strong>ps：第三步和第四步不能反；需要录制声音的权限和向外部存储器写入数据的权限</strong></p>
+<p>MediaRecorder的状态图：</p>
+<p><img src="https://www.2cto.com/uploadfile/Collfiles/20140815/2014081509185897.jpg" alt="MediaRecorder的状态图"></p>
+<h2 id="控制摄像头拍照"><a href="#控制摄像头拍照" class="headerlink" title="控制摄像头拍照"></a>控制摄像头拍照</h2><h3 id="使用Android5-0的Camera-v2拍照"><a href="#使用Android5-0的Camera-v2拍照" class="headerlink" title="使用Android5.0的Camera v2拍照"></a>使用Android5.0的Camera v2拍照</h3><p>Android5.0的Camera v2涉及如下API：</p>
+<ul>
+<li>CameraManager：摄像头管理器</li>
+<li>CameraCharacteristics：摄像头特性</li>
+<li>CameraDevice：代表系统摄像头</li>
+<li>CameraCaptureSession：这是一个非常重要的API，当程序需要预览、拍照时，都需要先通过该类的实例创建Session。该对象控制预览的方法为setRepeatingRequest()；控制拍照的方法为capture()</li>
+<li>CameraRequest和CameraRequest.Builder：当程序调用setRepeatingRequest()方法进行预览时，或调用capture()方法进行拍照时，都需要传入CameraRequest参数</li>
+</ul>
+<h3 id="录制视频短片"><a href="#录制视频短片" class="headerlink" title="录制视频短片"></a>录制视频短片</h3><p>MediaRecorder还可用于录制视频。为了让MediaRecorder录制时采集图像，应该在调用setAudioSource(int audio_source)方法时再调用setVideoSource(int video_source)方法来设置图像来源</p>
+<h2 id="Android-5-0-新增的屏幕捕捉"><a href="#Android-5-0-新增的屏幕捕捉" class="headerlink" title="Android 5.0 新增的屏幕捕捉"></a>Android 5.0 新增的屏幕捕捉</h2><p>Android 5.0 新增了MediaProjectionManager管理器，该管理器可以非常方便地实现了屏幕捕捉功能。<br>使用步骤：</p>
+<ol>
+<li>以MEDIA_PROJECTION_SERVICE为参数，调用Context.getSystemService()方法即可获取MediaProjectionManager实例</li>
+<li>调用MediaProjectionManager对象的createScreenCaptureIntent()方法创建一个屏幕捕捉的Intent</li>
+<li>调用startActivityForResult()方法启动第2步得到的Intent，这样即可启动屏幕捕捉的Intent</li>
+<li>重写onActivityResult()方法，在该方法中通过MediaProjectionManager对象来获得MediaProjection对象，在该对象中即可获取被捕捉的屏幕</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/8.22.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/8.22.2/" itemprop="url">Android学习（三十八之使用Service与BroadcastReceiver）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:13:42+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="接受广播消息"><a href="#接受广播消息" class="headerlink" title="接受广播消息"></a>接受广播消息</h2><p>BroadcastReceiver本质上就是一个全局监听器，用于监听系统全局的广播消息。由于BroadcastReceiver是一个全局监听器，因此它可以非常方便地实现系统中不同组件之间的通信。</p>
+<h3 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h3><p>BroadcastReceiver用于接受程序（包括用户开发的程序和系统内建的程序）所发出的Broadcast Intent，与应用程序启动Activity、Service相同的是，程序启动BroadcastReceiver也只需要两步：</p>
+<ol>
+<li>创建需要启动的BroadcastReceiver的Intent</li>
+<li>调用Context的sendBroadcast()或sendOrderedBroadcast()方法来启动指定的BroadcastReceiver</li>
+</ol>
+<p>与Activity、Service具有完整的生命周期不同，BroadcastReceiver本质上只是一个系统级的监听器——它专门负责监听各程序所发出的Broadcast。<br>前面介绍的各种OnXxxListener只是程序级别的监听器，这些监听器运行在指定程序所在进程中，当程序退出时，OnXxxListener监听器也就随之关闭了。但BroadcastReceiver属于系统级的监听器，他拥有自己的进程，只要存在与之匹配的Intent被广播出来，BroadcastReceiver就会被激发。<br>实现BroadcastReceiver的方法十分简单，只要重写BroadcastReceiver的onReceive(Context context,Intent intent)方法即可。<br>一旦实现了BroadcastReceiver，接下来就应该指定该BroadcastReceiver能匹配的Intent，此时有两种方式：</p>
+<ul>
+<li>使用代码进行指定，调用BroadcastReceiver的Context的registerReceiver(BroadcastReceiver receiver,IntentFilter filter)方法指定</li>
+<li>在AndroidManifest.xml中配置。例如如下代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.IncomingSMSReceiver&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">       &lt;action android:name=&quot;android.provider.Telephony.SMS_RECEIVED&quot;/&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/receiver&gt;</span><br></pre></td></tr></table></figure>
+<p>每次系统Broadcast事件发生后，系统就会创建相应的BroadcastReceiver实例，并自动触发它的onReceive()方法，onReceive()方法执行完之后，BroadcastReceiver实例就会被销毁。<br>如果BroadcastReceiver的onReceive（）方法不能再10秒内执行完成，Android会认为该程序无响应。所以不要在BroadcastReceiver的onReceive（）方法里执行一些耗时的操作；否则就会弹出ANR（Application No Response）对话框。<br>**如果确实需要根据Broadcast来完成一项比较耗时的操作，则可以考虑通过Intent启动一个Service来完成该操作。不应考虑使用新线程去完成耗时的操作，因为BroadcastReceiver本身的生命周期就很短，可能出现的情况是子线程可能还没有结束，BroadcastReceiver就已经退出了。虽然该进程内还有用户启动的新线程，但由于该进程内不包含任何活动组件，因此系统可能在内存紧张时优先结束该进程。这样就可能导致BroadcastReceiver启动的子线程不能执行完成。</p>
+<h3 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h3><p>只要调用Context的sendBroadcast(Intent intent)方法即可，这条广播将会启动intent参数对应的BroadcastReceiver。</p>
+<h3 id="有序广播"><a href="#有序广播" class="headerlink" title="有序广播"></a>有序广播</h3><p>Broadcast分为两种：</p>
+<ul>
+<li>Normal Broadcast(普通广播)：Normal Broadcast是完全异步的，可以在同一时刻（逻辑上）被所有接受者接收到，消息传递的效率比较高。缺点是接受者不能将处理结果传递给下一个接收者，并且无法终止Broadcast Intent的传播</li>
+<li>Ordered Broadcast(有序广播)：Ordered Broadcast的接受者将按预先声明的优先级高低依次接收Broadcast。优先级别声明在&lt;intent-filter…/&gt;元素的android:priority属性中，数越大优先级别越高，取值范围为-1000~1000；也可以调用IntentFilter对象的setPriority（）设置优先级别。Ordered Broadcast接收者可以终止Broadcast Intent的传播，Broadcast Intent传播一旦终止，后面的接收者就无法接收到Broadcast。另外，OrderedBroadcast的接受者可以将数据传递给下一个接收者。</li>
+</ul>
+<p>对于Ordered Broadcast而言，调用BroadcastReceiver的abortBroadcast()方法即可终止Broadcast；优先接受到Broadcast的接收者可以通过setResultExtras(Bundle)方法将处理结果存入Broadcast中，然后传给下一个接收者，下一个接收者通过代码Bundle bundle = getResultExtras(true)可以获取上一个接收者存入的数据。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>比如程序有一个Activity和Service，而且Service是通过startService（）方法气动的，正常情况下，这个Activity与通过startService（）方法启动的Service之间无法通信，但借助BroadcastReceiver的帮助，程序就可以实现两者之间的通信。</p>
+<p><strong>PS：对于BroadcastReceiver程序实现过程：①当实现sendBroadcast（intent）方法 ②与之intent对应绑定的BroadcastReceiver会被自动调用。</strong></p>
+<h2 id="接收系统广播消息"><a href="#接收系统广播消息" class="headerlink" title="接收系统广播消息"></a>接收系统广播消息</h2><p>除了可以接收用户发送的广播之外，还可以接收系统广播。<br>Android的大量系统事件会对外发送标准广播。下面是Android常见的广播Action常量：</p>
+<ul>
+<li>ACTION_TIME_CHANGED：系统时间被改变</li>
+<li>ACTION_DATE_CHANGED：系统日期被改变</li>
+<li>ACTION_TIMEZONE_CHANGED：系统时区被改变</li>
+<li>ACTION_BOOT_COMPLETED：系统启动完成</li>
+<li>ACTION_PACKAGE_ADDED：系统添加包</li>
+<li>ACTION_PACKAGE_CHANGED：系统包的改变</li>
+<li>ACTION_PACKAGE_REMOVED：系统包的删除</li>
+<li>ACTION_PACKAGE_RESTARTED：系统的包被重启</li>
+<li>ACTION_PACKAGE_DATA_CLEARED：系统的包数据被清空</li>
+<li>ACTION_BATTERY_CHANGED：电池电量改变</li>
+<li>ACTION_BATTERY_LOW：电池电量低</li>
+<li>ACTION_POWER_CONNECTED：系统连接电源</li>
+<li>ACTION_POWWER_DISCONNECTED：系统与电源断开</li>
+<li>ACTION_SHUTDOWN：系统被关</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/8.22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/8.22/" itemprop="url">Android学习（三十七之使用Service与BroadcastReceiver）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T12:04:57+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h3 id="Service的生命周期"><a href="#Service的生命周期" class="headerlink" title="Service的生命周期"></a>Service的生命周期</h3><p>Service生命周期图：<br><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456" alt="Service生命周期"></p>
+<p>与多次调用startService()方法启动Service，就多次回调Service的onStartCommand()方法不同的是，多次调用bindService()方法并不会重复绑定，且只会回调一次onBind()方法。</p>
+<p><strong>当Activity调用bindService()绑定一个已启动的Service时</strong>，系统只是把Service内部IBinder对象传给Activity，并不会把该Service生命周期完全“绑定”到该Activity，因而当Activity调用unBindService()方法取消与该Service的绑定时，也只是切断该Activity与Service之间的关联，并不能停止该Service组件。</p>
+<h3 id="使用IntentService"><a href="#使用IntentService" class="headerlink" title="使用IntentService"></a>使用IntentService</h3><p>IntentService是Service的子类。<br>Service本身存在两个问题：</p>
+<ul>
+<li>Service不会专门启动一个单独的进程，Service与它所在应用位于同一个进程中。</li>
+<li>Service不是一条新的线程，因此不应该在Service中直接处理耗时任务。</li>
+</ul>
+<p>如果开发者需要在Service中处理耗时任务，建议在Service中另外启动一条新的线程来处理该耗时任务。<br>直接在其他程序组件中启动子线程来处理耗时任务不行吗？这种方式也不可靠，由于Activity可能会被用户退出，而BroadcastReceiver的生命周期本来就很短。可能出现：在子线程还没有结束的情况下，Activity就已经被用户退出了，或者BroadcastReceiver已经结束了。在Activity已经退出、BroadcastReceiver已经结束的情况下，此时他们所在的进程就变成了空进程（没有任何活动组件的进程），系统需要内存时可能会优先终止该进程。如果宿主进程被终止，那么该进程内的所有子线程也会被终止，这样就可能导致子线程无法执行完成。<br>而IntentService正好可以弥补Service的上面的两个不足：<strong>IntentService将会使用队列来管理请求Intent，每当客户端代码通过Intent请求启动IntentService时，IntentService会将该Intent加入队列中，然后开启一条新的worker线程来处理该Intent。对于异步的startService()请求，IntentService会按次序依次处理队列中的Intent，该线程保证同一时刻只处理一个Intent。由于IntentService使用新的worker线程处理Intent请求，因此IntentService不会阻塞主线程，所以IntentService自己就可以处理耗时任务。</strong><br>归纳起来，IntentService有如下特征：</p>
+<ul>
+<li>IntentService会创建单独的worker线程来处理所有的Intent请求</li>
+<li>IntentService会创建单独的worker线程来处理onHandleIntent()方法实现的代码，因此开发者无须处理多线程问题</li>
+<li>当所有请求处理完成后，IntentService会自动停止，因此开发者无须调用stopSelf()方法来停止该Service</li>
+<li>为Service的onBind()方法提供了默认实现，默认实现的onBind()方法返回null</li>
+<li>为Service的onStartCommand()方法提供了默认实现，该实现将请求Intent添加到队列中</li>
+</ul>
+<p>扩展IntentService实现Service无须重写onBind()和onStartCommand()方法，只要重写onHandleIntent()方法即可，在该方法中定义该Service需要完成的任务。</p>
+<p>如果用继承Service子类的MyService来执行耗时操作，会导致UI线程阻塞（ANR异常）。</p>
+<h2 id="电话管理器（TelephonyManager）"><a href="#电话管理器（TelephonyManager）" class="headerlink" title="电话管理器（TelephonyManager）"></a>电话管理器（TelephonyManager）</h2><p>TelephonyManager是一个管理手机通话状态、电话网络信息的服务类，该类提供了大量getXxx()方法获取网络状态和SIM卡的相关信息。<br>在程序中获取TelephonyManager：<code>TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE)</code></p>
+<p>TelephonyManager还提供了一个listen(PhoneStateListener listener,int events)方法来监听通话状态。程序中要首先取得TelephonyManager对象，再创建一个PhoneStateListener，它是一个通话状态监听器，该监听器可用于对TelephonyManager进行监听。</p>
+<p>##短信管理器（SmsManager）</p>
+<p>SmsManager提供了一系列sendXxxMessage()方法用于发送短信，发送普通文本内容调用sendTextMessage()方法即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//获取SmsManager</span><br><span class="line">sManager = SmsManager.getDefault()</span><br><span class="line">//创建一个PendingIntent对象</span><br><span class="line">PendingIntent pi = PengingIntent.getActivity(MainActivity.this,0,new Intent(),0)</span><br><span class="line">//发送短信</span><br><span class="line">sManager.sendTextManage(number.getText().toString(),null,content.getText().toString(),pi,null)</span><br></pre></td></tr></table></figure>
+<p><strong>PendingIntent是对Intent的包装，一般通过调用PendingIntent的getActivity()、getService（）、getBroadcastReceiver（）静态方法来获取PendingIntent对象。与Intent对象不同的是，PendingIntent通常会传给其他应用组件，从而有其他应用程序来执行PendingIntent所包装的“Intent”。</strong></p>
+<h2 id="音频管理器（AudioManager）"><a href="#音频管理器（AudioManager）" class="headerlink" title="音频管理器（AudioManager）"></a>音频管理器（AudioManager）</h2><p>程序如果需要管理系统音量，或者让系统静音，这就可借助于Android提供的AudioManager来实现。程序一样是调用getSystemService()方法来获取系统的音频管理器。</p>
+<h3 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h3><p>AudioManager对象调整手机指定类型的声音的方法：</p>
+<ul>
+<li>adjustStreamVolume(int streamType,int direction,int flags)。<br>其中第一个参数streamType指定声音类型，它的值如下：<ul>
+<li>STREAM_ALARM：闹钟</li>
+<li>STREAM_DTMF：DTMF音调的声音</li>
+<li>STREAM_MUSIC：音乐</li>
+<li>STREAM_NOTIFICATION：系统提示</li>
+<li>STREAM_RING：电话铃声</li>
+<li>STREAM_SYSTEM：手机系统</li>
+<li>STREAM_VOICE_CALL：语音电话</li>
+</ul>
+</li>
+</ul>
+<p>第二个参数对声音进行增大或者减小；第三个参数是调整声音时的标志，指定为FLAG_SHOW_UI，则调整声音时显示音量进度条。</p>
+<ul>
+<li>setMicrophoneMute(boolean on)：设置是否让麦克风静音</li>
+<li>setMode(int mode)：设置声音模式，值可为：NORMAL,RINGTONE,IN_CALL</li>
+<li><p>setRingerMode(int ringerMode)：设置手机的电话铃声模式。值可为：</p>
+<ul>
+<li>RINGER_MODE_NORMAL：正常的手机铃声</li>
+<li>RINGER_MODE_SILENT：手机铃声静音</li>
+<li>RINGER_MODE_VIBRATE：手机振动</li>
+</ul>
+</li>
+<li><p>setSpeakeerphoneOn(boolean on)：设置是否打开扩音器</p>
+</li>
+<li>setStreamMute(int streamType,boolean state)：将手机的指定类型的声音调整为静音。</li>
+<li>setStreamVolume(int streamType,int index,int flags)：直接设置手机的指定类型的音量值。</li>
+</ul>
+<h2 id="振动器（Vibrator）"><a href="#振动器（Vibrator）" class="headerlink" title="振动器（Vibrator）"></a>振动器（Vibrator）</h2><p>有时候程序需要启动振动器，比如手机静音时使用振动提示用户；当玩游戏时，当系统碰撞、爆炸时使用振动带给用户更逼真的体验。<br>系统获取Vibrator也是调用了context的getSystemService()方法。</p>
+<h3 id="Vibrator简介"><a href="#Vibrator简介" class="headerlink" title="Vibrator简介"></a>Vibrator简介</h3><p>Vibrator的使用：</p>
+<ul>
+<li>vibrate(long milliseconds)：控制手机振动milliseconds毫秒</li>
+<li>vibrate(long[] pattern,int repeat)：指定手机以pattern指定的模式振动。例如指定pattern为new int[400,800,1200,1600]，也就是在400ms、800ms、1200ms、1600ms这些时间点交替启动、关闭手机振动器；其中repeat指定pattern数组的索引，指定对pattern数组中从repeat索引开始的振动进行循环</li>
+<li>cancel()：关闭手机振动</li>
+</ul>
+<p>程序控制手机振动需要得到相应的权限，在AndroidManifest.xml文件中加授权代码：`<!-- 授予程序访问振动的权限 --></p>
+<p><uses-permission android:name="android.premission.VIBRATE">`</uses-permission></p>
+<h2 id="手机闹钟服务（AlarmManager）"><a href="#手机闹钟服务（AlarmManager）" class="headerlink" title="手机闹钟服务（AlarmManager）"></a>手机闹钟服务（AlarmManager）</h2><p>AlarmManager通常用来开发手机闹钟。但是，它的本质是一个全局定时器，AlarmManager可以在指定时间或者指定周期启动其他组件（包括Activity，Service，BroadcastReceiver）。</p>
+<h3 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h3><p>在Android应用程序中也是通过Context的getSystemService()方法来获取AlarmManager对象的。获得AlarmManager对象后，可调用如下方法来设置定时启动指定组件：</p>
+<ul>
+<li><p>set(int type,long triggerAtTime,PendingIntent operation):设置在triggerAtTime时间启动由operation参数指定的组件。其中第一个参数指定定时服务的类型，该参数有如下值：</p>
+<ul>
+<li>ELAPSED_REALTIME:指定从现在开始时间过了一定时间后启动operation所对应的组件。</li>
+<li>ELAPSED_REALTIME_WAKEUP：指定从现在开始时间过了一定时间后启动operation所对应的组件。即使系统处于休眠状态也会启动相应组件</li>
+<li>RTC：指定当系统调用System.currentTimeMillis()方法的返回值与triggerAtTime相等时启动operation所对应的组件</li>
+<li>RTC_WAKEUP：指定当系统调用System.currentTimeMillis()方法的返回值与triggerAtTime相等时启动operation所对应的组件。即使系统处于休眠状态也会执行operation所对应的组件</li>
+</ul>
+</li>
+<li><p>setInexactRepeating(int type,long triggerAtTime,long interval,PendingIntent operation):设置一个非精确的周期性任务。</p>
+</li>
+<li>setRepeating(int type,long triggerAtTime,long interval,PendingIntent operation)：设置一个周期性执行的定时任务</li>
+<li>cancel(PendingIntent operation)：取消AlarmManager的定时任务</li>
+</ul>
+<p>AlarmManager新增的如下两个方法支持精确激发：</p>
+<ul>
+<li>setExact(int type,long triggerAtMillis,PendingIntent operation)：设置闹钟将在精确的时间被触发</li>
+<li>setWindow(int type,long windowStartMillis,long windowLengthMillis,PendingIntent operation)：设置闹钟将在精确的时间段内被触发</li>
+</ul>
+<h2 id="其他（System-currentTimeMillis-方法）"><a href="#其他（System-currentTimeMillis-方法）" class="headerlink" title="其他（System.currentTimeMillis()方法）"></a>其他（System.currentTimeMillis()方法）</h2><p>在开发过程中，通常很多人都习惯使用new Date()来获取当前时间。new Date()所做的事情其实就是调用了System.currentTimeMillis()。如果仅仅是需要或者毫秒数，那么完全可以使用System.currentTimeMillis()去代替new Date()，效率上会高一点。如果需要在同一个方法里面多次使用new Date()，通常性能就是这样一点一点地消耗掉。<br>System.currentTimeMillis()+3600*1000)可以这样解读：System.currentTimeMillis()相当于是毫秒为单位，但是，后头成了1000，就变成了以秒为单位。那么，3600秒=1小时，所以输出为当前时间的1小时后；<br>我们可以这样控制时间：System.currentTimeMillis()+time*1000)，里面传入的time是以秒为单位，当传入60，则输出：当前时间的一分钟后。</p>
+<p>Calendar.getInstance()是获取一个Calendar对象并可以进行时间的计算，时区的指定；Calendar的对象和new Date()对象可以相互转化：Calendar calendar = Calendar.getInstance();Date date = calendar.getTime();</p>
+<h2 id="更换壁纸（WallpaperManager）"><a href="#更换壁纸（WallpaperManager）" class="headerlink" title="更换壁纸（WallpaperManager）"></a>更换壁纸（WallpaperManager）</h2><p>它提供了clear()方法来清除壁纸，还提供了如下方法来设置系统的壁纸：</p>
+<ul>
+<li>serBitmap(Bitmap bitmap)：将壁纸设置为bitmap所代表的位图</li>
+<li>setResource(int resid)：将壁纸设置为resid资源所代表的图片</li>
+<li>setStream(InputStream data)：将壁纸设置为data数据所代表的图片</li>
+</ul>
+<h2 id="markdown语法中转义字符"><a href="#markdown语法中转义字符" class="headerlink" title="markdown语法中转义字符"></a>markdown语法中转义字符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\\ 反斜杠</span><br><span class="line">\` 反引号</span><br><span class="line">\* 星号</span><br><span class="line">\_ 下划线</span><br><span class="line">\&#123;\&#125; 大括号</span><br><span class="line">\[\] 中括号</span><br><span class="line">\(\) 小括号</span><br><span class="line">\# 井号</span><br><span class="line">\+ 加号</span><br><span class="line">\- 减号</span><br><span class="line">\. 英文句号</span><br><span class="line">\! 感叹号</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/8.21.2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1530,558 +2221,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/8.16.2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/16/8.16.2/" itemprop="url">Android学习（三十之Android应用的资源）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T21:43:21+08:00">
-                2018-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>##　应用资源概述</p>
-<p>安卓应用资源分为两类</p>
-<ul>
-<li>无法通过R资源清单访问的原生资源，保存在assets目录下</li>
-<li>可通过R资源清单访问的资源，保存在res目录下</li>
-</ul>
-<h3 id="资源的类型及存储方式"><a href="#资源的类型及存储方式" class="headerlink" title="资源的类型及存储方式"></a>资源的类型及存储方式</h3><h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><ol>
-<li>在Java代码中使用资源清单项</li>
-<li><p>在Java代码中访问实际资源</p>
-<ul>
-<li>通过资源清单项获取实际资源<ul>
-<li>getXxx(int id)：根据资源清单ID来获取实际资源</li>
-<li>getAssets() ：获取访问/assets/目录下资源的AssetManager对象</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>在XML文件中使用资源</p>
-</li>
-</ol>
-<h2 id="字符串、颜色、尺寸资源"><a href="#字符串、颜色、尺寸资源" class="headerlink" title="字符串、颜色、尺寸资源"></a>字符串、颜色、尺寸资源</h2><p>字符串资源、颜色资源、尺寸资源，它们对应的XML文件都将位于/res/values/目录下</p>
-<h3 id="颜色值的定义"><a href="#颜色值的定义" class="headerlink" title="颜色值的定义"></a>颜色值的定义</h3><p>Android颜色值支持常见的4种形式</p>
-<ul>
-<li>#RGB</li>
-<li>#ARGB</li>
-<li>#RRGGBB</li>
-<li>#AARRGGBB</li>
-</ul>
-<p>上面4种形式中，A、R、G、B都代表一个十六进制的数</p>
-<h3 id="定义字符串、颜色、尺寸资源文件"><a href="#定义字符串、颜色、尺寸资源文件" class="headerlink" title="定义字符串、颜色、尺寸资源文件"></a>定义字符串、颜色、尺寸资源文件</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/15/8.16/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/15/8.16/" itemprop="url">Android学习（二十九之使用Intent和IntentFilter进行通信）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T22:23:35+08:00">
-                2018-08-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Intent对象简述"><a href="#Intent对象简述" class="headerlink" title="Intent对象简述"></a>Intent对象简述</h2><p>使用Intent启动不同组件的方法：</p>
-<table>
-<thead>
-<tr>
-<th>组件类型</th>
-<th>启动方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Activity</td>
-<td>startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)</td>
-</tr>
-<tr>
-<td>Service</td>
-<td>ComponentName startService(Intent service) boolean bindService(Intent service,ServiceConnection conn,int flags)</td>
-</tr>
-<tr>
-<td>BroadcastReceiver</td>
-<td>sendBroadcast(Intent intent) sendBroadcast(Intent intent,String receiverPermission) sendOrderedBroadcast(Intent intent,String receiverPermission,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras) sendOrderedBroadcast(Intent intent,String receiverPermission)</td>
-</tr>
-<tr>
-<td>BroadcastReceiver</td>
-<td>sendStickyBroadcast(Intent intent) sendStickyOrderedBroadcast(Intent intent,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras)</td>
-</tr>
-</tbody>
-</table>
-<p>Intent对象大致包含Component、Action、Category、Data、Type、Extra、Flag这7种属性，其中Component用于明确指定需要启动的目标组件，而Extra则用于“携带”需要交换的数据</p>
-<h2 id="Intent的属性及Intent-filter配置"><a href="#Intent的属性及Intent-filter配置" class="headerlink" title="Intent的属性及Intent-filter配置"></a>Intent的属性及Intent-filter配置</h2><p>启动组件，取决于Intent的各属性</p>
-<h3 id="Component属性"><a href="#Component属性" class="headerlink" title="Component属性"></a>Component属性</h3><p>指定了Component属性的Intent是显式Intent，没有指定的是隐式Intent——隐式Intent没有指出明确的对象，只要是符合筛选条件就行。</p>
-<p>Intent的Component属性需要接受一个ComponentName对象。</p>
-<p>当程序通过Intent的Component属性（明确指定了启动哪个组件）启动特定组件时，被启动组件几乎不需要使用&lt;intent_filter…/&gt;元素进行配置</p>
-<h3 id="Action、Category属性与intent-filter配置"><a href="#Action、Category属性与intent-filter配置" class="headerlink" title="Action、Category属性与intent-filter配置"></a>Action、Category属性与intent-filter配置</h3><p>&lt;intent-filter…/&gt;元素是AndroidManifest.xml文件中&lt;activity…/&gt;元素的子元素，&lt;activity…/&gt;元素用于为应用程序配置Activity，&lt;activity../&gt;的&lt;intent-filter…/&gt;子元素则用于配置该Activity所能“响应”的Intent。</p>
-<p>当&lt;activity../&gt;元素的&lt;intent-filter…/&gt;子元素里包含多个&lt;action../&gt;子元素时，就表明该Activity能响应Action属性值为其中任意一个字符串的Intent。</p>
-<p>一个Intent对象最多只能包含一个Action属性，程序调用Intent的setAction(String str)方法设置Action属性值；一个Intent对象可以包括多个Category属性，程序调用Intent的addCategory(String str)方法来为Intent添加Category属性。</p>
-<p>Activity到底启动哪个Activity，需要看&lt;intent-filter…/&gt;中元素的配置。（可以想成启动符合条件的Activity）</p>
-<h3 id="指定Action、Category调用Activity"><a href="#指定Action、Category调用Activity" class="headerlink" title="指定Action、Category调用Activity"></a>指定Action、Category调用Activity</h3><p>Intent不仅可以启动本应用程序内程序组件，也可以启动Android系统的其他应用的程序组件。</p>
-<h3 id="Data、Type属性与intent-filter配置"><a href="#Data、Type属性与intent-filter配置" class="headerlink" title="Data、Type属性与intent-filter配置"></a>Data、Type属性与intent-filter配置</h3><p>Data属性通常用于向Action属性提供操作的数据。Type属性用于指定该Data属性所指定Uri对应的MIME的类型。</p>
-<p>Data属性与Type属性会相互覆盖：</p>
-<ul>
-<li>Intent先设置Data属性，那么Type属性将会覆盖Data属性</li>
-<li>Intent先设置Type属性，那么Data属性将会覆盖Type属性</li>
-<li>如果希望Intent有两种属性，调用Intent的setDataAndType()方法</li>
-</ul>
-<p>在AndroidManifest.xml中为组件声明Data、Type属性都通过&lt;data../&gt;元素</p>
-<h2 id="使用Intent创建Tab页"><a href="#使用Intent创建Tab页" class="headerlink" title="使用Intent创建Tab页"></a>使用Intent创建Tab页</h2><p>使用TabActivity创建Activity布局，添加Tab页使用了TabHost.TabSpec提供的如下方法：</p>
-<ul>
-<li>setContent(int viewId)：直接将指定View组件设置成Tab页的Content</li>
-<li>setContent(Intent intent)：直接将指定Intent对应的Activity设置成Tab页的Content</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/15/8.15.2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/15/8.15.2/" itemprop="url">Android学习（二十八之Activity的生命周期与加载模式）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T16:36:43+08:00">
-                2018-08-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Activity在Android应用中，以Activity栈形式管理，当前运行的Activity位于栈顶。随着不同应用的运行，每个Activity都有可能从活动状态转变为非活动状态，也可能从非活动状态转为活动状态。</p>
-<h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>Activity大致会经历下面4种状态：</p>
-<ul>
-<li><strong>运行状态</strong>：当前Activity位于前台，用户可见，可以获得焦点</li>
-<li><strong>暂停状态</strong>：其他Activity位于前台，该Activity依然可见，只是不能获得焦点</li>
-<li><strong>停止状态</strong>：该Activity不可见，失去焦点</li>
-<li><strong>销毁状态</strong>：该Activity结束，或Activity所在的进程被结束</li>
-</ul>
-<p><img src="http://www.runoob.com/wp-content/uploads/2015/08/18364230.jpg" alt="Activity生命周期图"></p>
-<h3 id="Activity与Servlet的相似性和区别"><a href="#Activity与Servlet的相似性和区别" class="headerlink" title="Activity与Servlet的相似性和区别"></a>Activity与Servlet的相似性和区别</h3><p>相似性：</p>
-<ul>
-<li>Activity,Servlet的职责都是向用户呈现界面</li>
-<li>开发者开发Activity和Servlet都继承系统的基类</li>
-<li>Activity、Servlet开发出来都需要配置</li>
-<li>Activity开发用于Android、Servlet用于Web</li>
-<li>开发者无须创建Activity和Servlet的实例，无须调用它们的方法。它们的方法都由系统以回调的方式来调用</li>
-<li>Activity、Servlet都有各自的生命周期，他们的生命周期都由外部负责管理</li>
-<li>Activity、Servlet都不会直接相互调用，因此都不能直接进行数据交换。Servlet的数据交换需要借助于Web应用提供的requestScope、sessionScope等。Activity之间的数据交换借助于Bundle。</li>
-</ul>
-<p>差别：</p>
-<ul>
-<li>Activity是Android窗口的容器，因此Activity最终以窗口形式显示出来。而Servlet并不会生成应用界面，只是向浏览者生成文本响应</li>
-<li>Activity运行于Android应用中，因此Activity的本质还是通过各种界面组件来搭建界面；而Servlet则主要以IO流向浏览者生成文本响应，浏览者看到的界面其实是由浏览器负责生成的</li>
-<li>Activity之间的跳转主要通过Intent对象来控制；而Servlet之间的跳转主要由用户的请求来控制</li>
-</ul>
-<p>##　Fragment</p>
-<p>把Fragment理解成Activity片段。Fragment拥有自己的生命周期，也可以接受它自己的输入事件</p>
-<h3 id="Fragment概述"><a href="#Fragment概述" class="headerlink" title="Fragment概述"></a>Fragment概述</h3><p>Fragment必须被“嵌入”Activity中使用，因此，虽然Fragment也拥有自己的生命周期，但Fragment的生命周期会受它所在的Activity的生命周期控制。例如：当Activity暂停时，在Activity中的Fragment都会被暂停；当Activity被销毁时，在Activity中的Fragment都会被销毁。只有当该Activity处于活动状态时，程序员才可以通过方法独立地操作Fragment。</p>
-<p>Fragment有如下特征:</p>
-<ul>
-<li>Fragment总是作为Activity界面的组成部分。Fragment调用getActivity（）方法获取它所在的Activity，Activity调用FragmentManager的findFragmentById（）或findFragmentByTag（）方法获取Fragment</li>
-<li>在Activity运行过程中，可调用FragmentManager的add（）、remove（）、replace（）方法动态地添加、删除或者替换Fragment</li>
-<li>一个Activity可以同时组合多个Fragment，一个Fragment也可以被多个Activity复用</li>
-<li>Fragment可以响应自己的输入事件，并拥有自己的生命周期，但他们的生命周期直接被其所属的Activity的生命周期控制</li>
-</ul>
-<p>创建Fragment需要实现如下三个方法：</p>
-<ul>
-<li>onCreate（）：系统创建Fragment对象后回调该方法，在实现代码中只初始化想要在Fragment中保持的必要组件，当Fragment被暂停或停止后可以恢复</li>
-<li>onCreateView（）：当Fragment绘制界面组件时会回调该方法。该方法必须返回一个View，该View也就是该Fragment所显示的View</li>
-<li>onPause（）：当用户离开该Fragment时将会回调该方法</li>
-</ul>
-<h2 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h2><p>与Activity类似，Fragment的生命周期也存在与Activity一样的4个状态。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2166423-cef6bc37f8539eba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317" alt="Fragment生命周期"></p>
-<p>Fragment与Activity对比生命周期：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2166423-48e1c4b3805b32ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340" alt="对比"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2127,7 +2271,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2149,7 +2293,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
