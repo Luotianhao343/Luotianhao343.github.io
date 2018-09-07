@@ -259,6 +259,650 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/8.27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/27/8.27/" itemprop="url">数据库第一章（绪论）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T22:00:44+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DataBase/" itemprop="url" rel="index">
+                    <span itemprop="name">DataBase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h1><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="1-试述关系模型的三个组成部分"><a href="#1-试述关系模型的三个组成部分" class="headerlink" title="1.试述关系模型的三个组成部分"></a>1.试述关系模型的三个组成部分</h3><p>关系模型是由关系数据结构、关系操作集合和关系完整性约束三部分组成。</p>
+<h3 id="2-简述关系数据语言的特点和分类"><a href="#2-简述关系数据语言的特点和分类" class="headerlink" title="2.简述关系数据语言的特点和分类"></a>2.简述关系数据语言的特点和分类</h3><p>关系代数语言<br>关系演算语言：元组关系演算语言和域关系演算语言<br>SQL：具有关系代数和关系演算双重特点的语言。<br>这些关系数据语言的共同特点是，语言具有完备的表达能力，是非过程化的集合操作语言，功能强，能嵌入高级语言中使用</p>
+<h3 id="3-定义并理解下列术语，说明他们之间的联系与区别"><a href="#3-定义并理解下列术语，说明他们之间的联系与区别" class="headerlink" title="3.定义并理解下列术语，说明他们之间的联系与区别"></a>3.定义并理解下列术语，说明他们之间的联系与区别</h3><ol>
+<li>域，笛卡尔积，关系，元组，属性<ul>
+<li>域：是一组具有相同数据类型的值的集合</li>
+<li>笛卡尔积：是域上的一种集合运算</li>
+<li>关系：D1xD2xD3x…xDn的子集在域D1,D2,D3,…,Dn上的关系表示为R(D1,D2,D3…,Dn)</li>
+<li>元组：笛卡尔积中每一个元素(d1,d2,….,dn)叫做一个元组</li>
+<li>属性：</li>
+</ul>
+</li>
+<li>主码，候选码，外码<ul>
+<li>主码：若一个关系有多个候选码，则选定其中一个为主码</li>
+<li>候选码：关系中的某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码</li>
+<li>外码：在本关系中不是主码，在另一关系中是主码</li>
+</ul>
+</li>
+<li>关系模式，关系，关系数据库<ul>
+<li>关系模式：关系模式是型，关系是值。关系模式是对关系的描述</li>
+<li>关系：关系是元组的集合，是关系模式在某一时刻的状态和内容</li>
+<li>关系数据库：关系数据库的值是这些关系模式在某一时刻对应的关系的集合</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空"><a href="#4-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空" class="headerlink" title="4.试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空"></a>4.试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空</h3><p>实体完整性规则是指若属性A是基本关系R的主属性，则属性A不能为空值。<br>若属性F是基本关系R的外码，它与基本关系S的主码Ks相对应，则对于R中每个元组在F上的值必须为：或者取空值（F上的每个属性值均为空值）；或者等于S中某个元组的主码值。即属性F本身不是主属性，则可以取空值，否则不能取空值。</p>
+<h3 id="5-试述等值连接和自然连接的区别和联系"><a href="#5-试述等值连接和自然连接的区别和联系" class="headerlink" title="5.试述等值连接和自然连接的区别和联系"></a>5.试述等值连接和自然连接的区别和联系</h3><p>连接运算符是“=”的连接运算称为等值连接。它是从关系R与S的广义笛卡尔积中选取A，B属性值相等的那些元组<br>自然连接是一种特殊的等值连接，它要求两个关系中进行比较的分量必须是相同的属性组，并在结果中把重复的属性列去掉</p>
+<h3 id="6-关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？"><a href="#6-关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？" class="headerlink" title="6.关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？"></a>6.关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？</h3><p>并，差，笛卡尔积，投影和选择5种运算为基本的运算。其他三种运算，即交，连接和除，均可以用这5种基本运算来表达。</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="1-试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式"><a href="#1-试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式" class="headerlink" title="1.试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式"></a>1.试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式</h3><p>关系模型是最重要的一种数据模型。<br>关系：一个关系对应通常说的一张表<br>元组：表中的一行即为一个元组<br>属性：表中的一列即为一个属性，给每一个属性起一个名称即属性名<br>码：也称码键。表中的某个属性组，它可以唯一确定一个元组<br>域：域是一组具有相同数据类型的值的集合<br>分量：元组中的一个属性值<br>关系模式：对关系的描述，一般表示为R(D1,D2,…Dn)</p>
+<h3 id="2-试述数据库系统的三级模式结构，并说明这种结构的优点是什么"><a href="#2-试述数据库系统的三级模式结构，并说明这种结构的优点是什么" class="headerlink" title="2.试述数据库系统的三级模式结构，并说明这种结构的优点是什么"></a>2.试述数据库系统的三级模式结构，并说明这种结构的优点是什么</h3><p>数据库系统的三级模式结构：外模式，模式，内模式。<br>外模式：是数据库用户能看见和使用的局部数数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示<br>模式：是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。模式描述的是数据的全局逻辑结构。外模式涉及的是数据的局部逻辑结构，通常是模式的子集<br>内模式：亦称存储模式，是数据在数据库系统内部的表示，即对数据的物理结构和存储方式的描述。数据库系统的三级模式是对数据的三个抽象级别，它把数据的具体组织留给DBMS管理，使用户能逻辑抽象地处理数据而不必关心数据在计算机内的表示和存储。为了能在内部实现这三个抽象层次的联系和转换，数据库系统在咋还三级模式之间提供了两层映像：外模式/模式映像和模式/内模式映像。正是这两层映像保证了数据库系统中的数据能够具有较高的逻辑独立性和物理独立性。</p>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="1-试述SQL的特点"><a href="#1-试述SQL的特点" class="headerlink" title="1.试述SQL的特点"></a>1.试述SQL的特点</h3><p>①综合统一。SQL语言集数据定义语言DDL，数据操纵语言DML，数据控制语言DCL的功能于一体<br>②高度非过程化<br>③面向集合的操作方式<br>④以同一种语法结构提供两种使用方式。SQL语言既是自含式语言，又是嵌入式语言</p>
+<h3 id="2-什么是基本表？什么是视图？两者的区别和联系是什么？"><a href="#2-什么是基本表？什么是视图？两者的区别和联系是什么？" class="headerlink" title="2.什么是基本表？什么是视图？两者的区别和联系是什么？"></a>2.什么是基本表？什么是视图？两者的区别和联系是什么？</h3><p>基本表是本身独立存在的表，在SQL中一个关系就对应一个表。视图是从一个或几个基本表导出的表。视图本身不堵你存储在数据库中，是一个虚表。即数据库中只存放视图的定义而不存放视图对应的数据，这些数据仍放在导出视图的基本表中。视图在概念上与基本表等同，用户可以如同基本表那样使用视图，可以在视图上再定义视图。</p>
+<h3 id="3-试述视图的优点"><a href="#3-试述视图的优点" class="headerlink" title="3.试述视图的优点"></a>3.试述视图的优点</h3><p>①视图能简化用户的操作<br>②视图使用户能以多种角度看待同一数据<br>③视图对重构数据库提供了一定程度的逻辑独立性<br>④视图能对机密数据提供安全保护</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="1-什么是数据库的安全性"><a href="#1-什么是数据库的安全性" class="headerlink" title="1.什么是数据库的安全性"></a>1.什么是数据库的安全性</h3><p>数据库的安全性是指保护数据库以防止不合法的使用所造成的数据泄露，更改或破坏</p>
+<h3 id="2-试述实现数据库安全性控制的常用方法和技术"><a href="#2-试述实现数据库安全性控制的常用方法和技术" class="headerlink" title="2.试述实现数据库安全性控制的常用方法和技术"></a>2.试述实现数据库安全性控制的常用方法和技术</h3><p>实现数据库安全性控制的常用方法和技术有：①用户标识和鉴别：该方法由系统提供一定的方式让用户标识自己的名字或身份。每次用户要求进入系统时，由系统进行核对，通过鉴定后才提供系统的使用权②存取控制：通过用户权限定义和合法权检查，确保只有合法权限的用户访问数据库，所有未被授权的人员无法存取数据。③视图机制：为不同的用户定义视图，通过视图机制把要保密的数据对无权存取的用户隐藏起来，从而自动地对数据提供一定程度的安全保护④审计：建立审计日志，把用户对数据库的所有操作自动记录下来放入审计日志中，DBA可以利用审计跟踪的信息，重现导致数据库现有状况的一系列事件，找出非法存取数据的人、时间和内容等。⑤数据加密：对存储和传输的数据进行加密处理，从而使得不知道解密算法的人无法获取数据的内容</p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="1-什么是数据库的完整性"><a href="#1-什么是数据库的完整性" class="headerlink" title="1.什么是数据库的完整性"></a>1.什么是数据库的完整性</h3><p>数据库的完整性是指数据的正确性和相容性</p>
+<h3 id="2-数据库的完整性概念和数据库的安全性概念有什么区别和联系"><a href="#2-数据库的完整性概念和数据库的安全性概念有什么区别和联系" class="headerlink" title="2.数据库的完整性概念和数据库的安全性概念有什么区别和联系"></a>2.数据库的完整性概念和数据库的安全性概念有什么区别和联系</h3><p>数据的完整性和安全性是两个不同的概念，但是有一定的联系。前者是为了防止数据库中存在不符合语义的数据；防止错误信息的输入和输出，即所谓的垃圾进垃圾出所造成的无效操作和错误结果。后者是为了保护数据库防止恶意的破坏和非法的存取。也就是说，安全性措施的防范对象是非法用户和非法操作，完整性措施的防范对象是不合语义的数据。</p>
+<h3 id="3-什么是数据库的完整性约束条件？可分为哪几类？"><a href="#3-什么是数据库的完整性约束条件？可分为哪几类？" class="headerlink" title="3.什么是数据库的完整性约束条件？可分为哪几类？"></a>3.什么是数据库的完整性约束条件？可分为哪几类？</h3><p>完整性约束条件是指数据库中的数据应该满足的语义约束条件。一般可以分为六类：静态列级约束、静态元组约束、静态关系约束、动态列级约束、动态元组约束、动态关系约束</p>
+<h3 id="4-DBMS的完整性控制机制应具有哪些功能？"><a href="#4-DBMS的完整性控制机制应具有哪些功能？" class="headerlink" title="4.DBMS的完整性控制机制应具有哪些功能？"></a>4.DBMS的完整性控制机制应具有哪些功能？</h3><p>DBMS的完整性控制机制应该具有三个方面的功能：①定义功能，即提供定义完整性约束条件的机制②检查功能，即检查用户发出的操作请求是否违背了完整性约束条件③违约反应，如果发现用户的操作请求使数据违背了完整性约束条件，则采取一定的动作来保证数据的完整性</p>
+<h2 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h2><h3 id="1-试述数据库设计过程"><a href="#1-试述数据库设计过程" class="headerlink" title="1.试述数据库设计过程"></a>1.试述数据库设计过程</h3><p>一、需求分析；二、概念结构设计；三、逻辑结构设计；四、数据库的物理设计；五、数据库实施；六、数据库运行和维护</p>
+<h3 id="2-试述数据库设计各个阶段上的设计描述"><a href="#2-试述数据库设计各个阶段上的设计描述" class="headerlink" title="2.试述数据库设计各个阶段上的设计描述"></a>2.试述数据库设计各个阶段上的设计描述</h3><p>一、需求分析：准确了解与分析用户需求（包括数据与处理）<br>二、概念结构设计：通过对用户需求进行综合、归纳与抽象，形成一个独立于具体DBMS的概念模型<br>三、逻辑结构设计：将概念模型转换为某个DBMS所支持的数据模型，并对其优化<br>四、数据库物理设计：为逻辑数据模型选取一个最适合应用环境的物理结构（包括存储结构和存取方法）<br>五、数据库实施：设计人员运用DBMS提供的数据语言、工具及宿主语言，根据逻辑设计和物理设计的结果建立数据库，编制与调试应用程序，组织数据入库，并进行试运行<br>六、数据库运行和维护：在数据库系统运行过程中对其进行评价、调整与修改</p>
+<h2 id="第十一章"><a href="#第十一章" class="headerlink" title="第十一章"></a>第十一章</h2><h3 id="1-在数据库中为什么要用并发控制"><a href="#1-在数据库中为什么要用并发控制" class="headerlink" title="1.在数据库中为什么要用并发控制"></a>1.在数据库中为什么要用并发控制</h3><p>数据库是共享资源，通常有许多个事务同时运行。当多个事务并发地存取数据库时就会产生同时读取和/或修改同一数据的情况。若对并发操作不加控制就可能会存取和存储不正确的数据，破坏数据库的一致性。所以数据库管理系统必须提供并发控制机制</p>
+<h3 id="2-并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况"><a href="#2-并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况" class="headerlink" title="2.并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况"></a>2.并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况</h3><p>并发操作带来的数据不一致性包括三类：丢失修改、不可重复读、脏数据。<br>丢失修改：两个事务T1和T2读入同一数据并修改，T2提交的结果破坏了（覆盖了）T1提交的结果，导致T1的修改被丢失<br>不可重复读：事务T1读取数据后，事务T2执行更新操作，使T1无法再现前一次读取结果<br>脏数据：事务T1修改某一数据后，将其写会磁盘，事务T2读取统同一数据，T1由于某种原因撤销更改，T2读到的数据就是不正确的数据    </p>
+<p>避免不一致性的方法和技术就是并发控制。最常用的技术是封锁技术。也可以用其他技术，例如在分布式数据库系统中可采用时间戳方法来进行并发控制</p>
+<h3 id="3-什么是封锁？基本的封锁类型有几种？试述他们的含义"><a href="#3-什么是封锁？基本的封锁类型有几种？试述他们的含义" class="headerlink" title="3.什么是封锁？基本的封锁类型有几种？试述他们的含义"></a>3.什么是封锁？基本的封锁类型有几种？试述他们的含义</h3><p>封锁就是事务T在对某个数据对象例如表、记录等操作之前，先向系统发出请求，对其加锁。加锁后事务T对该数据对象就有了一定的控制，在事务T释放它的锁之前，其他的事务不能更新此数据对象。封锁是实现并发控制的一个非常重要的技术</p>
+<p>封锁的技术有两种：读锁（S）和写锁（X）；若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放了A的锁。若事务T对数据对象A加上S锁，则事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁</p>
+<h2 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h2><h3 id="1-登记日志文件时为什么必须先写日志文件，后写数据库？"><a href="#1-登记日志文件时为什么必须先写日志文件，后写数据库？" class="headerlink" title="1.登记日志文件时为什么必须先写日志文件，后写数据库？"></a>1.登记日志文件时为什么必须先写日志文件，后写数据库？</h3><p>把对数据的修改写到数据库中和把表示这个修改的日志记录写到日志文件中是两个不同的操作。有可能在这两个操作之间发生故障，即这两个写操作只完成了一个。如果先写了数据库修改，而在运行记录中没有登记这个修改，则以后就无法恢复这个修改了。如果先写日志文件，但没有修改数据库，按日志文件恢复时只不过是多执行一次不必要的UNDO操作，并不会影响数据库的正确性。</p>
+<h3 id="2-针对不同的故障，试给出恢复的策略和方法"><a href="#2-针对不同的故障，试给出恢复的策略和方法" class="headerlink" title="2.针对不同的故障，试给出恢复的策略和方法"></a>2.针对不同的故障，试给出恢复的策略和方法</h3><p>事务故障的恢复：事务故障是指事务在运行至正常种终止点前被终止，这时恢复子系统应利用日志文件撤销（UNDO）此事务对数据库进行的修改。事务故障的恢复是由系统自动完成的，对用户是透明的。<br>恢复步骤：</p>
+<ol>
+<li>反向扫描日志文件，查找该事务的更新操作</li>
+<li>对事务的更新操作进行逆操作</li>
+<li>继续反向扫描日志文件，查找该事务的其他更新操作，并做同样处理</li>
+</ol>
+<p>系统故障的恢复：系统故障造成数据库不一致状态的原因有两个，一是未完成事务对数据库的更新可能已写入数据库，二是已提交事务对数据库的更新可能还留在缓冲区没来得及写入数据库。因此恢复操作就是要撤销故障发生时未完成的事务，重做已完成的事务。<br>恢复步骤：</p>
+<ol>
+<li>正向扫描日志文件，找出在故障发生前已经提交的事务将其事务标识记入重做队列。同时找出故障发生时尚未完成的事务，将其事务标识记入撤销队列</li>
+<li>对撤销队列中的各个事务进行撤销处理</li>
+<li>对重做队列的各个事务进行重做处理</li>
+</ol>
+<p>介质故障的恢复：发生介质故障后，磁盘上的物理数据和日志文件被破坏，这是严重的一种故障，恢复方法是重装数据库，然后重做已完成的事务。<br>恢复步骤：</p>
+<ol>
+<li>装入最新的数据库后备副本，使数据库恢复到最近一次转储的一致性状态</li>
+<li>装入相应的日志文件副本，重做已完成的事务</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/8.23.3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/8.23.3/" itemprop="url">Strength</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T21:12:16+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/fit/" itemprop="url" rel="index">
+                    <span itemprop="name">fit</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="健身基础"><a href="#健身基础" class="headerlink" title="健身基础"></a>健身基础</h1><h2 id="全身各块肌肉，较好的训练动作"><a href="#全身各块肌肉，较好的训练动作" class="headerlink" title="全身各块肌肉，较好的训练动作"></a>全身各块肌肉，较好的训练动作</h2><p>每块肌肉一个专属动作：</p>
+<ol>
+<li>最佳整体胸肌增长，哑铃平板卧推</li>
+<li>最佳背阔肌宽度增长，宽握高位下拉（宽距引体）</li>
+<li>最佳整体三角肌增长，哑铃推举</li>
+<li>最佳二头肌增长，窄距反握引体向上</li>
+<li>最佳三头肌增长，双杠臂屈伸</li>
+<li>最佳股四头肌训练，颈前深蹲</li>
+<li>最佳腘绳肌和臀部肌肉增长，罗马尼亚硬拉</li>
+<li>最佳斜方肌增长，杠铃耸肩</li>
+<li>最佳整体腹部训练，卷腹</li>
+<li>最佳核心力量训练，平板支撑</li>
+<li>最佳整体肌肉增长，深蹲</li>
+</ol>
+<h2 id="增肌9要点"><a href="#增肌9要点" class="headerlink" title="增肌9要点"></a>增肌9要点</h2><p>要点：</p>
+<ol>
+<li>1个小时（训练控制在1小时内）</li>
+<li>2个部位</li>
+<li>3个动作</li>
+<li>4组</li>
+<li>一日5餐</li>
+<li>6个部位（胸肩背腿腹臀）</li>
+<li>7天（一个周期7天）</li>
+<li>8RM</li>
+<li>9个星期（开始休息1星期）</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/8.23.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/8.23.2/" itemprop="url">Android学习（四十之Android网络应用）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T18:08:40+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。   </p>
+<p>不仅如此，Android还内置了HttpClient，这样可以非常方便地发送HTTP请求，并获取HTTP响应，通过内置HttpClient，Android简化了与网站之间的交互。令人遗憾的是，Android并未内置对Web Service的支持，为了弥补这种不足，可以利用ksoap2-android项目在Android应用中调用远程Web Service。</p>
+<h2 id="基于TCP协议的网络通信"><a href="#基于TCP协议的网络通信" class="headerlink" title="基于TCP协议的网络通信"></a>基于TCP协议的网络通信</h2><p>TCP/IP通信协议是一种可靠的网络协议，它在通信的两端各建立一个Socket，从而在通信的两端之间形成了网络虚拟链路。一旦建立了它，两端的程序就可以通过它进行通信。Java对基于TCP协议的网络通信提供了良好的封装，Java使用Socket对象来代表两端的通信接口，并通过Socket产生IO流来进行网络通信。</p>
+<h3 id="TCP协议基础"><a href="#TCP协议基础" class="headerlink" title="TCP协议基础"></a>TCP协议基础</h3><p>IP协议是Internet上使用的一个关键协议，它的全称是Internet Protocol，即Internet协议，简称IP协议。通过使用IP协议，使Internet成为一个允许连接不同类型的计算机和不同的操作系统的网络。<br>要使两台计算机彼此之间进行通信，两台计算机必须使用同一种“语言”，IP协议只保证计算机能发送和接受分组数据。IP协议负责将消息从一个主机传送到另一个主机上，消息在传送的过程中被分割成一个个小包。<br>尽管计算机通过安装IP软件，保证了计算机之间可以发送和接收数据，但IP协议还不能解决数据分组在传输过程中可能出现的问题。因此，若要解决可能出现的问题，连接上Internet的计算机还需要安装TCP协议来提供可靠并且无差错的通信服务。<br>TCP协议被称为一种端对端协议。这是因为它为两台计算机之间的连接起了重要作用：当一台计算机需要与另一台远程计算机连接时，TCP协议会让它们建立一个连接——用于发送和接收数据的虚拟链路。<br>TCP协议负责收集这些信息包，并将其按适当的次序放好发送，在接收端收到后再将其正确地还原。TCP协议保证了数据包在传送中准确无误。TCP协议使用重发机制：当一个通信实体发送一个消息给另一个通信实体之后，需要收到另一个通信实体的确认信息，如果没有收到另一个通信实体的确认信息，则会再次重发刚才发送的消息。</p>
+<h3 id="使用ServerSocket创建TCP服务器端"><a href="#使用ServerSocket创建TCP服务器端" class="headerlink" title="使用ServerSocket创建TCP服务器端"></a>使用ServerSocket创建TCP服务器端</h3><p>Java中能接收其他通信实体连接请求的类是ServerSocket，ServerSocket对象用于监听来自客户端的Socket连接，如果没有连接，它将一直处于等待状态。ServerSocket包含一个监听来自客户端连接请求的方法：</p>
+<ul>
+<li>Socket accept()：如果接收到一个客户端Socket的连接请求，该方法将返回一个与连接客户端Socket对应的Socket；否则该方法将一直处于等待状态，线程也被阻塞</li>
+<li>ServerSocket(int port)：用指定的端口port来创建一个ServerSocket。该端口有效整数值：0~65535</li>
+<li>ServerSocket(int port,int backlog）：增加一个用来改变连接队列长度的参数backlog</li>
+<li>ServerSocket(int port,int backing,InetAddress localAddr)：在机器存在多个IP地址的情况下，允许通过localAddr这个参数来指定将该ServerSocket绑定到指定的IP地址</li>
+</ul>
+<p>当ServerSocket使用完毕后，调用close（）方法来关闭该ServerSocket。</p>
+<h3 id="使用Socket进行通信"><a href="#使用Socket进行通信" class="headerlink" title="使用Socket进行通信"></a>使用Socket进行通信</h3><p>客户端通常使用Socket的构造器来连接到指定服务器，Socket通常可提供如下两个构造器。 </p>
+<ul>
+<li>Socket(InetAddress/String remoteAddress,int port)：创建连接到指定远程主机、远程端口的Socket，该构造器没有指定本地地址、本地端口，默认使用本地主机的默认IP地址，默认使用系统动态分配的端口</li>
+<li>Socket(InetAddress/String remoteAddress,int port,InetAddress localAddr,int localPort)：创建连接到指定远程主机、远程端口的Socket，并指定本地IP地址和本地端口，适用于本地主机有多个IP地址的情形</li>
+</ul>
+<p>Socket提供了如下两个方法来获取输入流和输出流：</p>
+<ul>
+<li>InputStream getInputStream()：返回该Socket对象对应的输入流，让程序通过该输入流从Socket中取出数据</li>
+<li>OutputStream getOutputStream()：返回该Socket对象对应的输入流，让程序通过该输入流向Socket中输入数据</li>
+</ul>
+<p>Android已经不允许在UI线程中建立网络连接，需要启动新线程来建立网络连接。</p>
+<h3 id="加入多线程"><a href="#加入多线程" class="headerlink" title="加入多线程"></a>加入多线程</h3><p>使用传统的BufferedReader的readLine()方法读取数据时，在该方法成功返回之前，线程被阻塞，程序无法继续执行。考虑到这个原因，服务器应该为每个Socket单独启动一条线程，每条线程负责与一个客户端进行通信。<br>客户端读取服务器的线程同样会被阻塞，所以系统应该单独启动一条线程，该线程专门负责读取服务器数据。</p>
+<p>每个客户端应该包含两条线程：一条负责生成主界面，响应用户动作，并将用户输入的数据写入Socket对应的输出流中；另一条负责读取Socket对应输入流中的数据（从服务器发送过来的数据），并负责将这些数据在程序界面上显示出来</p>
+<h2 id="使用URL访问网络资源"><a href="#使用URL访问网络资源" class="headerlink" title="使用URL访问网络资源"></a>使用URL访问网络资源</h2><p>URL(Uniform Resource Locator)对象代表统一资源定位器，它是指向互联网“资源”的指针。资源可以是简单的文件或目录，也可以是对更复杂的对象的引用，例如对数据库或搜索引擎的查询。通常情况，URL可以有协议名、主机、端口和资源组成，即满足如下格式：<code>protocol://host:port/resourceName</code>我们可以把URL理解成URI的特例，Java的URI不能用于定位任何资源，它的唯一作用就是解析。URL包含一个可打开到达资源的输入流。</p>
+<p>URL类提供了多个构造器用于创建URL对象，一旦获得URL对象之后，可以调用如下常用方法来访问该URL对应的资源：</p>
+<ul>
+<li>String getFile()：获取此URL的资源名</li>
+<li>String getHost()：获取此URL的主机名</li>
+<li>String getPath()：获取此URL的路径部分</li>
+<li>int getPort()：获取此URL的端口号</li>
+<li>String getProtocol()：获取此URL的协议名称</li>
+<li>String getQuery()：获取此URL的查询字符串部分</li>
+<li>URLConnection openConnection()：返回一个URLConnection对象，它表示到URL所引用的远程对象的连接</li>
+<li>InputStream openStream()：打开与此URL的连接，并返回一个用于读取该URL资源的InputStream</li>
+</ul>
+<h3 id="使用URL读取网络资源"><a href="#使用URL读取网络资源" class="headerlink" title="使用URL读取网络资源"></a>使用URL读取网络资源</h3><p>URL对象提供的openStream()可以读取该URL资源的InputStream，通过该方法可以非常方便地读取远程资源。</p>
+<h3 id="使用URLConnection提交请求"><a href="#使用URLConnection提交请求" class="headerlink" title="使用URLConnection提交请求"></a>使用URLConnection提交请求</h3><p>URL的openConnection()方法将返回一个URLConnection对象，该对象表示应用程序和URL之间的通信连接。程序可以通过URLConnection实例向该URL发送请求，读取URL引用的资源。<br>通常创建一个和URL的连接，并发送请求、读取此URL引用的资源需要如下几个步骤。</p>
+<ol>
+<li>通过调用URL对象的openConnection()方法来创建URLConnection对象</li>
+<li>设置URLConnection的参数和普通请求属性</li>
+<li>如果只是发送GET请求，那么使用connect方法建立和远程资源之间的实际连接即可；如果需要发送POST方式的请求，则需要获取URLConnection实例对应的输出流来发送请求参数</li>
+<li>远程资源变为可用，程序可以访问远程资源的头字段，或者通过输入流读取远程资源的数据</li>
+</ol>
+<p>在建立和远程资源的实际连接之前，程序可以通过如下方法来设置请求头字段</p>
+<ul>
+<li>setAllowUserInteraction：设置该URLConnection的allowUserInteraction请求头字段的值</li>
+<li>setDoInput：设置该URLConnection的doInput请求头字段的值</li>
+<li>setDoOutput：设置该URLConnection的doOutput请求头字段的值</li>
+<li>setIfModifiedSince：设置该URLConnection的ifMOdifiedSince请求头字段的值</li>
+<li>setUseCaches：设置该URLConnection的useCaches请求头字段的值，除此之外，还可以使用如下方法来设置或者增加通用的头字段<ul>
+<li>setRequestProperty(String key,String value)：设置该URLConnection的key请求头字段的值为value</li>
+<li>addRequestProperty(String key,String value)：为该URLConnection的key请求头字段增加value值，该方法并不会覆盖原请求头字段的值，而是将新值追加到原请求头字段中</li>
+</ul>
+</li>
+</ul>
+<p>当远程资源可用之后，程序可以使用以下方法来访问头字段和内容</p>
+<ul>
+<li>Object getContent()：获取该URLConnection的内容</li>
+<li>String getHeaderField(String name)：获取指定响应头字段的值</li>
+<li>getInputStream()：返回该URLConnection对应的输入流，用于获取URLConnection响应的内容</li>
+<li>getOutputStream()：返回该URLConnection对应的输出流，用于向URLConnection发送请求参数</li>
+</ul>
+<p><strong>PS：如果既要使用输入流来读取URLConnection响应的内容，也要使用输出流发送请求参数，一定要先使用输出流，再使用输入流</strong></p>
+<h3 id="使用HttpURLConnection"><a href="#使用HttpURLConnection" class="headerlink" title="使用HttpURLConnection"></a>使用HttpURLConnection</h3><p>HttpURLConnection继承了URLConnection，因此也可用于向指定网站发送GET请求、POST请求。在URLConnection的基础上提供了如下便捷的方法</p>
+<ul>
+<li>int getResponseCode()：获取服务器的响应代码</li>
+<li>String getResponseMessage()：获取服务器的响应信息</li>
+<li>String getRequestMethod()：获取发送请求的方法</li>
+<li>void setRequestMethod(String method)：设置发送请求的方法</li>
+</ul>
+<p>为了实现多线程下载，步骤如下：</p>
+<ol>
+<li>创建URL对象</li>
+<li>获取指定URL对象所指向资源的大小（由getContentLength()方法实现），此处用到HttpURLConnection类</li>
+<li>在本地磁盘上创建一个与网络资源相同大小的空文件夹</li>
+<li>计算每条线程应该下载网络资源的哪个部分（从哪个字节开始，到哪个字节结束）</li>
+<li>依次创建、启动多条线程来下载网络资源的指定部分</li>
+</ol>
+<h3 id="使用Apache-HttpClient"><a href="#使用Apache-HttpClient" class="headerlink" title="使用Apache HttpClient"></a>使用Apache HttpClient</h3><p>在一般情况下，如果只是需要向Web站点的某个简单页面提交请求并获取服务器响应，则完全可以使用前面所介绍的HttpURLConnection完成。但在大多数情况下，Web网页可能没这么简单，这些页面不是通过一个简单的URL就可以访问的，可能需要用户登录，而且具有相应的权限才可以访问该界面。<br>为了更好地处理向Web站点请求，包括处理Session、Cookie等细节问题，Apache开源组织提供了一个HttpClient项目，它是一个简单的HTTP客户端，可以用于发送HTTP请求，接收HTTP响应。但不会缓存服务器的响应，不能执行HTML页面中嵌入的JavaScript代码；也不会对页面内容进行解析和处理。（HttpClient是一个增强的HttpURLConnection）<br>使用HttpClient发送请求、接收响应，步骤：</p>
+<ol>
+<li>创建HttpClient对象</li>
+<li>如果需要发送GET请求，则创建HttpGet对象；如果需要发送POST请求，则创建HttpPost对象</li>
+<li>如果需要发送请求参数，则可调用HttpGet、HttpPost共同的setParams(HttpParams params)方法来添加请求参数；对于HttpPost对象而言，也可调用setEntity(HttpEntity entity)方法来设置请求参数</li>
+<li>调用HttpClient对象的execute(HttpUriRequest request)方法发送请求，执行该方法返回一个HttpResponse</li>
+<li>调用HttpResponse的getAllHeaders()、getHeaders(String name)等方法可获取服务器的响应头；调用HttpResponse的getEntity()方法可获取HttpEntity对象，该对象包装了服务器的响应内容。程序可通过该对象获取服务器的响应内容</li>
+</ol>
+<p>程序只要第一次通过HttpClient登录系统，接下来即可通过该HttpClient访问被保护的资源。</p>
+<h3 id="使用WebView浏览网页"><a href="#使用WebView浏览网页" class="headerlink" title="使用WebView浏览网页"></a>使用WebView浏览网页</h3><p>WebView的用法与普通ImageView组件的用法基本相似，它提供了大量方法来执行浏览器操作，例如如下常用方法：</p>
+<ul>
+<li>void goBack()：后退</li>
+<li>void goForward()：前进</li>
+<li>void loadUrl(String url)：加载指定URL对应的网页</li>
+<li>boolean zoomln()：放大网页</li>
+<li>boolean zoomOut()：缩小网页</li>
+</ul>
+<p>通过WebView的loadUrl()方法来加载显示指定URL对应的页面</p>
+<h3 id="使用WebView加载HTML代码"><a href="#使用WebView加载HTML代码" class="headerlink" title="使用WebView加载HTML代码"></a>使用WebView加载HTML代码</h3><p>WebView提供了一个loadData(String data,String mimeType,String encoding)方法，该方法用于加载并显示HTML代码。但在实际使用过程中，当它加载包含中文的HTML内容时，WebView将会显示乱码。<br>不过loadDataWithBaseURL(String baseUrl,String data,String mimeType,String encoding,String historyUrl)方法，该方法是loadData(String data,String mimeType,String encoding)方法的增强版，他不会产生乱码。</p>
+<p>参数：</p>
+<ul>
+<li>data：指定需要加载的HTML代码</li>
+<li>mimeType：指定HTML代码的MIME类型，对于HTML代码可指定为text/html</li>
+<li>encoding：指定HTML代码编码所使用的字符集，比如GBK</li>
+</ul>
+<h3 id="使用WebView中的JavaScript调用Android方法"><a href="#使用WebView中的JavaScript调用Android方法" class="headerlink" title="使用WebView中的JavaScript调用Android方法"></a>使用WebView中的JavaScript调用Android方法</h3><p>很多时候，WebView加载的页面是带有JavaScript脚步的，比如页面上有一个按钮，用户单击按钮时将会弹出一个提示框，或打开一个列表框。由于该按钮是HTML页面上的按钮，它只能激发一段JavaScript脚步，这就要让JavaScript脚步来调用Android方法。<br>在WebView的JavaScript中调用Android方法只要如下三个步骤：</p>
+<ol>
+<li>调用WebView关联的WebSettings的setJavaScriptEnabled(true)启用JavaScript调用功能</li>
+<li>调用WebView的addJavascriptInterface(Object object,String name)方法将object对象暴露给JavaScript脚步</li>
+<li>在JavaScript脚本中通过刚才暴露的name对象调用Android方法</li>
+</ol>
+<p>JavaScript脚本可以直接调用Java对象的方法</p>
+<h2 id="使用Web-Service进行网络编程"><a href="#使用Web-Service进行网络编程" class="headerlink" title="使用Web Service进行网络编程"></a>使用Web Service进行网络编程</h2><p>为了让Android应用与远程服务器进行交互，可以借助于Java的RMI技术，但这要求远程服务器程序必须采用Java实现；也可以借助于CORBA技术，但是这种技术显得过于复杂。除此之外，Web Service是一种不错的选择。</p>
+<h3 id="Web-Service平台概述"><a href="#Web-Service平台概述" class="headerlink" title="Web Service平台概述"></a>Web Service平台概述</h3><p>Web Service平台主要涉及的技术有SOAP（Simple Object Access Protocol，简单对象访问协议）,WSDL（Web Service Description Language，Web Service描述语言）,UDDI（Universal Description,Description and Integration，统一描述、发现和整合协议）</p>
+<ol>
+<li><p>SOAP是一种具有扩展性的XML消息协议。SOAP允许一个应用程序向另一个应用程序发送XML消息，SOAP消息是从SOAP发送者传至SOAP接收者的单路消息，任何应用程序均可作为发送者或接收者。SOAP仅定义消息结构和消息处理的协议，与底层的传输协议独立。因此，SOAP协议能通过HTTP,JMS,SMTP协议传输</p>
+<ul>
+<li>&lt;Envelope…/&gt;根元素，SOAP消息对应的XML文档以该元素作为根元素</li>
+<li>可选的&lt;Header../&gt;元素，包含SOAP消息的头信息</li>
+<li>必须的&lt;Body../&gt;元素，包含所有的调用和响应信息</li>
+</ul>
+</li>
+<li><p>WSDL使用XML描述Web Service，包括访问和使用Web Service所必须的信息，定义该Web Service的位置、功能及如何通信等描述信息</p>
+<ul>
+<li>WHAT部分：用于定义Web Service所提供的操作或者方法。由WSDL中&lt;type../&gt;,&lt;message../&gt;和&lt;portType../&gt;元素定义</li>
+<li>HOW部分：用于定义如何访问Web Service，包括数据格式详情和访问Web Service操作的必要协议</li>
+<li>WHERE部分：用于定义Web Service位于何处。该部分使用&lt;service…/&gt;元素定义</li>
+</ul>
+</li>
+<li><p>UDDI是一套信息注册规范，它基于Web，是分布式。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/8.23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1684,543 +2328,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/8.18.2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/18/8.18.2/" itemprop="url">Android学习（三十二之Android数据存储与IO）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T22:17:11+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="使用SharedPreferences"><a href="#使用SharedPreferences" class="headerlink" title="使用SharedPreferences"></a>使用SharedPreferences</h2><p>应用程序少量的数据保存，这些数据的格式很简单，都是很普通的字符串、标量类型的值等，对于这种数据，Android提供了SharedPreferences进行保存</p>
-<h3 id="SharedPreferences与Editor简介"><a href="#SharedPreferences与Editor简介" class="headerlink" title="SharedPreferences与Editor简介"></a>SharedPreferences与Editor简介</h3><p>SharedPreferences保存的数据主要是简单类型的key-value对。<br>SharedPreferences接口主要负责读取应用程序的Preferences数据，它提供了如下方法：   </p>
-<ul>
-<li>boolean contains(String key)：判断SharedPreferences是否包含特定key的数据</li>
-<li>abstract Map&lt;String,?&gt; getAll()：获取SharedPreferences数据里全部的key-value对</li>
-<li>boolean getXxx(String key,xxx defValue)：获取SharedPreferences数据里指定key对应的value。如果key不存在，返回默认值defValue。其中xxx可以是boolean、float、int、long、String等各种基本类型的值。</li>
-</ul>
-<p>通过SharedPreferences的内部接口，SharedPreferences调用edit()方法即可获取它所对应的Editor对象。Editor提供了如下方法向SharedPreferences写入数据。    </p>
-<ul>
-<li>SharedPreferences.Editor clear()：清空SharedPreferences中所有数据</li>
-<li>SharedPreferences.Editor putXxx(String key,xxx value)：向SharedPreferences存入指定key对应的数据</li>
-<li>SharedPreferences.Editor remove(String key)：删除SharedPreferences里指定key对应的数据项</li>
-<li>boolean commit()：当Editor编辑完成后，调用该方法提交修改</li>
-</ul>
-<p>程序无法直接创建SharedPreferences实例，只能通过Context提供的getSharedPreferences(String name,int mode)方法获取SharedPreferences实例（SharedPreferences是一个接口）</p>
-<h2 id="File存储"><a href="#File存储" class="headerlink" title="File存储"></a>File存储</h2><p>Android支持用FileInputStream、FileOutputStream这些IO流访问手机存储器上的文件。</p>
-<p>###　openFileOutput和openFileInput</p>
-<p>Context提供热如下两个方法打开应用程序的数据文件夹里的文件IO流。</p>
-<ul>
-<li>FileInputStream openFileInput(String name)：打开应用程序的数据文件夹下的name文件对应的输入流</li>
-<li>FileOutputStream openFileOutput(String name,int mode)：打开应用程序的数据文件夹下的name文件对应的输出流</li>
-</ul>
-<h3 id="读写SD卡上的文件"><a href="#读写SD卡上的文件" class="headerlink" title="读写SD卡上的文件"></a>读写SD卡上的文件</h3><p>步骤：</p>
-<ol>
-<li>调用Environment的getExternalStorageState()方法判断是否插入内存卡<code>Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)</code>如果返回true即是插入了SD卡</li>
-<li>调用getExternalStorageDirectory()方法来获取外部存储器</li>
-<li>使用FileInputStream,FileOutputStream,FileReader,FileWriter读写SD卡里的文件<ul>
-<li>必须插入SD卡，模拟器需要创建通过mskdcard</li>
-<li>在AndroidManifest.xml中添加读写SD卡的权限，创建与删除文件权限：<code>&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;</code>写入数据权限<code>uses-premission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</code></li>
-</ul>
-</li>
-</ol>
-<p><strong>ps：File.getCanonicalPath（）方法用来获取文件（文件夹）路径；使用时需要进行try/catch抛出IOException异常</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/8.18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/18/8.18/" itemprop="url">Android学习（三十一之Android应用的资源）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T12:11:51+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="属性动画资源（Property-Animation"><a href="#属性动画资源（Property-Animation" class="headerlink" title="属性动画资源（Property Animation)"></a>属性动画资源（Property Animation)</h2><p>它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。</p>
-<ul>
-<li>&lt;set../&gt;：它是父元素，可以用于包含这三种元素作为子元素</li>
-<li>&lt;objectAnimator…/&gt;：用于定义ObjectAnimator动画</li>
-<li>&lt;animator…/&gt;：用于定义ValueAnimator动画</li>
-</ul>
-<p><code>ObjectAnimator colorAnim = (ObjectAnimator) AnimatorInflater.loadAnimator(MainActivity.this,R.animator.color_anima</code><br>使用AnimatorInflater工具类加载了指定动画资源文件，并将该动画资源文件转化为ObjectAnimator对象。</p>
-<h2 id="使用原始XML资源"><a href="#使用原始XML资源" class="headerlink" title="使用原始XML资源"></a>使用原始XML资源</h2><p>Android应用推荐用XML文件保存一些初始化的配置信息、应用相关的数据资源。这种资源就叫原始XML资源。</p>
-<h3 id="定义原始XML资源"><a href="#定义原始XML资源" class="headerlink" title="定义原始XML资源"></a>定义原始XML资源</h3><p>原始XML资源一般保存在/res/xml/路径下，需要开发者手动创建xml子目录。<br>为了在Java代码中获取实际的XML文档，可以通过Resource的如下两个方法实现：</p>
-<ul>
-<li>XmlResourceParser getXml(int id)：获取XML文档，并使用一个XmlPullParser来解析该XML文档，该方法返回一个解析器对象。（XmlResourceParser是XmlPullParser的子类）</li>
-<li>InputStream openRawResource(int id)：获取XML文档对应的输入流</li>
-</ul>
-<h3 id="使用原始XML文件"><a href="#使用原始XML文件" class="headerlink" title="使用原始XML文件"></a>使用原始XML文件</h3><h2 id="使用布局（Layout）资源"><a href="#使用布局（Layout）资源" class="headerlink" title="使用布局（Layout）资源"></a>使用布局（Layout）资源</h2><h2 id="使用菜单（Menu）资源"><a href="#使用菜单（Menu）资源" class="headerlink" title="使用菜单（Menu）资源"></a>使用菜单（Menu）资源</h2><h2 id="样式（Style）和主题（Theme）资源"><a href="#样式（Style）和主题（Theme）资源" class="headerlink" title="样式（Style）和主题（Theme）资源"></a>样式（Style）和主题（Theme）资源</h2><h3 id="样式资源"><a href="#样式资源" class="headerlink" title="样式资源"></a>样式资源</h3><p>Android的样式资源文件在/res/values/目录下，根元素是&lt;resources…/&gt;元素，该元素内可包含多个&lt;style../&gt;子元素，每个&lt;style…/&gt;子元素定义一个样式。   </p>
-<p>&lt;style../&gt;元素内可包含多个&lt;item../&gt;子元素，每个&lt;item../&gt;子元素定义一个格式项。</p>
-<h3 id="主题资源"><a href="#主题资源" class="headerlink" title="主题资源"></a>主题资源</h3><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，同样使用&lt;style../&gt;元素来定义主题。<br>主题与样式的区别主要体现在：</p>
-<ul>
-<li>主题不能作用于单个的View组件，主体应该对整个应用中的所有Activity起作用，或对指定的Activity起作用</li>
-<li>主题定义的格式应该是改变窗口外观的格式，例如窗口标题，窗口边框等</li>
-</ul>
-<p>如果想让应用中全部窗口使用该主题，那么只要在AndroidManifest.xml文件中&lt;application../&gt;元素加android:theme属性即可。如果只想让程序中的某个Activity拥有这个主题，那么可以修改&lt;activity…/&gt;元素，同样通过android:theme指定主题即可。</p>
-<p>Android提供的几种内置的主题资源，同样支持继承。</p>
-<h2 id="属性-Attribute-资源"><a href="#属性-Attribute-资源" class="headerlink" title="属性(Attribute)资源"></a>属性(Attribute)资源</h2><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，该元素包含如下两个子元素：</p>
-<ul>
-<li>attr子元素：定义一个属性</li>
-<li>declare-styleable子元素：定义一个styleable对象，每个styleable对象就是一组attr属性的集合</li>
-</ul>
-<h3 id="使用原始资源"><a href="#使用原始资源" class="headerlink" title="使用原始资源"></a>使用原始资源</h3><p>Android的原始资源可以放在如下两个地方：</p>
-<ul>
-<li>位于/res/raw/目录下，Android SDK会处理该目录下的原始资源，Android SDK会在R清单类中为该目录下的资源生成一个索引项</li>
-<li>位于/assets/目录下，该目录下的资源是一个更彻底的原始资源。Android应用通过AssetManager来管理该目录下的原始资源</li>
-</ul>
-<p>AssetManager是一个专门管理/assets/目录下原始资源的管理器类，AssetManager提供了如下两个常用方法来访问Assets资源。</p>
-<ul>
-<li>InputStream open(String fileName)：根据文件名来获取原始资源对应的输入流</li>
-<li>AssetFileDescriptor openFd(String fileName)：根据文件名来获取原始资源对应的AssetFileDesciptor。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/8.17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/17/8.17/" itemprop="url">Android学习（三十之Android应用的资源）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T10:27:22+08:00">
-                2018-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="数组资源-Array"><a href="#数组资源-Array" class="headerlink" title="数组资源(Array)"></a>数组资源(Array)</h2><p>Andriod采用位于/res/values目录下的arrays.xml文件来定义数组资源，定义数组也是用&lt;resources…/&gt;，该元素可包含如下三种子元素：</p>
-<ul>
-<li>&lt;array…/&gt;：普通类型的数组</li>
-<li>&lt;string-array…/&gt;：字符串数组</li>
-<li>&lt;integer-array…/&gt;：整型数组</li>
-</ul>
-<h3 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h3><p>为了在程序中获得实际的Drawable对象，Resources提供了Drawable getDrawable(int id)方法，该方法根据Drawable资源在R资源清单中的ID来获取实际的Drawable对象</p>
-<h3 id="StateListDrawable资源"><a href="#StateListDrawable资源" class="headerlink" title="StateListDrawable资源"></a>StateListDrawable资源</h3><p>StateListDrawable可以包含多个Drawable对象，主要用来根据组件状态变化，展现Drawable变化</p>
-<p>StateListDrawable对象的XML文件的根元素为&lt;selector…/&gt;，该元素可以包含多个&lt;item…/&gt;元素，该元素有如下属性：</p>
-<ul>
-<li>android:color,android:drawable</li>
-<li>android:state-xxx：指定一个特定状态，如：active,checkable可勾选,checked已选择,enabled,first开始状态,focused已得到焦点,last结束状态,middle中间状态,pressed,selected已被选中状态,window_focused</li>
-</ul>
-<h3 id="LayerDrawable资源"><a href="#LayerDrawable资源" class="headerlink" title="LayerDrawable资源"></a>LayerDrawable资源</h3><p>也可以包含一个Drawable数组，系统按索引最大的Drawable对象绘制在最上面。LayerDrawable对象的XML文件的根元素为&lt;layer-list…/&gt;</p>
-<p>可以利用这个资源来绘制拖动条，将索引大的覆盖索引小的。</p>
-<h3 id="ShapeDrawable资源"><a href="#ShapeDrawable资源" class="headerlink" title="ShapeDrawable资源"></a>ShapeDrawable资源</h3><p>用来定义一个基本的几何图形。定义ShapeDrawable的XML文件的根元素是&lt;shape…/&gt;元素，该元素可以指定如下属性：</p>
-<ul>
-<li>android:shape=[“rectangle”|”oval”|”line”|”ring”]：指定哪种类型的几何图形</li>
-</ul>
-<h3 id="ClipDrawable资源"><a href="#ClipDrawable资源" class="headerlink" title="ClipDrawable资源"></a>ClipDrawable资源</h3><p>代表从其他位图上截取的一个“图片片段”。在XML文件中定义ClipDrawable对象使用&lt;clip…/&gt;元素。</p>
-<p>可指定如下三个属性：</p>
-<ul>
-<li>android:drawable：指定截取的源Drawable对象</li>
-<li>android:clipOrientation：指定截取方向，可设置水平截取或垂直截取</li>
-<li>android:gravity：指定截取时的对齐方式</li>
-</ul>
-<p>使用ClipDrawable对象时，调用setLevel(int level)方法来设置截取的区域大小，当Level为0时，截取的图片片段为空；当level为10000时，截取整个图片。</p>
-<h3 id="AnimationDrawable资源"><a href="#AnimationDrawable资源" class="headerlink" title="AnimationDrawable资源"></a>AnimationDrawable资源</h3><p>它代表一个动画，有逐帧动画和补间动画。定义补间动画的XML资源文件以&lt;set…/&gt;元素作为根元素，该元素可以指定如下4个元素：</p>
-<ul>
-<li>alpha：设置透明度的改变</li>
-<li>scale：设置图片进行缩放变化</li>
-<li>translate：设置图片进行位移变化</li>
-<li>rotate：设置图片进行旋转</li>
-</ul>
-<p>定义动画的XML文件放在/res/anmi/路径下，需要开发者自行创建</p>
-<p>定义补间动画的思路：先设置一张图片的开始状态，并设置该图片的结束状态，再设置动画的持续时间。</p>
-<p>AnimationDrawable对象的元素都可以指定一个android:interpolator属性，该属性指定动画的变化速度，如：</p>
-<ul>
-<li>linear_interpolator：匀速变化</li>
-<li>accelerate_interpolator：加速变化</li>
-<li>decelerate_interpolator：减速变化</li>
-</ul>
-<p>如果程序想让&lt;set…/&gt;元素下所有的变化效果使用相同的动画速度，则可指定android：shareInterpolator=”true”</p>
-<p><strong>为了在Java代码中获取实际的Animation对象，可调用AnimationUtils的方法：loadAnimation(Context ctx,int resId)</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2271,7 +2378,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2293,7 +2400,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
