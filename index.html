@@ -259,6 +259,374 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/java13天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/08/java13天/" itemprop="url">JAVA基础（九）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-08T22:24:06+08:00">
+                2018-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><ol>
+<li>String s1 = “abc”;//s1是一个类类型变量，”abc”是一个对象 。字符串最大特点：一旦被初始化就不可以被改变。</li>
+<li>String类复写了Object类中equals方法，该方法用于判断字符串内容是否相同。</li>
+<li>String s1 = “abc”;<br>String s2 = new String(“abc”);<br>s1和s2有什么区别？<br>s1在内存中一个对象，s2在内存中两个对象(new，”abc”)；</li>
+<li>String类提供的常见操作？”abcd”   <ol>
+<li>获取<ol>
+<li>字符串中的包含的字符数，也就是字符串的长度。int length()。 数组的length是属性，没有()</li>
+<li>根据位置获取位置上某个字符。char charAt(int index)</li>
+<li>根据字符获取该字符在字符串中位置。int indexOf(int ch)：返回的是ch在字符串中第一次出现的位置。int indexOf(int ch,int fromIndex):从fromIndex指定位置开始，获取ch在字符串中的位置。如果没有找到返回-1.</li>
+</ol>
+</li>
+<li>判断<ol>
+<li>字符串中是否包含某一个子串</li>
+<li>字符中是否有内容</li>
+<li>字符串是否是以指定内容开头</li>
+<li>字符串是否以指定内容结尾</li>
+<li>字符串内容是 否相同</li>
+<li>判断内容是否 相同，并忽略大小写</li>
+</ol>
+</li>
+<li>转换<ol>
+<li>将字符数组转成字符串</li>
+<li>将字符串转成字符数组</li>
+<li>将字节数组转成字符串</li>
+<li>将字符串转成字节数组</li>
+</ol>
+</li>
+<li>替换</li>
+<li>切割</li>
+<li>子串</li>
+<li>转换</li>
+</ol>
+</li>
+</ol>
+<h3 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h3><ol>
+<li>StringBuffer是字符串缓冲区。是一个容器 而且长度可变化，可以直接操作多个数据类型，最终会通过toString()方法变成字符串。能进行增删改查</li>
+<li>append();    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb = new StringBuffer();</span><br><span class="line">StringBuffer sb1 = sh.append(34);</span><br><span class="line">sout(sb == sb1)//true</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>insert(index,数据);</li>
+<li>delete（start,end）; </li>
+</ol>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><p>在JDK 1.5 版本之后出现，StringBuffer是线程同步的。StringBuilder是线程不同步的。<br>StringBuilder提高效率，比较安全（减少并发）。</p>
+<h3 id="基本数据类型对象包装类"><a href="#基本数据类型对象包装类" class="headerlink" title="基本数据类型对象包装类"></a>基本数据类型对象包装类</h3><ol>
+<li>基本数据类型对象包装类的最常见作用：就是用于基本数据类型和字符串类型之间做转换</li>
+<li>基本数据类型转成字符串。如基本数据类型+””；或者基本数据类型.toString(基本数据类型值）。<br>字符串转成基本数据类型。如基本数据类型.paseInt(字符串); </li>
+<li>十进制转成其他进制：toBinaryString();toHexString();toOctalString();<br>其他进制转成十进制:parseInt(string,radix);</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer m = 128;</span><br><span class="line">Integer n = 128;</span><br><span class="line">sout(m==n)//false</span><br><span class="line"></span><br><span class="line">Integer a = 127;</span><br><span class="line">Integer b = 127;</span><br><span class="line">sout(a==b)//true.因为a和b指向了同一个Integer对象。因为当数值在byte范围内容，对于新特性，如果该数值已经存在，则不会在开辟新的空间。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="String字符串练习"><a href="#String字符串练习" class="headerlink" title="String字符串练习"></a>String字符串练习</h3><ol>
+<li>模拟一个trim方法，去除字符串两端的空格。<ul>
+<li>思路：</li>
+<li>判断字符串第一个位置是否是空格，如果是继续向下判断，直到不是空格为止；结尾处判断空格也是如此</li>
+<li>当开始和结尾都怕短到不是空格时，就是要获取的字符串</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line">/*</span><br><span class="line">* 模拟一个trim方法，去除字符串两端的空格。*/</span><br><span class="line"></span><br><span class="line">public class TestOne &#123;</span><br><span class="line">    public static void sop(String str)&#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;    ab cd    &quot;;</span><br><span class="line">        sop(&quot;(&quot;+s+&quot;)&quot;);</span><br><span class="line">        //对字符串进行myTrim操作</span><br><span class="line">        s = myTrim(s);</span><br><span class="line">        sop(&quot;(&quot;+s+&quot;)&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String myTrim(String str)&#123;</span><br><span class="line">        int start = 0;</span><br><span class="line">        int end = str.length()-1;</span><br><span class="line">        //从第一个位置开始查找空格，直到查到字符，停止查找，并返回当前的start值 </span><br><span class="line">        while (start&lt;=end &amp;&amp; str.charAt(start)==&apos; &apos;)</span><br><span class="line">            start++;</span><br><span class="line">        //从最后一个位置开始从右至左查找空格，直到查到字符，停止查找，并返回当前的end值 </span><br><span class="line">        while (start&lt;=end &amp;&amp; str.charAt(end)==&apos; &apos;)</span><br><span class="line">            end--;</span><br><span class="line">        //返回String对象，通过substring(start,end)方法获取子串，end位置的字符不计入子串。</span><br><span class="line">        return str.substring(start,end+1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>练习二:将一个字符串进行反转，将字符串中指定部分进行反转，<br>“abcdefg”;abfedcg<br>思路：<br>1.知道如何对数组元素进行反转<br>2.将字符串变成数组，进行反转<br>3.将反转后的数组变成字符串<br>4.只要将反转的部分的开始和结束位置作为参数传递即可</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*将一个字符串进行反转，将字符串中指定部分进行反转，</span><br><span class="line">“abcdefg”;abfedcg</span><br><span class="line">思路：</span><br><span class="line">1.知道如何对数组元素进行反转</span><br><span class="line">2.将字符串变成数组，进行反转</span><br><span class="line">3.将反转后的数组变成字符串</span><br><span class="line">4.只要将反转的部分的开始和结束位置作为参数传递即可*/</span><br><span class="line">public class TestTwo &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String reverseString(String s) &#123;</span><br><span class="line">//        字符串变成数组</span><br><span class="line">        char[] chars = s.toCharArray();</span><br><span class="line">//        反转数组</span><br><span class="line">        reverse(chars);</span><br><span class="line">//        将数组变成字符串,使用构造函数</span><br><span class="line">        return new String(chars);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //方法的重载</span><br><span class="line">    public static String reverseString(String s, int start, int end) &#123;</span><br><span class="line">        //        字符串变成数组</span><br><span class="line">        char[] chars = s.toCharArray();</span><br><span class="line">//        反转数组</span><br><span class="line">        reverse(chars, start, end);</span><br><span class="line">        //        将数组变成字符串,使用构造函数</span><br><span class="line">        return new String(chars);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void reverse(char[] chars, int x, int y) &#123;</span><br><span class="line">        for (int start = x, end = y - 1; start &lt; end; start++, end--) &#123;</span><br><span class="line">            swap(chars, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //方法的重载</span><br><span class="line">    private static void reverse(char[] chars) &#123;</span><br><span class="line">        for (int start = 0, end = chars.length - 1; start &lt; end; start++, end--) &#123;</span><br><span class="line">            swap(chars, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">//    数组反转</span><br><span class="line">    private static void swap(char[] chars, int start, int end) &#123;</span><br><span class="line">        char temp = chars[start];</span><br><span class="line">        chars[start] = chars[end];</span><br><span class="line">        chars[end] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;abcdefg&quot;;</span><br><span class="line">        sop(&quot;No reverse--&quot;+s);</span><br><span class="line">        sop(&quot;absolute reverse---&quot;+reverseString(s));</span><br><span class="line">        sop(&quot;part reverse==&quot;+reverseString(s, 2, 6));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>练习：获取一个字符串在另一个字符串中出现的次数.”abkkcdkkefkkakk”<br>思路：<br>1.定义计数器<br>2.获取“kk”第一次出现的位置<br>3.从第一次出现位置后剩余的字符串中继续获取kk出现的位置，每获取一次就计数一次<br>4.当获取不到时，计数完成</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*获取一个字符串在另一个字符串中出现的次数.&quot;abkkcdkkefkkakk&quot;</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1.定义计数器</span><br><span class="line"> * 2.获取“kk”第一次出现的位置</span><br><span class="line"> * 3.从第一次出现位置后剩余的字符串中继续获取kk出现的位置，每获取一次就计数一次</span><br><span class="line"> * 4.当获取不到时，计数完成*/</span><br><span class="line">public class TestThree &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //定义获取出现重复kk次数的方法</span><br><span class="line">    public static int getSubCount(String str, String key) &#123;</span><br><span class="line">//        定义一个count用来计数，index用来记录出现kk的索引</span><br><span class="line">        int count = 0;</span><br><span class="line">        int index = 0;</span><br><span class="line">//if判断只执行一次，while当条件为true就一直执行；indexOf(key)每次都是从0开始查找；indexOf(key,fromIndex)从指定位置开始查找。更高效</span><br><span class="line">        while ((index = str.indexOf(key, index)) != -1) &#123;</span><br><span class="line">            sop(&quot;index=&quot; + index);</span><br><span class="line">//            subString()方法：返回一个新的字符串，它是此字符串的一个子字符串。</span><br><span class="line">// 该子字符串从指定索引处的字符开始，直到此字符串末尾。str = str.substring(index + key.length());</span><br><span class="line">            index = index + key.length();</span><br><span class="line">//            计数</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;abkkcdkkefkkakk&quot;;</span><br><span class="line">        sop(&quot;count=&quot; + getSubCount(str, &quot;kk&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>练习：获取两个字符串中最大相同子串。第一个动作，将短的那个串进行长度一次递减的子串打印 “abcwerthelloyuicdef””cvhellobnm*<br>思路：<br>1.将短的那个子串按照长度递减的方式获取到<br>2.将每获取到的子串去长串中判断是否包含，如果包含，已经找到！</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*获取两个字符串中最大相同子串。第一个动作，将短的那个串进行长度一次递减的子串打印</span><br><span class="line"> * “abcwerthelloyuicdef”</span><br><span class="line"> * &quot;cvhellobnm*</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1.将短的那个子串按照长度递减的方式获取到</span><br><span class="line"> * 2.将每获取到的子串去长串中判断是否包含，如果包含，已经找到！*/</span><br><span class="line">public class TestFour &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //    定义一个获取最大相同子串的方法，比较的是两个字符串，局部变量就是两个字符串</span><br><span class="line">    public static String getMaxSubString(String s1, String s2) &#123;</span><br><span class="line">        String max = s1.length() &gt;= s2.length() ? s1 : s2;</span><br><span class="line">        String min = max == s1 ? s2 : s1;</span><br><span class="line">//        外层循环是控制短串需要进行多少次指针偏移，即要找多少次子串</span><br><span class="line">        for (int x = 0; x &lt; min.length(); x++) &#123;</span><br><span class="line">//            内层循环是控制当前长度的对应子串有多少个，y为头位置，z为尾标，当z的位置超过子串应有长度</span><br><span class="line">// （substring(start,end)方法中end位置字符不计入子串）停止查找</span><br><span class="line">            for (int y = 0, z = min.length() - x; z != min.length() + 1; y++, z++) &#123;</span><br><span class="line">                String temp = min.substring(y, z);</span><br><span class="line">//               sop(temp);</span><br><span class="line">//                如果长串中有包含短串中查找到的子串，返回一个String对象（temp）</span><br><span class="line">                if (max.contains(temp))</span><br><span class="line">                    return temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String s2 = &quot;abcwerthelloyuicdef&quot;;</span><br><span class="line">        String s1 = &quot;cvhellobnmaf&quot;;</span><br><span class="line">//        输出最大相同子串</span><br><span class="line">        sop(getMaxSubString(s1, s2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/java12天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/08/java12天/" itemprop="url">JAVA基础（八）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-08T11:57:10+08:00">
+                2018-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="多线程间通信"><a href="#多线程间通信" class="headerlink" title="多线程间通信"></a>多线程间通信</h3><ol>
+<li>线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。</li>
+<li>线程间通信，解决安全问题，同步的两个前提必须满足。</li>
+<li>等待唤醒机制。<br>wait():<br>notify():<br>notifyAll():<br>都是用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，因为只有同步才具有锁。<br>为什么这些操作线程的方法要定义在Object类中呢？<br>因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁，只有同一个锁上的被等待线程，可以被同一个锁上notify唤醒，不可以对不同锁中的线程进行唤醒。<br>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。</li>
+<li>当有多个生产者消费者，必须要用while循环，判断标记，唤醒全部线程。因为，让被唤醒的线程再一次判断标记。为什么定义notifyAll，因为需要唤醒对方线程。因为只用notify，容易出现只唤醒本方线程的情况，导致程序中的所有线程都等待。</li>
+<li>JDK1.5 中提供了多线程升级解决方案。将同步Synchronized替换成Lock操作。将Object中的wait，notify，notifyAll，替换成Condition对象。该对象能Lock锁，进行获取。</li>
+</ol>
+<h3 id="多线程停止"><a href="#多线程停止" class="headerlink" title="多线程停止"></a>多线程停止</h3><ol>
+<li>如何停止线程？只有一种，run方法结束。开启多线程运行，运行代码通常是循环结构。只要控制住循环，就可以让run方法结束，也就是线程结束。<br>当没有指定的方式让冻结的线程恢复到运行状态时，这时需要对冻结进行清除。强制让线程恢复到运行状态中来。这样就可以操作标记让线程结束。</li>
+<li>守护线程。</li>
+<li>Join方法：抢夺cpu执行权。当A线程执行到了B线程的.join方法时，A就会等待，等待B线程都执行完，A才执行。join可以用来临时加入线程执行。</li>
+<li>优先级.setPriority()</li>
+<li>.yield()暂停当前正在执行的线程，让其他线程执行。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/java第十一天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,8 +726,47 @@
 <li>一个进程中至少有一个线程。</li>
 <li>java虚拟机启动的时候会有一个进程java.exe。该进程中至少有一个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中，该线程称之为主线程。<br>其实更细节说明jvm，jvm不止一个线程，还有负责垃圾回收机制的线程。</li>
 <li>多线程的意义：</li>
-<li>如何在自定义的代码中定义线程：①继承Thread类（1.定义类继承Thread 2.复写Thread类中的run方法（将自定义代码存储在run方法中，让线程运行） 3.调用线程的start方法，该方法有两个作用：启动线程，调用run方法）②</li>
+<li>如何在自定义的代码中定义线程：①继承Thread类（1.定义类继承Thread 2.复写Thread类中的run方法（将自定义代码存储在run方法中，让线程运行） 3.调用线程的start方法，该方法有两个作用：启动线程，调用run方法） ②实现Runnable接口</li>
 <li>为什么要复写run方法：Thread类用于描述线程。该类就定义了一个功能，用于存储线程要运行的代码。该存储功能就是run方法。也就是说Thread中run方法，用于存储要运行的代码</li>
+</ol>
+<h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><ol>
+<li>static Thread currentThread():获取当前线程对象。<br>getName():获取线程名称<br>设置线程名称:setName或者构造函数</li>
+<li>实现Runnable接口：步骤：1.定义类实现Runnable接口 2.覆盖Runnable接口中的run方法（将线程要运行的代码放在run方法中） 3.通过Thread类建立线程对象 4.将Runnable接口的子类对象作为实际参数传给Thread类的构造函数（为什么要将Runnable接口的子类对象传递给Thread的构造函数？因为，自定义的run方法所属的对象是Runnable接口的子类对象；所以要让线程去指定指定对象的run方法，就必须明确该run方法所属对象。） 5.调用Thread类的start方法开启线程并调用Runnable接口子类的run方法。</li>
+<li>实现方式和继承方式有什么区别？<br>实现方式好处在于避免了单继承的局限性。在定义线程时，建议使用实现方式。（继承一个父类的同时实现Runnable接口）<br>两种方式的区别：<br>继承Thread：线程代码存放在Thread子类run方法中。实现Runable：线程代码存放在接口的子类的run方法。</li>
+<li>多线程的运行出现了安全问题。<br>问题的原因：当多条语句在操作同一个线程共享数据时，一个线程对多条语句只执行了一部分，还没有执行完；另一个线程参与进来执行，导致共享数据的错误。<br>解决办法：对多条操作共享数据的语句，只能让一个线程都执行完，在执行过程中，其他线程无法参与执行。<br>Java对于多线程的安全问题提供了专业的解决方式，就是同步代码块。<code>synchronized(对象){需要被同步的代码}</code>需要被同步的代码是操作共享数据的代码，对象可以用Object对象。对象如同锁，持有锁的线程可以在同步中执行。没有持有锁的线程即使获取cpu的执行权，也进不去，因为没有获取锁。（如火车的卫生间）<br>同步的前提：①必须要有两个或者两个以上的线程②必须是多个线程使用同一个锁<br>必须保证同步中只能有一个线程在运行。<br>好处：解决了多线程的安全问题<br>弊端：多个线程需要判断锁，较为消耗资源</li>
+<li><p>如何判断程序是否有安全问题？  </p>
+<ol>
+<li>明确哪些代码是多线程运行代码</li>
+<li>明确共享数据</li>
+<li>明确多线程运行代码中哪些语句是操作共享数据的</li>
+</ol>
+</li>
+<li><p>同步是有同步函数和同步代码块两种写法。同步函数用的是哪一个锁？函数需要被对象调用，那么函数都有一个所属对象引用，就是this，所以同步函数使用的锁是this</p>
+</li>
+<li>如果同步函数被静态修饰后，使用的锁是什么呢？肯定不是this，因为静态方法中也不可以定义this。静态进内存时，内存中没有本类对象，但是一定有该类对应的字节码文件对象, 类名.class，该对象的类型是class。静态的同步方法，使用的锁是该方法所在类的字节码文件对象。类名.class</li>
+<li>懒汉式特点在于实例的延时加载，如果多线程访问会出现安全问题，可以加同步，但是有点低效，可以用双重判断提高一点效率，锁是该类的字节码.class。（请写出延时加载的单例设计模式）。</li>
+</ol>
+<pre><code>class Single
+{ 
+  private static Single s = null;
+  private Single()
+  {
+  } 
+  public static Single getInstance()
+  {
+    if(s==null)
+    {
+      synchronized(Single.class)
+    {
+         if(s==null)
+            s=new Single();
+  }
+  }
+  return s;
+  }
+}
+</code></pre><ol start="9">
+<li>多线程的死锁程序！</li>
 </ol>
 
           
@@ -1677,301 +2084,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/9.4.2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/04/9.4.2/" itemprop="url">编程基础刷题笔记（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T22:01:03+08:00">
-                2018-09-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程基础专项/" itemprop="url" rel="index">
-                    <span itemprop="name">编程基础专项</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="数据库、数据库系统和数据库管理系统三者之间的关系是"><a href="#数据库、数据库系统和数据库管理系统三者之间的关系是" class="headerlink" title="数据库、数据库系统和数据库管理系统三者之间的关系是(  )"></a>数据库、数据库系统和数据库管理系统三者之间的关系是(  )</h3><p>数据库系统包括数据库和数据库管理系统 [数据库系统&gt;数据库管理系统&gt;数据库]</p>
-<h3 id="若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为"><a href="#若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为" class="headerlink" title="若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为"></a>若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为</h3><p>2和4</p>
-<h3 id="求最短路径的FLOYD算法的时间复杂度为（）。"><a href="#求最短路径的FLOYD算法的时间复杂度为（）。" class="headerlink" title="求最短路径的FLOYD算法的时间复杂度为（）。"></a>求最短路径的FLOYD算法的时间复杂度为（）。</h3><p>O(n3)</p>
-<h3 id="对n-n≥2-个权值均不相同的字符构成哈夫曼树，-下列-关于该-哈弗曼-树的叙述中，错误的是（A）"><a href="#对n-n≥2-个权值均不相同的字符构成哈夫曼树，-下列-关于该-哈弗曼-树的叙述中，错误的是（A）" class="headerlink" title="对n(n≥2)个权值均不相同的字符构成哈夫曼树， 下列 关于该 哈弗曼 树的叙述中，错误的是（A）"></a>对n(n≥2)个权值均不相同的字符构成哈夫曼树， 下列 关于该 哈弗曼 树的叙述中，错误的是（A）</h3><p>A.该树一定是一棵完全二叉树<br>B.树中一定没有度为1的结点<br>C.树中两个权值最小的结点一定是兄弟结点<br>D.树中任一非叶结点的权值一定不小于下一层任一结点的权值</p>
-<h3 id="数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（-C）"><a href="#数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（-C）" class="headerlink" title="数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（ C）?"></a>数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（ C）?</h3><p>A.数据字典、应用程序、审计档案、数据库后备副本<br>B.数据字典、应用程序、日志文件、审计档案<br>C.日志文件、数据库后备副本<br>D.数据字典、应用程序、数据库后备副本</p>
-<h3 id="Which-method-you-define-as-the-starting-point-of-new-thread-in-a-class-from-which-n-thread-can-be-execution"><a href="#Which-method-you-define-as-the-starting-point-of-new-thread-in-a-class-from-which-n-thread-can-be-execution" class="headerlink" title="Which method you define as the starting point of new thread in a class from which n thread can be execution?"></a>Which method you define as the starting point of new thread in a class from which n thread can be execution?</h3><p>public void run()</p>
-<h3 id="以下哪些不是链表的特征-ACD-？"><a href="#以下哪些不是链表的特征-ACD-？" class="headerlink" title="以下哪些不是链表的特征(ACD)？"></a>以下哪些不是链表的特征(ACD)？</h3><p>A.数据在内存中一定是连续的<br>B.插入或删除时，无需移动其他元素<br>C.可以随机访问表内的元素<br>D.需要事先估计存储空间</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/9.4.1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/04/9.4.1/" itemprop="url">java刷题笔记（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T21:55:54+08:00">
-                2018-09-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java专项/" itemprop="url" rel="index">
-                    <span itemprop="name">java专项</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="以下关于Object类的说法正确的是（A）"><a href="#以下关于Object类的说法正确的是（A）" class="headerlink" title="以下关于Object类的说法正确的是（A）"></a>以下关于Object类的说法正确的是（A）</h3><p>A.Java中所有的类都直接或间接继承自Object，无论是否明确的指明，无论其是否是抽象类。<br>B.Java中的接口(interface)也继承了Object类<br>C.利用“==”比较两个对象时，Java调用继承自Object的equals方法，判断是否相等。<br>D.如果类的定义中没有重新定义toString()方法，则该类创建的对象无法使用toStrig()方法。</p>
-<h3 id="给出以下代码"><a href="#给出以下代码" class="headerlink" title="给出以下代码"></a>给出以下代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class TestObj&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Object o=new Object()&#123;</span><br><span class="line">            public boolean equals(Object obj)&#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        System.out.println(o.equals(“Fred”));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">请给出结果:()</span><br></pre></td></tr></table></figure>
-<p>true</p>
-<h3 id="关于数据库连接的程序，以下哪个语句的注释是错误的（-）"><a href="#关于数据库连接的程序，以下哪个语句的注释是错误的（-）" class="headerlink" title="关于数据库连接的程序，以下哪个语句的注释是错误的（ ）"></a>关于数据库连接的程序，以下哪个语句的注释是错误的（ ）</h3><p>A.Class.forName(“sun.jdbc.odbc.JdbcOdbcDriver”); //指定MySQL JDBC驱动程序<br>B.String url=“jdbc:odbc:student_access”;  指定数据源为student_access<br>C.Connection con=DriverManager.getConnection(url); //创建连接指定数据库的对象<br>D.Statement stmt=con.creatStatement();//创建执行SQL语句的Statement对象</p>
-<h3 id="如下代码的输出是"><a href="#如下代码的输出是" class="headerlink" title="如下代码的输出是"></a>如下代码的输出是</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package Test;</span><br><span class="line">public class Test &#123;</span><br><span class="line">    private static void test(int[] arr) &#123;</span><br><span class="line">        for (int i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (arr[i] % 2 == 0) &#123;</span><br><span class="line">                    throw new NullPointerException();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    System.out.print(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                System.out.print(&quot;e&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[]args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            test(new int[] &#123;0, 1, 2, 3, 4, 5&#125;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.out.print(&quot;E&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以得到的结论是（ eE）   </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2022,7 +2134,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2044,7 +2156,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">108</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
