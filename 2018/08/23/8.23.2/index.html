@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="安卓基础Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。    不仅如此，And">
+<meta name="keywords" content="TCP协议基础,使用ServerSocket创建TCP服务器端,使用Socket进行通信,加入多线程,使用URL读取网络资源,使用Apache Httpclient,使用Web View,使用Web Service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android学习（四十之Android网络应用）">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/8.23.2/index.html">
+<meta property="og:site_name" content="JackLuo&#39;s Blog">
+<meta property="og:description" content="安卓基础Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。    不仅如此，And">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-25T01:37:02.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android学习（四十之Android网络应用）">
+<meta name="twitter:description" content="安卓基础Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。    不仅如此，And">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/23/8.23.2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android学习（四十之Android网络应用） | JackLuo's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?27cb89b569db5ce43613c8d1a7b8f9c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JackLuo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/8.23.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JackLuo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android学习（四十之Android网络应用）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-23 18:08:40" itemprop="dateCreated datePublished" datetime="2018-08-23T18:08:40+08:00">2018-08-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-25 09:37:02" itemprop="dateModified" datetime="2018-08-25T09:37:02+08:00">2018-08-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/23/8.23.2/" class="leancloud_visitors" data-flag-title="Android学习（四十之Android网络应用）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。   </p>
+<p>不仅如此，Android还内置了HttpClient，这样可以非常方便地发送HTTP请求，并获取HTTP响应，通过内置HttpClient，Android简化了与网站之间的交互。令人遗憾的是，Android并未内置对Web Service的支持，为了弥补这种不足，可以利用ksoap2-android项目在Android应用中调用远程Web Service。</p>
+<h2 id="基于TCP协议的网络通信"><a href="#基于TCP协议的网络通信" class="headerlink" title="基于TCP协议的网络通信"></a>基于TCP协议的网络通信</h2><p>TCP/IP通信协议是一种可靠的网络协议，它在通信的两端各建立一个Socket，从而在通信的两端之间形成了网络虚拟链路。一旦建立了它，两端的程序就可以通过它进行通信。Java对基于TCP协议的网络通信提供了良好的封装，Java使用Socket对象来代表两端的通信接口，并通过Socket产生IO流来进行网络通信。</p>
+<h3 id="TCP协议基础"><a href="#TCP协议基础" class="headerlink" title="TCP协议基础"></a>TCP协议基础</h3><p>IP协议是Internet上使用的一个关键协议，它的全称是Internet Protocol，即Internet协议，简称IP协议。通过使用IP协议，使Internet成为一个允许连接不同类型的计算机和不同的操作系统的网络。<br>要使两台计算机彼此之间进行通信，两台计算机必须使用同一种“语言”，IP协议只保证计算机能发送和接受分组数据。IP协议负责将消息从一个主机传送到另一个主机上，消息在传送的过程中被分割成一个个小包。<br>尽管计算机通过安装IP软件，保证了计算机之间可以发送和接收数据，但IP协议还不能解决数据分组在传输过程中可能出现的问题。因此，若要解决可能出现的问题，连接上Internet的计算机还需要安装TCP协议来提供可靠并且无差错的通信服务。<br>TCP协议被称为一种端对端协议。这是因为它为两台计算机之间的连接起了重要作用：当一台计算机需要与另一台远程计算机连接时，TCP协议会让它们建立一个连接——用于发送和接收数据的虚拟链路。<br>TCP协议负责收集这些信息包，并将其按适当的次序放好发送，在接收端收到后再将其正确地还原。TCP协议保证了数据包在传送中准确无误。TCP协议使用重发机制：当一个通信实体发送一个消息给另一个通信实体之后，需要收到另一个通信实体的确认信息，如果没有收到另一个通信实体的确认信息，则会再次重发刚才发送的消息。</p>
+<h3 id="使用ServerSocket创建TCP服务器端"><a href="#使用ServerSocket创建TCP服务器端" class="headerlink" title="使用ServerSocket创建TCP服务器端"></a>使用ServerSocket创建TCP服务器端</h3><p>Java中能接收其他通信实体连接请求的类是ServerSocket，ServerSocket对象用于监听来自客户端的Socket连接，如果没有连接，它将一直处于等待状态。ServerSocket包含一个监听来自客户端连接请求的方法：</p>
+<ul>
+<li>Socket accept()：如果接收到一个客户端Socket的连接请求，该方法将返回一个与连接客户端Socket对应的Socket；否则该方法将一直处于等待状态，线程也被阻塞</li>
+<li>ServerSocket(int port)：用指定的端口port来创建一个ServerSocket。该端口有效整数值：0~65535</li>
+<li>ServerSocket(int port,int backlog）：增加一个用来改变连接队列长度的参数backlog</li>
+<li>ServerSocket(int port,int backing,InetAddress localAddr)：在机器存在多个IP地址的情况下，允许通过localAddr这个参数来指定将该ServerSocket绑定到指定的IP地址</li>
+</ul>
+<p>当ServerSocket使用完毕后，调用close（）方法来关闭该ServerSocket。</p>
+<h3 id="使用Socket进行通信"><a href="#使用Socket进行通信" class="headerlink" title="使用Socket进行通信"></a>使用Socket进行通信</h3><p>客户端通常使用Socket的构造器来连接到指定服务器，Socket通常可提供如下两个构造器。 </p>
+<ul>
+<li>Socket(InetAddress/String remoteAddress,int port)：创建连接到指定远程主机、远程端口的Socket，该构造器没有指定本地地址、本地端口，默认使用本地主机的默认IP地址，默认使用系统动态分配的端口</li>
+<li>Socket(InetAddress/String remoteAddress,int port,InetAddress localAddr,int localPort)：创建连接到指定远程主机、远程端口的Socket，并指定本地IP地址和本地端口，适用于本地主机有多个IP地址的情形</li>
+</ul>
+<p>Socket提供了如下两个方法来获取输入流和输出流：</p>
+<ul>
+<li>InputStream getInputStream()：返回该Socket对象对应的输入流，让程序通过该输入流从Socket中取出数据</li>
+<li>OutputStream getOutputStream()：返回该Socket对象对应的输入流，让程序通过该输入流向Socket中输入数据</li>
+</ul>
+<p>Android已经不允许在UI线程中建立网络连接，需要启动新线程来建立网络连接。</p>
+<h3 id="加入多线程"><a href="#加入多线程" class="headerlink" title="加入多线程"></a>加入多线程</h3><p>使用传统的BufferedReader的readLine()方法读取数据时，在该方法成功返回之前，线程被阻塞，程序无法继续执行。考虑到这个原因，服务器应该为每个Socket单独启动一条线程，每条线程负责与一个客户端进行通信。<br>客户端读取服务器的线程同样会被阻塞，所以系统应该单独启动一条线程，该线程专门负责读取服务器数据。</p>
+<p>每个客户端应该包含两条线程：一条负责生成主界面，响应用户动作，并将用户输入的数据写入Socket对应的输出流中；另一条负责读取Socket对应输入流中的数据（从服务器发送过来的数据），并负责将这些数据在程序界面上显示出来</p>
+<h2 id="使用URL访问网络资源"><a href="#使用URL访问网络资源" class="headerlink" title="使用URL访问网络资源"></a>使用URL访问网络资源</h2><p>URL(Uniform Resource Locator)对象代表统一资源定位器，它是指向互联网“资源”的指针。资源可以是简单的文件或目录，也可以是对更复杂的对象的引用，例如对数据库或搜索引擎的查询。通常情况，URL可以有协议名、主机、端口和资源组成，即满足如下格式：<code>protocol://host:port/resourceName</code>我们可以把URL理解成URI的特例，Java的URI不能用于定位任何资源，它的唯一作用就是解析。URL包含一个可打开到达资源的输入流。</p>
+<p>URL类提供了多个构造器用于创建URL对象，一旦获得URL对象之后，可以调用如下常用方法来访问该URL对应的资源：</p>
+<ul>
+<li>String getFile()：获取此URL的资源名</li>
+<li>String getHost()：获取此URL的主机名</li>
+<li>String getPath()：获取此URL的路径部分</li>
+<li>int getPort()：获取此URL的端口号</li>
+<li>String getProtocol()：获取此URL的协议名称</li>
+<li>String getQuery()：获取此URL的查询字符串部分</li>
+<li>URLConnection openConnection()：返回一个URLConnection对象，它表示到URL所引用的远程对象的连接</li>
+<li>InputStream openStream()：打开与此URL的连接，并返回一个用于读取该URL资源的InputStream</li>
+</ul>
+<h3 id="使用URL读取网络资源"><a href="#使用URL读取网络资源" class="headerlink" title="使用URL读取网络资源"></a>使用URL读取网络资源</h3><p>URL对象提供的openStream()可以读取该URL资源的InputStream，通过该方法可以非常方便地读取远程资源。</p>
+<h3 id="使用URLConnection提交请求"><a href="#使用URLConnection提交请求" class="headerlink" title="使用URLConnection提交请求"></a>使用URLConnection提交请求</h3><p>URL的openConnection()方法将返回一个URLConnection对象，该对象表示应用程序和URL之间的通信连接。程序可以通过URLConnection实例向该URL发送请求，读取URL引用的资源。<br>通常创建一个和URL的连接，并发送请求、读取此URL引用的资源需要如下几个步骤。</p>
+<ol>
+<li>通过调用URL对象的openConnection()方法来创建URLConnection对象</li>
+<li>设置URLConnection的参数和普通请求属性</li>
+<li>如果只是发送GET请求，那么使用connect方法建立和远程资源之间的实际连接即可；如果需要发送POST方式的请求，则需要获取URLConnection实例对应的输出流来发送请求参数</li>
+<li>远程资源变为可用，程序可以访问远程资源的头字段，或者通过输入流读取远程资源的数据</li>
+</ol>
+<p>在建立和远程资源的实际连接之前，程序可以通过如下方法来设置请求头字段</p>
+<ul>
+<li>setAllowUserInteraction：设置该URLConnection的allowUserInteraction请求头字段的值</li>
+<li>setDoInput：设置该URLConnection的doInput请求头字段的值</li>
+<li>setDoOutput：设置该URLConnection的doOutput请求头字段的值</li>
+<li>setIfModifiedSince：设置该URLConnection的ifMOdifiedSince请求头字段的值</li>
+<li>setUseCaches：设置该URLConnection的useCaches请求头字段的值，除此之外，还可以使用如下方法来设置或者增加通用的头字段<ul>
+<li>setRequestProperty(String key,String value)：设置该URLConnection的key请求头字段的值为value</li>
+<li>addRequestProperty(String key,String value)：为该URLConnection的key请求头字段增加value值，该方法并不会覆盖原请求头字段的值，而是将新值追加到原请求头字段中</li>
+</ul>
+</li>
+</ul>
+<p>当远程资源可用之后，程序可以使用以下方法来访问头字段和内容</p>
+<ul>
+<li>Object getContent()：获取该URLConnection的内容</li>
+<li>String getHeaderField(String name)：获取指定响应头字段的值</li>
+<li>getInputStream()：返回该URLConnection对应的输入流，用于获取URLConnection响应的内容</li>
+<li>getOutputStream()：返回该URLConnection对应的输出流，用于向URLConnection发送请求参数</li>
+</ul>
+<p><strong>PS：如果既要使用输入流来读取URLConnection响应的内容，也要使用输出流发送请求参数，一定要先使用输出流，再使用输入流</strong></p>
+<h3 id="使用HttpURLConnection"><a href="#使用HttpURLConnection" class="headerlink" title="使用HttpURLConnection"></a>使用HttpURLConnection</h3><p>HttpURLConnection继承了URLConnection，因此也可用于向指定网站发送GET请求、POST请求。在URLConnection的基础上提供了如下便捷的方法</p>
+<ul>
+<li>int getResponseCode()：获取服务器的响应代码</li>
+<li>String getResponseMessage()：获取服务器的响应信息</li>
+<li>String getRequestMethod()：获取发送请求的方法</li>
+<li>void setRequestMethod(String method)：设置发送请求的方法</li>
+</ul>
+<p>为了实现多线程下载，步骤如下：</p>
+<ol>
+<li>创建URL对象</li>
+<li>获取指定URL对象所指向资源的大小（由getContentLength()方法实现），此处用到HttpURLConnection类</li>
+<li>在本地磁盘上创建一个与网络资源相同大小的空文件夹</li>
+<li>计算每条线程应该下载网络资源的哪个部分（从哪个字节开始，到哪个字节结束）</li>
+<li>依次创建、启动多条线程来下载网络资源的指定部分</li>
+</ol>
+<h3 id="使用Apache-HttpClient"><a href="#使用Apache-HttpClient" class="headerlink" title="使用Apache HttpClient"></a>使用Apache HttpClient</h3><p>在一般情况下，如果只是需要向Web站点的某个简单页面提交请求并获取服务器响应，则完全可以使用前面所介绍的HttpURLConnection完成。但在大多数情况下，Web网页可能没这么简单，这些页面不是通过一个简单的URL就可以访问的，可能需要用户登录，而且具有相应的权限才可以访问该界面。<br>为了更好地处理向Web站点请求，包括处理Session、Cookie等细节问题，Apache开源组织提供了一个HttpClient项目，它是一个简单的HTTP客户端，可以用于发送HTTP请求，接收HTTP响应。但不会缓存服务器的响应，不能执行HTML页面中嵌入的JavaScript代码；也不会对页面内容进行解析和处理。（HttpClient是一个增强的HttpURLConnection）<br>使用HttpClient发送请求、接收响应，步骤：</p>
+<ol>
+<li>创建HttpClient对象</li>
+<li>如果需要发送GET请求，则创建HttpGet对象；如果需要发送POST请求，则创建HttpPost对象</li>
+<li>如果需要发送请求参数，则可调用HttpGet、HttpPost共同的setParams(HttpParams params)方法来添加请求参数；对于HttpPost对象而言，也可调用setEntity(HttpEntity entity)方法来设置请求参数</li>
+<li>调用HttpClient对象的execute(HttpUriRequest request)方法发送请求，执行该方法返回一个HttpResponse</li>
+<li>调用HttpResponse的getAllHeaders()、getHeaders(String name)等方法可获取服务器的响应头；调用HttpResponse的getEntity()方法可获取HttpEntity对象，该对象包装了服务器的响应内容。程序可通过该对象获取服务器的响应内容</li>
+</ol>
+<p>程序只要第一次通过HttpClient登录系统，接下来即可通过该HttpClient访问被保护的资源。</p>
+<h3 id="使用WebView浏览网页"><a href="#使用WebView浏览网页" class="headerlink" title="使用WebView浏览网页"></a>使用WebView浏览网页</h3><p>WebView的用法与普通ImageView组件的用法基本相似，它提供了大量方法来执行浏览器操作，例如如下常用方法：</p>
+<ul>
+<li>void goBack()：后退</li>
+<li>void goForward()：前进</li>
+<li>void loadUrl(String url)：加载指定URL对应的网页</li>
+<li>boolean zoomln()：放大网页</li>
+<li>boolean zoomOut()：缩小网页</li>
+</ul>
+<p>通过WebView的loadUrl()方法来加载显示指定URL对应的页面</p>
+<h3 id="使用WebView加载HTML代码"><a href="#使用WebView加载HTML代码" class="headerlink" title="使用WebView加载HTML代码"></a>使用WebView加载HTML代码</h3><p>WebView提供了一个loadData(String data,String mimeType,String encoding)方法，该方法用于加载并显示HTML代码。但在实际使用过程中，当它加载包含中文的HTML内容时，WebView将会显示乱码。<br>不过loadDataWithBaseURL(String baseUrl,String data,String mimeType,String encoding,String historyUrl)方法，该方法是loadData(String data,String mimeType,String encoding)方法的增强版，他不会产生乱码。</p>
+<p>参数：</p>
+<ul>
+<li>data：指定需要加载的HTML代码</li>
+<li>mimeType：指定HTML代码的MIME类型，对于HTML代码可指定为text/html</li>
+<li>encoding：指定HTML代码编码所使用的字符集，比如GBK</li>
+</ul>
+<h3 id="使用WebView中的JavaScript调用Android方法"><a href="#使用WebView中的JavaScript调用Android方法" class="headerlink" title="使用WebView中的JavaScript调用Android方法"></a>使用WebView中的JavaScript调用Android方法</h3><p>很多时候，WebView加载的页面是带有JavaScript脚步的，比如页面上有一个按钮，用户单击按钮时将会弹出一个提示框，或打开一个列表框。由于该按钮是HTML页面上的按钮，它只能激发一段JavaScript脚步，这就要让JavaScript脚步来调用Android方法。<br>在WebView的JavaScript中调用Android方法只要如下三个步骤：</p>
+<ol>
+<li>调用WebView关联的WebSettings的setJavaScriptEnabled(true)启用JavaScript调用功能</li>
+<li>调用WebView的addJavascriptInterface(Object object,String name)方法将object对象暴露给JavaScript脚步</li>
+<li>在JavaScript脚本中通过刚才暴露的name对象调用Android方法</li>
+</ol>
+<p>JavaScript脚本可以直接调用Java对象的方法</p>
+<h2 id="使用Web-Service进行网络编程"><a href="#使用Web-Service进行网络编程" class="headerlink" title="使用Web Service进行网络编程"></a>使用Web Service进行网络编程</h2><p>为了让Android应用与远程服务器进行交互，可以借助于Java的RMI技术，但这要求远程服务器程序必须采用Java实现；也可以借助于CORBA技术，但是这种技术显得过于复杂。除此之外，Web Service是一种不错的选择。</p>
+<h3 id="Web-Service平台概述"><a href="#Web-Service平台概述" class="headerlink" title="Web Service平台概述"></a>Web Service平台概述</h3><p>Web Service平台主要涉及的技术有SOAP（Simple Object Access Protocol，简单对象访问协议）,WSDL（Web Service Description Language，Web Service描述语言）,UDDI（Universal Description,Description and Integration，统一描述、发现和整合协议）</p>
+<ol>
+<li><p>SOAP是一种具有扩展性的XML消息协议。SOAP允许一个应用程序向另一个应用程序发送XML消息，SOAP消息是从SOAP发送者传至SOAP接收者的单路消息，任何应用程序均可作为发送者或接收者。SOAP仅定义消息结构和消息处理的协议，与底层的传输协议独立。因此，SOAP协议能通过HTTP,JMS,SMTP协议传输</p>
+<ul>
+<li>&lt;Envelope…/&gt;根元素，SOAP消息对应的XML文档以该元素作为根元素</li>
+<li>可选的&lt;Header../&gt;元素，包含SOAP消息的头信息</li>
+<li>必须的&lt;Body../&gt;元素，包含所有的调用和响应信息</li>
+</ul>
+</li>
+<li><p>WSDL使用XML描述Web Service，包括访问和使用Web Service所必须的信息，定义该Web Service的位置、功能及如何通信等描述信息</p>
+<ul>
+<li>WHAT部分：用于定义Web Service所提供的操作或者方法。由WSDL中&lt;type../&gt;,&lt;message../&gt;和&lt;portType../&gt;元素定义</li>
+<li>HOW部分：用于定义如何访问Web Service，包括数据格式详情和访问Web Service操作的必要协议</li>
+<li>WHERE部分：用于定义Web Service位于何处。该部分使用&lt;service…/&gt;元素定义</li>
+</ul>
+</li>
+<li><p>UDDI是一套信息注册规范，它基于Web，是分布式。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+		 <div>
+
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
+</div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>JackLuo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/08/23/8.23.2/" title="Android学习（四十之Android网络应用）">http://yoursite.com/2018/08/23/8.23.2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TCP协议基础/" rel="tag"># TCP协议基础</a>
+          
+            <a href="/tags/使用ServerSocket创建TCP服务器端/" rel="tag"># 使用ServerSocket创建TCP服务器端</a>
+          
+            <a href="/tags/使用Socket进行通信/" rel="tag"># 使用Socket进行通信</a>
+          
+            <a href="/tags/加入多线程/" rel="tag"># 加入多线程</a>
+          
+            <a href="/tags/使用URL读取网络资源/" rel="tag"># 使用URL读取网络资源</a>
+          
+            <a href="/tags/使用Apache-Httpclient/" rel="tag"># 使用Apache Httpclient</a>
+          
+            <a href="/tags/使用Web-View/" rel="tag"># 使用Web View</a>
+          
+            <a href="/tags/使用Web-Service/" rel="tag"># 使用Web Service</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/23/8.23/" rel="next" title="Android学习（三十九之多媒体应用开发）">
+                <i class="fa fa-chevron-left"></i> Android学习（三十九之多媒体应用开发）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/23/8.23.3/" rel="prev" title="Strength">
+                Strength <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/chai.jpg"
+                alt="JackLuo" />
+            
+              <p class="site-author-name" itemprop="name">JackLuo</p>
+              <p class="site-description motion-element" itemprop="description">号角响，革命起</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓基础"><span class="nav-number">1.</span> <span class="nav-text">安卓基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于TCP协议的网络通信"><span class="nav-number">1.1.</span> <span class="nav-text">基于TCP协议的网络通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议基础"><span class="nav-number">1.1.1.</span> <span class="nav-text">TCP协议基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ServerSocket创建TCP服务器端"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用ServerSocket创建TCP服务器端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Socket进行通信"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用Socket进行通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入多线程"><span class="nav-number">1.1.4.</span> <span class="nav-text">加入多线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用URL访问网络资源"><span class="nav-number">1.2.</span> <span class="nav-text">使用URL访问网络资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用URL读取网络资源"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用URL读取网络资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用URLConnection提交请求"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用URLConnection提交请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用HttpURLConnection"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用HttpURLConnection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Apache-HttpClient"><span class="nav-number">1.2.4.</span> <span class="nav-text">使用Apache HttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WebView浏览网页"><span class="nav-number">1.2.5.</span> <span class="nav-text">使用WebView浏览网页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WebView加载HTML代码"><span class="nav-number">1.2.6.</span> <span class="nav-text">使用WebView加载HTML代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WebView中的JavaScript调用Android方法"><span class="nav-number">1.2.7.</span> <span class="nav-text">使用WebView中的JavaScript调用Android方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Web-Service进行网络编程"><span class="nav-number">1.3.</span> <span class="nav-text">使用Web Service进行网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Service平台概述"><span class="nav-number">1.3.1.</span> <span class="nav-text">Web Service平台概述</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JackLuo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz",
+                'X-LC-Key': "fGmrlfK2mPp7SsPplBu5j3G6",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
