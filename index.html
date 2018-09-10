@@ -2,15 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,10 +50,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -50,42 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
 
 
 
 
 
 
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="罗某">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="罗某">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗某">
 
 
 
@@ -93,16 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,14 +103,38 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="号角响，革命起">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JackLuo&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="JackLuo&#39;s Blog">
+<meta property="og:description" content="号角响，革命起">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JackLuo&#39;s Blog">
+<meta name="twitter:description" content="号角响，革命起">
+
+
+
+
+
 
   <link rel="canonical" href="http://yoursite.com/"/>
 
 
 
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title>罗某</title>
+  <title>JackLuo's Blog</title>
   
 
 
@@ -129,11 +142,49 @@
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?27cb89b569db5ce43613c8d1a7b8f9c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -150,19 +201,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">罗某</span>
+        <span class="site-title">JackLuo's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,78 +219,105 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home//首页"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user//我的"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags//标签"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th//分类"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive//归档"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -254,6 +330,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -262,13 +340,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/java14天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -278,11 +356,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/09/java14天/" itemprop="url">JAVA基础（九）</a></h1>
+                <a class="post-title-link" href="/2018/09/09/java14天/" itemprop="url">
+                  JAVA基础（九）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -290,13 +378,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-09T12:00:27+08:00">
-                2018-09-09
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-09 12:00:27 / 修改时间：22:07:09" itemprop="dateCreated datePublished" datetime="2018-09-09T12:00:27+08:00">2018-09-09</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -312,11 +405,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -326,19 +415,20 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/09/java14天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/09/java14天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/09/java14天/" class="leancloud_visitors" data-flag-title="JAVA基础（九）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -364,7 +454,7 @@
           
           日积月累集合类
 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。
-Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&lt;?&gt; c):移除collection中那些包含在指定collection中的所有元素clear():移除此collection中的所有元素contains(Object o):如果此collection包含指定的元素，则返回truei
+Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -376,9 +466,15 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -414,6 +510,8 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -422,13 +520,13 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/java13天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -438,11 +536,21 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/08/java13天/" itemprop="url">JAVA基础（九）</a></h1>
+                <a class="post-title-link" href="/2018/09/08/java13天/" itemprop="url">
+                  JAVA基础（九）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -450,13 +558,18 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-08T22:24:06+08:00">
-                2018-09-08
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-08 22:24:06 / 修改时间：22:27:52" itemprop="dateCreated datePublished" datetime="2018-09-08T22:24:06+08:00">2018-09-08</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -472,11 +585,7 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -486,19 +595,20 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/08/java13天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/08/java13天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/08/java13天/" class="leancloud_visitors" data-flag-title="JAVA基础（九）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -525,11 +635,7 @@ Collection接口：add(E e):add方法的参数类型是Object，以便于接受�
           日积月累String类
 String s1 = “abc”;//s1是一个类类型变量，”abc”是一个对象 。字符串最大特点：一旦被初始化就不可以被改变。
 String类复写了Object类中equals方法，该方法用于判断字符串内容是否相同。
-String s1 = “abc”;String s2 = new String(“abc”);s1和s2有什么区别？s1在内存中一个对象，s2在内存中两个对象(new，”abc”)；
-String类提供的常见操作？”abcd”   
-获取
-字符串中的包含的字符数，也就是字符串的长度。int length()。 数组的length是属性，没有()
-根据
+String s1 = “abc”;String s2
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -541,9 +647,15 @@ String类提供的常见操作？”abcd”
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -579,6 +691,8 @@ String类提供的常见操作？”abcd”
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -587,13 +701,13 @@ String类提供的常见操作？”abcd”
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/java12天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -603,11 +717,21 @@ String类提供的常见操作？”abcd”
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/08/java12天/" itemprop="url">JAVA基础（八）</a></h1>
+                <a class="post-title-link" href="/2018/09/08/java12天/" itemprop="url">
+                  JAVA基础（八）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -615,13 +739,18 @@ String类提供的常见操作？”abcd”
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-08T11:57:10+08:00">
-                2018-09-08
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-08 11:57:10 / 修改时间：16:28:45" itemprop="dateCreated datePublished" datetime="2018-09-08T11:57:10+08:00">2018-09-08</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -637,11 +766,7 @@ String类提供的常见操作？”abcd”
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -651,19 +776,20 @@ String类提供的常见操作？”abcd”
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/08/java12天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/08/java12天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/08/java12天/" class="leancloud_visitors" data-flag-title="JAVA基础（八）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -690,7 +816,7 @@ String类提供的常见操作？”abcd”
           日积月累多线程间通信
 线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
 线程间通信，解决安全问题，同步的两个前提必须满足。
-等待唤醒机制。wait():notify():notifyAll():都是用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，因为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁，只有同一个锁上的被等待线程，可以被同一个锁上notify唤醒，不可以对不同锁中的线程进行唤醒。也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的
+等待唤醒机制。wait():notify():notifyAll():都是用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，因为只有同步才具
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -702,9 +828,15 @@ String类提供的常见操作？”abcd”
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -740,6 +872,8 @@ String类提供的常见操作？”abcd”
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -748,13 +882,13 @@ String类提供的常见操作？”abcd”
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/java第十一天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -764,11 +898,21 @@ String类提供的常见操作？”abcd”
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/07/java第十一天/" itemprop="url">JAVA基础（七）</a></h1>
+                <a class="post-title-link" href="/2018/09/07/java第十一天/" itemprop="url">
+                  JAVA基础（七）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -776,13 +920,30 @@ String类提供的常见操作？”abcd”
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T21:58:30+08:00">
-                2018-09-07
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-07 21:58:30" itemprop="dateCreated datePublished" datetime="2018-09-07T21:58:30+08:00">2018-09-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-08 11:19:13" itemprop="dateModified" datetime="2018-09-08T11:19:13+08:00">2018-09-08</time>
+              
             
           </span>
 
@@ -798,11 +959,7 @@ String类提供的常见操作？”abcd”
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -812,19 +969,20 @@ String类提供的常见操作？”abcd”
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/07/java第十一天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第十一天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/07/java第十一天/" class="leancloud_visitors" data-flag-title="JAVA基础（七）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -852,9 +1010,7 @@ String类提供的常见操作？”abcd”
 进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。
 线程：就是进程中的一个独立的控制单元。线程在控制着进程的执行。
 一个进程中至少有一个线程。
-java虚拟机启动的时候会有一个进程java.exe。该进程中至少有一个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中，该线程称之为主线程。其实更细节说明jvm，jvm不止一个线程，还有负责垃圾回收机制的线程。
-多线程的意义：
-如何在自定义的代码中定义线程：①继承Thread类（1.定义类继承Thread 2.复写Thread类中的run方法（将自定义代码存储
+java虚拟机启动的时候会有一个进程java.exe。该进程中至少有一个线程负责jav
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -866,9 +1022,15 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -904,6 +1066,8 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -912,13 +1076,13 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/java第十天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -928,11 +1092,21 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/07/java第十天/" itemprop="url">JAVA基础（六）</a></h1>
+                <a class="post-title-link" href="/2018/09/07/java第十天/" itemprop="url">
+                  JAVA基础（六）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -940,11 +1114,12 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T21:06:01+08:00">
-                2018-09-07
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-09-07 21:06:01" itemprop="dateCreated datePublished" datetime="2018-09-07T21:06:01+08:00">2018-09-07</time>
             
 
             
@@ -962,11 +1137,7 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -976,19 +1147,20 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/07/java第十天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第十天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/07/java第十天/" class="leancloud_visitors" data-flag-title="JAVA基础（六）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1016,13 +1188,7 @@ java虚拟机启动的时候会有一个进程java.exe。该进程中至少有�
 finally中定义的代码一定是会运行的代码。比如用在数据的关闭，避免占用数据库连接。通常用于关闭资源。
 记住一点，catch是用于处理异常，如果没有catch就代表异常没有被处理过，如果该异常时检测时异常，那么必须声明。
 异常在子父类覆盖中的体现：  
-子类在覆盖父类时，如果父类的方法抛出异常，那么子类的覆盖方法，只能抛出父类的异常或者该异常的子类
-如果父类抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集
-如果父类或者接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。如果子类方法发生了异常，就必须要进行try处理。绝对不能抛。
-
-
-
-异
+子类在覆盖父类时
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1034,9 +1200,15 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1072,6 +1244,8 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1080,13 +1254,13 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/java第九天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1096,11 +1270,21 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/07/java第九天/" itemprop="url">JAVA基础（五）</a></h1>
+                <a class="post-title-link" href="/2018/09/07/java第九天/" itemprop="url">
+                  JAVA基础（五）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1108,11 +1292,12 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T15:57:57+08:00">
-                2018-09-07
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-09-07 15:57:57" itemprop="dateCreated datePublished" datetime="2018-09-07T15:57:57+08:00">2018-09-07</time>
             
 
             
@@ -1130,11 +1315,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -1144,19 +1325,20 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/07/java第九天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第九天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/07/java第九天/" class="leancloud_visitors" data-flag-title="JAVA基础（五）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1183,8 +1365,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
           日积月累内部类
 内部类好处：可以不用创建对象就能直接访问相对内部类的外部类的成员
 内部类访问规则:①内部类可以直接访问外部类中的成员，包括私有。之所以能直接访问外部类中的成员，是因为内部类中持有一个外部类的引用，格式：外部类名.this②外部类访问内部类，必须要建立内部类对象。
-访问格式：当内部类定义在外部类的成员位置上，而且非私有，可以在外部其他类中直接建立内部类对象。 格式： 外部类名.内部类名 变量名 = 外部类对象.内部类对象；如 Outer.Innter in = new Outer().new Inner()；
-当内部类在成员位置上，就可以被成员修饰符所修饰。比如，private:
+访问格式：当内部类定
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1196,9 +1377,15 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1234,6 +1421,8 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1242,13 +1431,13 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/java第八天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1258,11 +1447,21 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/06/java第八天/" itemprop="url">JAVA基础（四）</a></h1>
+                <a class="post-title-link" href="/2018/09/06/java第八天/" itemprop="url">
+                  JAVA基础（四）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1270,13 +1469,30 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T22:13:28+08:00">
-                2018-09-06
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-06 22:13:28" itemprop="dateCreated datePublished" datetime="2018-09-06T22:13:28+08:00">2018-09-06</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-07 09:30:04" itemprop="dateModified" datetime="2018-09-07T09:30:04+08:00">2018-09-07</time>
+              
             
           </span>
 
@@ -1292,11 +1508,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -1306,19 +1518,20 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/06/java第八天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第八天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/06/java第八天/" class="leancloud_visitors" data-flag-title="JAVA基础（四）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1345,11 +1558,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
           日积月累多态
 多态：可以理解为事物存在的多种体现形式。如人分为男人女人；动物：猫狗。猫 x = new 猫()；动物 x = new 猫();
 多态的体现：强迫子类重写方法；父类的引用指向了自己的子类对象。父类的引用也可以接受自己的子对象
-多态的前提：①必须是类与类之间有关系，要么继承要么实现。②通常还有一个前提：存在覆盖
-多态的弊端：提高了扩展性，但是只能使用父类的引用访问父类中的成员
-多态的好处：提高了程序的扩展性
-多态的应用
-1234567Animal a = new Cat();//类型提升，向上转型a.eat();//如果想要调用猫特有方法时，如何操作？//强制将父类中的引用,转成子
+多态的前提：①必须是类与类之间有关系，要么继承要么实现。②通
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1361,9 +1570,15 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1399,6 +1614,8 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1407,13 +1624,13 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/java第七天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1423,11 +1640,21 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/06/java第七天/" itemprop="url">JAVA基础（三）</a></h1>
+                <a class="post-title-link" href="/2018/09/06/java第七天/" itemprop="url">
+                  JAVA基础（三）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1435,13 +1662,18 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T11:43:32+08:00">
-                2018-09-06
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-06 11:43:32 / 修改时间：17:40:14" itemprop="dateCreated datePublished" datetime="2018-09-06T11:43:32+08:00">2018-09-06</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1457,11 +1689,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -1471,19 +1699,20 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/06/java第七天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第七天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/06/java第七天/" class="leancloud_visitors" data-flag-title="JAVA基础（三）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1510,9 +1739,7 @@ finally中定义的代码一定是会运行的代码。比如用在数据的关�
           日积月累继承
 例如学生和工人的共性都有姓名和年龄，那么可以将共性描述提取出来，单独进行描述；只要让学生和工人与单独描述的这个类有关系，就可以了。
 继承：①提高了代码的复用性②让类与类之间产生了关系，有了这个关系，才有了多态的特性
-注意：千万不要为了获取其他类的功能，简化代码而继承；必须是类与类之间有所属关系才可以继承。所属关系是is a。
-父类是不断从子类中抽取出的共性体现。
-Java语言中：java只支持单继承，不支持多继承。因为多继承容易带来安全隐患：当多个父类中定义了相同功能，当功能内容不同时，子类对象不确定要运行哪一个。优化了c++的多继承，java保留了这种机制，并用另一种体现形式来
+注意：千万不要为了获取其他类的功能，简化代码而继承；必须是类与类之间有
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1524,9 +1751,15 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1562,6 +1795,8 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1570,13 +1805,13 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/java第六天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1586,11 +1821,21 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/06/java第六天/" itemprop="url">JAVA基础（二）</a></h1>
+                <a class="post-title-link" href="/2018/09/06/java第六天/" itemprop="url">
+                  JAVA基础（二）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1598,11 +1843,12 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T09:22:44+08:00">
-                2018-09-06
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-09-06 09:22:44" itemprop="dateCreated datePublished" datetime="2018-09-06T09:22:44+08:00">2018-09-06</time>
             
 
             
@@ -1620,11 +1866,7 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -1634,19 +1876,20 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/06/java第六天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第六天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/06/java第六天/" class="leancloud_visitors" data-flag-title="JAVA基础（二）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1678,7 +1921,7 @@ Java语言中：java只支持单继承，不支持多继承。因为多继承容
 设计模式
 其实是一种思想，用来解决问题最有效的方法。
 java中有23种设计模式：   
-单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建立该类对象②还为了想让其他程序可以访问到该类对象，只好在本类中，自定义一个对象③为了方便其他程序对自定义对象的访问，可以对外提供一些访问方式。怎么用代码体现这三步？①将构造函数私有化②在类中创建一个本
+单例设计模式：解决
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1690,9 +1933,15 @@ java中有23种设计模式：
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1728,6 +1977,8 @@ java中有23种设计模式：
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1736,13 +1987,13 @@ java中有23种设计模式：
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/9.5.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1752,11 +2003,21 @@ java中有23种设计模式：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/05/9.5.1/" itemprop="url">JAVA基础</a></h1>
+                <a class="post-title-link" href="/2018/09/05/9.5.1/" itemprop="url">
+                  JAVA基础
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1764,11 +2025,12 @@ java中有23种设计模式：
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-05T21:28:13+08:00">
-                2018-09-05
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-09-05 21:28:13" itemprop="dateCreated datePublished" datetime="2018-09-05T21:28:13+08:00">2018-09-05</time>
             
 
             
@@ -1786,11 +2048,7 @@ java中有23种设计模式：
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
@@ -1800,19 +2058,20 @@ java中有23种设计模式：
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/05/9.5.1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/05/9.5.1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/09/05/9.5.1/" class="leancloud_visitors" data-flag-title="JAVA基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1843,12 +2102,7 @@ java中有23种设计模式：
 构造函数主要帮助进行对象初始化
 构造函数和一般函数在写法上有不同
 构造函数是在对象一建立就运行。给对象初始化
-一般方法是对象调用才执行，给是对象添加对象具备的功能
-一个对象建立，构造函数只运行一次；而一般方法能被该对象调用多次
-什么时候定义构造函数呢？当分析事物时，该事务存在就具备一些特性或者行为，那么这些内容定义在构造函数中
-
-构造代码块
-作用：给对象进行初始化。对象一建立就运行，而且优先于构造函数执行。和构造函数
+一般方法是
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1860,9 +2114,15 @@ java中有23种设计模式：
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1894,15 +2154,12 @@ java中有23种设计模式：
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1930,63 +2187,311 @@ java中有23种设计模式：
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/huaji.png"
-                alt="法外狂徒罗某人" />
+                src="/images/chai.jpg"
+                alt="JackLuo" />
             
-              <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">JackLuo</p>
+              <p class="site-description motion-element" itemprop="description">号角响，革命起</p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">67</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">109</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
+            </nav>
           
 
           
 
           
+
+          
           
 
           
           
-		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
-		  width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2113043&
-		  auto=0&height=66"></iframe>
 
+          
+            
+          
           
 
         </div>
@@ -2007,16 +2512,20 @@ java中有23种设计模式：
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">法外狂徒罗某人</span>
+  <span class="author" itemprop="copyrightHolder">JackLuo</span>
+
+  
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -2024,12 +2533,13 @@ java中有23种设计模式：
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
 
 
 
 
         
+
 
 
 
@@ -2049,7 +2559,10 @@ java中有23种设计模式：
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -2068,15 +2581,21 @@ java中有23种设计模式：
 
 
 
+
+
+
+
+
   
 
 
 
 
 
+  
+  
 
-  
-  
+
 
 
 
@@ -2091,16 +2610,6 @@ java中有23种设计模式：
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -2111,7 +2620,7 @@ java中有23种设计模式：
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
   
@@ -2128,48 +2637,25 @@ java中有23种设计模式：
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
 
 
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
 
 
 
   
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
 
 
 
@@ -2184,25 +2670,398 @@ java中有23种设计模式：
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
+
   <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
     });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
-        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz",
+                'X-LC-Key': "fGmrlfK2mPp7SsPplBu5j3G6",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
     });
   </script>
 
@@ -2210,17 +3069,15 @@ java中有23种设计模式：
 
   
 
-
-
-
-
   
 
   
 
   
+  
 
   
+
   
 
   

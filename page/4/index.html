@@ -2,15 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,10 +50,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -50,42 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
 
 
 
 
 
 
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="罗某">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="罗某">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗某">
 
 
 
@@ -93,16 +84,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,14 +103,38 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="号角响，革命起">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JackLuo&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="JackLuo&#39;s Blog">
+<meta property="og:description" content="号角响，革命起">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JackLuo&#39;s Blog">
+<meta name="twitter:description" content="号角响，革命起">
+
+
+
+
+
 
   <link rel="canonical" href="http://yoursite.com/page/4/"/>
 
 
 
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title>罗某</title>
+  <title>JackLuo's Blog</title>
   
 
 
@@ -129,11 +142,49 @@
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?27cb89b569db5ce43613c8d1a7b8f9c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -150,19 +201,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">罗某</span>
+        <span class="site-title">JackLuo's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,78 +219,105 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home//首页"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user//我的"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags//标签"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th//分类"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive//归档"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
       
     </ul>
   
 
   
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -254,6 +330,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -262,13 +340,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/8.14.2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -278,11 +356,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/14/8.14.2/" itemprop="url">Android学习（二十六之深入理解Activity与Fragment）</a></h1>
+                <a class="post-title-link" href="/2018/08/14/8.14.2/" itemprop="url">
+                  Android学习（二十六之深入理解Activity与Fragment）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -290,13 +378,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T16:35:07+08:00">
-                2018-08-14
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 16:35:07" itemprop="dateCreated datePublished" datetime="2018-08-14T16:35:07+08:00">2018-08-14</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-15 11:39:12" itemprop="dateModified" datetime="2018-08-15T11:39:12+08:00">2018-08-15</time>
+              
             
           </span>
 
@@ -312,11 +417,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -326,19 +427,20 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/14/8.14.2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/14/8.14.2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/14/8.14.2/" class="leancloud_visitors" data-flag-title="Android学习（二十六之深入理解Activity与Fragment）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -362,7 +464,7 @@
       
         
           
-          安卓基础Activity是Android应用中最重要的组成单元之一(其他三个是Service、BroadcastReceiver和ContentProvider)，而Activity是Android应用最常见的组件之一。在实际应用中，往往包括多个Activity，不同的Activity向用户呈现了不同的操作界面。Android应用的多个Activity组成Activity栈，当前活动的Activity位于栈顶。实际上Activity对于Android应用的作用有点类似于Servlet对于Web应用的作用——一个Web应用通常需要N个Servlet组成（JSP的本质依然是Servlet）；那么一
+          安卓基础Activity是Android应用中最重要的组成单元之一(其他三个是Service、BroadcastReceiver和ContentProvider)，而Activity是Android应用最常见的组件之一。在实际应用中，往往包括多个Activity，不同的Activity向用户呈现了不
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -374,9 +476,15 @@
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -412,6 +520,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -420,13 +530,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/8.14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -436,11 +546,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/14/8.14/" itemprop="url">Android学习（二十五之Android的事件处理）</a></h1>
+                <a class="post-title-link" href="/2018/08/14/8.14/" itemprop="url">
+                  Android学习（二十五之Android的事件处理）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -448,13 +568,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T11:42:29+08:00">
-                2018-08-14
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 11:42:29 / 修改时间：16:33:03" itemprop="dateCreated datePublished" datetime="2018-08-14T11:42:29+08:00">2018-08-14</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -470,11 +595,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -484,19 +605,20 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/14/8.14/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/14/8.14/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/14/8.14/" class="leancloud_visitors" data-flag-title="Android学习（二十五之Android的事件处理）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -521,10 +643,7 @@
         
           
           安卓基础其他实际上不推荐将业务逻辑实现写在事件监听器中，包含业务逻辑的事件监听器将导致程序的显示逻辑和业务逻辑耦合，从而增加程序后期的维护难度。如果确实有多个事件监听器需要实现相同的业务逻辑功能，则可以考虑使用业务逻辑组件来定义逻辑功能，再让事件监听器来调用业务逻辑组件的业务逻辑方法。
-Activity本身作为事件监听器类可以直接在Activity类中定义事件处理器的方法。这种形式非常简洁，但这种做法有两个缺点：
-
-造成程序结构的混乱，Activity的主要职责应该是完成界面初始化工作，但此时还需要包含事件处理器方法，从而引起混乱。
-如果Activity界面类需要实现监听器接口，让人感觉比较怪
+Activi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -536,9 +655,15 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -574,6 +699,8 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -582,13 +709,13 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -598,11 +725,21 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/13/8.13.2/" itemprop="url">Android学习（二十四）</a></h1>
+                <a class="post-title-link" href="/2018/08/13/8.13.2/" itemprop="url">
+                  Android学习（二十四）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -610,11 +747,12 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T18:17:07+08:00">
-                2018-08-13
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-08-13 18:17:07" itemprop="dateCreated datePublished" datetime="2018-08-13T18:17:07+08:00">2018-08-13</time>
             
 
             
@@ -632,11 +770,7 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -646,19 +780,20 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/13/8.13.2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/13/8.13.2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/13/8.13.2/" class="leancloud_visitors" data-flag-title="Android学习（二十四）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -687,7 +822,7 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
 基于监听的事件处理
 基于回调的事件处理
 
-对于Android基于监听的事件崔而言，主要做法就是为Android界面组件绑定特定的事件监听器。ps：Android还允许用户在界面布局文件中为UI组件的android:onClick属性指定事件监听方法，通过这种方式指定事件监听方法时，开发者需要在Activity中定义该事件监听方法（该方法必须有一个View类型的形参，该形参代表被单击的UI组件），当用户单击该UI组件时，系统将会激发android:onClick属性所指定的方法。对于Android基于回调的事件处理而言，
+对于Android基于监听的事件崔而言，主要做法就是为Android界面组件绑定特定的事件监听器。ps：Android还允许用户在界面布局文件中为UI组件的android:onCli
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -699,9 +834,15 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -737,6 +878,8 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -745,13 +888,13 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/8.13.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -761,11 +904,21 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/13/8.13.1/" itemprop="url">Android学习（二十三）</a></h1>
+                <a class="post-title-link" href="/2018/08/13/8.13.1/" itemprop="url">
+                  Android学习（二十三）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -773,13 +926,18 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T11:58:51+08:00">
-                2018-08-13
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-13 11:58:51 / 修改时间：16:34:46" itemprop="dateCreated datePublished" datetime="2018-08-13T11:58:51+08:00">2018-08-13</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -795,11 +953,7 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -809,19 +963,20 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/13/8.13.1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/13/8.13.1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/13/8.13.1/" class="leancloud_visitors" data-flag-title="Android学习（二十三）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -847,12 +1002,7 @@ Activity本身作为事件监听器类可以直接在Activity类中定义事件�
           
           安卓基础使用ActionBar显示选项菜单项Android不再要求手机必须提供MENU按键，这样可能导致用户无法打开选项菜单。为了解决这个问题，Android已经提供了ActionBar作为解决方案，ActionBar可以将选项菜单显示成Action Item。Menuitem新增了如下方法：
 
-setShowAsAction(int actionEnum)：该方法设置是否将该菜单项显示在ActionBar上，作为Action Item。
-
-该方法支持如下参数值：
-
-SHOW_AS_ACTION_ALWAYS：总是将该MenuItem显示在ActionBar上
-SHOW_AS_ACTION_C
+s
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -864,9 +1014,15 @@ SHOW_AS_ACTION_C
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -902,6 +1058,8 @@ SHOW_AS_ACTION_C
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -910,13 +1068,13 @@ SHOW_AS_ACTION_C
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/8.5.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -926,11 +1084,21 @@ SHOW_AS_ACTION_C
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/05/8.5.1/" itemprop="url">Android学习（二十二）</a></h1>
+                <a class="post-title-link" href="/2018/08/05/8.5.1/" itemprop="url">
+                  Android学习（二十二）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -938,13 +1106,18 @@ SHOW_AS_ACTION_C
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T20:57:35+08:00">
-                2018-08-05
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-05 20:57:35 / 修改时间：23:11:03" itemprop="dateCreated datePublished" datetime="2018-08-05T20:57:35+08:00">2018-08-05</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -960,11 +1133,7 @@ SHOW_AS_ACTION_C
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -974,19 +1143,20 @@ SHOW_AS_ACTION_C
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/05/8.5.1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/05/8.5.1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/05/8.5.1/" class="leancloud_visitors" data-flag-title="Android学习（二十二）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1011,15 +1181,7 @@ SHOW_AS_ACTION_C
         
           
           安卓基础使用活动条(ActionBar)活动条（ActionBar）是Android3.0的重要更新之一。ActionBar显示在屏幕的顶部。ActionBar可显示应用的图标和Activity标题。除此之外，ActionBar的右边还可以显示活动项（Action Item）。
-ActionBar提供了如下功能：
-
-显示选项菜单的菜单项（将菜单项显示成ActionItem）
-使用程序图标作为返回Home主屏或向上的导航操作
-提供交互式View作为ActionView
-提供基于Tab的导航方式，可用于切换多个Fragment
-提供基于下拉的导航方式
-
-启用ActionBar最新的Android版
+ActionBar提
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1031,9 +1193,15 @@ ActionBar提供了如下功能：
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1069,6 +1237,8 @@ ActionBar提供了如下功能：
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1077,13 +1247,13 @@ ActionBar提供了如下功能：
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/8.5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1093,11 +1263,21 @@ ActionBar提供了如下功能：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/05/8.5/" itemprop="url">Android学习（二十一）</a></h1>
+                <a class="post-title-link" href="/2018/08/05/8.5/" itemprop="url">
+                  Android学习（二十一）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1105,13 +1285,18 @@ ActionBar提供了如下功能：
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T11:52:16+08:00">
-                2018-08-05
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-05 11:52:16 / 修改时间：20:06:07" itemprop="dateCreated datePublished" datetime="2018-08-05T11:52:16+08:00">2018-08-05</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1127,11 +1312,7 @@ ActionBar提供了如下功能：
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1141,19 +1322,20 @@ ActionBar提供了如下功能：
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/05/8.5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/05/8.5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/05/8.5/" class="leancloud_visitors" data-flag-title="Android学习（二十一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1178,14 +1360,7 @@ ActionBar提供了如下功能：
         
           
           安卓基础菜单Android应用中的菜单默认是看不见的，只有当用户按下手机上的“MENU”键时，系统才会显示该应用关联的菜单，这种菜单叫选项菜单（Option Menu）。从3.0系统开始，Android推荐ActionBar来代替菜单。
-选项菜单和子菜单（SubMenu）Android系统的菜单支持主要通过4个接口来体现；Menu接口只是一个父接口，该接口下有如下两个接口。
-
-SubMenu：它代表一个子菜单。可以包含1~N个MenuItem（形成菜单项）
-ContextMenu：它代表一个上下文菜单。可以包含1~N个MenuItem（形成菜单项）
-
-Android的不同菜单有如下特征：
-
-选
+选项菜单和子菜单（SubMenu）Android系统的菜单支持
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1197,9 +1372,15 @@ Android的不同菜单有如下特征：
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1235,6 +1416,8 @@ Android的不同菜单有如下特征：
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1243,13 +1426,13 @@ Android的不同菜单有如下特征：
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/8.4.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1259,11 +1442,21 @@ Android的不同菜单有如下特征：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/04/8.4.1/" itemprop="url">Android学习（二十）</a></h1>
+                <a class="post-title-link" href="/2018/08/04/8.4.1/" itemprop="url">
+                  Android学习（二十）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1271,13 +1464,18 @@ Android的不同菜单有如下特征：
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T17:50:01+08:00">
-                2018-08-04
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-04 17:50:01 / 修改时间：22:17:25" itemprop="dateCreated datePublished" datetime="2018-08-04T17:50:01+08:00">2018-08-04</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1293,11 +1491,7 @@ Android的不同菜单有如下特征：
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1307,19 +1501,20 @@ Android的不同菜单有如下特征：
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/04/8.4.1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/04/8.4.1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/04/8.4.1/" class="leancloud_visitors" data-flag-title="Android学习（二十）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1348,19 +1543,7 @@ Android的不同菜单有如下特征：
 AlertDialog：功能丰富、最实际的对话框
 ProgressDialog：进度对话框，这个对话框只是对进度条的包装
 DatePickerDialog:日期选择对话框，这个对话框只是对DatePicker的包装
-TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的包装
-
-使用AlertDialog创建对话框AlertDialog生成的对话框有4部分：
-
-图标区
-标题区
-内容区
-按钮区
-
-从对话框的结构来看，有下列几步创建对话框：
-
-创建AlerDialog.Builder对象
-调用AlertDial
+TimePickerDial
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1372,9 +1555,15 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1410,6 +1599,8 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1418,13 +1609,13 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/8.4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1434,11 +1625,21 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/04/8.4/" itemprop="url">Android学习（十九）</a></h1>
+                <a class="post-title-link" href="/2018/08/04/8.4/" itemprop="url">
+                  Android学习（十九）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1446,13 +1647,18 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T12:21:56+08:00">
-                2018-08-04
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-04 12:21:56 / 修改时间：16:05:21" itemprop="dateCreated datePublished" datetime="2018-08-04T12:21:56+08:00">2018-08-04</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1468,11 +1674,7 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1482,19 +1684,20 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/04/8.4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/04/8.4/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/04/8.4/" class="leancloud_visitors" data-flag-title="Android学习（十九）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1518,11 +1721,7 @@ TimePickerDialog:时间选择对话框，这个对话框只是对TimePicker的�
       
         
           
-          安卓基础Notification的功能和用法Notification是显示在手机状态栏的通知。Notification所代表的是一种具有全局效果的通知，程序一般通过NotificationManager服务发送Notification。应用可通过NotificationManager向系统全局发送通知。
-Android为Notification增加了Notification.Builder类，通过该类允许开发者更轻松地创建Notification对象。Notification.Builder提供了如下常用方法。
-
-setDefaults()：设置通知LED灯、音乐、振动等
-setAutoCan
+          安卓基础Notification的功能和用法Notification是显示在手机状态栏的通知。Notification所代表的是一种具有全局效果的通知，程序一般通过NotificationManager服务发送Notification。应用可通过NotificationManager向系统全局发送通
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1534,9 +1733,15 @@ setAutoCan
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1572,6 +1777,8 @@ setAutoCan
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1580,13 +1787,13 @@ setAutoCan
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/8.2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1596,11 +1803,21 @@ setAutoCan
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/02/8.2/" itemprop="url">Android学习（十八）</a></h1>
+                <a class="post-title-link" href="/2018/08/02/8.2/" itemprop="url">
+                  Android学习（十八）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1608,11 +1825,12 @@ setAutoCan
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T22:05:44+08:00">
-                2018-08-02
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-08-02 22:05:44" itemprop="dateCreated datePublished" datetime="2018-08-02T22:05:44+08:00">2018-08-02</time>
             
 
             
@@ -1630,11 +1848,7 @@ setAutoCan
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1644,19 +1858,20 @@ setAutoCan
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/02/8.2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/02/8.2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/02/8.2/" class="leancloud_visitors" data-flag-title="Android学习（十八）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1680,9 +1895,8 @@ setAutoCan
       
         
           
-          安卓基础滚动视图（ScrollView）的功能和用法ScrollView由FrameLayout派生而出，他就是一个用于为普通组件添加滚动条的组件。ScrollView里最多只能包含一个组件，而ScrollView的作用就是为该组件添加垂直滚动条。ScrollView的作用和Swing编程中的JScrollPane十分相似，它们甚至不能被称为真正的容器，它们只是为其他容器添加滚动条。如果应用需要添加水平滚动条，则可借助于另一个滚动视图——HorizontalScrollView来实现。
-
-          
+          安卓基础滚动视图（ScrollView）的功能和用法ScrollView由FrameLayout派生而出，他就是一个用于为普通组件添加滚动条的组件。ScrollView里最多只能包含一个组件，而ScrollView的作用就是为该组件添加垂直滚动条。ScrollView的作用和Swing编程中的JSc
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/02/8.2/#more" rel="contents">
@@ -1693,9 +1907,15 @@ setAutoCan
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1731,6 +1951,8 @@ setAutoCan
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1739,13 +1961,13 @@ setAutoCan
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/8.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/huaji.png">
+      <meta itemprop="name" content="JackLuo">
+      <meta itemprop="description" content="号角响，革命起">
+      <meta itemprop="image" content="/images/chai.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
+      <meta itemprop="name" content="JackLuo's Blog">
     </span>
 
     
@@ -1755,11 +1977,21 @@ setAutoCan
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/01/8.1/" itemprop="url">Android学习（十七）</a></h1>
+                <a class="post-title-link" href="/2018/08/01/8.1/" itemprop="url">
+                  Android学习（十七）
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1767,11 +1999,12 @@ setAutoCan
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T22:36:51+08:00">
-                2018-08-01
-              </time>
-            
 
+              
+                
+              
+
+              <time title="创建时间：2018-08-01 22:36:51" itemprop="dateCreated datePublished" datetime="2018-08-01T22:36:51+08:00">2018-08-01</time>
             
 
             
@@ -1789,11 +2022,7 @@ setAutoCan
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1803,19 +2032,20 @@ setAutoCan
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/01/8.1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/01/8.1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+             <span id="/2018/08/01/8.1/" class="leancloud_visitors" data-flag-title="Android学习（十七）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1842,14 +2072,7 @@ setAutoCan
           安卓基础选项卡（TabHost）的功能和用法TabHost是一种非常实用的组件，TabHost可以很方便地在窗口上放置多个标签，每个标签页相当于获得了一个与外部容器相同大小的组件摆放区域。通过这种方式，就可以在一个容器里放置更多组件。
 与TabHost结合使用的还有如下组件：
 
-TabWidget：代表选项卡的标题条
-TabSpec：代表选项卡的一个Tab页面。TabHost仅仅是一个简单的容器，它提供了如下两个方法来创建、添加标签页
-newTabSpec(String tag)：创建选项卡
-addTab(TabHost.TabSpec tabSpec)：添加选项卡
-
-
-
-使用TabHost的
+TabWidget：
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1861,9 +2084,15 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
         
       
     </div>
+
+    
+
     
     
     
+		 <div>
+
+</div>
 
     
 
@@ -1895,15 +2124,12 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1931,63 +2157,311 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/huaji.png"
-                alt="法外狂徒罗某人" />
+                src="/images/chai.jpg"
+                alt="JackLuo" />
             
-              <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">JackLuo</p>
+              <p class="site-description motion-element" itemprop="description">号角响，革命起</p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">67</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">109</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
+            </nav>
           
 
           
 
           
+
+          
           
 
           
           
-		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
-		  width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2113043&
-		  auto=0&height=66"></iframe>
 
+          
+            
+          
           
 
         </div>
@@ -2008,16 +2482,20 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">法外狂徒罗某人</span>
+  <span class="author" itemprop="copyrightHolder">JackLuo</span>
+
+  
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -2025,12 +2503,13 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
 
 
 
 
         
+
 
 
 
@@ -2050,7 +2529,10 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -2069,15 +2551,21 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
 
 
+
+
+
+
+
   
 
 
 
 
 
+  
+  
 
-  
-  
+
 
 
 
@@ -2092,16 +2580,6 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -2112,7 +2590,7 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
   
@@ -2129,48 +2607,25 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
 
 
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
 
 
 
   
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
 
 
 
@@ -2185,25 +2640,398 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
+
   <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
     });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
-        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz",
+                'X-LC-Key': "fGmrlfK2mPp7SsPplBu5j3G6",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
     });
   </script>
 
@@ -2211,17 +3039,15 @@ addTab(TabHost.TabSpec tabSpec)：添加选项卡
 
   
 
-
-
-
-
   
 
   
 
   
+  
 
   
+
   
 
   
