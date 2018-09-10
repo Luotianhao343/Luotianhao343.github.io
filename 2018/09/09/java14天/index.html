@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="第14天," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="日积月累集合类 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。 Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&amp;lt;?&amp;gt; c):移除collectio">
+<meta name="keywords" content="第14天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA基础（九）">
+<meta property="og:url" content="http://yoursite.com/2018/09/09/java14天/index.html">
+<meta property="og:site_name" content="罗某">
+<meta property="og:description" content="日积月累集合类 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。 Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&amp;lt;?&amp;gt; c):移除collectio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-09T14:07:09.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA基础（九）">
+<meta name="twitter:description" content="日积月累集合类 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。 Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&amp;lt;?&amp;gt; c):移除collectio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/09/java14天/"/>
+
+
+
+
+
+  <title>JAVA基础（九） | 罗某</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">罗某</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home//首页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user//我的"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags//标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th//分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive//归档"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/java14天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA基础（九）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-09T12:00:27+08:00">
+                2018-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h3><ol>
+<li>为什么会出现这么多的容器呢？<br>因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。</li>
+<li>Collection接口：<br>add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址<br>remove(Object o):从此collection中移除指定元素的单个实例<br>removeAll(Collection&lt;?&gt; c):移除collection中那些包含在指定collection中的所有元素<br>clear():移除此collection中的所有元素<br>contains(Object o):如果此collection包含指定的元素，则返回true<br>isEmpty():如果此collection中不包含元素，则返回true<br>retainAll(Collection&lt;?&gt; c):用来取交集并存储。  </li>
+<li>集合中存储的都是对象的引用（地址）</li>
+<li>每一个集合都会有判断和取出方法，就把取出方式定义在集合的内部，这样取出方式就被定义成了内部类。而每一个容器的数据结构不同，所以取出的动作细节也不同，但是都有共性内容判断和取出。那么可以进行共性抽取。那么这些内部类都符合一个规则，该规则就是Iterator。如何获取集合的取出对象呢？通过一个对外提供的方法iterator()，返回在此collection的元素上进行迭代的迭代器。</li>
+<li>Iterator接口是对collection进行迭代的迭代器。其实就是集合的取出元素的方式。<br>Iterator接口的方法：hasNext()： 如果仍有元素可以迭代，则返回 true,next()：返回迭代的下一个元素,remove()：从迭代器指向的 collection 中移除迭代器返回的最后一个元素 </li>
+</ol>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ol>
+<li><p>Collection </p>
+<ul>
+<li>List：元素是有序的，元素可以重复，因为该集合体系有索引<ul>
+<li>ArrayList:底层的数据结构是数组结构。特点：查询速度很快，但是增删很慢。</li>
+<li>LinkedList:底层使用的是链表数据结构。特点：增删速度很快，查询稍慢。</li>
+<li>vector:底层是数组数据结构。线程同步。被ArrayList替代了。其中有个特殊方法elements()，返回的是Enumeration接口对象（枚举）；枚举就是Vector特有的取出方式，其实枚举和迭代是一样的。</li>
+</ul>
+</li>
+<li>set：元素是无序的，元素不可以重复</li>
+</ul>
+</li>
+<li><p>List特有方法：凡是可以操作角标的方法都是该体系特有的方法。</p>
+<ul>
+<li>增：add(index,element)在列表的指定位置插入指定元素;addAll(index,collection)添加指定 collection 中的所有元素到此列表的结尾，顺序是指定 collection 的迭代器返回这些元素的顺序</li>
+<li>删: remove(index) 移除列表中指定位置的元素</li>
+<li>改：set(index,element) 用指定元素替换列表中指定位置的元素</li>
+<li>查：get(index);subList(from,to);listIterator()</li>
+</ul>
+</li>
+<li><p>List集合特有的迭代器：ListIterator()是Iterator的子接口。 在迭代时，不可以通过集合对象的方法操作集合中的元素。因为会发生ConcurrentModificationExcption异常（当方法检测到对象的并发修改，但不允许这种修改时，抛出此异常。）。  所以，在迭代时，只能用迭代器的方法操作元素，可是Iterator方法是有限的，只能对元素进行判断、取出、删除操作，如果想要其他的操作如添加、修改等，就需要使用其子接口，ListIterator。该接口之能通过List集合的listIterator()方法完成。</p>
+</li>
+<li><p>Linkedlist特有方法：</p>
+<ul>
+<li>addFirst():将指定元素插入此列表的开头</li>
+<li>addLast():将指定元素插入此列表的结尾</li>
+<li>getFirst():返回此列表的第一个元素</li>
+<li>getLast():返回此列表的最后一个元素</li>
+<li>removeFirst():移除并返回此列表的第一个元素，如果集合中没有元素，会出现NoSuchElementException</li>
+<li>removeLast():移除并返回此列表的最后一个元素，如果集合中没有元素，会出现NoSuchElementException</li>
+<li>在JDK 1.6 出现了以上方法的替代方法</li>
+</ul>
+</li>
+<li><p>使用LinkedList模拟一个堆栈或者队列数据结构。<br>堆栈：先进后出  如同一个杯子<br>队列：先进先出(FIFO)  如同一个水管<br>队列的实现：通过链表的方法。如如下代码块。堆栈同理。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package Collection;</span><br><span class="line"></span><br><span class="line">import java.util.LinkedList;</span><br><span class="line"></span><br><span class="line">//定义一个队列类，类中有构造方法产生链表对象，和对队列操作的方法</span><br><span class="line">class Queue &#123;</span><br><span class="line">    private LinkedList list;</span><br><span class="line"></span><br><span class="line">    Queue() &#123;</span><br><span class="line">        list = new LinkedList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void myAdd(Object obj) &#123;</span><br><span class="line">        list.addFirst(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object myGet() &#123;</span><br><span class="line">        return list.removeLast();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isNull() &#123;</span><br><span class="line">        return list.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class LinkeListTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">//        创建队列对象</span><br><span class="line">        Queue queue = new Queue();</span><br><span class="line">//        向队列对象中添加obj，实际上是给链表添加元素</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---1&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---2&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---3&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---4&quot;);</span><br><span class="line">//队列对象经过removeLast方法后，只要不为空，进行输出</span><br><span class="line">        while (!queue.isNull()) &#123;</span><br><span class="line">            System.out.println(queue.myGet());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>ArrayList练习：去除ArrayList集合中的重复元素</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package Collection;</span><br><span class="line">/*去除ArrayList集合中重复的元素;</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1. 新建一个数组集合用来保存不重复的元素</span><br><span class="line"> * 2. 遍历包含重复元素的数组集合，其中每一个元素都与新建的那个数组集合判断是否被包含，没有就加入这个数组集合*/</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line"></span><br><span class="line">public class ArrayListTest &#123;</span><br><span class="line">    //    去除重复元素的方法</span><br><span class="line">    public static ArrayList singleElement(ArrayList arrayList) &#123;</span><br><span class="line">        ArrayList newAl = new ArrayList();</span><br><span class="line">//返回一个需要去除重复元素的数组集合的迭代器</span><br><span class="line">        Iterator it = arrayList.iterator();</span><br><span class="line">//循环判断每一个元素</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            Object obj = it.next();</span><br><span class="line">            if (!newAl.contains(obj))</span><br><span class="line">                newAl.add(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        return newAl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList a1 = new ArrayList();</span><br><span class="line">        a1.add(&quot;Hello ArrayList---1&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---2&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---3&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---2&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---1&quot;);</span><br><span class="line">        System.out.println(singleElement(a1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在迭代时循环中next调用一次，就要hasNext判断一次。</li>
+<li>List集合判断元素是否相同，依据的是元素的equels方法</li>
+</ol>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>Set:元素是无序（存入和取出的顺序不一定一致），元素不可以重复</p>
+<ul>
+<li>常见子类：<ul>
+<li>HashSet:底层数据结构是哈希表。HashSet是如何保证元素唯一性的呢？是通过元素的两个方法，hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true。如果元素的HashCode值不同，不会调用equals。    注意对于判断元素是否存在以及删除等操作，依赖的方法是元素的hashCode和equels方法。</li>
+<li>TreeSet:可以对Set集合中的元素进行排序。 排序时，当主要条件相同时，一定要判断一下次要条件。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/第14天/" rel="tag"># 第14天</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/08/java13天/" rel="next" title="JAVA基础（九）">
+                <i class="fa fa-chevron-left"></i> JAVA基础（九）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0"
+		  width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2113043&
+		  auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日积月累"><span class="nav-number">1.</span> <span class="nav-text">日积月累</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类"><span class="nav-number">1.0.1.</span> <span class="nav-text">集合类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">List</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">1.0.2.</span> <span class="nav-text">HashSet</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">法外狂徒罗某人</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

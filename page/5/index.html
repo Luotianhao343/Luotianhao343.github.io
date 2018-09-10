@@ -259,6 +259,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/7.31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="法外狂徒罗某人">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="罗某">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/31/7.31/" itemprop="url">Android学习（十六）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-31T22:59:53+08:00">
+                2018-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="日期、时间选择器（DatePicker和TimePicker）的功能和用法"><a href="#日期、时间选择器（DatePicker和TimePicker）的功能和用法" class="headerlink" title="日期、时间选择器（DatePicker和TimePicker）的功能和用法"></a>日期、时间选择器（DatePicker和TimePicker）的功能和用法</h2><p>DatePicker和TimePicker是两个比较易用的组件，它们都是从FrameLayout派生而来；DatePicker用来选择日期，TimePicker用来选择时间。</p>
+<p>如果程序需要获取用户选择的日期、时间，则可通过为DatePicker添加OnDateChangedListener进行监听、为TimePicker添加OnTimeChangeListener进行监听来实现。</p>
+<p>使用DatePicker时可指定XML属性如下：</p>
+<ul>
+<li>android:calendarViewShown：设置该日期选择器是否显示CalendarView组件</li>
+<li>android:endYear：设置日期选择器允许选择的最后一年</li>
+<li>android:maxDate：设置该日期选择器支持的最大日期。以mm/dd/yyyy格式指定最大日期</li>
+<li>andorid:minDate：设置该日期选择器支持的最小日期。以mm/dd/yyyy格式指定最大日期</li>
+<li>android:spinnerShown：设置该日期选择器是否显示Spinner日期选择组件</li>
+<li>android:startYear：设置日期选择器允许选择的第一年</li>
+</ul>
+<h2 id="NumberPicker数值选择器的功能和用法"><a href="#NumberPicker数值选择器的功能和用法" class="headerlink" title="NumberPicker数值选择器的功能和用法"></a>NumberPicker数值选择器的功能和用法</h2><p>数值选择器用于让用户输入数值，用户既可以通过键盘输入数值，也可以通过拖动来选择数值，使用该组件常用如下三个方法：</p>
+<ul>
+<li>setMinValue(int minVal)：设置该组件支持的最小值</li>
+<li>setMaxValue(int maxVal)：设置该组件支持的最大值</li>
+<li>setValue(int value)：设置该组件的当前值</li>
+</ul>
+<h2 id="搜索框（SearchView）的功能和用法"><a href="#搜索框（SearchView）的功能和用法" class="headerlink" title="搜索框（SearchView）的功能和用法"></a>搜索框（SearchView）的功能和用法</h2><p>SearchView是搜索框组件，它可以让用户在文本框内输入文字，并允许通过监听器监控用户输入，当用户输入完成后提交搜索时，也可通过监听器执行实际的搜索。</p>
+<ul>
+<li>setIconifiedByDefault(boolean iconified):设置该搜索框默认是否自动缩小为图标</li>
+<li>setSubmitButtonEnabled(boolean enabled)：设置是否显示搜索按钮</li>
+<li>setQueryHint(CharSequence hint)：设置搜索框内默认显示的提示文本</li>
+<li>setOnQueryTextListener(SearchView.OnQueryTextListener listener)：为该搜索框设置事件监听器</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/7.30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1778,210 +1943,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/7.21/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="法外狂徒罗某人">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="罗某">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/7.21/" itemprop="url">Android学习（六）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T22:47:25+08:00">
-                2018-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><p>默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。<br>由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。</p>
-<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><p>EditText最重要的属性是inputType，该属性相当于HTML的&lt;input…/&gt;元素的type属性，用于将EditText设置为指定类型的输入组件。<br>android:inputType属性（系统自动显示哪种类型的输入键盘）：</p>
-<ul>
-<li>numberPassword：表示只能接受数字密码（使用安卓系统自带安全的数字输入法）</li>
-<li>number：表示是数字输入框（使用输入法的数字输入法）</li>
-<li>date：表示是日期输入框（使用输入法的数字输入法）</li>
-<li>phone：表示是输入电话号码的输入框（使用输入法的数字输入法）</li>
-</ul>
-<p>android:selectAllOnFocu属性</p>
-<ul>
-<li>=true为如果文本框的内容能选择，设置是否当它获得焦点时自动选中所有文本。</li>
-<li>=false不选中。</li>
-</ul>
-<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><p>Button继承了TextView，主要是生成一个按钮，该按钮能提供被用户点击时触发一个onClick事件。如果需要让按钮的背景颜色、背景图片随用户动作动态改变，考虑使用自定义Drawable实现。</p>
-<p>Button常用属性：</p>
-<ul>
-<li>android:shadowColor设置文本框内文本的阴影颜色</li>
-<li>android:shadowRadius设置阴影的模糊程度，该值越大越模糊</li>
-<li>android:shadowDx阴影在水平方向的偏移</li>
-<li>android:shadowDy阴影在垂直方向的偏移</li>
-</ul>
-<p>Button的android:background=””属性，可以用XML实现，在XMl中可以用state_pressed=”true”表示按钮按下，state_pressed=”false”表示按钮松开，并且利用android:drawable=””表示背景。    </p>
-<h2 id="使用9Patch图片作为背景"><a href="#使用9Patch图片作为背景" class="headerlink" title="使用9Patch图片作为背景"></a>使用9Patch图片作为背景</h2><p>当按钮的内容太多时，Android会自动缩放整张图片，以保证背景图片能覆盖整个按钮。但是这种缩放的效果并不好。为了实现只缩放图片中某个部分，借助9Patch图片实现。<br>左侧和上侧的直线共同决定图片的缩放区域<br>右侧和下侧的直线共同决定图片的内容显示区域</p>
-<h2 id="RadioButton和CheckBox"><a href="#RadioButton和CheckBox" class="headerlink" title="RadioButton和CheckBox"></a>RadioButton和CheckBox</h2><p>两个都有一个可选中的功能，不过一组RadioButton只能选择其中一个，所以RadioButton通常要与RadioGroup一起使用，用于定于一组单选钮；CheckBox可以复选。都可额外指定一个android:checked属性，该属性用于指定RadioButton、checkBox初始时是否被选中。<br><strong>如果在XML布局文件中默认勾选了某个单选钮，则必须为该组单选钮的每个按钮指定android：id属性值；否则这组单选钮不能正常工作</strong></p>
-<h2 id="状态开关按钮（ToggleButton）和开关（Switch）"><a href="#状态开关按钮（ToggleButton）和开关（Switch）" class="headerlink" title="状态开关按钮（ToggleButton）和开关（Switch）"></a>状态开关按钮（ToggleButton）和开关（Switch）</h2><p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
-<ul>
-<li>android:checked设置该按钮是否被选中</li>
-<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
-<li>android:textOn设置当按钮的状态打开时显示的文本    </li>
-</ul>
-<p>Switch支持的XML属性：</p>
-<ul>
-<li>android:checked设置该按钮是否被选中</li>
-<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
-<li>android:textOn设置当按钮的状态打开时显示的文本 </li>
-<li>android:switchTextAppearnce设置该开关图标上的文本样式</li>
-<li>android:textStyle设置该开关的文本风格</li>
-<li>android:thumb指定使用自定义Drawable绘制该开关按钮</li>
-<li>android:track指定使用自定义Drawable绘制该开关的开关轨迹</li>
-<li>android:typeface设置该开关的文本的字体风格</li>
-</ul>
-<h2 id="时钟（AnalogClock和TextClock）"><a href="#时钟（AnalogClock和TextClock）" class="headerlink" title="时钟（AnalogClock和TextClock）"></a>时钟（AnalogClock和TextClock）</h2><p>TextClock是数字时钟，继承了TextView，不能设置android:text。它的属性：</p>
-<ul>
-<li>android:format12Hour设置该时钟的12小时制的格式字符串</li>
-<li>android:format24Hour设置该时钟的24小时制的格式字符串</li>
-<li>android:timeZone设置该时钟的时区</li>
-</ul>
-<p>AnalogClock是模拟时钟，继承了View，重写了View的OnDraw方法。它的属性：</p>
-<ul>
-<li>android:dial设置该模拟时钟的表盘使用的图片</li>
-<li>android:hand_hour设置该模拟时钟的时针使用的图片</li>
-<li>android:hand_minute设置该模拟时钟的分针使用的图片</li>
-</ul>
-<h2 id="计时器-Chronometer"><a href="#计时器-Chronometer" class="headerlink" title="计时器(Chronometer)"></a>计时器(Chronometer)</h2><p>Chronometer继承TextView，但是它不会显示当前时间，它显示的是从某一个起始时间开始，一共过去了多长时间。<br>Chronometer的方法：</p>
-<ul>
-<li>setBase(long base)：设置计时器的起始时间</li>
-<li>setFormat(String format)：设置显示时间的格式</li>
-<li>start()：开始计时</li>
-<li>stop()：停止计时</li>
-<li>setOnChronometerTickListener(Chronometer.OnChronometerTickListener listener)：绑定事件监听器，当事件改变时触发该监听器</li>
-</ul>
-<p><em>SystemClock.elapsedRealtime()，系统启动至今的时间/计算某个时间经历了多长时间有意义</em></p>
-<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h2><p><code>String words = checkId == R.id.male ? &quot;你的性别是男性&quot;:&quot;你的性别是女性&quot;</code>这句代表如果RadioButton的checkId值是等于R.id.male就把”你的性别是男性”赋给words。 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2032,7 +1993,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2054,7 +2015,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
