@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,9 +93,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -264,7 +264,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -326,6 +326,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/31/7.31/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/31/7.31/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,32 +362,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="日期、时间选择器（DatePicker和TimePicker）的功能和用法"><a href="#日期、时间选择器（DatePicker和TimePicker）的功能和用法" class="headerlink" title="日期、时间选择器（DatePicker和TimePicker）的功能和用法"></a>日期、时间选择器（DatePicker和TimePicker）的功能和用法</h2><p>DatePicker和TimePicker是两个比较易用的组件，它们都是从FrameLayout派生而来；DatePicker用来选择日期，TimePicker用来选择时间。</p>
-<p>如果程序需要获取用户选择的日期、时间，则可通过为DatePicker添加OnDateChangedListener进行监听、为TimePicker添加OnTimeChangeListener进行监听来实现。</p>
-<p>使用DatePicker时可指定XML属性如下：</p>
-<ul>
-<li>android:calendarViewShown：设置该日期选择器是否显示CalendarView组件</li>
-<li>android:endYear：设置日期选择器允许选择的最后一年</li>
-<li>android:maxDate：设置该日期选择器支持的最大日期。以mm/dd/yyyy格式指定最大日期</li>
-<li>andorid:minDate：设置该日期选择器支持的最小日期。以mm/dd/yyyy格式指定最大日期</li>
-<li>android:spinnerShown：设置该日期选择器是否显示Spinner日期选择组件</li>
-<li>android:startYear：设置日期选择器允许选择的第一年</li>
-</ul>
-<h2 id="NumberPicker数值选择器的功能和用法"><a href="#NumberPicker数值选择器的功能和用法" class="headerlink" title="NumberPicker数值选择器的功能和用法"></a>NumberPicker数值选择器的功能和用法</h2><p>数值选择器用于让用户输入数值，用户既可以通过键盘输入数值，也可以通过拖动来选择数值，使用该组件常用如下三个方法：</p>
-<ul>
-<li>setMinValue(int minVal)：设置该组件支持的最小值</li>
-<li>setMaxValue(int maxVal)：设置该组件支持的最大值</li>
-<li>setValue(int value)：设置该组件的当前值</li>
-</ul>
-<h2 id="搜索框（SearchView）的功能和用法"><a href="#搜索框（SearchView）的功能和用法" class="headerlink" title="搜索框（SearchView）的功能和用法"></a>搜索框（SearchView）的功能和用法</h2><p>SearchView是搜索框组件，它可以让用户在文本框内输入文字，并允许通过监听器监控用户输入，当用户输入完成后提交搜索时，也可通过监听器执行实际的搜索。</p>
-<ul>
-<li>setIconifiedByDefault(boolean iconified):设置该搜索框默认是否自动缩小为图标</li>
-<li>setSubmitButtonEnabled(boolean enabled)：设置是否显示搜索按钮</li>
-<li>setQueryHint(CharSequence hint)：设置搜索框内默认显示的提示文本</li>
-<li>setOnQueryTextListener(SearchView.OnQueryTextListener listener)：为该搜索框设置事件监听器</li>
-</ul>
+          安卓基础日期、时间选择器（DatePicker和TimePicker）的功能和用法DatePicker和TimePicker是两个比较易用的组件，它们都是从FrameLayout派生而来；DatePicker用来选择日期，TimePicker用来选择时间。
+如果程序需要获取用户选择的日期、时间，则可通过为DatePicker添加OnDateChangedListener进行监听、为TimePicker添加OnTimeChangeListener进行监听来实现。
+使用DatePicker时可指定XML属性如下：
 
-          
+android:calendarViewShown：设置该日期选择器是否显示Cal
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/31/7.31/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -429,7 +426,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -491,6 +488,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/30/7.30/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/30/7.30/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -517,36 +524,16 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="昨天未解决问题的补充解决"><a href="#昨天未解决问题的补充解决" class="headerlink" title="昨天未解决问题的补充解决"></a>昨天未解决问题的补充解决</h2><p>在XML布局Layout文件中，如果要为当前组件添加一个点击事件，使用android:onClick=”….”方法时，需要在MainActivity中生成。使用Alt+Enter，直接生成，避免无法关联？因为又可能会无法关联上，产生Could not find method next(View) in a parent or ancestor Context for android错误。</p>
-<h2 id="ViewFlipper的功能与用法"><a href="#ViewFlipper的功能与用法" class="headerlink" title="ViewFlipper的功能与用法"></a>ViewFlipper的功能与用法</h2><p>ViewFlipper组件继承了ViewAnimator，它可调用addView(View v)添加多个组件。可以使用动画控制多个组件之间的切换效果。</p>
-<p>ViewFlipper与前面的AdapterViewFlipper有较大相似性，它们可以控制组件切换的动画效果。它们的区别是：ViewFlipper需要开发者通过addView(View v)方法添加多个View，而AdapterViewFlipper则只要传入一个Adaper，Adapter将会负责提供多个View。ViewFlipper可以指定与AdapterViewFlipper相同的XML属性。 </p>
-<h2 id="使用Toast显示提示信息"><a href="#使用Toast显示提示信息" class="headerlink" title="使用Toast显示提示信息"></a>使用Toast显示提示信息</h2><p>Toast有两个特点：Toast提示信息不会获得焦点；提示信息过一段时间会自动消失。</p>
-<p>使用Toast的步骤：</p>
-<ol>
-<li>调用Toast的构造器或makeText()静态方法创建一个Toast对象</li>
-<li>调用Toast的方法来设置该消息提示的对齐方式、页边距等</li>
-<li>调用Toast的show()方法将它显示出来</li>
-</ol>
-<p>Toast的功能和用法都比较简单，大部分时候它只能显示简单的文本提示；如果应用需要显示诸如图片、列表之类的复杂提示，一般建议使用对话框来完成；如果开发者确实想通过Toast来完成，也是可以的，此时就需要调用Toast构造器创建实例，再调用setView()方法设置该Toast显示的View组件。此方法允许开发者自己定义Toast显示的内容。 </p>
-<h2 id="日历视图（CalendarView）组件的功能和用法"><a href="#日历视图（CalendarView）组件的功能和用法" class="headerlink" title="日历视图（CalendarView）组件的功能和用法"></a>日历视图（CalendarView）组件的功能和用法</h2><p>日历视图可用于显示和选择日期，用户既可以选择一个日期，也可通过触摸来滚动日历。如果希望监控该组件的日期改变，则可调用CalendarView的setOnDateChangeListener()方法为此组件的点击事件添加事件监听器。</p>
-<p>使用CalendarView时常见的XML属性：</p>
-<ul>
-<li>android:dateTextAppearance：设置该日历视图的日期文字的样式</li>
-<li>android:firstDayOfWeek：设置每周的第一天，允许设置周一到周日任意一天作为每周的第一天</li>
-<li>android:focusedMonthDateColor：设置获得焦点的月份的日期文字的颜色</li>
-<li>android:maxDate：设置日历组件支持的最大日期。以mm/dd/yyyy格式指定最大日期</li>
-<li>android:minDate：设置该日历组件支持的最小日期。同上设置</li>
-<li>android:selectedDateVerticalBar：设置绘制在选中日期两边的竖线对应的Drawable</li>
-<li>android:selectedWeekBackgroundColor：设置被选中周的背景色</li>
-<li>android:showWeekNumber：设置是否显示第几周</li>
-<li>android:shownWeekCount：设置该日历组件总共显示几个星期</li>
-<li>android:unfocusedMonthDateColor：设置没有焦点的月份的日期文字的颜色</li>
-<li>android:weekDayTextAppearance：设置星期几的文字样式</li>
-<li>android:weekNumberColor：设置显示周编号的颜色</li>
-<li>android:weekSeparatorLineColor：设置周分割线的颜色</li>
-</ul>
-
-          
+          安卓基础昨天未解决问题的补充解决在XML布局Layout文件中，如果要为当前组件添加一个点击事件，使用android:onClick=”….”方法时，需要在MainActivity中生成。使用Alt+Enter，直接生成，避免无法关联？因为又可能会无法关联上，产生Could not find method next(View) in a parent or ancestor Context for android错误。
+ViewFlipper的功能与用法ViewFlipper组件继承了ViewAnimator，它可调用addView(View v)添加多个组件。可以使用动画控制多个组件之间的切
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/30/7.30/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -598,7 +585,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -660,6 +647,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/29/7.29/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/29/7.29/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -686,24 +683,22 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h1 id="ViewAnimator及其子类"><a href="#ViewAnimator及其子类" class="headerlink" title="ViewAnimator及其子类"></a>ViewAnimator及其子类</h1><p>ViewAnimator继承了FrameLayout，因此它表现出FrameLayout的特征，可以将多个View组件叠在一起，ViewAnimator可以在View切换时表现出动画效果。</p>
-<p>ViewAnimator的XML属性如下：</p>
-<ul>
-<li>android:animateFirstView：设置ViewAnimator显示第一个View组件时是否使用动画</li>
-<li>android:inAnimation：设置ViewAnimator显示组件时所使用的动画</li>
-<li>android:outAnimation：设置ViewAnimator隐藏组件时所使用的动画</li>
-</ul>
-<h2 id="ViewSwitcher的功能及用法"><a href="#ViewSwitcher的功能及用法" class="headerlink" title="ViewSwitcher的功能及用法"></a>ViewSwitcher的功能及用法</h2><p>ViewSwitcher代表了视图切换组件，因此可以将多个View层叠在一起，每次只显示一个组件。当程序控制从一个View切换到另一个View时，ViewSwitcher支持指定动画效果。</p>
-<p>为了给ViewSwitcher添加多个组件，一般通过调用ViewSwitcher的setFactory(ViewSwitcher.ViewFactory)方法为之设置ViewFactory，并由该ViewFactory为之创建View即可。  </p>
-<h2 id="图像切换器（ImageSwitcher）的功能和用法"><a href="#图像切换器（ImageSwitcher）的功能和用法" class="headerlink" title="图像切换器（ImageSwitcher）的功能和用法"></a>图像切换器（ImageSwitcher）的功能和用法</h2><p>ImageSwitcher继承了ViewSwitcher，并重写了ViewSwitcher的showNext()和showPrevious()方法，因此ImageSwitcher使用起来更简单。使用ImageSwitcher只需如下两步：</p>
-<ol>
-<li>为ImageSwitcher提供一个ViewFactory，该ViewFactory生成的View组件必须是ImageView。</li>
-<li>需要切换图片时，只要调用ImageSwitcher的setImageDrawable(Drawable drawable)、setImageResource(int resid)和setImageURI(Uri uri)方法切换图片。</li>
-</ol>
-<p>ImageSwitcher效果更炫，他可以指定图片切换时的动画效果。 </p>
-<h2 id="文本切换器（TextSwitcher）的功能和用法"><a href="#文本切换器（TextSwitcher）的功能和用法" class="headerlink" title="文本切换器（TextSwitcher）的功能和用法"></a>文本切换器（TextSwitcher）的功能和用法</h2><p>TextSwitcher继承了ViewSwitcher，因此它具有与ViewSwitcher相同的特征：可以在在切换View组件时使用动画效果。它也需要设置一个ViewFactory，它的ViewFactory的makeView()方法必须返回一个TextView组件。</p>
+          安卓基础ViewAnimator及其子类ViewAnimator继承了FrameLayout，因此它表现出FrameLayout的特征，可以将多个View组件叠在一起，ViewAnimator可以在View切换时表现出动画效果。
+ViewAnimator的XML属性如下：
 
-          
+android:animateFirstView：设置ViewAnimator显示第一个View组件时是否使用动画
+android:inAnimation：设置ViewAnimator显示组件时所使用的动画
+android:outAnimation：设置ViewAnimator隐藏组件时所使用的动画
+
+ViewSwitch
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/29/7.29/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -755,7 +750,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -817,6 +812,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/28/7.28/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/28/7.28/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -843,23 +848,21 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="拖动条（SeekBar）的功能与用法"><a href="#拖动条（SeekBar）的功能与用法" class="headerlink" title="拖动条（SeekBar）的功能与用法"></a>拖动条（SeekBar）的功能与用法</h2><p>SeekBar继承了ProgressBar，因此ProgressBar所支持的XML属性和方法完全适用于SeekBar。</p>
-<p>SeekBar允许用户改变拖动条的滑块外观，改变滑块外观通过如下属性来指定。  </p>
-<ul>
-<li>android：thumb：指定一个Drawable对象，该对象将作为自定义滑块。</li>
-</ul>
-<p>为了让程序响应滑块位置的改变，程序可以考虑为他绑定一个OnSeekBarChangeListener监听器。  </p>
-<h2 id="星级评分条（RatingBar）的功能和用法"><a href="#星级评分条（RatingBar）的功能和用法" class="headerlink" title="星级评分条（RatingBar）的功能和用法"></a>星级评分条（RatingBar）的功能和用法</h2><p>星级评分条和拖动条有相同的父类：AbsSeekBar，因此它们相似；它们的区别就是RatingBar通过星星来表示进度。</p>
-<p>下面是RatingBar所支持的常见XML属性：</p>
-<ul>
-<li>android:isIndicator：设置该星级评分条是否允许用户改变（true为不允许修改）</li>
-<li>android:numStars：设置该星级评分条总共有多少个星级</li>
-<li>android:rating：设置该星级评分条默认的星级</li>
-<li>android:stepSize：设置每次最少需要改变多少个星级</li>
-</ul>
-<p>为了让程序能响应星级评分条评分的改变，可以考虑为它绑定一个OnRatingBarChangeListener监听器。</p>
+          安卓基础拖动条（SeekBar）的功能与用法SeekBar继承了ProgressBar，因此ProgressBar所支持的XML属性和方法完全适用于SeekBar。
+SeekBar允许用户改变拖动条的滑块外观，改变滑块外观通过如下属性来指定。  
 
-          
+android：thumb：指定一个Drawable对象，该对象将作为自定义滑块。
+
+为了让程序响应滑块位置的改变，程序可以考虑为他绑定一个OnSeekBarChangeListener监听器。  
+星级评分条（RatingBar）的功能和用法星级评分条和拖动条有相同的父类：AbsSeekBar，因此它们相似；它们的区别就是RatingBar通过星
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/28/7.28/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -911,7 +914,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -973,6 +976,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/27/7.27/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/27/7.27/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -999,39 +1012,20 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="ProgressBar及其子类"><a href="#ProgressBar及其子类" class="headerlink" title="ProgressBar及其子类"></a>ProgressBar及其子类</h2><p>ProgressBar本身代表了进度条组件，它还派生出了两个常用组件:SeekBar和RatingBar。ProgressBar及其子类在用法上十分相似，只是显示有一定的区别。（主要是用来动态地显示进度，提高用户界面的友好性）</p>
-<p>Android支持多种风格的进度条，通过style属性可以为ProgressBar指定风格。该属性可支持如下几个属性值：</p>
-<ul>
-<li>@android:style/Widget.ProgressBar.Horizontal：水平进度条</li>
-<li>@android:style/Widget.ProgressBar.Inverse：普通大小的环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Large：大环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Large.Inverse：大环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Small：小环形进度条</li>
-<li>@android:style/Widget.ProgressBar.Small.Inverse：小环形进度条</li>
-</ul>
-<p>ProgressBar支持的XML属性：</p>
-<ul>
-<li>android:max：设置该进度条的最大值</li>
-<li>android:progress：设置该进度条的已完成进度值</li>
-<li>android:progressDrawable：设置该进度条对应的Drawable对象</li>
-<li>android:indeterminate：该属性设为true，设置进度条不精确显示进度</li>
-<li>android:indeterminateDrawable：设置绘制不显示进度条的Drawable对象</li>
-<li>android:indeterminateDuration：设置不精确显示进度的持续时间</li>
-</ul>
-<p>ProgressBar提供了如下方法来操作进度</p>
-<ul>
-<li>setProgress（int）：设置进度的完成百分比</li>
-<li>incrementProgressBy（int）：设置进度条的进度增加或减小。当参数为正数时进度增加，为负数时进度减小。</li>
-</ul>
-<p>ps：Handler用来发送信息，当msg.what==0x111表示消息是由该程序发送的。math.random()函数是取从0至1之间的随机数,乘100以后就是取0到100之间的随机数 </p>
-<h2 id="显示在标题上的进度条"><a href="#显示在标题上的进度条" class="headerlink" title="显示在标题上的进度条"></a>显示在标题上的进度条</h2><p>有一种进度条，可以直接在窗口标题上显示，这种进度条甚至不需要使用ProgressBar组件，它是直接由Activity的方法启用的。为了在窗口标题上显示进度条，需要经过下列两步：</p>
-<ol>
-<li>调用Activity的requestWindowFeature（）方法，该方法根据传入的参数可启用特定的窗口特征。例如：传入Window.FEATURE_INDETERMINATE_PROGRESS在窗口标题上显示不带进度的进度条；传入Window.FEATURE_PROGRESS则显示带进度的进度条。</li>
-<li>调用Activity的setProgressBarVisibility(boolean)或setProgressBarIndeterminate Visibility(boolean)方法即可控制进度条的显示和隐藏。</li>
-</ol>
-<p>ps：Android5.0默认的主题：Material看不到标题上的进度条；因此要显示标题上的进度条需要将该应用主题设置为Holo。</p>
+          安卓基础ProgressBar及其子类ProgressBar本身代表了进度条组件，它还派生出了两个常用组件:SeekBar和RatingBar。ProgressBar及其子类在用法上十分相似，只是显示有一定的区别。（主要是用来动态地显示进度，提高用户界面的友好性）
+Android支持多种风格的进度条，通过style属性可以为ProgressBar指定风格。该属性可支持如下几个属性值：
 
-          
+@android:style/Widget.ProgressBar.Horizontal：水平进度条
+@android:style/Widget.ProgressBar.Inverse：普通大小的环形进度条
+@
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/27/7.27/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1083,7 +1077,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1145,6 +1139,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/26/7.26/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/7.26/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1171,41 +1175,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Spinner的功能和用法"><a href="#Spinner的功能和用法" class="headerlink" title="Spinner的功能和用法"></a>Spinner的功能和用法</h2><p>Spinner就是一个列表选择框，相当于弹出一个菜单供用户选择。<br>Spinner与Gallery都继承了AbsSpinner，AbsSpinner继承了AdapterView。因此它也表现出AdapterView的特征：只要为AdapterView提供Adapter即可。<br>Spinner支持的常用XML属性及相关方法如下：  </p>
-<ul>
-<li>android:entries：使用数组资源设置该下拉列表框的列表项</li>
-<li>android:dropDownHorizontalOffest：设置列表选择框的水平偏移距</li>
-<li>android:dropDownVerticalOffest：设置列表选择框的垂直偏移距</li>
-<li>android:dropDownWidth：设置列表选择框的宽度</li>
-<li>android:popupBackground：设置列表选择框的背景色</li>
-<li>android:prompt：设置该列表选择框的提示信息  </li>
-</ul>
-<p>android：entries属性不是Spinner定义的，而是在AbsSpinner中定义的，因此Gallery也支持该XML属性。  </p>
-<p>如果开发者在使用Spinner时已经确定了列表选择框里的列表项，只要为Spinner指定android:entries属性即可；如果程序需要在运行时动态地决定Spinner的列表项，或者程序需要对Spinner的列表项进行定制，则可使用Adapter为Spinner提供列表项。  </p>
-<p>Spinner与Gallery都继承了AbsSpinner，表明Gallery和Spinner都是一个列表选择框。它们的区别是在于，Spinner显示的是一个垂直的列表选择框，而Gallery显示的是一个水平的列表选择框；Spinner的作用是供用户选择，而Gallery则允许用户通过拖动来查看上一个、下一个列表项。如果程序需要监控到Gallery选择项的改变，通过为Gallery添加OnItemSelectedListener监听器即可实现。</p>
-<p>Android现在已经不推荐使用Gallery，而是用HorizontalScrollView和ViewPager来代替Gallery组件。</p>
-<h2 id="AdapterViewFlipper的功能与用法"><a href="#AdapterViewFlipper的功能与用法" class="headerlink" title="AdapterViewFlipper的功能与用法"></a>AdapterViewFlipper的功能与用法</h2><p>AdapterViewFlipper继承了AdapterViewAnimator，它也会显示Adapter提供的多个View组件，但它每次只能显示一个View组件，可通过showPrevious()和showNext()方法控制该组件显示上一个、下一个组件。</p>
-<p>AdapterViewFilpper可以在多个View切换过程中使用渐隐渐显的动画效果。除此之外，还可以调用该组件的startFlippering()控制它“自动播放”下一个View组件。</p>
-<p>AdapterViewAnimator支持的XML属性如下：</p>
-<ul>
-<li>android:animateFirstView：设置显示该组件的第一个View时是否使用动画</li>
-<li>android:inAnimation：设置组件显示时使用的动画</li>
-<li>android:loopViews：设置循环到最后一个组件后是否自动“转头”到第一个组件</li>
-<li>android:outAnimation：设置组件隐藏时使用的动画</li>
-</ul>
-<p>AdapterViewFilpper额外支持的XML属性：</p>
-<ul>
-<li>android:autoStart：设置显示该组件是否自动播放</li>
-<li>android:flipInterval：设置自动播放的时间间隔</li>
-</ul>
-<h2 id="StackView的功能与用法"><a href="#StackView的功能与用法" class="headerlink" title="StackView的功能与用法"></a>StackView的功能与用法</h2><p>StackView也是AdapterViewAnimator的子类，它也用于显示Adapter提供的一系列View。StackView将会以“堆叠(Stack)”的方式来显示多个列表项。<br>StackView提供了下面两种控制方式：  </p>
-<ul>
-<li>拖走StackView中处于顶端的View，下一个View将会显示出来。将上一个View拖进StackView，将使之显示出来。</li>
-<li>通过调用StackView的showNext()、showPrevious()控制显示下一个、上一个组件。</li>
-</ul>
-<p>ps：定义的图片数组中元素位置靠前的在程序运行结果的最上方。</p>
+          安卓基础Spinner的功能和用法Spinner就是一个列表选择框，相当于弹出一个菜单供用户选择。Spinner与Gallery都继承了AbsSpinner，AbsSpinner继承了AdapterView。因此它也表现出AdapterView的特征：只要为AdapterView提供Adapter即可。Spinner支持的常用XML属性及相关方法如下：  
 
-          
+android:entries：使用数组资源设置该下拉列表框的列表项
+android:dropDownHorizontalOffest：设置列表选择框的水平偏移距
+android:dropDownVerticalOffest：设置列表选择
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/26/7.26/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1257,7 +1239,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1319,6 +1301,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/25/7.25/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/25/7.25/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1345,38 +1337,21 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="GridView（网格视图）"><a href="#GridView（网格视图）" class="headerlink" title="GridView（网格视图）"></a>GridView（网格视图）</h2><p>GridView用于在界面上按行、列分布的方式显示多个组件。<br>GridView和ListView都是AbsListView的子类，它们都有列表项。它们的区别就是：GridView能显示多列，ListView只能显示一列。GridView也需要通过Adapter来提供显示的数据。<br>GridView提供的常用XML属性及相关方法如下：   </p>
-<ul>
-<li>android:columnWidth:设置列的宽度</li>
-<li>android:gravity:设置对齐方式</li>
-<li>android:horizontalSpacing:设置各元素之间的水平间距</li>
-<li>android:numColums:设置列数</li>
-<li>android:stretchMode:设置拉伸模式</li>
-<li>android:verticalSpacing:设置各元素之间的垂直间距</li>
-</ul>
-<p>其中的android:stretchMode属性支持下列几个属性值：</p>
-<ul>
-<li>NO_STRETCH：不拉伸</li>
-<li>STRETCH_SPACING：仅拉伸元素之间的间距</li>
-<li>STRETCH_SPACING_UNIFORM：表格元素本身、元素之间的间距一起拉伸</li>
-<li>STRETCH_COLUMN_WIDTH仅拉伸表格元素本身</li>
-</ul>
-<p>GridView包含的多少行由Adapter决定。</p>
-<h2 id="ExpandableListView可展开的列表组件"><a href="#ExpandableListView可展开的列表组件" class="headerlink" title="ExpandableListView可展开的列表组件"></a>ExpandableListView可展开的列表组件</h2><p>ExpandableListView时ListView的子类，它在普通ListView基础上进行了扩展，它把列表项分为几组，每组里又可包含多个列表项。<br>ExpandableListView的用法与普通的ListView的用法十分相似，只是ExpandableListView所显示的列表项应该由ExpandableListAdapter提供，ExpandableListView也是一个接口。<br>ExpandableListView额外支持的常用XML属性：   </p>
-<ul>
-<li>android:childDivider：指定各组内各子列表项之间的分隔条</li>
-<li>android:childIndicator：显示在子列表项旁边的Drawable对象</li>
-<li>android:groupIndicator：显示在组列表项旁边的Drawable对象  </li>
-</ul>
-<p>扩展BaseExpandableListAdapter来实现ExpandableListAdapter，当扩展BaseExpandableListAdapter时，关键是实现如下4个方法：</p>
-<ul>
-<li>getGroupCount():该方法返回包含的组列表项的数量</li>
-<li>getGroupView():该方法返回的View对象作为组列表项</li>
-<li>getChildCount():该方法返回特定组所包含的子列表项的数量</li>
-<li>getChildView():该方法返回的View对象将作为特定组、特定位置的子列表项</li>
-</ul>
+          安卓基础GridView（网格视图）GridView用于在界面上按行、列分布的方式显示多个组件。GridView和ListView都是AbsListView的子类，它们都有列表项。它们的区别就是：GridView能显示多列，ListView只能显示一列。GridView也需要通过Adapter来提供显示的数据。GridView提供的常用XML属性及相关方法如下：   
 
-          
+android:columnWidth:设置列的宽度
+android:gravity:设置对齐方式
+android:horizontalSpacing:设置各元素之间的水平间距
+android:numColums:设置列数
+a
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/25/7.25/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1428,7 +1403,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1490,6 +1465,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/7.24/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/7.24/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1516,60 +1501,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Adapter接口及实现类"><a href="#Adapter接口及实现类" class="headerlink" title="Adapter接口及实现类"></a>Adapter接口及实现类</h2><p>Adapter本身只是一个接口，它派生了ListAdapter和SpinnerAdapter两个子接口，其中ListAdapter为AbsListView提供列表项，而SpinnerAdapter为AbsSpinner提供列表项。<br>Adapter常用的实现类：</p>
-<ul>
-<li>ArrayAdapter：简单、易用的Adapter。通常用于将数组或List集合的多个值包装成多个列表项</li>
-<li>SimpleAdapter：并不简单、功能强大的Adapter，可以用于将List集合的多个对象包装成多个列表项</li>
-<li>SimpleCursorAdapter：与SimpleAdapter基本相似，只是用于包装Cursor提供的数据</li>
-<li>BaseAdapter：通常用于被扩展。扩展BaseAdapter可以对各列表项进行最大限度的定制</li>
-</ul>
-<h3 id="ArrayAdapter"><a href="#ArrayAdapter" class="headerlink" title="ArrayAdapter"></a>ArrayAdapter</h3><p>在布局文件中，定义ListView，但都没有指定android：entries属性，需要通过Adapter来提供列表项。Activity为两个ListView提供Adapter，Adapter决定ListView所显示的列表项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListView list = (ListView)findViewById(R.id.list)</span><br><span class="line">String[] arr1 = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</span><br><span class="line">list.setAdapter(adapter);</span><br></pre></td></tr></table></figure>
-<p>其中<code>ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.array_item,arr1);</code>中的参数：   </p>
-<ul>
-<li>Context：代表访问整个Android应用的接口。几乎创建所有组件都需要传入Context对象。</li>
-<li>textViewResourceId：一个资源ID，代表一个TextView，该TextView组件将作为ArrayAdapter的列表项组件</li>
-<li>数组或List：负责为多个列表项提供数据</li>
-</ul>
-<p><em>第二个参数控制每个列表项的组件，第三个负责为列表项提供数据。</em>   </p>
-<p>如果程序的窗口仅需要显示一个列表，则可以直接让Activity继承ListActivity来实现，无需调用setContentView()方法显示一个界面，而是可以直接传入一个内容Adapter，ListActivity的子类就呈现出一个列表。<br>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] arr = &#123;&quot;孙悟空&quot;,&quot;猪八戒&quot;,&quot;沙悟净&quot;&#125;;</span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,R.Layout.simple_list_item_multiple_choice,arr);</span><br><span class="line">setAdapter(adapter);</span><br></pre></td></tr></table></figure>
-<p>使用Android提供的R.Layout.simple_list_item_multiple_choice布局文件作为列表项组件。</p>
-<h3 id="SimpleAdapter创建ListView"><a href="#SimpleAdapter创建ListView" class="headerlink" title="SimpleAdapter创建ListView"></a>SimpleAdapter创建ListView</h3><p>通过ArrayAdapter实现Adapter虽然简单、易用，但是ArrayAdapter功能比较有限，它的每个列表项只能是TextView。<br>如果想要实现更复杂的列表项，可以考虑使用SimpleAdapter。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建一个List集合，List集合的元素是Map</span><br><span class="line">List&lt;Map&lt;String,Object&gt;&gt; listItems = new ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br><span class="line">for(int i=0;i&lt; names.length;i++)&#123;</span><br><span class="line">  Map&lt;String,Object&gt; listItem=new HashMap&lt;String,Object&gt;();</span><br><span class="line">  listItem.put(&quot;header&quot;,imageIds[i]);</span><br><span class="line">  listItem.put(&quot;personName&quot;,names[i]);</span><br><span class="line">  listItem.put(&quot;desc&quot;,descs[i]);</span><br><span class="line">  listItems.add(listItem);&#125;</span><br><span class="line">//创建一个SimpleAdapter</span><br><span class="line">SimpleAdapter simpleAdapter = new SimpleAdapter(this,listItems,R.layout.simple_item,new String[] &#123;&quot;personName&quot;,&quot;header&quot;,&quot;desc&quot;&#125;,</span><br><span class="line">new int[] &#123;R.id.name,R.id.header,R.id.desc&#125;);</span><br><span class="line">list.setAdapter(simpleAdapter);</span><br></pre></td></tr></table></figure>
-<p>使用SimpleAdapter的难点在于创建SimpleAdapter对象，它需要5个参数，其中后四个最关键。</p>
-<ul>
-<li>第二个参数：该参数应该是一个List&lt;?extends Map&lt;String,?&gt;&gt;类型的集合对象，该集合中每个Map&lt;String,?&gt;对象生成一个列表项。</li>
-<li>第三个参数：该参数指定一个界面布局的ID。</li>
-<li>第四个参数：该参数应该是一个String[]类型的参数，该参数决定提取Map&lt;String,?&gt;对象中那些key对应的value来生成列表项。</li>
-<li>第五个参数：该参数应该是一个int[]类型的参数，该参数决定填充哪些组件。</li>
-</ul>
-<p>如果需要监听用户单击、选中某个列表项的事件，可以通过AdapterView的setOnItemClickListener()方法为单击事件添加监听器，或者通过setOnItemSelectedListener()方法为列表项的选中事件添加监听器。在Activity中为ListView通过如下代码绑定监听器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//为ListView的列表项的单击事件绑定事件监听器</span><br><span class="line">list.setOnItemClickListener(new OnItemClickListener()&#123;</span><br><span class="line">&#125;);</span><br><span class="line">//为ListView的列表项的选中事件绑定事件监听器</span><br><span class="line">list.setOnItemSelectedListener(new OnItemSelectedListener()&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p> <strong>这种事件处理机制完全适用于AdapterView的其他子类</strong></p>
-<h3 id="BaseAdapter"><a href="#BaseAdapter" class="headerlink" title="BaseAdapter"></a>BaseAdapter</h3><p>通过扩展BaseAdapter来实现Adapter，扩展BaseAdapter可以取得对Adapter的最大控制权；程序要创建多少个列表项、每个列表项的组件都由开发者决定。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">BaseAdapter adapter = new BaseAdapter()&#123;</span><br><span class="line">   @Override</span><br><span class="line">   public int getCount()&#123;</span><br><span class="line">//指定一共包含多少个选项     </span><br><span class="line">     return **;</span><br><span class="line">&#125;</span><br><span class="line">   @Override</span><br><span class="line">   public Object getItem(int position)&#123;</span><br><span class="line">   return null;</span><br><span class="line">&#125;</span><br><span class="line">//重写该方法，该方法返回值将作为列表项的ID</span><br><span class="line">   @Override</span><br><span class="line">   public long getItemId(int position)&#123;</span><br><span class="line">   return position;</span><br><span class="line">&#125;</span><br><span class="line">//重写该方法，该方法返回的View将作为列表框</span><br><span class="line">   @Override</span><br><span class="line">   public View getView(int position,View convertView,ViewGroup parent)&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>getCount():该方法的返回值控制该Adapter将会包含多少个列表项。</li>
-<li>getItem(int position)：该方法的返回值决定第position处的列表项的内容。</li>
-<li>getItemId(int position)：该方法的返回值决定第position处的列表项的ID。</li>
-<li>getView(int position,View convertView,ViewGroup parent)：该方法的返回值决定第position处的列表项组件。</li>
-</ul>
-<p>上面4个方法中最重要的是第一个和第四个。</p>
-<h2 id="AutoCompleteTextView自动完成文本框"><a href="#AutoCompleteTextView自动完成文本框" class="headerlink" title="AutoCompleteTextView自动完成文本框"></a>AutoCompleteTextView自动完成文本框</h2><p>自动完成文本框（AutoCompleteTextView）从EditText派生而出，当用户输入一定字符之后，自动完成文本框会显示一个下拉菜单，供用户选择，当用户选择某个菜单项之后，AutoCompleteTextView按用户选择自动填充该文本框。<br>AutoCompleteTextView除了可以使用EditText提供的XML属性和方法之外，还支持以下的常用XML属性：</p>
-<ul>
-<li>android:completionHint：设置下拉菜单中的提示标题</li>
-<li>android:completionHintView：设置下拉菜单中提示标题的视图</li>
-<li>android:completionThreshold：设置用户至少要输入几个字符才会显示提示</li>
-<li>android:dropDownHeight：设置下拉菜单的高度</li>
-<li>android:dropDownHorizontalOffset：设置下拉菜单与文本框之间的水平偏移。下拉菜单默认与文本框左对齐</li>
-<li>android:dropDownVerticalOffset：设置下拉菜单与文本框之间的垂直偏移。下拉菜单默认紧跟文本框</li>
-<li>android:dropDownWidth：设置下拉菜单的宽度</li>
-<li>android:popupBackground：设置下拉菜单的背景</li>
-</ul>
-<h2 id="Markdow语法注意"><a href="#Markdow语法注意" class="headerlink" title="Markdow语法注意"></a>Markdow语法注意</h2><p>使用<code>`</code>标记代码块时，不要再它前后打空格，只要回车换行，留出空行就行。</p>
+          安卓基础Adapter接口及实现类Adapter本身只是一个接口，它派生了ListAdapter和SpinnerAdapter两个子接口，其中ListAdapter为AbsListView提供列表项，而SpinnerAdapter为AbsSpinner提供列表项。Adapter常用的实现类：
 
-          
+ArrayAdapter：简单、易用的Adapter。通常用于将数组或List集合的多个值包装成多个列表项
+SimpleAdapter：并不简单、功能强大的Adapter，可以用于将List集合的多个对象包装成多个列表项
+SimpleCursorAdapter：与SimpleAdapter基本相似，只是
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/24/7.24/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1621,7 +1565,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1683,6 +1627,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/23/7.23/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/23/7.23/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1709,31 +1663,22 @@
       
         
           
-            <p>安卓基础</p>
-<h2 id="AdapterView"><a href="#AdapterView" class="headerlink" title="AdapterView"></a>AdapterView</h2><p>AdapterView是一组重要的组件，AdapterView是一个抽象基类。<br>AdapterView具有如下特征</p>
-<ul>
-<li>AdapterView继承了ViewGroup，它的本质是容器。</li>
-<li>AdapterView可以包括多个“列表项”，并将多个“列表项”以合适的形式显示出来。</li>
-<li>AdapterView显示的多个“列表项”由Adapter提供。调用AdapterView的setAdapter(Adapter)方法设置Adapter即可。     </li>
-</ul>
-<p>AdapterView派生了三个子类：AbsListView、AbsSpinner、AdapterViewAnimator，这三个子类依然是抽象的，实际使用过程中往往采用他们的子类。</p>
-<h2 id="列表视图-ListView-和ListActivity"><a href="#列表视图-ListView-和ListActivity" class="headerlink" title="列表视图(ListView)和ListActivity"></a>列表视图(ListView)和ListActivity</h2><p>ListView它以垂直列表的形式显示所有列表项。<br>生成列表视图有如下两种方式：</p>
-<ul>
-<li>直接使用ListView创建</li>
-<li>让Activity继承ListActivity(相当于该Activity显示的组件为ListView)</li>
-</ul>
-<p>一旦在程序中获得了ListView之后，接下来就需要为ListView设置它要显示的列表项。在这一点上，ListView显示出AdapterView的特征：通过setAdapter(Adapter)方法为之提供Adapter，并且由Adapter提供列表项即可。   </p>
-<p>ListView、GridView、Spinner、Gallery等AdapterView都是容器，而Adapter负责提供每个“列表项”组件，AdapterView则负责采用合适的方式显示这些列表项。</p>
-<p>ListView提供的常用XML属性如下：</p>
-<ul>
-<li>android:divider：设置List列表项的分隔条（可用颜色分隔，也可用Drawable分隔）</li>
-<li>android:dividerHeight：设置分隔条的高度</li>
-<li>android:entries：指定一个数组源，Android将根据该数组资源来生成ListView</li>
-<li>android:footerDividersEnabled：如果设置为false，则不再footerView之前绘制分隔条</li>
-<li>android:headerDividersEnabled：如果设置为false，则不在headerView之后绘制分隔条</li>
-</ul>
+          安卓基础
+AdapterViewAdapterView是一组重要的组件，AdapterView是一个抽象基类。AdapterView具有如下特征
 
-          
+AdapterView继承了ViewGroup，它的本质是容器。
+AdapterView可以包括多个“列表项”，并将多个“列表项”以合适的形式显示出来。
+AdapterView显示的多个“列表项”由Adapter提供。调用AdapterView的setAdapter(Adapter)方法设置Adapter即可。     
+
+AdapterView派生了三个子类：AbsListView、AbsSpinner、AdapterViewAnimator，这
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/23/7.23/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1785,7 +1730,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1847,6 +1792,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/22/7.22/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/22/7.22/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1873,43 +1828,21 @@
       
         
           
-            <p>安卓基础</p>
-<h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><p>ImageView继承View，主要用来显示图片，它能显示的不仅仅是图片，任何Drawable对象都可以使用ImageView来显示。<br>ImageView支持的XML属性：   </p>
-<ul>
-<li>android:adjustViewBounds设置ImageView是否调整自己的边界来保持所显示图片的长宽比</li>
-<li>android:cropToPadding如果将该属性设置为true，该组件将会被裁剪到保留该ImageView的padding</li>
-<li>android:scaleType设置所显示的图片如何缩放或移动以适应ImageView的大小</li>
-<li>android:src设置ImageView所显示的图片的ID</li>
-</ul>
-<p>android:scaleType支持的属性值：</p>
-<ul>
-<li>matrix:使用matrix方式进行缩放</li>
-<li>fitXY对图片、纵向独立缩放</li>
-<li>fitStart保持纵横比缩放图片</li>
-<li>fitCenter保持纵横比缩放图片，缩放后放在ImageView中央</li>
-<li>fitEnd保持纵横比缩放图片，缩放后放在ImageView的右下角</li>
-<li>center放在ImageView中央</li>
-<li>centerCrop保持纵横比缩放图片，只要图片的最短边能显示出来即可</li>
-<li>centerInside保持纵横比缩放图片，ImageView能完全显示该图片</li>
-</ul>
-<p>为了控制ImageView显示的图片，ImageView提供了如下方法</p>
-<ul>
-<li>setImageBitmap(Bitmap bit):使用Bitmap位图设置图片</li>
-<li>setImageDrawable(Drawable drawable)：使用Drawable对象设置图片</li>
-<li>setImageResource(int resId)：使用图片资源ID设置图片</li>
-<li>setImageURI(Uri uri)：使用图片的URI设置该ImageView显示设置的图片</li>
-</ul>
-<p><strong>ps：</strong>如果要实现放大图片的局部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有两个ImageView，第一个放原图Image1，第二个放发大的部分图片Image2。</span><br><span class="line">第一步：获取原图与放大部分的比例，即double scale = 1.0*Image1.getHeight()/Image2.getHeight()。</span><br><span class="line">第二步：获取需要显示的图片的起始位置:int X=(int)(event.getX()*scale);</span><br><span class="line">int Y=(int)(event.getY()*scale);还要注意在原图中右边和下边的宽度大于Image2的，必须固定起始位置为Image1.getWidth()-Image2.getWidth()。</span><br></pre></td></tr></table></figure>
-<h2 id="ImageButton"><a href="#ImageButton" class="headerlink" title="ImageButton"></a>ImageButton</h2><p>ImageButton派生了一个ZoomButton，ZoomButton可以代表“放大”“缩小”两个按钮，ZoomButton的行为基本类似于ImageButton<br>ZoomControls组件，该组件相当于同时组合了“放大”“缩小”两个按钮，并允许分别为两个按钮绑定不同的事件监听器。</p>
-<h2 id="使用QuickContactBadge关联联系人"><a href="#使用QuickContactBadge关联联系人" class="headerlink" title="使用QuickContactBadge关联联系人"></a>使用QuickContactBadge关联联系人</h2><p>QuickContactBadge继承了ImageView，因此它的本质也是图片按钮，也可以通过android:src来指定它显示的图片。它额外增加的功能是：该图片可以关联到手机中指定联系人，当用户单机该图片时，系统将会打开相应联系人的联系方式界面。<br>可以调用如下方法：</p>
-<ul>
-<li>assignContactFromEmail(String emailAddapp\src\main\ress,boolean lazyLookup):将该图片关联到指定E-mail地址对应的联系人</li>
-<li>assignContactFromPhone(String phoneNumber,boolean lazyLookup):将该图片关联到指定电话号码对应的联系人</li>
-<li>assignContactUri(Uri contactUri):将图片关联到特定Uri对应的联系人<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><em>改变查看图片的透明度，可以调用ImageView的setImageAlpha()方法来实现</em><br><em>i+=a 就是i=i+a</em></li>
-</ul>
+          安卓基础
+ImageViewImageView继承View，主要用来显示图片，它能显示的不仅仅是图片，任何Drawable对象都可以使用ImageView来显示。ImageView支持的XML属性：   
 
-          
+android:adjustViewBounds设置ImageView是否调整自己的边界来保持所显示图片的长宽比
+android:cropToPadding如果将该属性设置为true，该组件将会被裁剪到保留该ImageView的padding
+android:scaleType设置所显示的图片如何缩放或移动以适应ImageView的大小
+android:src设置ImageView所显示的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/22/7.22/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1981,6 +1914,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/huaji.png"
+                alt="法外狂徒罗某人" />
             
               <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2073,7 +2010,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2124,6 +2061,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2160,6 +2100,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
 
   
 
@@ -2172,6 +2122,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2212,6 +2169,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
+        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

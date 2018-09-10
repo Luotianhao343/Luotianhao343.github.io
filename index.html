@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,9 +93,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -264,7 +264,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -326,6 +326,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/09/java14天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/09/java14天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,68 +362,17 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h3><ol>
-<li>为什么会出现这么多的容器呢？<br>因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。</li>
-<li>Collection接口：<br>add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址<br>remove(Object o):从此collection中移除指定元素的单个实例<br>removeAll(Collection&lt;?&gt; c):移除collection中那些包含在指定collection中的所有元素<br>clear():移除此collection中的所有元素<br>contains(Object o):如果此collection包含指定的元素，则返回true<br>isEmpty():如果此collection中不包含元素，则返回true<br>retainAll(Collection&lt;?&gt; c):用来取交集并存储。  </li>
-<li>集合中存储的都是对象的引用（地址）</li>
-<li>每一个集合都会有判断和取出方法，就把取出方式定义在集合的内部，这样取出方式就被定义成了内部类。而每一个容器的数据结构不同，所以取出的动作细节也不同，但是都有共性内容判断和取出。那么可以进行共性抽取。那么这些内部类都符合一个规则，该规则就是Iterator。如何获取集合的取出对象呢？通过一个对外提供的方法iterator()，返回在此collection的元素上进行迭代的迭代器。</li>
-<li>Iterator接口是对collection进行迭代的迭代器。其实就是集合的取出元素的方式。<br>Iterator接口的方法：hasNext()： 如果仍有元素可以迭代，则返回 true,next()：返回迭代的下一个元素,remove()：从迭代器指向的 collection 中移除迭代器返回的最后一个元素 </li>
-</ol>
-<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ol>
-<li><p>Collection </p>
-<ul>
-<li>List：元素是有序的，元素可以重复，因为该集合体系有索引<ul>
-<li>ArrayList:底层的数据结构是数组结构。特点：查询速度很快，但是增删很慢。</li>
-<li>LinkedList:底层使用的是链表数据结构。特点：增删速度很快，查询稍慢。</li>
-<li>vector:底层是数组数据结构。线程同步。被ArrayList替代了。其中有个特殊方法elements()，返回的是Enumeration接口对象（枚举）；枚举就是Vector特有的取出方式，其实枚举和迭代是一样的。</li>
-</ul>
-</li>
-<li>set：元素是无序的，元素不可以重复</li>
-</ul>
-</li>
-<li><p>List特有方法：凡是可以操作角标的方法都是该体系特有的方法。</p>
-<ul>
-<li>增：add(index,element)在列表的指定位置插入指定元素;addAll(index,collection)添加指定 collection 中的所有元素到此列表的结尾，顺序是指定 collection 的迭代器返回这些元素的顺序</li>
-<li>删: remove(index) 移除列表中指定位置的元素</li>
-<li>改：set(index,element) 用指定元素替换列表中指定位置的元素</li>
-<li>查：get(index);subList(from,to);listIterator()</li>
-</ul>
-</li>
-<li><p>List集合特有的迭代器：ListIterator()是Iterator的子接口。 在迭代时，不可以通过集合对象的方法操作集合中的元素。因为会发生ConcurrentModificationExcption异常（当方法检测到对象的并发修改，但不允许这种修改时，抛出此异常。）。  所以，在迭代时，只能用迭代器的方法操作元素，可是Iterator方法是有限的，只能对元素进行判断、取出、删除操作，如果想要其他的操作如添加、修改等，就需要使用其子接口，ListIterator。该接口之能通过List集合的listIterator()方法完成。</p>
-</li>
-<li><p>Linkedlist特有方法：</p>
-<ul>
-<li>addFirst():将指定元素插入此列表的开头</li>
-<li>addLast():将指定元素插入此列表的结尾</li>
-<li>getFirst():返回此列表的第一个元素</li>
-<li>getLast():返回此列表的最后一个元素</li>
-<li>removeFirst():移除并返回此列表的第一个元素，如果集合中没有元素，会出现NoSuchElementException</li>
-<li>removeLast():移除并返回此列表的最后一个元素，如果集合中没有元素，会出现NoSuchElementException</li>
-<li>在JDK 1.6 出现了以上方法的替代方法</li>
-</ul>
-</li>
-<li><p>使用LinkedList模拟一个堆栈或者队列数据结构。<br>堆栈：先进后出  如同一个杯子<br>队列：先进先出(FIFO)  如同一个水管<br>队列的实现：通过链表的方法。如如下代码块。堆栈同理。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package Collection;</span><br><span class="line"></span><br><span class="line">import java.util.LinkedList;</span><br><span class="line"></span><br><span class="line">//定义一个队列类，类中有构造方法产生链表对象，和对队列操作的方法</span><br><span class="line">class Queue &#123;</span><br><span class="line">    private LinkedList list;</span><br><span class="line"></span><br><span class="line">    Queue() &#123;</span><br><span class="line">        list = new LinkedList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void myAdd(Object obj) &#123;</span><br><span class="line">        list.addFirst(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object myGet() &#123;</span><br><span class="line">        return list.removeLast();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isNull() &#123;</span><br><span class="line">        return list.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class LinkeListTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">//        创建队列对象</span><br><span class="line">        Queue queue = new Queue();</span><br><span class="line">//        向队列对象中添加obj，实际上是给链表添加元素</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---1&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---2&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---3&quot;);</span><br><span class="line">        queue.myAdd(&quot;Hello LinkedList---4&quot;);</span><br><span class="line">//队列对象经过removeLast方法后，只要不为空，进行输出</span><br><span class="line">        while (!queue.isNull()) &#123;</span><br><span class="line">            System.out.println(queue.myGet());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>ArrayList练习：去除ArrayList集合中的重复元素</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package Collection;</span><br><span class="line">/*去除ArrayList集合中重复的元素;</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1. 新建一个数组集合用来保存不重复的元素</span><br><span class="line"> * 2. 遍历包含重复元素的数组集合，其中每一个元素都与新建的那个数组集合判断是否被包含，没有就加入这个数组集合*/</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line"></span><br><span class="line">public class ArrayListTest &#123;</span><br><span class="line">    //    去除重复元素的方法</span><br><span class="line">    public static ArrayList singleElement(ArrayList arrayList) &#123;</span><br><span class="line">        ArrayList newAl = new ArrayList();</span><br><span class="line">//返回一个需要去除重复元素的数组集合的迭代器</span><br><span class="line">        Iterator it = arrayList.iterator();</span><br><span class="line">//循环判断每一个元素</span><br><span class="line">        while (it.hasNext()) &#123;</span><br><span class="line">            Object obj = it.next();</span><br><span class="line">            if (!newAl.contains(obj))</span><br><span class="line">                newAl.add(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        return newAl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList a1 = new ArrayList();</span><br><span class="line">        a1.add(&quot;Hello ArrayList---1&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---2&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---3&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---2&quot;);</span><br><span class="line">        a1.add(&quot;Hello ArrayList---1&quot;);</span><br><span class="line">        System.out.println(singleElement(a1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>在迭代时循环中next调用一次，就要hasNext判断一次。</li>
-<li>List集合判断元素是否相同，依据的是元素的equels方法</li>
-</ol>
-<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>Set:元素是无序（存入和取出的顺序不一定一致），元素不可以重复</p>
-<ul>
-<li>常见子类：<ul>
-<li>HashSet:底层数据结构是哈希表。HashSet是如何保证元素唯一性的呢？是通过元素的两个方法，hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true。如果元素的HashCode值不同，不会调用equals。    注意对于判断元素是否存在以及删除等操作，依赖的方法是元素的hashCode和equels方法。</li>
-<li>TreeSet:可以对Set集合中的元素进行排序。 排序时，当主要条件相同时，一定要判断一下次要条件。</li>
-</ul>
-</li>
-</ul>
-
-          
+          日积月累集合类
+为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。
+Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&lt;?&gt; c):移除collection中那些包含在指定collection中的所有元素clear():移除此collection中的所有元素contains(Object o):如果此collection包含指定的元素，则返回truei
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/09/java14天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -465,7 +424,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -527,6 +486,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/08/java13天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/08/java13天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -553,80 +522,22 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><ol>
-<li>String s1 = “abc”;//s1是一个类类型变量，”abc”是一个对象 。字符串最大特点：一旦被初始化就不可以被改变。</li>
-<li>String类复写了Object类中equals方法，该方法用于判断字符串内容是否相同。</li>
-<li>String s1 = “abc”;<br>String s2 = new String(“abc”);<br>s1和s2有什么区别？<br>s1在内存中一个对象，s2在内存中两个对象(new，”abc”)；</li>
-<li>String类提供的常见操作？”abcd”   <ol>
-<li>获取<ol>
-<li>字符串中的包含的字符数，也就是字符串的长度。int length()。 数组的length是属性，没有()</li>
-<li>根据位置获取位置上某个字符。char charAt(int index)</li>
-<li>根据字符获取该字符在字符串中位置。int indexOf(int ch)：返回的是ch在字符串中第一次出现的位置。int indexOf(int ch,int fromIndex):从fromIndex指定位置开始，获取ch在字符串中的位置。如果没有找到返回-1.</li>
-</ol>
-</li>
-<li>判断<ol>
-<li>字符串中是否包含某一个子串</li>
-<li>字符中是否有内容</li>
-<li>字符串是否是以指定内容开头</li>
-<li>字符串是否以指定内容结尾</li>
-<li>字符串内容是 否相同</li>
-<li>判断内容是否 相同，并忽略大小写</li>
-</ol>
-</li>
-<li>转换<ol>
-<li>将字符数组转成字符串</li>
-<li>将字符串转成字符数组</li>
-<li>将字节数组转成字符串</li>
-<li>将字符串转成字节数组</li>
-</ol>
-</li>
-<li>替换</li>
-<li>切割</li>
-<li>子串</li>
-<li>转换</li>
-</ol>
-</li>
-</ol>
-<h3 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h3><ol>
-<li>StringBuffer是字符串缓冲区。是一个容器 而且长度可变化，可以直接操作多个数据类型，最终会通过toString()方法变成字符串。能进行增删改查</li>
-<li>append();    </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb = new StringBuffer();</span><br><span class="line">StringBuffer sb1 = sh.append(34);</span><br><span class="line">sout(sb == sb1)//true</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>insert(index,数据);</li>
-<li>delete（start,end）; </li>
-</ol>
-<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><p>在JDK 1.5 版本之后出现，StringBuffer是线程同步的。StringBuilder是线程不同步的。<br>StringBuilder提高效率，比较安全（减少并发）。</p>
-<h3 id="基本数据类型对象包装类"><a href="#基本数据类型对象包装类" class="headerlink" title="基本数据类型对象包装类"></a>基本数据类型对象包装类</h3><ol>
-<li>基本数据类型对象包装类的最常见作用：就是用于基本数据类型和字符串类型之间做转换</li>
-<li>基本数据类型转成字符串。如基本数据类型+””；或者基本数据类型.toString(基本数据类型值）。<br>字符串转成基本数据类型。如基本数据类型.paseInt(字符串); </li>
-<li>十进制转成其他进制：toBinaryString();toHexString();toOctalString();<br>其他进制转成十进制:parseInt(string,radix);</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer m = 128;</span><br><span class="line">Integer n = 128;</span><br><span class="line">sout(m==n)//false</span><br><span class="line"></span><br><span class="line">Integer a = 127;</span><br><span class="line">Integer b = 127;</span><br><span class="line">sout(a==b)//true.因为a和b指向了同一个Integer对象。因为当数值在byte范围内容，对于新特性，如果该数值已经存在，则不会在开辟新的空间。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="String字符串练习"><a href="#String字符串练习" class="headerlink" title="String字符串练习"></a>String字符串练习</h3><ol>
-<li>模拟一个trim方法，去除字符串两端的空格。<ul>
-<li>思路：</li>
-<li>判断字符串第一个位置是否是空格，如果是继续向下判断，直到不是空格为止；结尾处判断空格也是如此</li>
-<li>当开始和结尾都怕短到不是空格时，就是要获取的字符串</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line">/*</span><br><span class="line">* 模拟一个trim方法，去除字符串两端的空格。*/</span><br><span class="line"></span><br><span class="line">public class TestOne &#123;</span><br><span class="line">    public static void sop(String str)&#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;    ab cd    &quot;;</span><br><span class="line">        sop(&quot;(&quot;+s+&quot;)&quot;);</span><br><span class="line">        //对字符串进行myTrim操作</span><br><span class="line">        s = myTrim(s);</span><br><span class="line">        sop(&quot;(&quot;+s+&quot;)&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String myTrim(String str)&#123;</span><br><span class="line">        int start = 0;</span><br><span class="line">        int end = str.length()-1;</span><br><span class="line">        //从第一个位置开始查找空格，直到查到字符，停止查找，并返回当前的start值 </span><br><span class="line">        while (start&lt;=end &amp;&amp; str.charAt(start)==&apos; &apos;)</span><br><span class="line">            start++;</span><br><span class="line">        //从最后一个位置开始从右至左查找空格，直到查到字符，停止查找，并返回当前的end值 </span><br><span class="line">        while (start&lt;=end &amp;&amp; str.charAt(end)==&apos; &apos;)</span><br><span class="line">            end--;</span><br><span class="line">        //返回String对象，通过substring(start,end)方法获取子串，end位置的字符不计入子串。</span><br><span class="line">        return str.substring(start,end+1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>练习二:将一个字符串进行反转，将字符串中指定部分进行反转，<br>“abcdefg”;abfedcg<br>思路：<br>1.知道如何对数组元素进行反转<br>2.将字符串变成数组，进行反转<br>3.将反转后的数组变成字符串<br>4.只要将反转的部分的开始和结束位置作为参数传递即可</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*将一个字符串进行反转，将字符串中指定部分进行反转，</span><br><span class="line">“abcdefg”;abfedcg</span><br><span class="line">思路：</span><br><span class="line">1.知道如何对数组元素进行反转</span><br><span class="line">2.将字符串变成数组，进行反转</span><br><span class="line">3.将反转后的数组变成字符串</span><br><span class="line">4.只要将反转的部分的开始和结束位置作为参数传递即可*/</span><br><span class="line">public class TestTwo &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String reverseString(String s) &#123;</span><br><span class="line">//        字符串变成数组</span><br><span class="line">        char[] chars = s.toCharArray();</span><br><span class="line">//        反转数组</span><br><span class="line">        reverse(chars);</span><br><span class="line">//        将数组变成字符串,使用构造函数</span><br><span class="line">        return new String(chars);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //方法的重载</span><br><span class="line">    public static String reverseString(String s, int start, int end) &#123;</span><br><span class="line">        //        字符串变成数组</span><br><span class="line">        char[] chars = s.toCharArray();</span><br><span class="line">//        反转数组</span><br><span class="line">        reverse(chars, start, end);</span><br><span class="line">        //        将数组变成字符串,使用构造函数</span><br><span class="line">        return new String(chars);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void reverse(char[] chars, int x, int y) &#123;</span><br><span class="line">        for (int start = x, end = y - 1; start &lt; end; start++, end--) &#123;</span><br><span class="line">            swap(chars, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //方法的重载</span><br><span class="line">    private static void reverse(char[] chars) &#123;</span><br><span class="line">        for (int start = 0, end = chars.length - 1; start &lt; end; start++, end--) &#123;</span><br><span class="line">            swap(chars, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">//    数组反转</span><br><span class="line">    private static void swap(char[] chars, int start, int end) &#123;</span><br><span class="line">        char temp = chars[start];</span><br><span class="line">        chars[start] = chars[end];</span><br><span class="line">        chars[end] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;abcdefg&quot;;</span><br><span class="line">        sop(&quot;No reverse--&quot;+s);</span><br><span class="line">        sop(&quot;absolute reverse---&quot;+reverseString(s));</span><br><span class="line">        sop(&quot;part reverse==&quot;+reverseString(s, 2, 6));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>练习：获取一个字符串在另一个字符串中出现的次数.”abkkcdkkefkkakk”<br>思路：<br>1.定义计数器<br>2.获取“kk”第一次出现的位置<br>3.从第一次出现位置后剩余的字符串中继续获取kk出现的位置，每获取一次就计数一次<br>4.当获取不到时，计数完成</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*获取一个字符串在另一个字符串中出现的次数.&quot;abkkcdkkefkkakk&quot;</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1.定义计数器</span><br><span class="line"> * 2.获取“kk”第一次出现的位置</span><br><span class="line"> * 3.从第一次出现位置后剩余的字符串中继续获取kk出现的位置，每获取一次就计数一次</span><br><span class="line"> * 4.当获取不到时，计数完成*/</span><br><span class="line">public class TestThree &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //定义获取出现重复kk次数的方法</span><br><span class="line">    public static int getSubCount(String str, String key) &#123;</span><br><span class="line">//        定义一个count用来计数，index用来记录出现kk的索引</span><br><span class="line">        int count = 0;</span><br><span class="line">        int index = 0;</span><br><span class="line">//if判断只执行一次，while当条件为true就一直执行；indexOf(key)每次都是从0开始查找；indexOf(key,fromIndex)从指定位置开始查找。更高效</span><br><span class="line">        while ((index = str.indexOf(key, index)) != -1) &#123;</span><br><span class="line">            sop(&quot;index=&quot; + index);</span><br><span class="line">//            subString()方法：返回一个新的字符串，它是此字符串的一个子字符串。</span><br><span class="line">// 该子字符串从指定索引处的字符开始，直到此字符串末尾。str = str.substring(index + key.length());</span><br><span class="line">            index = index + key.length();</span><br><span class="line">//            计数</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;abkkcdkkefkkakk&quot;;</span><br><span class="line">        sop(&quot;count=&quot; + getSubCount(str, &quot;kk&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>练习：获取两个字符串中最大相同子串。第一个动作，将短的那个串进行长度一次递减的子串打印 “abcwerthelloyuicdef””cvhellobnm*<br>思路：<br>1.将短的那个子串按照长度递减的方式获取到<br>2.将每获取到的子串去长串中判断是否包含，如果包含，已经找到！</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package StringTest;</span><br><span class="line"></span><br><span class="line">/*获取两个字符串中最大相同子串。第一个动作，将短的那个串进行长度一次递减的子串打印</span><br><span class="line"> * “abcwerthelloyuicdef”</span><br><span class="line"> * &quot;cvhellobnm*</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1.将短的那个子串按照长度递减的方式获取到</span><br><span class="line"> * 2.将每获取到的子串去长串中判断是否包含，如果包含，已经找到！*/</span><br><span class="line">public class TestFour &#123;</span><br><span class="line">    public static void sop(String str) &#123;</span><br><span class="line">        //定义一个输出方法</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //    定义一个获取最大相同子串的方法，比较的是两个字符串，局部变量就是两个字符串</span><br><span class="line">    public static String getMaxSubString(String s1, String s2) &#123;</span><br><span class="line">        String max = s1.length() &gt;= s2.length() ? s1 : s2;</span><br><span class="line">        String min = max == s1 ? s2 : s1;</span><br><span class="line">//        外层循环是控制短串需要进行多少次指针偏移，即要找多少次子串</span><br><span class="line">        for (int x = 0; x &lt; min.length(); x++) &#123;</span><br><span class="line">//            内层循环是控制当前长度的对应子串有多少个，y为头位置，z为尾标，当z的位置超过子串应有长度</span><br><span class="line">// （substring(start,end)方法中end位置字符不计入子串）停止查找</span><br><span class="line">            for (int y = 0, z = min.length() - x; z != min.length() + 1; y++, z++) &#123;</span><br><span class="line">                String temp = min.substring(y, z);</span><br><span class="line">//               sop(temp);</span><br><span class="line">//                如果长串中有包含短串中查找到的子串，返回一个String对象（temp）</span><br><span class="line">                if (max.contains(temp))</span><br><span class="line">                    return temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String s2 = &quot;abcwerthelloyuicdef&quot;;</span><br><span class="line">        String s1 = &quot;cvhellobnmaf&quot;;</span><br><span class="line">//        输出最大相同子串</span><br><span class="line">        sop(getMaxSubString(s1, s2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          日积月累String类
+String s1 = “abc”;//s1是一个类类型变量，”abc”是一个对象 。字符串最大特点：一旦被初始化就不可以被改变。
+String类复写了Object类中equals方法，该方法用于判断字符串内容是否相同。
+String s1 = “abc”;String s2 = new String(“abc”);s1和s2有什么区别？s1在内存中一个对象，s2在内存中两个对象(new，”abc”)；
+String类提供的常见操作？”abcd”   
+获取
+字符串中的包含的字符数，也就是字符串的长度。int length()。 数组的length是属性，没有()
+根据
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/08/java13天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -678,7 +589,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -740,6 +651,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/08/java12天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/08/java12天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -766,22 +687,18 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="多线程间通信"><a href="#多线程间通信" class="headerlink" title="多线程间通信"></a>多线程间通信</h3><ol>
-<li>线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。</li>
-<li>线程间通信，解决安全问题，同步的两个前提必须满足。</li>
-<li>等待唤醒机制。<br>wait():<br>notify():<br>notifyAll():<br>都是用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，因为只有同步才具有锁。<br>为什么这些操作线程的方法要定义在Object类中呢？<br>因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁，只有同一个锁上的被等待线程，可以被同一个锁上notify唤醒，不可以对不同锁中的线程进行唤醒。<br>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。</li>
-<li>当有多个生产者消费者，必须要用while循环，判断标记，唤醒全部线程。因为，让被唤醒的线程再一次判断标记。为什么定义notifyAll，因为需要唤醒对方线程。因为只用notify，容易出现只唤醒本方线程的情况，导致程序中的所有线程都等待。</li>
-<li>JDK1.5 中提供了多线程升级解决方案。将同步Synchronized替换成Lock操作。将Object中的wait，notify，notifyAll，替换成Condition对象。该对象能Lock锁，进行获取。</li>
-</ol>
-<h3 id="多线程停止"><a href="#多线程停止" class="headerlink" title="多线程停止"></a>多线程停止</h3><ol>
-<li>如何停止线程？只有一种，run方法结束。开启多线程运行，运行代码通常是循环结构。只要控制住循环，就可以让run方法结束，也就是线程结束。<br>当没有指定的方式让冻结的线程恢复到运行状态时，这时需要对冻结进行清除。强制让线程恢复到运行状态中来。这样就可以操作标记让线程结束。</li>
-<li>守护线程。</li>
-<li>Join方法：抢夺cpu执行权。当A线程执行到了B线程的.join方法时，A就会等待，等待B线程都执行完，A才执行。join可以用来临时加入线程执行。</li>
-<li>优先级.setPriority()</li>
-<li>.yield()暂停当前正在执行的线程，让其他线程执行。</li>
-</ol>
-
-          
+          日积月累多线程间通信
+线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
+线程间通信，解决安全问题，同步的两个前提必须满足。
+等待唤醒机制。wait():notify():notifyAll():都是用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，因为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁，只有同一个锁上的被等待线程，可以被同一个锁上notify唤醒，不可以对不同锁中的线程进行唤醒。也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/08/java12天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -833,7 +750,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -895,6 +812,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/07/java第十一天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第十一天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -921,56 +848,21 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><ol>
-<li>进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。</li>
-<li>线程：就是进程中的一个独立的控制单元。线程在控制着进程的执行。</li>
-<li>一个进程中至少有一个线程。</li>
-<li>java虚拟机启动的时候会有一个进程java.exe。该进程中至少有一个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中，该线程称之为主线程。<br>其实更细节说明jvm，jvm不止一个线程，还有负责垃圾回收机制的线程。</li>
-<li>多线程的意义：</li>
-<li>如何在自定义的代码中定义线程：①继承Thread类（1.定义类继承Thread 2.复写Thread类中的run方法（将自定义代码存储在run方法中，让线程运行） 3.调用线程的start方法，该方法有两个作用：启动线程，调用run方法） ②实现Runnable接口</li>
-<li>为什么要复写run方法：Thread类用于描述线程。该类就定义了一个功能，用于存储线程要运行的代码。该存储功能就是run方法。也就是说Thread中run方法，用于存储要运行的代码</li>
-</ol>
-<h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><ol>
-<li>static Thread currentThread():获取当前线程对象。<br>getName():获取线程名称<br>设置线程名称:setName或者构造函数</li>
-<li>实现Runnable接口：步骤：1.定义类实现Runnable接口 2.覆盖Runnable接口中的run方法（将线程要运行的代码放在run方法中） 3.通过Thread类建立线程对象 4.将Runnable接口的子类对象作为实际参数传给Thread类的构造函数（为什么要将Runnable接口的子类对象传递给Thread的构造函数？因为，自定义的run方法所属的对象是Runnable接口的子类对象；所以要让线程去指定指定对象的run方法，就必须明确该run方法所属对象。） 5.调用Thread类的start方法开启线程并调用Runnable接口子类的run方法。</li>
-<li>实现方式和继承方式有什么区别？<br>实现方式好处在于避免了单继承的局限性。在定义线程时，建议使用实现方式。（继承一个父类的同时实现Runnable接口）<br>两种方式的区别：<br>继承Thread：线程代码存放在Thread子类run方法中。实现Runable：线程代码存放在接口的子类的run方法。</li>
-<li>多线程的运行出现了安全问题。<br>问题的原因：当多条语句在操作同一个线程共享数据时，一个线程对多条语句只执行了一部分，还没有执行完；另一个线程参与进来执行，导致共享数据的错误。<br>解决办法：对多条操作共享数据的语句，只能让一个线程都执行完，在执行过程中，其他线程无法参与执行。<br>Java对于多线程的安全问题提供了专业的解决方式，就是同步代码块。<code>synchronized(对象){需要被同步的代码}</code>需要被同步的代码是操作共享数据的代码，对象可以用Object对象。对象如同锁，持有锁的线程可以在同步中执行。没有持有锁的线程即使获取cpu的执行权，也进不去，因为没有获取锁。（如火车的卫生间）<br>同步的前提：①必须要有两个或者两个以上的线程②必须是多个线程使用同一个锁<br>必须保证同步中只能有一个线程在运行。<br>好处：解决了多线程的安全问题<br>弊端：多个线程需要判断锁，较为消耗资源</li>
-<li><p>如何判断程序是否有安全问题？  </p>
-<ol>
-<li>明确哪些代码是多线程运行代码</li>
-<li>明确共享数据</li>
-<li>明确多线程运行代码中哪些语句是操作共享数据的</li>
-</ol>
-</li>
-<li><p>同步是有同步函数和同步代码块两种写法。同步函数用的是哪一个锁？函数需要被对象调用，那么函数都有一个所属对象引用，就是this，所以同步函数使用的锁是this</p>
-</li>
-<li>如果同步函数被静态修饰后，使用的锁是什么呢？肯定不是this，因为静态方法中也不可以定义this。静态进内存时，内存中没有本类对象，但是一定有该类对应的字节码文件对象, 类名.class，该对象的类型是class。静态的同步方法，使用的锁是该方法所在类的字节码文件对象。类名.class</li>
-<li>懒汉式特点在于实例的延时加载，如果多线程访问会出现安全问题，可以加同步，但是有点低效，可以用双重判断提高一点效率，锁是该类的字节码.class。（请写出延时加载的单例设计模式）。</li>
-</ol>
-<pre><code>class Single
-{ 
-  private static Single s = null;
-  private Single()
-  {
-  } 
-  public static Single getInstance()
-  {
-    if(s==null)
-    {
-      synchronized(Single.class)
-    {
-         if(s==null)
-            s=new Single();
-  }
-  }
-  return s;
-  }
-}
-</code></pre><ol start="9">
-<li>多线程的死锁程序！</li>
-</ol>
-
-          
+          日积月累多线程
+进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。
+线程：就是进程中的一个独立的控制单元。线程在控制着进程的执行。
+一个进程中至少有一个线程。
+java虚拟机启动的时候会有一个进程java.exe。该进程中至少有一个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中，该线程称之为主线程。其实更细节说明jvm，jvm不止一个线程，还有负责垃圾回收机制的线程。
+多线程的意义：
+如何在自定义的代码中定义线程：①继承Thread类（1.定义类继承Thread 2.复写Thread类中的run方法（将自定义代码存储
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/07/java第十一天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1022,7 +914,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1084,6 +976,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/07/java第十天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第十天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1110,60 +1012,25 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="异常finally"><a href="#异常finally" class="headerlink" title="异常finally"></a>异常finally</h2><ol>
-<li>finally中定义的代码一定是会运行的代码。比如用在数据的关闭，避免占用数据库连接。通常用于关闭资源。</li>
-<li>记住一点，catch是用于处理异常，如果没有catch就代表异常没有被处理过，如果该异常时检测时异常，那么必须声明。</li>
-<li>异常在子父类覆盖中的体现：  <ul>
-<li>子类在覆盖父类时，如果父类的方法抛出异常，那么子类的覆盖方法，只能抛出父类的异常或者该异常的子类</li>
-<li>如果父类抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集</li>
-<li>如果父类或者接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。如果子类方法发生了异常，就必须要进行try处理。绝对不能抛。</li>
-</ul>
-</li>
-</ol>
-<h2 id="异常练习"><a href="#异常练习" class="headerlink" title="异常练习"></a>异常练习</h2><ol>
-<li>有一个圆形和长方形。都可以获取面积，对于面积如果出现非法的数值，视为是获取面积时出现问题。问题通过异常来表示。</li>
-</ol>
-<h2 id="异常总结"><a href="#异常总结" class="headerlink" title="异常总结"></a>异常总结</h2><ol>
-<li>异常：是对问题的描述，将问题进行封装。</li>
-<li><p>异常体系：   </p>
-<ul>
-<li>Throwable<ul>
-<li>Error</li>
-<li>Exception<ul>
-<li>RuntimeException</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>异常体系的特点：异常体系中的所有类以及建立的对象都具有可抛性。也就是说可以被throw和throws关键字所操作。只有异常体系具备这个特点。</p>
-</li>
-<li>throw和throws的用法：throw定义在函数内，用于抛出异常对象。throws定义在函数上，用于抛出异常类，可以抛出多个用逗号隔开。</li>
-<li><p>当函数内容有throw抛出异常对象，并未进行try处理，必须要在函数上声明，都在编译失败。注意，RuntimeException除外。也就是说，函数内如果抛出的RuntimeException异常，函数上可以不用声明。<br>如果函数声明了异常，调用者需要进行处理。处理方法可以throws可以try。<br>异常有两种：</p>
-<ul>
-<li>编译时被检测异常；该异常在编译时，如果没有处理（没有抛出，没有try），编译失败</li>
-<li>运行时异常（编译时不检测）；在编译时，不需要处理，编译器不检查。该异常的发生，建议不处理，让程序停止。需要对代码进行修正。</li>
-</ul>
-</li>
-<li><p>finally中定义的通常是关闭资源代码，因为资源必须释放</p>
-</li>
-<li>finally只有一种情况无法执行，那就是当执行到System.exit(0);finally不会执行</li>
-<li>自定义异常：定义类继承Exception或者RuntimeException。为了让该自定义类具备可抛性；让该类具备操作异常的共性方法。<br>当要定义自定义的信息时，可以使用父类已经定义好的功能。异常信息传递给父类的构造函数</li>
-<li>自定义异常：按照java的面向对象思想，将程序中出现的特有问题进行封装</li>
-<li>异常的好处：将问题进行封装。将正常流程代码和问题处理代码向分离，方便于阅读</li>
-<li>异常的处理原则：处理方式有两种：try或者throws。调用到抛出异常的功能时，抛出几个，就处理几个。（一个try对应多个catch）。多个catch，父类的catch放到最下面。catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace，输出语句。也不要不写。当捕获到的异常，本功能处理不了时，可以继续在catch中抛出。<br>如果该异常处理不了，但并不属于该功能出现的异常。可以将异常转换后，再抛出和该功能相关的异常。<br>或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，当调用者知道，并处理。也可以将捕获异常处理后，转换新的异常。</li>
-<li>异常的注意事项：在子父类覆盖时，子类抛出的异常必须是父类的异常的子类或者子集。如果父类或者接口没有异常抛出时，子类覆盖出现异常，只能try不能抛。</li>
-</ol>
-<h2 id="包package"><a href="#包package" class="headerlink" title="包package"></a>包package</h2><ol>
-<li>包对类文件进行分类管理。给类提供多层命名空间。写在程序文件的第一行。类名的全称的是 包名.类名。包也是一种封装形式。</li>
-<li>包与包之间访问，被访问的包中的类以及类中的成员，需要public修饰。</li>
-<li>不同包中的子类还可以直接访问父类中protected权限修饰的成员。</li>
-<li>public protected default private</li>
-<li>为了简化类名的书写，就使用一个关键字，import。import导入的是包中的类。所以import packb.*;与import packb.haha.*;不太一样。建议：不要写通配符*，需要用到包中的哪个类，就写到哪</li>
-</ol>
+          日积月累异常finally
+finally中定义的代码一定是会运行的代码。比如用在数据的关闭，避免占用数据库连接。通常用于关闭资源。
+记住一点，catch是用于处理异常，如果没有catch就代表异常没有被处理过，如果该异常时检测时异常，那么必须声明。
+异常在子父类覆盖中的体现：  
+子类在覆盖父类时，如果父类的方法抛出异常，那么子类的覆盖方法，只能抛出父类的异常或者该异常的子类
+如果父类抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集
+如果父类或者接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。如果子类方法发生了异常，就必须要进行try处理。绝对不能抛。
 
-          
+
+
+异
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/07/java第十天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1215,7 +1082,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1277,6 +1144,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/07/java第九天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/07/java第九天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1303,50 +1180,19 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><ol>
-<li>内部类好处：可以不用创建对象就能直接访问相对内部类的外部类的成员</li>
-<li>内部类访问规则:①内部类可以直接访问外部类中的成员，包括私有。之所以能直接访问外部类中的成员，是因为内部类中持有一个外部类的引用，格式：外部类名.this②外部类访问内部类，必须要建立内部类对象。</li>
-<li>访问格式：当内部类定义在外部类的成员位置上，而且非私有，可以在外部其他类中直接建立内部类对象。 格式： 外部类名.内部类名 变量名 = 外部类对象.内部类对象；如 Outer.Innter in = new Outer().new Inner()；</li>
-<li>当内部类在成员位置上，就可以被成员修饰符所修饰。比如，private:将内部类在外部类中进行封装。 static：内部类就具有静态特性；当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。<br>在外部其他类中，如何直接访问static内部类的非静态成员呢？<br>new Outer.Inner().function();<br>在外部其他类中，如何直接访问static内部类的静态成员呢？<br>Outer.Inner.function();<br>注意：当内部类中定义了静态成员，该内部类必须是static。<br>当外部类中的静态方法访问内部类时，内部类也必须是static的</li>
-<li>什么时候使用内部类？<br>当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Body&#123;</span><br><span class="line">  private class Heart&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>内部类定义在局部时，①不可以被成员修饰符修饰②可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问他所在的局部中的变量，只能访问被final修饰的局部变量。</li>
-</ol>
-<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><ol start="7">
-<li>匿名内部类：匿名内部类其实就是内部类的简写格式。</li>
-<li>定义匿名内部类的前提：内部类必须是继承一个类或者实现接口</li>
-<li>匿名内部类的格式： new 父类或者接口(){定义子类的内容}</li>
-<li>其实匿名内部类就是一个匿名子类对象。这个对象带有内容。</li>
-<li>匿名内部类中定义的方法最好不要超过2个。</li>
-<li>new Object();与new Object(){};的区别：<br>new Object();  是创建Object对象。<br>new Object(){}; 是创建Object子类对象。</li>
-</ol>
-<h2 id="异常概述"><a href="#异常概述" class="headerlink" title="异常概述"></a>异常概述</h2><ol>
-<li>异常：就是程序在运行时出现不正常情况。 异常由来：问题也是现实生活中一个具体的事物，也已通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现。</li>
-<li>对于问题的划分：两种：一种是严重的问题；一种是非严重的问题。对于严重的，java通过Error类进行描述。对于非严重的，java通过Exception类进行描述。对于Error一般不编写针对性的代码进行处理；对于Exception可以使用针对性的处理方式进行处理。</li>
-<li>无论Error或者Exception都具有一些共性内容。比如：不正常情况的信息，引发原因等。</li>
-<li><p>异常的处理<br>java提供了特有的语句处理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">    需要被检测的代码</span><br><span class="line">&#125;</span><br><span class="line">catch(异常类 变量)</span><br><span class="line">&#123;</span><br><span class="line">    处理异常的代码（处理方式）</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">    一定会执行的语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对捕获到的异常对象进行常见方法操作。其实jvm默认的异常处理机制，就是在调用printStackTrace方法。打印异常的堆栈的跟踪信息。</p>
-</li>
-<li>throws异常声明：在功能上通过throws的关键字声明了该功能有可能会出现问题。</li>
-<li>对多异常的处理：①声明异常时，建议声明更为具体的异常。这样处理的可以更具体。②处理形式是多加catch，处理对应的异常③函数中有异常抛出就停止运行了；所以不会同时出现多个异常④对方声明几个异常，就对应几个catch块。如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面。⑤建议在进行catch处理时，catch中一定要定义具体的处理方式，不要简单定义一句e.printStackTrace(),也不要简单的就书写一条输出语句。</li>
-<li>因为项目中会出现特有的问题，而这些问题并未对java所描述并封装对象。所以对于这些特有的问题可以按照java的对问题封装的思想。将特有的问题，进行自定义的异常封装。</li>
-<li>自定义异常。 当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。要么在内部try catch处理，要么在函数上声明让调用者处理。一般情况，在函数内出现异常，函数上需要声明（throws）。</li>
-<li>如何定义异常信息呢？<br>因为父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么就可以直接通过getMessage方法获取自定义的异常信息。</li>
-<li>自定义异常：必须是自定义类继承Exception。继承Exception原因：异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中独有的特点。只有这个体系中的类和对象才可以被throws和throw操作</li>
-<li>throw和throws的区别。throw使用在函数内。throws使用在函数上。throw后跟的是异常对象。throws后跟的是异常类，可以跟多个；用逗号隔开。</li>
-<li><p>Exception中有一个特殊的子类异常RuntimeException运行时异常。如果在函数内容抛出该异常，函数上可以不用声明，编译一样通过。<br>如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。<br>之所以不用在函数中声明，是因为不需要让调用者处理。当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，程序员对代码进行修正。   </p>
-</li>
-<li><p>自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException。</p>
-</li>
-<li>对于异常分两种：①编译时被检测的异常②编译时不被检测的异常（运行时异常，RuntimeException以及其子类）</li>
-<li>throw其实也是语句结束的标识，当抛出异常，程序停止运行了；所以在throw下面不要写其他的方法，因为不会执行。</li>
-</ol>
-
-          
+          日积月累内部类
+内部类好处：可以不用创建对象就能直接访问相对内部类的外部类的成员
+内部类访问规则:①内部类可以直接访问外部类中的成员，包括私有。之所以能直接访问外部类中的成员，是因为内部类中持有一个外部类的引用，格式：外部类名.this②外部类访问内部类，必须要建立内部类对象。
+访问格式：当内部类定义在外部类的成员位置上，而且非私有，可以在外部其他类中直接建立内部类对象。 格式： 外部类名.内部类名 变量名 = 外部类对象.内部类对象；如 Outer.Innter in = new Outer().new Inner()；
+当内部类在成员位置上，就可以被成员修饰符所修饰。比如，private:
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/07/java第九天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1398,7 +1244,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1460,6 +1306,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/06/java第八天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第八天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1486,39 +1342,22 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ol>
-<li>多态：可以理解为事物存在的多种体现形式。如人分为男人女人；动物：猫狗。猫 x = new 猫()；动物 x = new 猫();</li>
-<li>多态的体现：强迫子类重写方法；父类的引用指向了自己的子类对象。父类的引用也可以接受自己的子对象</li>
-<li>多态的前提：①必须是类与类之间有关系，要么继承要么实现。②通常还有一个前提：存在覆盖</li>
-<li>多态的弊端：提高了扩展性，但是只能使用父类的引用访问父类中的成员</li>
-<li>多态的好处：提高了程序的扩展性</li>
-<li>多态的应用</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Animal a = new Cat();//类型提升，向上转型</span><br><span class="line">a.eat();</span><br><span class="line">//如果想要调用猫特有方法时，如何操作？</span><br><span class="line">//强制将父类中的引用,转成子类类型。向下转型。</span><br><span class="line">Cat c = (Cat)a;</span><br><span class="line">c.catchMouse();</span><br><span class="line">//千万不能将父类对象转成子类类型。能转换的是父类引用指向了自己的子类对象时，该引用可以被提升，也可以被强制转换。多态自始至终都是子类对象在做变化。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多态使用的注意事项：</p>
-</li>
-<li>在多态中成员函数的特点：在编译时期：参阅引用型变量所属的类中是否有调用的方法。如果有，编译通过，如果没有编译失败。<br>在运行时期：参阅对象所属的类中是否有调用的方法。<br>简单总结就是：成员函数在多态调用时，编译看左边，运行看右边。如，Fu f=new Zi();</li>
-<li>在多态中，成员变量的特点：无论编译和运行，都参考左边（引用变量的类）</li>
-<li>在多态中，静态成员函数的特点：无论编译和运行，都参考左边</li>
-</ol>
-<h2 id="多态的扩展示例"><a href="#多态的扩展示例" class="headerlink" title="多态的扩展示例"></a>多态的扩展示例</h2><ol>
-<li><p>数据库的操作：   </p>
-<ul>
-<li>连接数据库。JDBC Hibernate</li>
-<li>操作数据库。c creat r read u update d delete</li>
-<li>关闭数据库连接</li>
-</ul>
-</li>
-<li><p>dao: data access object</p>
-</li>
-</ol>
-<h2 id="object类"><a href="#object类" class="headerlink" title="object类"></a>object类</h2><ol>
-<li>Object：是所有对象的直接后者间接父类，传说中的上帝。该类中定义的肯定是所有对象都具备的功能</li>
-<li>equals比较地址值。Object类中已经提供了对对象是否相同的比较方法。如果自定义类中也有比较相同的功能，没有必要重新定义。只要沿袭父类中的功能，建立自己特有的比较内容即可。这就是覆盖</li>
-<li>toString()。对象都有自己的地址。</li>
-</ol>
-
-          
+          日积月累多态
+多态：可以理解为事物存在的多种体现形式。如人分为男人女人；动物：猫狗。猫 x = new 猫()；动物 x = new 猫();
+多态的体现：强迫子类重写方法；父类的引用指向了自己的子类对象。父类的引用也可以接受自己的子对象
+多态的前提：①必须是类与类之间有关系，要么继承要么实现。②通常还有一个前提：存在覆盖
+多态的弊端：提高了扩展性，但是只能使用父类的引用访问父类中的成员
+多态的好处：提高了程序的扩展性
+多态的应用
+1234567Animal a = new Cat();//类型提升，向上转型a.eat();//如果想要调用猫特有方法时，如何操作？//强制将父类中的引用,转成子
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/06/java第八天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1570,7 +1409,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1632,6 +1471,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/06/java第七天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第七天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1658,82 +1507,20 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
-<li>例如学生和工人的共性都有姓名和年龄，那么可以将共性描述提取出来，单独进行描述；只要让学生和工人与单独描述的这个类有关系，就可以了。</li>
-<li>继承：①提高了代码的复用性②让类与类之间产生了关系，有了这个关系，才有了多态的特性</li>
-<li>注意：千万不要为了获取其他类的功能，简化代码而继承；必须是类与类之间有所属关系才可以继承。所属关系是is a。</li>
-<li>父类是不断从子类中抽取出的共性体现。</li>
-<li>Java语言中：java只支持单继承，不支持多继承。因为多继承容易带来安全隐患：当多个父类中定义了相同功能，当功能内容不同时，子类对象不确定要运行哪一个。优化了c++的多继承，java保留了这种机制，并用另一种体现形式来完成表示，多实现。</li>
-<li>java支持多层继承。（爷爷-父亲-儿子）也就是一个继承体系，如何使用一个继承体系中的功能呢？<br>想要使用体系，先查阅体系中父类的描述，因为父类中定义的是该体系中共性功能。通过了解共性功能，就可以知道该体系的基本功能。那么这个体系已经可以基本使用了。那么在具体调用时，要创建最子类的对象，为什么呢？一是因为有可能父类不能创建对象，二是创建子类可以使用更多的功能，包括基本的也包括特有的。</li>
-<li>简单一句话：查阅父类功能，创建子类对象使用功能。（java中类只能有一个父亲）</li>
-</ol>
-<h2 id="聚集关系"><a href="#聚集关系" class="headerlink" title="聚集关系"></a>聚集关系</h2><ol>
-<li>聚合：一个球队有多名球员</li>
-<li>组合：手是身体的一部分，心脏是身体的一部分。手和心脏就是组合关系。</li>
-<li>球员少一个没关系，手（心脏）不能少</li>
-</ol>
-<h2 id="子父类中变量的特点"><a href="#子父类中变量的特点" class="headerlink" title="子父类中变量的特点"></a>子父类中变量的特点</h2><ol>
-<li>子父类出现后，类成员的特点：<br>类中成员：变量，函数，构造函数。<br>①变量：this是本类的引用，super是父类的引用。如果子父类中出现非私有的同名成员变量时，子类要访问本类中的变量，用this；子类要访问父类中的同名变量，用super。<br>super的使用和this的使用几乎一致。this代表的是本类对象的引用。super代表的是父类对象的引用。</li>
-</ol>
-<h2 id="子父类中函数的特点"><a href="#子父类中函数的特点" class="headerlink" title="子父类中函数的特点"></a>子父类中函数的特点</h2><ol>
-<li>覆盖（重写）：当子类出现和父类一模一样的函数时，当子类对象调用该函数，会允许子类函数的内容。如同父类的函数被覆盖一样。</li>
-<li>当子类继承了父类，沿袭了父类的功能到子类中；但是子类中虽具有该功能，但是功能的内容和父类不一致，这时，没有必要定义新功能，而是覆盖，保留<br>父类的功能定义，并重写父类的功能方法。</li>
-<li>提高扩展性</li>
-<li>覆盖注意事项：①子类覆盖父类，必须保证子类权限大于等于父类权限，才可以覆盖，否则编译失败②静态只能覆盖静态</li>
-<li>重载：只看同名函数的参数列表。<br>重写：子父类方法要一模一样</li>
-</ol>
-<h2 id="子父类中的构造函数"><a href="#子父类中的构造函数" class="headerlink" title="子父类中的构造函数"></a>子父类中的构造函数</h2><ol>
-<li>在对子类对象进行初始化时，父类的构造函数也在运行；那是因为子类的构造函数默认第一行有一条隐式的语句super（）；<br>super（）：会访问父类中空参数的构造函数，而且子类中所有的构造函数默认第一行都是super（）。</li>
-<li>为什么子类一定要访问父类中的构造函数？<br>因为父类中的数据，子类可以直接获取，所以子类对象获取时，需要查看父类是如何对这些数据进行初始化的。所以子类在初始化对象时，需要先访问一下父类中的构造函数。如果要访问父类中指定的构造函数，可以通过手动定义super函数语句来指定。</li>
-<li>super语句一定要放在子类构造函数的第一行。</li>
-<li>结论：子类的所有的构造函数，默认都会访问父类中空参数的构造函数。因为子类中每一个构造函数内的第一行都有一句隐式super（）。当父类中没有空参数的构造函数时，子类必须手动通过super语句形式来指定要访问的构造函数。当然子类的构造函数第一行也可以手动指定this语句来访问本类中的构造函数。子类中至少会有一个构造函数会访问父类中的构造函数。</li>
-</ol>
-<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><ol>
-<li>final：最终。作为一个修饰符。①可以修饰类，函数，变量②被final修饰的类不可以被继承。防止被子类复写。③被final修饰的方法不可以被复写④被final修饰的变量时一个常量，只能赋值一次，既可以修饰成员变量，又可以修饰局部变量⑤内部类定义在类中的局部位置上时，只能访问该局部被final修饰的局部变量。</li>
-<li>当在描述事物时，一些数据的出现值是固定得而，那么这是为了增强阅读性，都给这些值起一个名字，方便阅读。而这个值不需要被改变，所以加上final关键字。作为常量，常量的书写规范所有字母都大写，如果多个单词组成。单词间通过_连接。</li>
-</ol>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ol>
-<li>当多个类中出现了相同功能，但是功能主体不同，这时可以进行向上抽取。这时，只抽取功能定义，而不抽取功能功能主体。</li>
-<li>抽象：看不懂的功能。   <ul>
-<li>抽象方法一定在抽象类中</li>
-<li>抽象方法和抽象类都必须被abstract关键字修饰</li>
-<li>抽象类不可以用new创建对象。因为调用抽象方法没意义</li>
-<li>抽象类中的抽象方法要被使用，必须由子类复写起所有的抽象方法后，建立子类对象调用。如果子类只覆盖了部分抽象方法，那么该子类还是一个抽象类   </li>
-<li>抽象类和一般类没有太大不同。该如何描述事物，就如何描述事物，只不过，该事物出现了一些看不懂的东西。这些不确定的部分，也是该事物的功能，需要明确出现。但是无法定义主体。通过抽象方法来表示。</li>
-<li>抽象类比一般类多了抽象函数。就是类中可以定义抽象方法。抽象类不能实例化。</li>
-<li>特殊情况：抽象类中可以不定义抽象方法，这样做仅仅是不让该类建立对象</li>
-</ul>
-</li>
-</ol>
-<h2 id="模范方法模式"><a href="#模范方法模式" class="headerlink" title="模范方法模式"></a>模范方法模式</h2><ol>
-<li>什么是模板方法呢？<br>在定义功能时，功能的一部分是确定的，但是有一部分是不确定，而确定的部分在使用不确定的部分；那么这时就将不确定的部分暴露出去，由该类的子类去完成。</li>
-</ol>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ol>
-<li>接口：初期理解，可以认为是一个特殊的抽象类；当抽象类中的方法都是抽象的，那么该类可以通过接口的形式来表示。</li>
-<li>class用于定义类，interface用于定义接口</li>
-<li><p>接口定义时，格式特点：   </p>
-<ol>
-<li>接口中常见定义：常量，抽象方法</li>
-<li>接口中的成员都有固定修饰符。常量：public static final。方法：public abstract</li>
-<li>接口中的成员都是public的</li>
-</ol>
-</li>
-<li><p>类与类之间继承关系，类与接口之间实现关系。继承，子类能直接用父类中的一些东西，不用很辛苦；实现，子类必须重写接口的所有抽象方法，非常辛苦。</p>
-</li>
-<li>接口不能创建对象，因为有抽象方法。需要被子类实现，子类对接口中的抽象方法全都覆盖后，子类才可以实例化，否则子类是一个抽象类。</li>
-<li>接口可以被类多实现，也是对多继承不支持的转换形式，java支持多形式。</li>
-<li>接口间的关系可以是（多）继承</li>
-<li>接口的特点：   <ul>
-<li>接口是对外暴露的规则</li>
-<li>接口是程序的功能扩展</li>
-<li>接口可以用来多实现</li>
-<li>类与接口之间是实现关系，而且类可以继承一个类的同时实现多个接口</li>
-<li>接口与接口之间可以有继承关系</li>
-</ul>
-</li>
-</ol>
-
-          
+          日积月累继承
+例如学生和工人的共性都有姓名和年龄，那么可以将共性描述提取出来，单独进行描述；只要让学生和工人与单独描述的这个类有关系，就可以了。
+继承：①提高了代码的复用性②让类与类之间产生了关系，有了这个关系，才有了多态的特性
+注意：千万不要为了获取其他类的功能，简化代码而继承；必须是类与类之间有所属关系才可以继承。所属关系是is a。
+父类是不断从子类中抽取出的共性体现。
+Java语言中：java只支持单继承，不支持多继承。因为多继承容易带来安全隐患：当多个父类中定义了相同功能，当功能内容不同时，子类对象不确定要运行哪一个。优化了c++的多继承，java保留了这种机制，并用另一种体现形式来
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/06/java第七天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1785,7 +1572,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1847,6 +1634,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/06/java第六天/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/06/java第六天/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1873,25 +1670,23 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><ol>
-<li>格式：   </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static</span><br><span class="line">&#123;</span><br><span class="line">  静态代码块中的执行语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。 </p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ol>
-<li>其实是一种思想，用来解决问题最有效的方法。</li>
-<li>java中有23种设计模式：   <ul>
-<li>单例设计模式：解决一个类在内存中只存在一个对象。<br>想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建立该类对象②还为了想让其他程序可以访问到该类对象，只好在本类中，自定义一个对象③为了方便其他程序对自定义对象的访问，可以对外提供一些访问方式。<br>怎么用代码体现这三步？<br>①将构造函数私有化②在类中创建一个本类对象③提供一个方法可以获取到该对象<ul>
-<li>对于事物该怎么描述，还怎么描述。当需要将事物的对象保证在内存中唯一时，就将以上三步加上即可。如果方法要被调用，要用类.方法名()获得一个实例化，必须使用static关键字来修饰方法；该方法只能使用静态成员变量。  </li>
-<li>区分饿汉式和懒汉式：懒汉式对象初始化为null（延时加载）。饿汉式：类一进内存，就已经创建好了对象。懒汉式：类进内存，对象还没有存在，只有调用了获取对象方法时，才建立对象。开发时其实经常用饿汉式，这样比较安全；因为懒汉式被多个人同时调用时，会同时进行，被卡住，但是可以用synchronized关键字进行锁住，并多重判断；</li>
-<li>记住原则：定义单例，建议使用饿汉式</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
+          日积月累静态代码块
+格式：   
 
-          
+1234static&#123;  静态代码块中的执行语句&#125;
+特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。 
+设计模式
+其实是一种思想，用来解决问题最有效的方法。
+java中有23种设计模式：   
+单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建立该类对象②还为了想让其他程序可以访问到该类对象，只好在本类中，自定义一个对象③为了方便其他程序对自定义对象的访问，可以对外提供一些访问方式。怎么用代码体现这三步？①将构造函数私有化②在类中创建一个本
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/06/java第六天/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1943,7 +1738,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2005,6 +1800,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/05/9.5.1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/05/9.5.1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -2031,59 +1836,27 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><ol>
-<li>当一个类中没有定义构造函数时，那么系统会默认给该类加入一个空参数的构造函数</li>
-<li>当定义了构造函数之后，不会再给出默认的构造函数</li>
-<li>不同的构造函数对不同的对象进行初始化</li>
-<li>构造函数主要帮助进行对象初始化</li>
-<li>构造函数和一般函数在写法上有不同</li>
-<li>构造函数是在对象一建立就运行。给对象初始化</li>
-<li>一般方法是对象调用才执行，给是对象添加对象具备的功能</li>
-<li>一个对象建立，构造函数只运行一次；而一般方法能被该对象调用多次</li>
-<li>什么时候定义构造函数呢？当分析事物时，该事务存在就具备一些特性或者行为，那么这些内容定义在构造函数中</li>
-</ol>
-<h2 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h2><ol>
-<li>作用：给对象进行初始化。对象一建立就运行，而且优先于构造函数执行。<br>和构造函数的区别：构造代码块是给所有对象进行统一初始化（不同对象共性的初始化内容）。而构造函数是给对应的对象初始化</li>
-</ol>
-<h2 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h2><ol>
-<li>局部变量的名称和成员变量名称相同时，用来区分；用于构造函数间调用，一般函数不能调用构造函数，this用于构造函数</li>
-<li>this为什么能解决这个问题？<br>代表对象</li>
-<li>this到底代表什么？<br>this就代表本类的对象，到底代表哪一个呢？（可以new很多对象）<br>this代表它所在函数所属对象的引用。简单说：哪个对象在调用this所在的函数，this就代表哪个对象  </li>
-<li>this的应用：当定义类中功能时，该函数内部要用到调用该函数对象时，这时就用this来表示这个对象。但凡本类中功能内部都使用了本类对象，都用this表示</li>
-<li>构造函数间调用只能使用this</li>
-<li>this语句只能定义在构造函数的第一行，this()。</li>
-</ol>
-<h2 id="Static关键字"><a href="#Static关键字" class="headerlink" title="Static关键字"></a>Static关键字</h2><ol>
-<li>static静态，用法：是一个修饰符，用于修饰成员（成员变量，成员函数）。static修饰的内容被共享，不再放在堆内存中（在方法区，共享区，数据区），节约了内存开销</li>
-<li>当成员被静态修饰后，就多了一个调用方式，除了可以被对象调用外，还可以直接被类名调用。（类名.静态成员）</li>
-<li>static特点：①随着类的加载而加载，随类的消失而消失。说明他的生命周期最长②优先于对象存在。明确一点：静态是先存在，对象是后存在③被所有对象所共享④可以被类名直接调用</li>
-<li>被多个对象共有就可以用静态</li>
-<li>实例变量和类变量的区别（静态成员变量）：①类变量随着累的加载而存在于方法区中。实例变量随着对象的建立而存在于堆内存中②生命周期：类变量生命周期最长，随着类的消失而消失。实例变量生命周期随着对象的消失而消失。</li>
-<li>静态的使用注意事项：<br>①静态方法只能访问静态成员。非静态方法能既可以访问静态，也可以访问非静态<br>②静态方法中不可以定义this，super关键字。因为静态优先于对象存在，所以静态方法中不可以出现this<br>③主函数是静态的</li>
-<li>静态有利有弊：<br>利：对对象的共享数据进行单独空间的存储，节省空间。没有必要每个对象中都存储一份。可以直接被类名调用。<br>弊端：生命周期过长。访问出现局限性。（静态虽好，只能访问静态）</li>
-</ol>
-<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><ol>
-<li>主函数：是一个特殊的函数，作为程序的入口，可以被jvm调用</li>
-<li>主函数的定义：<br>public：代表着该函数访问权限是最大的<br>static:代表主函数随着累的加载就已经存在了<br>void：主函数没有具体的返回值<br>main：不是关键字，是一个特殊的单词，能被jvm识别<br>函数的参数：（String[] args)，参数类型是一个数组，该数组中的元素是字符串。字符串类型的数组。  </li>
-</ol>
-<p>主函数是固定格式的:jvm识别。主函数中唯一能改的地方是args。<br>jvm在调用主函数时，传入的是new String[0]（长度为0）；</p>
-<h2 id="静态什么时候使用"><a href="#静态什么时候使用" class="headerlink" title="静态什么时候使用"></a>静态什么时候使用</h2><ol>
-<li>要从两方面下手：因为静态修饰的内容有成员变量和函数。<br>什么时候定义静态变量（类变量）呢？<br>当对象中出现共享数据时，该数据被静态所修饰。<br>对象中的特有数据要定义成非静态存在于堆内存中</li>
-<li>什么时候定义静态函数呢？<br>当功能内部没有访问到非静态数据（对象的特有数据），那么该功能可以定义成静态的。</li>
-<li>静态函数只能调用静态函数</li>
-<li>每一个应用程序中都有共性的功能，可以将这些功能进行抽取，独立封装，以便复用。</li>
-<li>假如我们定义一个数组工具类，我们可以建立对象使用类中的方法，对数组操作。但是，对象并未封装特有数据；操作数组的每一个方法都没有用到类对象中的特有数据。这时就考虑，让程序更严谨，是不需要对象的。可以将工具类中的方法定义成static的，直接通过类名调用即可。将方法都静态后，可以方便于使用，但是该类还是可以被其他程序建立对象的。为了更加严谨，该类不能建立对象，可以将构造函数设置为私有化，防止被别人使用构造方法。</li>
-</ol>
-<h2 id="java说明书"><a href="#java说明书" class="headerlink" title="java说明书"></a>java说明书</h2><ol>
-<li>通过文档注释来完成。<ul>
-<li>@author 张三</li>
-<li>@version V1.1</li>
-<li></li>
-</ul>
-</li>
-</ol>
+          日积月累构造函数
+当一个类中没有定义构造函数时，那么系统会默认给该类加入一个空参数的构造函数
+当定义了构造函数之后，不会再给出默认的构造函数
+不同的构造函数对不同的对象进行初始化
+构造函数主要帮助进行对象初始化
+构造函数和一般函数在写法上有不同
+构造函数是在对象一建立就运行。给对象初始化
+一般方法是对象调用才执行，给是对象添加对象具备的功能
+一个对象建立，构造函数只运行一次；而一般方法能被该对象调用多次
+什么时候定义构造函数呢？当分析事物时，该事务存在就具备一些特性或者行为，那么这些内容定义在构造函数中
 
-          
+构造代码块
+作用：给对象进行初始化。对象一建立就运行，而且优先于构造函数执行。和构造函数
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/9.5.1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2155,6 +1928,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/huaji.png"
+                alt="法外狂徒罗某人" />
             
               <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2247,7 +2024,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2298,6 +2075,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2334,6 +2114,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
 
   
 
@@ -2346,6 +2136,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2386,6 +2183,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
+        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

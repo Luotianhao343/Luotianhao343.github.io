@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,9 +93,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -264,7 +264,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -326,6 +326,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/21/7.21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/21/7.21/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,71 +362,16 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><p>默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。<br>由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。</p>
-<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><p>EditText最重要的属性是inputType，该属性相当于HTML的&lt;input…/&gt;元素的type属性，用于将EditText设置为指定类型的输入组件。<br>android:inputType属性（系统自动显示哪种类型的输入键盘）：</p>
-<ul>
-<li>numberPassword：表示只能接受数字密码（使用安卓系统自带安全的数字输入法）</li>
-<li>number：表示是数字输入框（使用输入法的数字输入法）</li>
-<li>date：表示是日期输入框（使用输入法的数字输入法）</li>
-<li>phone：表示是输入电话号码的输入框（使用输入法的数字输入法）</li>
-</ul>
-<p>android:selectAllOnFocu属性</p>
-<ul>
-<li>=true为如果文本框的内容能选择，设置是否当它获得焦点时自动选中所有文本。</li>
-<li>=false不选中。</li>
-</ul>
-<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><p>Button继承了TextView，主要是生成一个按钮，该按钮能提供被用户点击时触发一个onClick事件。如果需要让按钮的背景颜色、背景图片随用户动作动态改变，考虑使用自定义Drawable实现。</p>
-<p>Button常用属性：</p>
-<ul>
-<li>android:shadowColor设置文本框内文本的阴影颜色</li>
-<li>android:shadowRadius设置阴影的模糊程度，该值越大越模糊</li>
-<li>android:shadowDx阴影在水平方向的偏移</li>
-<li>android:shadowDy阴影在垂直方向的偏移</li>
-</ul>
-<p>Button的android:background=””属性，可以用XML实现，在XMl中可以用state_pressed=”true”表示按钮按下，state_pressed=”false”表示按钮松开，并且利用android:drawable=””表示背景。    </p>
-<h2 id="使用9Patch图片作为背景"><a href="#使用9Patch图片作为背景" class="headerlink" title="使用9Patch图片作为背景"></a>使用9Patch图片作为背景</h2><p>当按钮的内容太多时，Android会自动缩放整张图片，以保证背景图片能覆盖整个按钮。但是这种缩放的效果并不好。为了实现只缩放图片中某个部分，借助9Patch图片实现。<br>左侧和上侧的直线共同决定图片的缩放区域<br>右侧和下侧的直线共同决定图片的内容显示区域</p>
-<h2 id="RadioButton和CheckBox"><a href="#RadioButton和CheckBox" class="headerlink" title="RadioButton和CheckBox"></a>RadioButton和CheckBox</h2><p>两个都有一个可选中的功能，不过一组RadioButton只能选择其中一个，所以RadioButton通常要与RadioGroup一起使用，用于定于一组单选钮；CheckBox可以复选。都可额外指定一个android:checked属性，该属性用于指定RadioButton、checkBox初始时是否被选中。<br><strong>如果在XML布局文件中默认勾选了某个单选钮，则必须为该组单选钮的每个按钮指定android：id属性值；否则这组单选钮不能正常工作</strong></p>
-<h2 id="状态开关按钮（ToggleButton）和开关（Switch）"><a href="#状态开关按钮（ToggleButton）和开关（Switch）" class="headerlink" title="状态开关按钮（ToggleButton）和开关（Switch）"></a>状态开关按钮（ToggleButton）和开关（Switch）</h2><p>两个都是Button派生出来的，本质也是按钮。ToggleButton和Switch通常用于切换程序中的某种状态。<br>ToggleButton支持的XML属性：</p>
-<ul>
-<li>android:checked设置该按钮是否被选中</li>
-<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
-<li>android:textOn设置当按钮的状态打开时显示的文本    </li>
-</ul>
-<p>Switch支持的XML属性：</p>
-<ul>
-<li>android:checked设置该按钮是否被选中</li>
-<li>android:textOff设置当按钮的状态关闭时显示的文本</li>
-<li>android:textOn设置当按钮的状态打开时显示的文本 </li>
-<li>android:switchTextAppearnce设置该开关图标上的文本样式</li>
-<li>android:textStyle设置该开关的文本风格</li>
-<li>android:thumb指定使用自定义Drawable绘制该开关按钮</li>
-<li>android:track指定使用自定义Drawable绘制该开关的开关轨迹</li>
-<li>android:typeface设置该开关的文本的字体风格</li>
-</ul>
-<h2 id="时钟（AnalogClock和TextClock）"><a href="#时钟（AnalogClock和TextClock）" class="headerlink" title="时钟（AnalogClock和TextClock）"></a>时钟（AnalogClock和TextClock）</h2><p>TextClock是数字时钟，继承了TextView，不能设置android:text。它的属性：</p>
-<ul>
-<li>android:format12Hour设置该时钟的12小时制的格式字符串</li>
-<li>android:format24Hour设置该时钟的24小时制的格式字符串</li>
-<li>android:timeZone设置该时钟的时区</li>
-</ul>
-<p>AnalogClock是模拟时钟，继承了View，重写了View的OnDraw方法。它的属性：</p>
-<ul>
-<li>android:dial设置该模拟时钟的表盘使用的图片</li>
-<li>android:hand_hour设置该模拟时钟的时针使用的图片</li>
-<li>android:hand_minute设置该模拟时钟的分针使用的图片</li>
-</ul>
-<h2 id="计时器-Chronometer"><a href="#计时器-Chronometer" class="headerlink" title="计时器(Chronometer)"></a>计时器(Chronometer)</h2><p>Chronometer继承TextView，但是它不会显示当前时间，它显示的是从某一个起始时间开始，一共过去了多长时间。<br>Chronometer的方法：</p>
-<ul>
-<li>setBase(long base)：设置计时器的起始时间</li>
-<li>setFormat(String format)：设置显示时间的格式</li>
-<li>start()：开始计时</li>
-<li>stop()：停止计时</li>
-<li>setOnChronometerTickListener(Chronometer.OnChronometerTickListener listener)：绑定事件监听器，当事件改变时触发该监听器</li>
-</ul>
-<p><em>SystemClock.elapsedRealtime()，系统启动至今的时间/计算某个时间经历了多长时间有意义</em></p>
-<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h2><p><code>String words = checkId == R.id.male ? &quot;你的性别是男性&quot;:&quot;你的性别是女性&quot;</code>这句代表如果RadioButton的checkId值是等于R.id.male就把”你的性别是男性”赋给words。 </p>
-
-          
+          安卓基础TextView默认情况下，TextView是不带边框的，如果想为TextView添加边框，可以考虑为TextView设置一个背景Drawable，该Drawable只是一个边框（是一个XML文件，放在drawable文件夹内）。由于TextView是EditText和Button的父类，因此对TextView控制的属性，同样适用于EditText与Button。
+EditTextEditText最重要的属性是inputType，该属性相当于HTML的&lt;input…/&gt;元素的type属性，用于将EditText设置为指定类型的输入组件。android:inputType属性
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/21/7.21/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -468,7 +423,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -530,6 +485,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/20/7.20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/20/7.20/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -556,12 +521,15 @@
       
         
           
-            <h1 id="回顾历史"><a href="#回顾历史" class="headerlink" title="回顾历史"></a>回顾历史</h1><h2 id="长征"><a href="#长征" class="headerlink" title="长征"></a>长征</h2><p>土地革命战争时期，中国工农红军主力撤离长江南北各苏区，转战两年，到达陕甘苏区的战略转移行动。<br>1934年10月，第五次反围剿失败后，中央主力红军为摆脱国民党军队的包围追击，被迫实行战略性转移，退出中央根据地，进行长征。<br>长征是人类历史上的伟大奇迹，中央红军共进行了380余次战斗，攻占700多座县城，红军牺牲了营以上干部多达430余人，平均年龄不到30岁，共击溃国民党军数百个团，其间共经过14个省，翻越18座大山，跨过24条大河，走过荒草地，翻过雪山，行程约二万五千里，红一方面军于1935年10月到达陕北，与陕北红军胜利会师。1936年10月，红二、四方面军到达甘肃会宁地区，同红一方面军会师。红军三大主力会师，标志着万里长征的胜利结束。</p>
-<h2 id="基本路线"><a href="#基本路线" class="headerlink" title="基本路线"></a>基本路线</h2><p>瑞金→突破敌四道防线→强渡乌江→占领遵义→四渡赤水→巧渡金沙江→强渡大渡河→飞夺泸定桥→翻雪山→过草地→陕北吴起会师(1935年10月)→甘肃会宁会师(1936年10月)，宣告长征的胜利结束。</p>
-<h2 id="各阶段"><a href="#各阶段" class="headerlink" title="各阶段"></a>各阶段</h2><p>长征准备阶段（1934年7月7日～1934年10月10日）<br>长征失利阶段（1934年10月10日～1935年1月15日）<br>长征转折阶段（1935年1月15日～1935年6月14日）<br>坚持北上和南下分裂阶段（1935年6月14日～1935年10月19日）<br>发展巩固和南下受挫阶段（1935年10月19日～1936年7月1日）<br>大会师阶段（1936年7月1日～1936年12月12日）   </p>
-<h2 id="各部队"><a href="#各部队" class="headerlink" title="各部队"></a>各部队</h2><p>第一支是中央红军（后改称红一方面军），于1934年10月10日由福建的长汀等地出发，1935年10月19日到达陕西的吴起镇（今吴起县），行程达二万五千里；<br>第二支是红二十五军（后编入红一方面军），于1934年11月16日由河南罗山何家冲出发，1935年9月15日到达陕西延川永坪镇，同陕甘红军会师，合编为红十五军团，行程近万里，最早到达陕北的一支红军 。<br>第三支是红四方面军，于1935年5月初放弃川陕苏区，由彰明、中坝、青川、平武等地出发，向岷江地区西进，1936年10月9日到达甘肃会宁，与红一方面军会师，行程一万余里；<br>第四支是红二、红六军团（后同红一方面军第三十二军合编为红二方面军），于1935年11月19日由湖南桑植刘家坪等地出发，1936年10月22日到达会宁以东的将台堡，同红一方面军会师，行程两万余里。</p>
-
-          
+          回顾历史长征土地革命战争时期，中国工农红军主力撤离长江南北各苏区，转战两年，到达陕甘苏区的战略转移行动。1934年10月，第五次反围剿失败后，中央主力红军为摆脱国民党军队的包围追击，被迫实行战略性转移，退出中央根据地，进行长征。长征是人类历史上的伟大奇迹，中央红军共进行了380余次战斗，攻占700多座县城，红军牺牲了营以上干部多达430余人，平均年龄不到30岁，共击溃国民党军数百个团，其间共经过14个省，翻越18座大山，跨过24条大河，走过荒草地，翻过雪山，行程约二万五千里，红一方面军于1935年10月到达陕北，与陕北红军胜利会师。1936年10月，红二、四方面军到达甘肃会宁地区，同红一方面军
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/20/7.20/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -613,7 +581,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -675,6 +643,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/19/7.19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/19/7.19/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -701,60 +679,23 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>RelativeLayout可支持的两个Xml属性   </p>
-<ul>
-<li>android:gravity设置该布局容器内各子组件的对齐方式</li>
-<li>android:ignoreGravity设置哪个组件不受gravity属性影响</li>
-</ul>
-<p>为了扩展RelativeLayout中各子组件的分布布局，RelativeLayout提供了一个内部类：RelativeLayout.LayoutParams，该类提供了大量的Xml属性来控制子组件的布局分布。</p>
-<p>相对布局子组件的布局分布里只能设置true或false的XML属性。  </p>
-<ul>
-<li>android:layout_centerHorizontal控制该子组件是否位于布局容器的水平居中</li>
-<li>android:layout_centerVertical控制该子组件是否位于布局容器的垂直居中</li>
-<li>android:layout_centerInParent控制该子组件是否位于布局容器的中央位置</li>
-<li>android:layout_alignParentBottom控制该子组件是否与布局容器的底端对齐</li>
-<li>android:layout_alignParentLeft控制该子组件是否与布局容器的左端对齐</li>
-<li>android:layout_alignParentRight控制该子组件是否与布局容器的右端对齐</li>
-<li>android:layout_alignParentTop控制该子组件是否与布局容器的顶端对齐</li>
-</ul>
-<p>相对布局子组件的布局分布里属性值为其他UI组件ID的XML属性。</p>
-<ul>
-<li>android:layout_toRightOf控制该子组件位于给出ID组件的右侧</li>
-<li>android:layout_toLeftOf控制该子组件位于给出ID组件的左侧</li>
-<li>android:layout_above控制该子组件位于给出ID组件的上方</li>
-<li>android:layout_below控制该子组件位于给出ID组件的下方</li>
-<li>android:layout_alignTop控制该子组件与给出ID组件的上边界对齐</li>
-<li>android:layout_alignBottom控制该子组件与给出ID组件的下边界对齐</li>
-<li>android:layout_alignLeft控制该子组件与给出ID组件的左边界对齐</li>
-<li>android:layout_alignRight控制该子组件与给出ID组件的右边界对齐</li>
-</ul>
-<p><em>ps：align对齐，to在什么侧</em></p>
-<h2 id="GridLayout"><a href="#GridLayout" class="headerlink" title="GridLayout"></a>GridLayout</h2><p>GridLayout的作用类似于HTML中的table标签，它将整个容器划分为rows*columns个网格，每个网格可以放置一个组件。除此之外，也可以设置一个组件横跨多少列、一个组件纵跨多少行。<br>GridLayout常用的XML属性：</p>
-<ul>
-<li>android:alignmentMode设置该布局管理器采用的对齐模式</li>
-<li>android:columnCount设置该网格的列数量</li>
-<li>android:columnOrderPreserved设置该网格容器是否保留序号</li>
-<li>android:rowCount设置该网格的行数量</li>
-<li>android:rowOrderPreserved设置该网格容器是否保留行序号</li>
-<li>android:useDefaultMargins设置该布局管理器是否使用默认的页边距</li>
-</ul>
-<p><em>ps：Margins边距，column列，row行</em><br>为了控制GridLayout布局容器中各子组件的布局分布，GridLayout提供了一个内部类：GridLayout.LayoutParams，该类提供了大量的XML属性来控制网格布局中子组件的布局分布。<br>GridLayout.LayoutParams常用的XML属性：    </p>
-<ul>
-<li>android:layout_column设置该子组件在GridLayout的第几列</li>
-<li>android:layout_columnSpan设置该子组件在GridLayout横向上跨几列</li>
-<li>android:layout_gravity设置该子组件采用何种方式占据该网格的空间</li>
-<li>android:layout_row设置该子组件在GridLayout的第几行</li>
-<li>android:layout_rowSpan设置该子组件在GridLayout纵向上跨几行</li>
-</ul>
-<p><em>ps：column列，row行，span跨越</em><br><em>setpadding(a,b,c,d)设置四周的空白区域</em></p>
-<h2 id="绝对布局"><a href="#绝对布局" class="headerlink" title="绝对布局"></a>绝对布局</h2><p>绝对布局由AbsoluteLayout所代表。就像Java中AWT编程中的空布局，Android不提供任何布局控制，而是由开发人员自己通过X、Y坐标来控制组件的位置，布局容器不再管理子组件的位置、大小。（绝对布局已经过时了）</p>
-<ul>
-<li>layout_x:子组件的X坐标</li>
-<li>layout_y:子组件的Y坐标</li>
-</ul>
-<h2 id="安卓布局中常用的距离单位"><a href="#安卓布局中常用的距离单位" class="headerlink" title="安卓布局中常用的距离单位"></a>安卓布局中常用的距离单位</h2><p><strong>px</strong>：每个px对应屏幕上的一个点<br><strong>dip或dp（设备独立像素，device independent pixels）</strong>：一种基于屏幕密度的抽象单位。在每英寸160点的显示器上，1dip=1px。但随着屏幕密度的改变，dip与px的换算会发生改变。<br><strong>sp（比例像素，scaled pixels）</strong>：主要是处理字体的大小，可以根据用户的字体大小首选项进行缩放。</p>
+          安卓基础相对布局RelativeLayout可支持的两个Xml属性   
 
-          
+android:gravity设置该布局容器内各子组件的对齐方式
+android:ignoreGravity设置哪个组件不受gravity属性影响
+
+为了扩展RelativeLayout中各子组件的分布布局，RelativeLayout提供了一个内部类：RelativeLayout.LayoutParams，该类提供了大量的Xml属性来控制子组件的布局分布。
+相对布局子组件的布局分布里只能设置true或false的XML属性。  
+
+android:layout_centerHorizontal控制该子组件是否位于布局
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/19/7.19/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -806,7 +747,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -868,6 +809,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/18/7.18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/18/7.18/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -894,10 +845,15 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h2><p>TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。<br>每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。<br>如果直接向TableLayout中添加组件，那么这个组件将直接占用一行。<br>在TableLayout中，列的宽度由最宽的TableRow决定，整个表格布局的宽度由父容器决定。<br>Shrinkable：一个TableRow中，列的单元格宽度可以收缩。从0开始计数<br>Stretchable：一个TableRow中，列的单元格宽度可以拉伸。从0开始计数</p>
-<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局由FrameLayout所代表，FrameLayout直接继承了ViewGroup组件。<br>帧布局容器为每个加入其中的组件创建一个空白的区域(一帧)，每个子组件占据一帧，这些帧都会根据gravity属性执行自动对齐。把组件一个个叠加在一起，后加的组件覆盖前面加的组件。<br>FrameLayout包含的子元素也可指定Layout_gravity。<br>安卓不允许开发者启动线程访问用户界面的UI组件。</p>
-
-          
+          安卓基础表格布局TableLayout继承了LinearLayout，TableLayout通过添加TableRow、其他组件来控制表格的行数和列数。每次向TableLayout中添加一个TableRow，该TableRow就是一个表格行，TableRow也是容器，因此它也可以不断地添加其他组件，每添加一个子组件该表格就增加一行。如果直接向TableLayout中添加组件，那么这个组件将直接占用一行。在TableLayout中，列的宽度由最宽的TableRow决定，整个表格布局的宽度由父容器决定。Shrinkable：一个TableRow中，列的单元格宽度可以收缩。从0开始计数Stretcha
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/18/7.18/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -949,7 +905,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1011,6 +967,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/7.16安卓学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/7.16安卓学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1037,21 +1003,18 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="开发自定义View"><a href="#开发自定义View" class="headerlink" title="开发自定义View"></a>开发自定义View</h2><p>View组件只是一个空白区域，没有任何内容。对于Android应用的其他UI组件来说，它们都继承了View组件，然后再View组件提供的空白区域绘制外观。<br>当Android系统提供的UI组件不足以满足项目需要时，开发者可以通过继承View来派生自定义组件。<br>当开发者打算派生自己的UI组件时，首先要定义一个继承View基类的子类，然后重写View类的一个或多个方法。</p>
-<h2 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h2><p>Android的线性布局不会换行，当组件一个挨着一个排列到头之后，剩下的组件将不会被显示出来。<br>Linearlayout的常用XML属性及相关方法的说明：   </p>
-<ul>
-<li>android:divider   设置处置布局时两个按钮之间的分隔条</li>
-<li>android:gravity   设置布局管理器内<strong>组件</strong>的对齐方式。可以同时指定多种对齐方式的组合，例如：left|center_vertical代表出现在屏幕左边，而且垂直居中。</li>
-<li>android:orientation   设置布局管理器内组件的排列方式。有horizontal水平排列，vertical垂直排列。</li>
-</ul>
-<p>Linearlayout包含的所有<strong>子元素</strong>都受Linearlayout.layoutParams控制，因此Linearlayout包含的子元素可以额外指定如下的属性：    </p>
-<ul>
-<li>android:layout_gravity  指定该子元素在Linearlayout中的对齐方式</li>
-<li>android:layout_weight  指定该子元素在Linearlayout中所占的权重</li>
-</ul>
-<p><strong>ps</strong>：许多布局内子元素支持指定android:layout_ gravity属性，该属性设置该子元素在父容器中的对齐方式。与android:layout_gravity相似的属性还有android:gravity属性（一般是容器才支持指定该属性），android:gravity属性用于控制它所包含的子元素的对齐方式。</p>
+          安卓基础开发自定义ViewView组件只是一个空白区域，没有任何内容。对于Android应用的其他UI组件来说，它们都继承了View组件，然后再View组件提供的空白区域绘制外观。当Android系统提供的UI组件不足以满足项目需要时，开发者可以通过继承View来派生自定义组件。当开发者打算派生自己的UI组件时，首先要定义一个继承View基类的子类，然后重写View类的一个或多个方法。
+线性布局Android的线性布局不会换行，当组件一个挨着一个排列到头之后，剩下的组件将不会被显示出来。Linearlayout的常用XML属性及相关方法的说明：   
 
-          
+android:divider   设置
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/7.16安卓学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1103,7 +1066,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1165,6 +1128,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/15/7.15.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/15/7.15.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1191,10 +1164,17 @@
       
         
           
-            <h1 id="这个问题过一段时间就老是忘记"><a href="#这个问题过一段时间就老是忘记" class="headerlink" title="这个问题过一段时间就老是忘记"></a>这个问题过一段时间就老是忘记</h1><h2 id="i-与-i的区别"><a href="#i-与-i的区别" class="headerlink" title="i++与++i的区别"></a>i++与++i的区别</h2><p>简单的说i++与++i在单独使用的时候，就是i=i+1。<br>而a=++i，相当于i=i+1；a=i；（先i=i+1，再使用i的值）<br>而a=i++，相当于a=i；i=i+1；（先使用i的值，再i=i+1）</p>
-<h2 id="0对任何数求余"><a href="#0对任何数求余" class="headerlink" title="0对任何数求余"></a>0对任何数求余</h2><p>结果都是0<br>例如：0%2就是0.</p>
+          这个问题过一段时间就老是忘记i++与++i的区别简单的说i++与++i在单独使用的时候，就是i=i+1。而a=++i，相当于i=i+1；a=i；（先i=i+1，再使用i的值）而a=i++，相当于a=i；i=i+1；（先使用i的值，再i=i+1）
+0对任何数求余结果都是0例如：0%2就是0.
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/15/7.15.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1246,7 +1226,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1308,6 +1288,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/15/7-15/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/15/7-15/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1334,39 +1324,20 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Activity和View"><a href="#Activity和View" class="headerlink" title="Activity和View"></a>Activity和View</h2><p>Activity只能通过setContentView(View)来显示指定组件。<br>setContentView()的参数有两种：</p>
-<ol>
-<li>view对象</li>
-<li>布局管理器的id值，即R.layout.main等等</li>
-</ol>
-<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service也代表一个单独的Android组件。Service与Activity的区别在于：Service通常位于后台运行，它一般不需要与用户交互，因而Service没有图形用户界面。<br>Service组件需要继承Service基类，Service被运行起来之后，它将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
-<h2 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h2><p>BroadcastReceiver也是Android应用中的组件，代表广播消息接收器。BroadcastReceiver非常类似于事件编程中的监听器，与普通事件监听器不同的是，普通事件监听器监听的事件源是程序中的对象；而BroadcastReceiver监听的事件源是Android应用中的其他组件。<br>使用BroadcastReceiver组件接受广播消息比较简单，开发者只需要实现自己的BroadcastReceiver子类，并重写<strong>onReceive(Context context,Intent intent)</strong>方法即可。当其他组件通过sendBroadcast(),sendStickyBroadcast(),sendOrderedBroadcast()方法发送广播消息时，如果该BroadcastReceiver也对该消息感兴趣（通过IntentFilter配置），BroadcastReceiver的<strong>onReceive(Context context,Intent intent)</strong>方法将会被触发。<br>开发者实现了BroadcastReceiver后，通常有两种方式来注册这个系统级的“事件监听器”。</p>
-<ul>
-<li>在Java代码中通过Context.registReceiver()方法注册BroadcastReceiver.</li>
-<li>在AndroidManifest.xml文件中使用&lt;receiver…/&gt;元素完成注册。</li>
-</ul>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>Android应用运行在各自独立的进程中，如果这些Android应用之间需要实现实时的数据交换——例如，我们开发了一个发送短信的程序，当发送短信时需要从联系人管理应用中读取指定联系人的数据——这就需要多个应用程序之间进行数据交换，开发者可以编写自己的ContentProvider来实现数据交换。<br>开发者需要实现如下的抽象方法：</p>
-<ul>
-<li>insert(Uri,ContentValues)：向ContentProvider插入数据</li>
-<li>delete(Uri,ContentValues)：删除ContentProvider中指定数据</li>
-<li>update(Uri,ContentValues,String,String[])：更新ContentProvider中指定数据</li>
-<li>query(Uri,String[],String,String[],String)：从ContentProvider查询数据</li>
-</ul>
-<p>通常与ContentProvider结合使用的时ContentResolver，一个应用程序使用ContentProvider暴露自己的数据，而另一个应用程序则通过ContentResolver来访问数据。</p>
-<h2 id="Intent和IntentFilter"><a href="#Intent和IntentFilter" class="headerlink" title="Intent和IntentFilter"></a>Intent和IntentFilter</h2><p>Intent可以启动另一个Activity，也可以启动一个Service组件，还可以发送一条广播消息来触发系统中的BroadcastRecevier。也就说这三种组件之间的通信都以Intent作为载体。</p>
-<ul>
-<li>当需要启动一个Activity时，可以调用Context的startActivity(Intent intent)或startActivityForResult(Intent intent,int requestCode)方法，这两个方法中intent中封装了需要启动的Activity的信息。</li>
-<li>启动Service时，调用Context的startService(Intent intent)方法或者bindService(Intent service,ServiceConnection conn,int flags)方法，这两个方法中intent封装了需要启动的目标service的信息。</li>
-<li>当需要触发一个BroadcastReceiver时，可调用Context的sendBroadcast(Intent intent),sendStickyBroadcast(Intent intent)或sendOrderedBroadcast(Intent intent,String receiverPermission)方法来发送广播消息，这三个方法中Intent参数封装了需要触发的目标BroadcastReceiver的信息。</li>
-</ul>
-<p>当一个组件通过Intent表示了启动或触发另一个组件的“意图”之后，这个意图可以分为两类。</p>
-<ul>
-<li>显式Intent：显式Intent明确指定需要启动或者触发的组件的类名。</li>
-<li>隐式Intent：隐式Intent只是指定需要启动或者触发的组件应满足怎样的条件。  </li>
-</ul>
-<p>被调用的组件通过IntentFilter来声明自己所满足的条件——也就是声明自己到底能处理哪些隐式Intent。</p>
+          安卓基础Activity和ViewActivity只能通过setContentView(View)来显示指定组件。setContentView()的参数有两种：
 
-          
+view对象
+布局管理器的id值，即R.layout.main等等
+
+ServiceService也代表一个单独的Android组件。Service与Activity的区别在于：Service通常位于后台运行，它一般不需要与用户交互，因而Service没有图形用户界面。Service组件需要继承Service基类，Service被运行起来之后，它将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或监控其他组件
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/15/7-15/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1418,7 +1389,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1480,6 +1451,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/14/7.14安卓学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/14/7.14安卓学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1506,167 +1487,22 @@
       
         
           
-            <h1 id="Android应用清单文件AndroidManifest-xml"><a href="#Android应用清单文件AndroidManifest-xml" class="headerlink" title="Android应用清单文件AndroidManifest.xml"></a>Android应用清单文件AndroidManifest.xml</h1><h2 id="AndroidManifest-xml清单文件通常包含如下信息："><a href="#AndroidManifest-xml清单文件通常包含如下信息：" class="headerlink" title="AndroidManifest.xml清单文件通常包含如下信息："></a>AndroidManifest.xml清单文件通常包含如下信息：</h2><ul>
-<li>应用程序包名</li>
-<li>应用程序所包含的组件，如Activity、Service、BroadcastReceiver<br>和ContentProvider等</li>
-<li>应用程序兼容的最低版本</li>
-<li>应用程序使用系统所需的权限声明</li>
-<li>其他程序访问该程序所需的权限声明</li>
-</ul>
-<h2 id="应用程序权限说明"><a href="#应用程序权限说明" class="headerlink" title="应用程序权限说明"></a>应用程序权限说明</h2><p><strong>1.声明运行该应用本身所需要的权限</strong><br>通过为&lt;Manifest…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可为程序本身声明权限。<br>例如：<br>&lt;! –声明该应用本身需要打电话的权限 –&gt;<br><code>&lt;uses-permission android:name=&quot;android.permission.CALL_PHONE&quot;/&gt;</code><br><strong>2.声明调用该应用所需的权限</strong><br>通过为应用的各组件元素，如&lt;activity…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可声明调用该程序所需的权限。<br>例如：<br>&lt;! –声明该应用本身需要发送短信的权限 –&gt;</p>
-<p><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;&gt;</code><br>常用权限如下表：    </p>
-<table>
-<thead>
-<tr>
-<th>权限</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ACCESS_NETWORK_STATE</td>
-<td>允许应用程序获取网络状态信息的权限</td>
-</tr>
-<tr>
-<td>ACCESS_WIFI_STATE</td>
-<td>允许应用程序获取Wi-Fi网络状态信息的权限</td>
-</tr>
-<tr>
-<td>BATTERY_STATS</td>
-<td>允许应用程序获取电池状态信息的权限</td>
-</tr>
-<tr>
-<td>BLUETOOTH</td>
-<td>允许应用程序连接匹配的蓝牙设备的权限</td>
-</tr>
-<tr>
-<td>BLUETOOTH_ADMIN</td>
-<td>允许应用程序发现匹配的蓝牙设备的权限</td>
-</tr>
-<tr>
-<td>BROADCAST_SMS</td>
-<td>允许应用程序广播收到短信提醒的权限</td>
-</tr>
-<tr>
-<td>CALL_PHONE</td>
-<td>允许应用程序拨打电话的权限</td>
-</tr>
-<tr>
-<td>CAMERA</td>
-<td>允许应用程序使用照相机的权限</td>
-</tr>
-<tr>
-<td>CHANGE_NETWORK_STATE</td>
-<td>允许应用程序改变网络连接状态的权限</td>
-</tr>
-<tr>
-<td>CHANGE_WIFI_STATE</td>
-<td>允许应用程序改变wifi网络连接状态的权限</td>
-</tr>
-<tr>
-<td>DELETE_CACHE_FILES</td>
-<td>允许应用程序删除缓存文件的权限</td>
-</tr>
-<tr>
-<td>DELETE_PACKAGES</td>
-<td>允许应用程序删除安装包的权限</td>
-</tr>
-<tr>
-<td>FLASHLIGHT</td>
-<td>允许应用程序访问闪光灯的权限</td>
-</tr>
-<tr>
-<td>INTERNET</td>
-<td>允许应用程序打开网络Socket的权限</td>
-</tr>
-<tr>
-<td>MODIFY_AUDIO_SETTINGS</td>
-<td>允许应用程序修改全局声音设置的权限</td>
-</tr>
-<tr>
-<td>PROCESS_OUTGOING_CALLS</td>
-<td>允许应用程序监听、控制、取消呼出电话的权限</td>
-</tr>
-<tr>
-<td>READ_CONTACTS</td>
-<td>允许应用程序读取用户的联系人数据的权限</td>
-</tr>
-<tr>
-<td>READ_HISTORY_BOOKMARKS</td>
-<td>允许应用程序读取历史书签的权限</td>
-</tr>
-<tr>
-<td>READ_OWNER_DATA</td>
-<td>允许应用程序读取用户数据的权限</td>
-</tr>
-<tr>
-<td>READ_PHONE_STATE</td>
-<td>允许应用程序读取电话状态的权限</td>
-</tr>
-<tr>
-<td>READ_PHONE_SMS</td>
-<td>允许应用程序读取短信的权限</td>
-</tr>
-<tr>
-<td>REBOOT</td>
-<td>允许应用程序重启系统的权限</td>
-</tr>
-<tr>
-<td>RECEIVE_MMS</td>
-<td>允许应用程序接收、监控、处理彩信的权限</td>
-</tr>
-<tr>
-<td>RECEIVE_SMS</td>
-<td>允许应用程序接收、监控、处理短信的权限</td>
-</tr>
-<tr>
-<td>RECORD_AUDIO</td>
-<td>允许应用程序录音的权限</td>
-</tr>
-<tr>
-<td>SEND_SMS</td>
-<td>允许应用程序发送短信的权限</td>
-</tr>
-<tr>
-<td>SET_ORIENTATION</td>
-<td>允许应用程序旋转屏幕的权限</td>
-</tr>
-<tr>
-<td>SET_TIME</td>
-<td>允许应用程序设置时间的权限</td>
-</tr>
-<tr>
-<td>SET_TIME_ZONE</td>
-<td>允许应用程序设置时区的权限</td>
-</tr>
-<tr>
-<td>SET_WALLPAPER</td>
-<td>允许应用程序设置桌面壁纸的权限</td>
-</tr>
-<tr>
-<td>VIBRATE</td>
-<td>允许应用程序控制振动器的权限</td>
-</tr>
-<tr>
-<td>WRITE_CONTACTS</td>
-<td>允许应用程序写入用户联系人的权限</td>
-</tr>
-<tr>
-<td>WRITE_HISTORY_BOOKMARKS</td>
-<td>允许应用程序写历史书签的权限</td>
-</tr>
-<tr>
-<td>WRITE_OWNER_DATA</td>
-<td>允许应用程序写用户数据的权限</td>
-</tr>
-<tr>
-<td>WRITE_SMS</td>
-<td>允许应用程序写短信的权限</td>
-</tr>
-</tbody>
-</table>
+          Android应用清单文件AndroidManifest.xmlAndroidManifest.xml清单文件通常包含如下信息：
+应用程序包名
+应用程序所包含的组件，如Activity、Service、BroadcastReceiver和ContentProvider等
+应用程序兼容的最低版本
+应用程序使用系统所需的权限声明
+其他程序访问该程序所需的权限声明
 
-          
+应用程序权限说明1.声明运行该应用本身所需要的权限通过为&lt;Manifest…/&gt;元素添加&lt;uses-permission…/&gt;子元素即可为程序本身声明权限。例如：&lt;! –声明该应用本身需要打电话的权限 –&
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/14/7.14安卓学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1718,7 +1554,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1780,6 +1616,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/14/7.14数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/14/7.14数据库/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1806,40 +1652,26 @@
       
         
           
-            <h1 id="1-数据库的4个基本概念"><a href="#1-数据库的4个基本概念" class="headerlink" title="1.数据库的4个基本概念"></a>1.数据库的4个基本概念</h1><h2 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h2><p>描述数据的符号记录称为数据。</p>
-<h2 id="数据库-DataBase-DB"><a href="#数据库-DataBase-DB" class="headerlink" title="数据库(DataBase,DB)"></a>数据库(DataBase,DB)</h2><p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。</p>
-<h2 id="数据库管理系统-DataBase-Management-System-DBMS"><a href="#数据库管理系统-DataBase-Management-System-DBMS" class="headerlink" title="数据库管理系统(DataBase Management System,DBMS)"></a>数据库管理系统(DataBase Management System,DBMS)</h2><p>数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。<br>主要功能：</p>
-<ul>
-<li>数据定义功能</li>
-<li>数据组织、存储和管理</li>
-<li>数据操纵功能</li>
-<li>数据库的事务管理和运行管理</li>
-<li>数据库的建立和维护功能</li>
-<li>其他</li>
-</ul>
-<h2 id="数据库系统-DataBase-System-DBS"><a href="#数据库系统-DataBase-System-DBS" class="headerlink" title="数据库系统(DataBase System,DBS)"></a>数据库系统(DataBase System,DBS)</h2><p>数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员(DataBase Administrator,DBA)组成的存储、管理、处理和维护数据的系统。</p>
-<h1 id="2-数据管理技术的发展"><a href="#2-数据管理技术的发展" class="headerlink" title="2.数据管理技术的发展"></a>2.数据管理技术的发展</h1><ol>
-<li>人工管理阶段</li>
-<li>文件系统阶段</li>
-<li>数据库系统阶段</li>
-</ol>
-<h1 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3.数据模型"></a>3.数据模型</h1><h2 id="两类数据模型"><a href="#两类数据模型" class="headerlink" title="两类数据模型"></a>两类数据模型</h2><ol>
-<li>概念模型<ul>
-<li>按照用户的观点来对数据建模，用于数据库设计</li>
-</ul>
-</li>
-<li>逻辑模型和物理模型<ul>
-<li>包括层次模型、网状模型、关系模型等等，它是按照计算机系统观点对数据建模，用于数据库管理系统的实现。</li>
-</ul>
-</li>
-</ol>
-<h2 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="headerlink" title="数据模型的组成要素"></a>数据模型的组成要素</h2><ol>
-<li>数据结构</li>
-<li>数据操作</li>
-<li>数据的完整性约束条件</li>
-</ol>
+          1.数据库的4个基本概念数据(data)描述数据的符号记录称为数据。
+数据库(DataBase,DB)数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。
+数据库管理系统(DataBase Management System,DBMS)数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。主要功能：
 
-          
+数据定义功能
+数据组织、存储和管理
+数据操纵功能
+数据库的事务管理和运行管理
+数据库的建立和维护功能
+其他
+
+数据库系
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/14/7.14数据库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1891,7 +1723,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1953,6 +1785,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/13/7.13/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/13/7.13/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1979,36 +1821,22 @@
       
         
           
-            <p>浅谈Markdown语法在GitHub博客中的应用      </p>
-<h1 id="第二个注意事项"><a href="#第二个注意事项" class="headerlink" title="第二个注意事项"></a>第二个注意事项</h1><h2 id="markdown语句书写细节"><a href="#markdown语句书写细节" class="headerlink" title="markdown语句书写细节"></a>markdown语句书写细节</h2><p>在诸如<code>#,:</code>等特殊符号后，应添加空格，以保证语句在编译时的正确性。</p>
-<h2 id="‘标亮’的使用"><a href="#‘标亮’的使用" class="headerlink" title="‘标亮’的使用"></a>‘标亮’的使用</h2><p>在输入法为英文的情况下，我们使用的tab键正上方的那个键<strong><code></code></strong>来表示标亮。<br>例如：<code>你好，我是标亮符号的表现形式。</code></p>
-<h2 id="‘加粗’的使用"><a href="#‘加粗’的使用" class="headerlink" title="‘加粗’的使用"></a>‘加粗’的使用</h2><p>我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。<br>例如： <strong>你好我是加粗的表现形式。</strong> </p>
-<h2 id="‘无序列表项’的使用"><a href="#‘无序列表项’的使用" class="headerlink" title="‘无序列表项’的使用"></a>‘无序列表项’的使用</h2><p>列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。<br>例如：（此处需要空一行才可以实现无序列表） </p>
-<ul>
-<li>无序列表项1<ul>
-<li>无序列表项1.1</li>
-</ul>
-</li>
-<li>无序列表项2  </li>
-<li>无序列表项3</li>
-</ul>
-<h2 id="‘有序列表项’的使用"><a href="#‘有序列表项’的使用" class="headerlink" title="‘有序列表项’的使用"></a>‘有序列表项’的使用</h2><p>有序列表项通过“1.”引号其中的数字+一个英文句点实现。<br>例如：</p>
-<ol>
-<li>有序列表项1</li>
-<li>有序列表项2</li>
-<li>有序列表项3</li>
-</ol>
-<h2 id="‘列表缩进’的使用"><a href="#‘列表缩进’的使用" class="headerlink" title="‘列表缩进’的使用"></a>‘列表缩进’的使用</h2><p>缩进的符号用“*/+/-”都可以实现，在缩进符号后面紧跟一个空格或者tab制表符。在文本中的换行用两个空格即可实现。<br>例如：</p>
-<ul>
-<li>蜀相<br>丞相祠堂何处寻，锦官城外白森森。<br>映阶碧草自春色，隔叶黄鹂空好音。<br>三顾频烦天下计，两朝开济老臣心。<br>出事未捷身先死，长使英雄泪满襟。</li>
-</ul>
-<h2 id="‘图片，超链接，视频’在博客中的插入"><a href="#‘图片，超链接，视频’在博客中的插入" class="headerlink" title="‘图片，超链接，视频’在博客中的插入"></a>‘图片，超链接，视频’在博客中的插入</h2><p><a href="https://baike.baidu.com/item/%E5%89%91%E9%97%A8%E5%85%B3%E9%A3%8E%E6%99%AF%E5%8C%BA/1356420?fromtitle=%E5%89%91%E9%97%A8%E5%85%B3&amp;fromid=31219&amp;fr=aladdin" target="_blank" rel="noopener">剑门关</a><br><img src="https://dimg05.c-ctrip.com/images/fd/tg/g2/M0B/8B/64/CghzgFWw3KKAThWhACtMPja6o6E510_R_1600_10000_Mtg_7.jpg" alt="image"><br><strong>ps</strong>：在网页中的图片，只需要右击鼠标，点击复制图片地址，再插入博客中，图片插入的网址粘贴上就行。    </p>
-<h2 id="‘代码块’的插入"><a href="#‘代码块’的插入" class="headerlink" title="‘代码块’的插入"></a>‘代码块’的插入</h2><p>在英文键盘输入的模式下,使用tab键上面的键，文本首尾连按三次就行。<br>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Speak()&#123;     </span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">        System.out.println(&quot;你好&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="‘表格’的插入"><a href="#‘表格’的插入" class="headerlink" title="‘表格’的插入"></a>‘表格’的插入</h2><p>推荐一个能生成多种列表的网址：<a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">http://www.tablesgenerator.com/markdown_tables#</a><br><a href="http://www.tablesgenerator.com/markdown_tables#" target="_blank" rel="noopener">点此进入</a></p>
-<h2 id="‘tags’多标签实现"><a href="#‘tags’多标签实现" class="headerlink" title="‘tags’多标签实现"></a>‘tags’多标签实现</h2><p>通过在tags的叙述中使用“- 标签1- 标签2”来实现，标签1与2之间需要换行。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags:    </span><br><span class="line">     - Activity</span><br><span class="line">     - View</span><br></pre></td></tr></table></figure></p>
+          浅谈Markdown语法在GitHub博客中的应用      
+第二个注意事项markdown语句书写细节在诸如#,:等特殊符号后，应添加空格，以保证语句在编译时的正确性。
+‘标亮’的使用在输入法为英文的情况下，我们使用的tab键正上方的那个键来表示标亮。例如：你好，我是标亮符号的表现形式。
+‘加粗’的使用我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。例如： 你好我是加粗的表现形式。 
+‘无序列表项’的使用列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。例如：（此处需要空一行才可以实现无序列表） 
 
-          
+无序列表项1
+无序列表项1.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/13/7.13/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2080,6 +1908,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/huaji.png"
+                alt="法外狂徒罗某人" />
             
               <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2172,7 +2004,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2223,6 +2055,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2259,6 +2094,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
 
   
 
@@ -2271,6 +2116,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2311,6 +2163,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
+        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

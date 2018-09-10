@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,9 +93,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -264,7 +264,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -326,6 +326,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/21/8.21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/21/8.21/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,32 +362,23 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>###使用ContentProvider管理多媒体内容</p>
-<p>Android为多媒体提供的ContentProvider的Uri如下：</p>
-<ul>
-<li>MediaStore.Audio.Media.EXTERNAL_CONTENT_URI</li>
-<li>MediaStore.Audio.Media.INTERNAL_CONTENT_URI</li>
-<li>MediaStore.Images.Media.EXTERNAL_CONTENT_URI</li>
-<li>MediaStore.Images.Media.INTERNAL_CONTENT_URI</li>
-<li>MediaStore.Video.Media.EXTERNAL_CONTENT_URI</li>
-<li>MediaStore.Video.Media.INTERNAL_CONTENT_URI</li>
-</ul>
-<p>其中EXTERNAL标识在外部存储器，INTERNAL标识在内部存储器；Audio，Images，Video分别标识音频，图片，视频。</p>
-<p>对外部存储修改，需要在AndroidManifest.xml文件中增加配置：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 授予读取外部存储设备的访问权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">&lt;!-- 授予写入外部存储设备的访问权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="监听ContentProvider的数据改变"><a href="#监听ContentProvider的数据改变" class="headerlink" title="监听ContentProvider的数据改变"></a>监听ContentProvider的数据改变</h2><p>当ContentProvider将数据共享出来之后，ContentResolver会根据业务需要去主动查询ContentProvider所共享的数据。有时候，应用程序需要实时监听ContentProvider所共享数据的改变，并随着ContentProvider的数据的改变而提供响应，这就需要利用ContentObserver了。</p>
-<h3 id="ContentObserver"><a href="#ContentObserver" class="headerlink" title="ContentObserver"></a>ContentObserver</h3><p>监听ContentProvider数据改变的监听器需要继承ContentObserver类，并重写该基类所定义的onChange(boolean selfChange)方法———当它所监听的ContentProvider数据改变时，该onChange()方法将会被触发。<br>为了监听指定ContentProvider的数据变化，需要通过ContentResolver向指定Uri注册ContentObserver监听器。</p>
-<ul>
-<li>registerContentObserver(Uri uri,boolean notifyForDescendents,ContentObserver observer)<ul>
-<li>uri:该监听器所监听的ContentProvider的Uri</li>
-<li>notifyForDescendents：如果该参数设为true，假如注册监听的Uri为content://abc,那么Uri为content://abc/xyz,content://abc/xyz/foo的数据发生改变时也会触发该监听器；如果该参数设为false，假如注册监听器为content://abc，那么只有content://abc的数据发生改变时才会触发该监听器</li>
-<li>observer：监听器实例</li>
-</ul>
-</li>
-</ul>
-<p><strong>PS：ContentResolver用于操作ContentProvider提供的数据；ContentObserver用于监听ContentProvider的数据改变；而ContentProvider则是所有ContentProvider组件的基类</strong></p>
+          安卓基础###使用ContentProvider管理多媒体内容
+Android为多媒体提供的ContentProvider的Uri如下：
 
-          
+MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+MediaStore.Audio.Media.INTERNAL_CONTENT_URI
+MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+MediaStore.Images.Media.INTERNAL_CONTENT_URI
+MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+MediaSto
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/21/8.21/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -429,7 +430,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -491,6 +492,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/20/8.20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/20/8.20/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -517,87 +528,18 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>为了在应用程序之间交换数据，Android提供了ContentProvider，它是不同应用之间进行数据交换的标准API。</p>
-<p>ContentProvider也是Android应用的四大组件之一，与Activity、Service、BroadcastReceiver相似，他们都要在AndroidManifest.xml文件中配置。</p>
-<h2 id="数据共享标准：ContentProvider"><a href="#数据共享标准：ContentProvider" class="headerlink" title="数据共享标准：ContentProvider"></a>数据共享标准：ContentProvider</h2><p>ContentProvider以某种Uri的形式对外提供数据，允许其他应用访问或修改数据；其他应用程序是哟个ContentResolver根据Uri去访问操作指定数据。</p>
-<p>可以将ContentProvider与ContentResolver简单的类比；可以把ContentProvider当成Android系统内部的“网站”，这个网站以固定的Uri对外提供服务；而ContentResolver则可以当成Android系统内部的HttpClient<br>，它可以向指定Uri发送“请求”（实际上是调用ContentResolver的方法），这种请求最后委托给ContentProvider处理，从而实现对“网站”（ContentProvider）内部数据进行操作。</p>
-<h3 id="ContentProvider简介"><a href="#ContentProvider简介" class="headerlink" title="ContentProvider简介"></a>ContentProvider简介</h3><p>开发一个ContentProvider步骤：</p>
-<ol>
-<li>定义自己的ContentProvider类，该类需要继承Android提供的ContentProvider基类</li>
-<li>向Android系统注册，在AndroidManifest.xml中注册ContentProvider，就像注册Activity一样。</li>
-</ol>
-<p>继承了ContentProvider之外，还要提供如下方法：</p>
-<ul>
-<li>public boolean onCreate()：ContentProvider创建时被调用，其他应用第一次访问ContentProvider时，该ContentProvider被创建出来，并立即回调该onCreate()方法</li>
-<li>public Uri insert(Uri uri,ContentValues values)：根据该Uri插入values对应的数据</li>
-<li>public int delete(Uri uri,String selection,String[] selectionArgs)：根据Uri删除selection条件所匹配的全部记录</li>
-<li>public int update(Uri uri,ContentValues values,String selection,String[] selectionArgs)：根据Uri修改selection条件所匹配的全部记录</li>
-<li>public Cursor query(Uri uri,String[] projection,String selection,String[] selectionArgs,String sortOrder)：根据Uri查询出selection条件所匹配的全部记录，其中projection就是一个列名列表，表明只选择出指定的数据列</li>
-<li>public String getType(Uri uri)：该方法用于返回当前Uri所代表的数据的MIME类型。如果该Uri对应的数据可能包括多条记录，那么MIME类型字符串应该以vnd.android.cursor.dir/开头；如果该Uri对应的数据只包含一条记录，那么MIME类型字符串应该以vnd.android.item/开头</li>
-</ul>
-<h3 id="Uri简介"><a href="#Uri简介" class="headerlink" title="Uri简介"></a>Uri简介</h3><p>ContentProvider的Uri例如如下：<br><code>content://org.crazyit.providers.dictprovider/words</code>它可以分为如下三个部分：</p>
-<ul>
-<li><strong>content://</strong>：这个部分是Android的ContentProvider规定的，就像上网的协议默认是http://</li>
-<li>org.crazyit.providers.dictprovider：这是ContentProvider的authorities。系统是由这个部分来找到操作哪个ContentProvider的。只要访问指定的ContentProvider，这个部分就是固定的</li>
-<li>words：资源量部分（数据部分）。访问不同资源时，这里动态改变。</li>
-</ul>
-<p>为了将一个字符串转换成Uri，Uri工具类提供了parse()静态方法。例如，如下代码即可将字符串转换为Uri：<br><code>Uri uri=uri.parse(&quot;content://org.crazyit.prociders.dictprovider/word&quot;)</code></p>
-<h3 id="使用ContentResolver操作数据"><a href="#使用ContentResolver操作数据" class="headerlink" title="使用ContentResolver操作数据"></a>使用ContentResolver操作数据</h3><p>Context提供了如下方法来获取ContentResolver对象:</p>
-<ul>
-<li>getContentResolver()</li>
-</ul>
-<p>获取ContentResolver对象后，调用如下方法操作数据</p>
-<ul>
-<li>insert(Uri uri,ContentValues values)：向Uri对应的ContentProvider中插入values对应的数据</li>
-<li>delete(Uri uri,String where,String[] selectionArgs)：删除Uri对应的ContentProvider中where提交匹配的数据</li>
-<li>update(Uri uri,ContentValues values,String where,String[] selectionArgs)：更新Uri对应的ContentProvider中where提交匹配的数据</li>
-<li>query(Uri uri,String[] projection,String selection,String[] selectionArgs,String sortOrder)：查询Uri对应的ContentProvider中where提交匹配的数据</li>
-</ul>
-<h2 id="开发ContentProvider"><a href="#开发ContentProvider" class="headerlink" title="开发ContentProvider"></a>开发ContentProvider</h2><p>ContentProvider需要与ContentResolver结合学习</p>
-<h3 id="ContentProvider与ContentResolver的关系"><a href="#ContentProvider与ContentResolver的关系" class="headerlink" title="ContentProvider与ContentResolver的关系"></a>ContentProvider与ContentResolver的关系</h3><p>Uri是ContentResolver和ContentProvider进行数据交换的标识。ContentResolver对指定的Uri执行CRUD等数据操作，但Uri并不是真正的数据中心，因为这些CRUD操作会委托给该Uri对应的ContentProvider来实现。<br>通常来说，假如A应用通过ContentResolver执行CRUD操作，这些CRUD操作都需要指定Uri参数，Android系统就根据该Uri找到对应的ContentProvider（该ContentProvider通常属于B应用），ContentProvider则负责实现CRUD方法，完成对底层数据的增删改查等操作，这样就可以让A应用访问、修改B应用的数据了。</p>
-<p><img src="http://itfish.net/Home/Modules/Images/itfish_61052_0.jpg" alt="s"></p>
-<p>上图是ContentResolver、Uri、ContentProvider三者关系。通过这种关系即可实现让A应用访问、使用B应用底层的数据。</p>
-<h3 id="开发ContentProvider子类"><a href="#开发ContentProvider子类" class="headerlink" title="开发ContentProvider子类"></a>开发ContentProvider子类</h3><p>开发ContentProvider步骤：</p>
-<ol>
-<li>开发一个ContentProvider子类，该子类需要实现query(),insert(),update()和delete()等方法</li>
-<li>在AndroidManifest.xml中注册该ContentProvider，指定android:authorities属性</li>
-</ol>
-<p>ContentProvider子类实现的CRUD方法，并不是给该应用本身调用，而是供其他应用来调用。</p>
-<h3 id="配置ContentProvider"><a href="#配置ContentProvider" class="headerlink" title="配置ContentProvider"></a>配置ContentProvider</h3><p>Android要求Activity、Service、ContentProvider、BroadcastReceiver都必须进行显式配置.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;provider</span><br><span class="line">   android:name=&quot;.FristProvider&quot;</span><br><span class="line">   android:authorities=&quot;org.crazyit.providers.firstprovider&quot;</span><br><span class="line">   android:exported=&quot;true&quot;</span><br></pre></td></tr></table></figure>
-<p>从上面的配置可以看出，配置ContentProvider时通常指定如下属性。</p>
-<ul>
-<li>name:指定该ContentProvider的实现类的类名</li>
-<li>authorities:指定该ContentProvider对应的Uri</li>
-<li>android:exporter:指定该ContentProvider是否允许其他应用调用。true代表可以被调用。</li>
-</ul>
-<p>当其他ContentResolver向该Uri执行CRUD方法时：</p>
-<ul>
-<li>ContentResolver调用方法时参数将会传给该ContentProvider的CRUD方法</li>
-<li>ContentResolver调用方法的返回值，也就是ContentProvider执行CRUD的返回值</li>
-</ul>
-<h3 id="使用ContentResolver调用方法"><a href="#使用ContentResolver调用方法" class="headerlink" title="使用ContentResolver调用方法"></a>使用ContentResolver调用方法</h3><p>Context提供了getContentResolver()方法。这表明Activity、Service等组件都可以通过getContentResolver()方法获取ContentResolver对象。</p>
-<p><strong>ContentResolver调用query(),insert(),update(),delete()方法，实际上就是调用uri参数对应的ContentProvider的query(),insert(),update(),delete()方法</strong></p>
-<h3 id="创建ContentProvider的说明"><a href="#创建ContentProvider的说明" class="headerlink" title="创建ContentProvider的说明"></a>创建ContentProvider的说明</h3><p>为了确定该ContentProvider实际能处理的Uri，以及确定每个方法中Uri参数所操作的数据，Android系统提供了UriMatcher工具类。<br>UriMatcher工具类主要提供了如下两个方法：</p>
-<ul>
-<li>void addURI(String authority,String path,int code)：用于向UriMatcher对象注册Uri。其中authority和path组合成一个Uri，而code则代表该Uri对应的标识码</li>
-<li>int match(Uri uri)：根据前面注册的Uri来判断指定的Uri对应的标识码。如果找不到匹配的，该方法返回-1。</li>
-</ul>
-<p>除此之外，Android还提供了一个ContentUris工具类，它是一个操作Uri字符串的工具类，提供了如下两个工具方法。</p>
-<ul>
-<li>withAppendedId(uri，id)：用于为路径加上ID部分</li>
-<li>parseId(uri)：用于从指定Uri中解析出所包含的ID值</li>
-</ul>
-<p>在实际项目中，都会通过采用工具类来定义各种常量的方式进行处理。</p>
-<h2 id="操作系统的ContentProvider"><a href="#操作系统的ContentProvider" class="headerlink" title="操作系统的ContentProvider"></a>操作系统的ContentProvider</h2><p>例如联系人信息、系统的多媒体信息。</p>
-<h3 id="使用ContentProvider管理联系人"><a href="#使用ContentProvider管理联系人" class="headerlink" title="使用ContentProvider管理联系人"></a>使用ContentProvider管理联系人</h3><p>Android系统用于管理联系人的ContentProvider的几个Uri如下。</p>
-<ul>
-<li>ContactsContract.Contacts.CONTENT_URI：管理联系人</li>
-<li>ContactsContract.CommonDataKinds.Phone.CONTENT_URI：管理联系人的电话</li>
-<li>ContactsContract.CommonDataKinds.Email.CONTENT_URI：管理联系人的Email</li>
-</ul>
-
-          
+          安卓基础为了在应用程序之间交换数据，Android提供了ContentProvider，它是不同应用之间进行数据交换的标准API。
+ContentProvider也是Android应用的四大组件之一，与Activity、Service、BroadcastReceiver相似，他们都要在AndroidManifest.xml文件中配置。
+数据共享标准：ContentProviderContentProvider以某种Uri的形式对外提供数据，允许其他应用访问或修改数据；其他应用程序是哟个ContentResolver根据Uri去访问操作指定数据。
+可以将ContentProvider与Conte
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/20/8.20/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -649,7 +591,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -711,6 +653,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/19/8.19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/19/8.19/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -737,54 +689,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>轻量型数据库，不足以用来充当服务器</p>
-<h3 id="SQLiteDatabase简介"><a href="#SQLiteDatabase简介" class="headerlink" title="SQLiteDatabase简介"></a>SQLiteDatabase简介</h3><p>通过SQLiteDatabase对象来管理、操作数据库。SQLiteDatabase提供了如下静态方法来打开一个文件对应的数据库。</p>
-<ul>
-<li>static SQLiteDatabase openDatabase(String path,SQLiteDatabase.CursorFactory factory,int flags)：打开path文件所代表的SQLite数据库</li>
-<li>static SQLiteDatabase openOrCreateDatabase(File file,SQLiteDatabase.CursorFactory factory)：打开或者创建file文件所代表的SQLite数据库</li>
-<li>static SQLiteDatabase openOrCreateDatabase(String path,SQLiteDatabase.CursorFactory factory)：打开或者创建path文件所代表的SQLite数据库</li>
-</ul>
-<p>在程序中获取了SQLiteDatabase对象后，调用如下方法来操作数据库：</p>
-<ul>
-<li>execSQL(String sql,Object[] bindArgs)：执行带占位符的sql语句</li>
-<li>execSQL(String sql)：执行sql语句</li>
-<li>insert(String table,String nullColumnHack,ContentValues values)：向指定表中插入数据</li>
-<li>update(String table,ContentValues values,String whereClause,String[] whereArgs)：更新指定表中的特定数据</li>
-<li>delete(String table,String whereClause,String[] whereArgs)：删除指定表中的特定数据</li>
-<li>Cursor query(String tabel,String[] columns,String whereClause,String[] whereArgs,String groupBy,String having,String orderBy)：对指定数据表执行查询</li>
-<li>Cursor query(String tabel,String[] columns,String whereClause,String[] whereArgs,String groupBy,String having,String orderBy,String limit)：对指定数据表执行查询。limit参数控制最多查询几条记录（用于控制分页的参数）</li>
-<li>Cursor query(boolean distinct,String tabel,String[] columns,String whereClause,String[] whereArgs,String groupBy,String having,String orderBy,String limit)：对指定数据表执行查询；第一个参数是控制是否除去重复值</li>
-<li>rawQuery(String sql,String[] selectionArgs)：执行带占位符的sql查询</li>
-<li>beginTransaction()：开始事务</li>
-<li>endTransaction()：结束事务</li>
-</ul>
-<p><strong>PS：whereArgs用于为wherClause自居传入参数。whereClause是执行数据库方法需要满足的条件</strong></p>
-<p>上面的查询方法都返回一个Cursor对象，类似JDBC中的Resultset，Cursor提供了如下方法来移动查询结果的记录指针。</p>
-<ul>
-<li>move(int offset)：将记录指针向上（正数）或向下移动指定行数</li>
-<li>boolean moveToFirst()：将记录指定移动到第一行</li>
-<li>boolean moveToLast()：移动到最后</li>
-<li>boolean moveToNext()：移动到下一行</li>
-<li>boolean moveToPosition(int position)：将记录指针移动到指定行</li>
-<li>boolean moveToPrevious()：移动到上一行</li>
-</ul>
-<p><strong>用SQLiteDatabase进行数据库操作的步骤：1.获取SQLiteDatabase对象，它代表了与数据库的连接。2.调用SQLiteDatabase的方法执行SQL语句。3.操作SQL语句的执行结果，比如用SimpleCursorAdapter封装Cursor4.关闭SQLiteDatabase，回收资源。</strong></p>
-<h3 id="SQLiteOpenHelper类"><a href="#SQLiteOpenHelper类" class="headerlink" title="SQLiteOpenHelper类"></a>SQLiteOpenHelper类</h3><p>在实际项目中更常用SQLiteOpenHelper开发子类，并通过子类的getReadableDatabase(),getWritableDatabase()方法打开数据库。</p>
-<p>SQLiteOpenHelper包含如下常用的方法：</p>
-<ul>
-<li>synchronized SQLiteDatabase getReadableDatabase():以读写的方式打开数据库对应的SQLiteDatabase对象</li>
-<li>synchronized SQLiteDatabase getWritableDatabase():以写的方式打开数据库对应的SQLiteDatabase对象</li>
-<li>abstract void onCreate(SQLiteDatabase db):第一次创建数据库回调该方法</li>
-<li>abstract void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion):当数据库版本更新回调该方法</li>
-<li>synchronized void close():关闭所有打开的SQLiteDatabase对象</li>
-</ul>
-<p>重写抽象方法：</p>
-<ul>
-<li>onCreate(SQLiteDatabase db):生成数据库表结构</li>
-<li>onUpgrade(SQLiteDatabase db,int oldVersion,int new Version):当用户创建SQLiteOpenHelper对象时，必须指定一个version参数，该参数就是所使用的数据库版本。</li>
-</ul>
+          安卓基础轻量型数据库，不足以用来充当服务器
+SQLiteDatabase简介通过SQLiteDatabase对象来管理、操作数据库。SQLiteDatabase提供了如下静态方法来打开一个文件对应的数据库。
 
-          
+static SQLiteDatabase openDatabase(String path,SQLiteDatabase.CursorFactory factory,int flags)：打开path文件所代表的SQLite数据库
+static SQLiteDatabase openOrCreateDatabase(File file,SQLiteDatabase.CursorFact
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/19/8.19/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -836,7 +753,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -898,6 +815,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/8.18.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/18/8.18.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -924,41 +851,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="使用SharedPreferences"><a href="#使用SharedPreferences" class="headerlink" title="使用SharedPreferences"></a>使用SharedPreferences</h2><p>应用程序少量的数据保存，这些数据的格式很简单，都是很普通的字符串、标量类型的值等，对于这种数据，Android提供了SharedPreferences进行保存</p>
-<h3 id="SharedPreferences与Editor简介"><a href="#SharedPreferences与Editor简介" class="headerlink" title="SharedPreferences与Editor简介"></a>SharedPreferences与Editor简介</h3><p>SharedPreferences保存的数据主要是简单类型的key-value对。<br>SharedPreferences接口主要负责读取应用程序的Preferences数据，它提供了如下方法：   </p>
-<ul>
-<li>boolean contains(String key)：判断SharedPreferences是否包含特定key的数据</li>
-<li>abstract Map&lt;String,?&gt; getAll()：获取SharedPreferences数据里全部的key-value对</li>
-<li>boolean getXxx(String key,xxx defValue)：获取SharedPreferences数据里指定key对应的value。如果key不存在，返回默认值defValue。其中xxx可以是boolean、float、int、long、String等各种基本类型的值。</li>
-</ul>
-<p>通过SharedPreferences的内部接口，SharedPreferences调用edit()方法即可获取它所对应的Editor对象。Editor提供了如下方法向SharedPreferences写入数据。    </p>
-<ul>
-<li>SharedPreferences.Editor clear()：清空SharedPreferences中所有数据</li>
-<li>SharedPreferences.Editor putXxx(String key,xxx value)：向SharedPreferences存入指定key对应的数据</li>
-<li>SharedPreferences.Editor remove(String key)：删除SharedPreferences里指定key对应的数据项</li>
-<li>boolean commit()：当Editor编辑完成后，调用该方法提交修改</li>
-</ul>
-<p>程序无法直接创建SharedPreferences实例，只能通过Context提供的getSharedPreferences(String name,int mode)方法获取SharedPreferences实例（SharedPreferences是一个接口）</p>
-<h2 id="File存储"><a href="#File存储" class="headerlink" title="File存储"></a>File存储</h2><p>Android支持用FileInputStream、FileOutputStream这些IO流访问手机存储器上的文件。</p>
-<p>###　openFileOutput和openFileInput</p>
-<p>Context提供热如下两个方法打开应用程序的数据文件夹里的文件IO流。</p>
-<ul>
-<li>FileInputStream openFileInput(String name)：打开应用程序的数据文件夹下的name文件对应的输入流</li>
-<li>FileOutputStream openFileOutput(String name,int mode)：打开应用程序的数据文件夹下的name文件对应的输出流</li>
-</ul>
-<h3 id="读写SD卡上的文件"><a href="#读写SD卡上的文件" class="headerlink" title="读写SD卡上的文件"></a>读写SD卡上的文件</h3><p>步骤：</p>
-<ol>
-<li>调用Environment的getExternalStorageState()方法判断是否插入内存卡<code>Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)</code>如果返回true即是插入了SD卡</li>
-<li>调用getExternalStorageDirectory()方法来获取外部存储器</li>
-<li>使用FileInputStream,FileOutputStream,FileReader,FileWriter读写SD卡里的文件<ul>
-<li>必须插入SD卡，模拟器需要创建通过mskdcard</li>
-<li>在AndroidManifest.xml中添加读写SD卡的权限，创建与删除文件权限：<code>&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;</code>写入数据权限<code>uses-premission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</code></li>
-</ul>
-</li>
-</ol>
-<p><strong>ps：File.getCanonicalPath（）方法用来获取文件（文件夹）路径；使用时需要进行try/catch抛出IOException异常</strong></p>
+          安卓基础使用SharedPreferences应用程序少量的数据保存，这些数据的格式很简单，都是很普通的字符串、标量类型的值等，对于这种数据，Android提供了SharedPreferences进行保存
+SharedPreferences与Editor简介SharedPreferences保存的数据主要是简单类型的key-value对。SharedPreferences接口主要负责读取应用程序的Preferences数据，它提供了如下方法：   
 
-          
+boolean contains(String key)：判断SharedPreferences是否包含特定key的数据
+abstract Ma
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/18/8.18.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1010,7 +915,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1072,6 +977,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/8.18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/18/8.18/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1098,45 +1013,21 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="属性动画资源（Property-Animation"><a href="#属性动画资源（Property-Animation" class="headerlink" title="属性动画资源（Property Animation)"></a>属性动画资源（Property Animation)</h2><p>它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。</p>
-<ul>
-<li>&lt;set../&gt;：它是父元素，可以用于包含这三种元素作为子元素</li>
-<li>&lt;objectAnimator…/&gt;：用于定义ObjectAnimator动画</li>
-<li>&lt;animator…/&gt;：用于定义ValueAnimator动画</li>
-</ul>
-<p><code>ObjectAnimator colorAnim = (ObjectAnimator) AnimatorInflater.loadAnimator(MainActivity.this,R.animator.color_anima</code><br>使用AnimatorInflater工具类加载了指定动画资源文件，并将该动画资源文件转化为ObjectAnimator对象。</p>
-<h2 id="使用原始XML资源"><a href="#使用原始XML资源" class="headerlink" title="使用原始XML资源"></a>使用原始XML资源</h2><p>Android应用推荐用XML文件保存一些初始化的配置信息、应用相关的数据资源。这种资源就叫原始XML资源。</p>
-<h3 id="定义原始XML资源"><a href="#定义原始XML资源" class="headerlink" title="定义原始XML资源"></a>定义原始XML资源</h3><p>原始XML资源一般保存在/res/xml/路径下，需要开发者手动创建xml子目录。<br>为了在Java代码中获取实际的XML文档，可以通过Resource的如下两个方法实现：</p>
-<ul>
-<li>XmlResourceParser getXml(int id)：获取XML文档，并使用一个XmlPullParser来解析该XML文档，该方法返回一个解析器对象。（XmlResourceParser是XmlPullParser的子类）</li>
-<li>InputStream openRawResource(int id)：获取XML文档对应的输入流</li>
-</ul>
-<h3 id="使用原始XML文件"><a href="#使用原始XML文件" class="headerlink" title="使用原始XML文件"></a>使用原始XML文件</h3><h2 id="使用布局（Layout）资源"><a href="#使用布局（Layout）资源" class="headerlink" title="使用布局（Layout）资源"></a>使用布局（Layout）资源</h2><h2 id="使用菜单（Menu）资源"><a href="#使用菜单（Menu）资源" class="headerlink" title="使用菜单（Menu）资源"></a>使用菜单（Menu）资源</h2><h2 id="样式（Style）和主题（Theme）资源"><a href="#样式（Style）和主题（Theme）资源" class="headerlink" title="样式（Style）和主题（Theme）资源"></a>样式（Style）和主题（Theme）资源</h2><h3 id="样式资源"><a href="#样式资源" class="headerlink" title="样式资源"></a>样式资源</h3><p>Android的样式资源文件在/res/values/目录下，根元素是&lt;resources…/&gt;元素，该元素内可包含多个&lt;style../&gt;子元素，每个&lt;style…/&gt;子元素定义一个样式。   </p>
-<p>&lt;style../&gt;元素内可包含多个&lt;item../&gt;子元素，每个&lt;item../&gt;子元素定义一个格式项。</p>
-<h3 id="主题资源"><a href="#主题资源" class="headerlink" title="主题资源"></a>主题资源</h3><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，同样使用&lt;style../&gt;元素来定义主题。<br>主题与样式的区别主要体现在：</p>
-<ul>
-<li>主题不能作用于单个的View组件，主体应该对整个应用中的所有Activity起作用，或对指定的Activity起作用</li>
-<li>主题定义的格式应该是改变窗口外观的格式，例如窗口标题，窗口边框等</li>
-</ul>
-<p>如果想让应用中全部窗口使用该主题，那么只要在AndroidManifest.xml文件中&lt;application../&gt;元素加android:theme属性即可。如果只想让程序中的某个Activity拥有这个主题，那么可以修改&lt;activity…/&gt;元素，同样通过android:theme指定主题即可。</p>
-<p>Android提供的几种内置的主题资源，同样支持继承。</p>
-<h2 id="属性-Attribute-资源"><a href="#属性-Attribute-资源" class="headerlink" title="属性(Attribute)资源"></a>属性(Attribute)资源</h2><p>它的XML文件也通常放在/res/values/目录下，主题资源的XML文件同样以&lt;resources…/&gt;元素作为根元素，该元素包含如下两个子元素：</p>
-<ul>
-<li>attr子元素：定义一个属性</li>
-<li>declare-styleable子元素：定义一个styleable对象，每个styleable对象就是一组attr属性的集合</li>
-</ul>
-<h3 id="使用原始资源"><a href="#使用原始资源" class="headerlink" title="使用原始资源"></a>使用原始资源</h3><p>Android的原始资源可以放在如下两个地方：</p>
-<ul>
-<li>位于/res/raw/目录下，Android SDK会处理该目录下的原始资源，Android SDK会在R清单类中为该目录下的资源生成一个索引项</li>
-<li>位于/assets/目录下，该目录下的资源是一个更彻底的原始资源。Android应用通过AssetManager来管理该目录下的原始资源</li>
-</ul>
-<p>AssetManager是一个专门管理/assets/目录下原始资源的管理器类，AssetManager提供了如下两个常用方法来访问Assets资源。</p>
-<ul>
-<li>InputStream open(String fileName)：根据文件名来获取原始资源对应的输入流</li>
-<li>AssetFileDescriptor openFd(String fileName)：根据文件名来获取原始资源对应的AssetFileDesciptor。</li>
-</ul>
+          安卓基础属性动画资源（Property Animation)它只是一个抽象类，通常使用它的子类：AnimatorSet、ValueAnimator、ObjectAnimator、TimeAnimator。定义属性动画的XML资源文件用以下三个元素中的任意一个作为根元素。
 
-          
+&lt;set../&gt;：它是父元素，可以用于包含这三种元素作为子元素
+&lt;objectAnimator…/&gt;：用于定义ObjectAnimator动画
+&lt;animator…/&gt;：用于定义ValueAnimator动画
+
+ObjectAnimator colorAnim = (ObjectAnima
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/18/8.18/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1188,7 +1079,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1250,6 +1141,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/17/8.17/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/17/8.17/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1276,52 +1177,22 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="数组资源-Array"><a href="#数组资源-Array" class="headerlink" title="数组资源(Array)"></a>数组资源(Array)</h2><p>Andriod采用位于/res/values目录下的arrays.xml文件来定义数组资源，定义数组也是用&lt;resources…/&gt;，该元素可包含如下三种子元素：</p>
-<ul>
-<li>&lt;array…/&gt;：普通类型的数组</li>
-<li>&lt;string-array…/&gt;：字符串数组</li>
-<li>&lt;integer-array…/&gt;：整型数组</li>
-</ul>
-<h3 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h3><p>为了在程序中获得实际的Drawable对象，Resources提供了Drawable getDrawable(int id)方法，该方法根据Drawable资源在R资源清单中的ID来获取实际的Drawable对象</p>
-<h3 id="StateListDrawable资源"><a href="#StateListDrawable资源" class="headerlink" title="StateListDrawable资源"></a>StateListDrawable资源</h3><p>StateListDrawable可以包含多个Drawable对象，主要用来根据组件状态变化，展现Drawable变化</p>
-<p>StateListDrawable对象的XML文件的根元素为&lt;selector…/&gt;，该元素可以包含多个&lt;item…/&gt;元素，该元素有如下属性：</p>
-<ul>
-<li>android:color,android:drawable</li>
-<li>android:state-xxx：指定一个特定状态，如：active,checkable可勾选,checked已选择,enabled,first开始状态,focused已得到焦点,last结束状态,middle中间状态,pressed,selected已被选中状态,window_focused</li>
-</ul>
-<h3 id="LayerDrawable资源"><a href="#LayerDrawable资源" class="headerlink" title="LayerDrawable资源"></a>LayerDrawable资源</h3><p>也可以包含一个Drawable数组，系统按索引最大的Drawable对象绘制在最上面。LayerDrawable对象的XML文件的根元素为&lt;layer-list…/&gt;</p>
-<p>可以利用这个资源来绘制拖动条，将索引大的覆盖索引小的。</p>
-<h3 id="ShapeDrawable资源"><a href="#ShapeDrawable资源" class="headerlink" title="ShapeDrawable资源"></a>ShapeDrawable资源</h3><p>用来定义一个基本的几何图形。定义ShapeDrawable的XML文件的根元素是&lt;shape…/&gt;元素，该元素可以指定如下属性：</p>
-<ul>
-<li>android:shape=[“rectangle”|”oval”|”line”|”ring”]：指定哪种类型的几何图形</li>
-</ul>
-<h3 id="ClipDrawable资源"><a href="#ClipDrawable资源" class="headerlink" title="ClipDrawable资源"></a>ClipDrawable资源</h3><p>代表从其他位图上截取的一个“图片片段”。在XML文件中定义ClipDrawable对象使用&lt;clip…/&gt;元素。</p>
-<p>可指定如下三个属性：</p>
-<ul>
-<li>android:drawable：指定截取的源Drawable对象</li>
-<li>android:clipOrientation：指定截取方向，可设置水平截取或垂直截取</li>
-<li>android:gravity：指定截取时的对齐方式</li>
-</ul>
-<p>使用ClipDrawable对象时，调用setLevel(int level)方法来设置截取的区域大小，当Level为0时，截取的图片片段为空；当level为10000时，截取整个图片。</p>
-<h3 id="AnimationDrawable资源"><a href="#AnimationDrawable资源" class="headerlink" title="AnimationDrawable资源"></a>AnimationDrawable资源</h3><p>它代表一个动画，有逐帧动画和补间动画。定义补间动画的XML资源文件以&lt;set…/&gt;元素作为根元素，该元素可以指定如下4个元素：</p>
-<ul>
-<li>alpha：设置透明度的改变</li>
-<li>scale：设置图片进行缩放变化</li>
-<li>translate：设置图片进行位移变化</li>
-<li>rotate：设置图片进行旋转</li>
-</ul>
-<p>定义动画的XML文件放在/res/anmi/路径下，需要开发者自行创建</p>
-<p>定义补间动画的思路：先设置一张图片的开始状态，并设置该图片的结束状态，再设置动画的持续时间。</p>
-<p>AnimationDrawable对象的元素都可以指定一个android:interpolator属性，该属性指定动画的变化速度，如：</p>
-<ul>
-<li>linear_interpolator：匀速变化</li>
-<li>accelerate_interpolator：加速变化</li>
-<li>decelerate_interpolator：减速变化</li>
-</ul>
-<p>如果程序想让&lt;set…/&gt;元素下所有的变化效果使用相同的动画速度，则可指定android：shareInterpolator=”true”</p>
-<p><strong>为了在Java代码中获取实际的Animation对象，可调用AnimationUtils的方法：loadAnimation(Context ctx,int resId)</strong></p>
+          安卓基础数组资源(Array)Andriod采用位于/res/values目录下的arrays.xml文件来定义数组资源，定义数组也是用&lt;resources…/&gt;，该元素可包含如下三种子元素：
 
-          
+&lt;array…/&gt;：普通类型的数组
+&lt;string-array…/&gt;：字符串数组
+&lt;integer-array…/&gt;：整型数组
+
+图片资源为了在程序中获得实际的Drawable对象，Resources提供了Drawable getDrawable(int id)方法，该方法根据Drawable资源在R资源清单中的ID来获取实际的Drawable对象
+St
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/17/8.17/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1373,7 +1244,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1435,6 +1306,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/16/8.16.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/16/8.16.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1461,37 +1342,36 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>##　应用资源概述</p>
-<p>安卓应用资源分为两类</p>
-<ul>
-<li>无法通过R资源清单访问的原生资源，保存在assets目录下</li>
-<li>可通过R资源清单访问的资源，保存在res目录下</li>
-</ul>
-<h3 id="资源的类型及存储方式"><a href="#资源的类型及存储方式" class="headerlink" title="资源的类型及存储方式"></a>资源的类型及存储方式</h3><h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><ol>
-<li>在Java代码中使用资源清单项</li>
-<li><p>在Java代码中访问实际资源</p>
-<ul>
-<li>通过资源清单项获取实际资源<ul>
-<li>getXxx(int id)：根据资源清单ID来获取实际资源</li>
-<li>getAssets() ：获取访问/assets/目录下资源的AssetManager对象</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>在XML文件中使用资源</p>
-</li>
-</ol>
-<h2 id="字符串、颜色、尺寸资源"><a href="#字符串、颜色、尺寸资源" class="headerlink" title="字符串、颜色、尺寸资源"></a>字符串、颜色、尺寸资源</h2><p>字符串资源、颜色资源、尺寸资源，它们对应的XML文件都将位于/res/values/目录下</p>
-<h3 id="颜色值的定义"><a href="#颜色值的定义" class="headerlink" title="颜色值的定义"></a>颜色值的定义</h3><p>Android颜色值支持常见的4种形式</p>
-<ul>
-<li>#RGB</li>
-<li>#ARGB</li>
-<li>#RRGGBB</li>
-<li>#AARRGGBB</li>
-</ul>
-<p>上面4种形式中，A、R、G、B都代表一个十六进制的数</p>
-<h3 id="定义字符串、颜色、尺寸资源文件"><a href="#定义字符串、颜色、尺寸资源文件" class="headerlink" title="定义字符串、颜色、尺寸资源文件"></a>定义字符串、颜色、尺寸资源文件</h3>
-          
+          安卓基础##　应用资源概述
+安卓应用资源分为两类
+
+无法通过R资源清单访问的原生资源，保存在assets目录下
+可通过R资源清单访问的资源，保存在res目录下
+
+资源的类型及存储方式使用资源
+在Java代码中使用资源清单项
+在Java代码中访问实际资源
+
+通过资源清单项获取实际资源
+getXxx(int id)：根据资源清单ID来获取实际资源
+getAssets() ：获取访问/assets/目录下资源的AssetManager对象
+
+
+
+
+在XML文件中使用资源
+
+
+字符串、颜色、尺寸资源字符串资源、颜色资源、尺寸资源，它们对应的XML文件都将位于/res/values/目录下
+颜色值的定义
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/16/8.16.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1543,7 +1423,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1605,6 +1485,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/15/8.16/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/15/8.16/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1631,58 +1521,34 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="Intent对象简述"><a href="#Intent对象简述" class="headerlink" title="Intent对象简述"></a>Intent对象简述</h2><p>使用Intent启动不同组件的方法：</p>
-<table>
-<thead>
-<tr>
-<th>组件类型</th>
-<th>启动方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Activity</td>
-<td>startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)</td>
-</tr>
-<tr>
-<td>Service</td>
-<td>ComponentName startService(Intent service) boolean bindService(Intent service,ServiceConnection conn,int flags)</td>
-</tr>
-<tr>
-<td>BroadcastReceiver</td>
-<td>sendBroadcast(Intent intent) sendBroadcast(Intent intent,String receiverPermission) sendOrderedBroadcast(Intent intent,String receiverPermission,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras) sendOrderedBroadcast(Intent intent,String receiverPermission)</td>
-</tr>
-<tr>
-<td>BroadcastReceiver</td>
-<td>sendStickyBroadcast(Intent intent) sendStickyOrderedBroadcast(Intent intent,BroadcastReceiver resultReceiver,Handler scheduler,int initialCode,String initialData,Bundle initialExtras)</td>
-</tr>
-</tbody>
-</table>
-<p>Intent对象大致包含Component、Action、Category、Data、Type、Extra、Flag这7种属性，其中Component用于明确指定需要启动的目标组件，而Extra则用于“携带”需要交换的数据</p>
-<h2 id="Intent的属性及Intent-filter配置"><a href="#Intent的属性及Intent-filter配置" class="headerlink" title="Intent的属性及Intent-filter配置"></a>Intent的属性及Intent-filter配置</h2><p>启动组件，取决于Intent的各属性</p>
-<h3 id="Component属性"><a href="#Component属性" class="headerlink" title="Component属性"></a>Component属性</h3><p>指定了Component属性的Intent是显式Intent，没有指定的是隐式Intent——隐式Intent没有指出明确的对象，只要是符合筛选条件就行。</p>
-<p>Intent的Component属性需要接受一个ComponentName对象。</p>
-<p>当程序通过Intent的Component属性（明确指定了启动哪个组件）启动特定组件时，被启动组件几乎不需要使用&lt;intent_filter…/&gt;元素进行配置</p>
-<h3 id="Action、Category属性与intent-filter配置"><a href="#Action、Category属性与intent-filter配置" class="headerlink" title="Action、Category属性与intent-filter配置"></a>Action、Category属性与intent-filter配置</h3><p>&lt;intent-filter…/&gt;元素是AndroidManifest.xml文件中&lt;activity…/&gt;元素的子元素，&lt;activity…/&gt;元素用于为应用程序配置Activity，&lt;activity../&gt;的&lt;intent-filter…/&gt;子元素则用于配置该Activity所能“响应”的Intent。</p>
-<p>当&lt;activity../&gt;元素的&lt;intent-filter…/&gt;子元素里包含多个&lt;action../&gt;子元素时，就表明该Activity能响应Action属性值为其中任意一个字符串的Intent。</p>
-<p>一个Intent对象最多只能包含一个Action属性，程序调用Intent的setAction(String str)方法设置Action属性值；一个Intent对象可以包括多个Category属性，程序调用Intent的addCategory(String str)方法来为Intent添加Category属性。</p>
-<p>Activity到底启动哪个Activity，需要看&lt;intent-filter…/&gt;中元素的配置。（可以想成启动符合条件的Activity）</p>
-<h3 id="指定Action、Category调用Activity"><a href="#指定Action、Category调用Activity" class="headerlink" title="指定Action、Category调用Activity"></a>指定Action、Category调用Activity</h3><p>Intent不仅可以启动本应用程序内程序组件，也可以启动Android系统的其他应用的程序组件。</p>
-<h3 id="Data、Type属性与intent-filter配置"><a href="#Data、Type属性与intent-filter配置" class="headerlink" title="Data、Type属性与intent-filter配置"></a>Data、Type属性与intent-filter配置</h3><p>Data属性通常用于向Action属性提供操作的数据。Type属性用于指定该Data属性所指定Uri对应的MIME的类型。</p>
-<p>Data属性与Type属性会相互覆盖：</p>
-<ul>
-<li>Intent先设置Data属性，那么Type属性将会覆盖Data属性</li>
-<li>Intent先设置Type属性，那么Data属性将会覆盖Type属性</li>
-<li>如果希望Intent有两种属性，调用Intent的setDataAndType()方法</li>
-</ul>
-<p>在AndroidManifest.xml中为组件声明Data、Type属性都通过&lt;data../&gt;元素</p>
-<h2 id="使用Intent创建Tab页"><a href="#使用Intent创建Tab页" class="headerlink" title="使用Intent创建Tab页"></a>使用Intent创建Tab页</h2><p>使用TabActivity创建Activity布局，添加Tab页使用了TabHost.TabSpec提供的如下方法：</p>
-<ul>
-<li>setContent(int viewId)：直接将指定View组件设置成Tab页的Content</li>
-<li>setContent(Intent intent)：直接将指定Intent对应的Activity设置成Tab页的Content</li>
-</ul>
+          安卓基础Intent对象简述使用Intent启动不同组件的方法：
 
-          
+
+
+组件类型
+启动方法
+
+
+
+
+Activity
+startActivity(Intent intent) startActivityForResult(Intent intent,int requestCode)
+
+
+Service
+ComponentName startService(Intent service) boolean bindService(Intent service,ServiceConnection conn,int flags)
+
+
+BroadcastReceiver
+sendBroadcast(In
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/15/8.16/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1734,7 +1600,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1796,6 +1662,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/15/8.15.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/15/8.15.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1822,53 +1698,24 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Activity在Android应用中，以Activity栈形式管理，当前运行的Activity位于栈顶。随着不同应用的运行，每个Activity都有可能从活动状态转变为非活动状态，也可能从非活动状态转为活动状态。</p>
-<h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>Activity大致会经历下面4种状态：</p>
-<ul>
-<li><strong>运行状态</strong>：当前Activity位于前台，用户可见，可以获得焦点</li>
-<li><strong>暂停状态</strong>：其他Activity位于前台，该Activity依然可见，只是不能获得焦点</li>
-<li><strong>停止状态</strong>：该Activity不可见，失去焦点</li>
-<li><strong>销毁状态</strong>：该Activity结束，或Activity所在的进程被结束</li>
-</ul>
-<p><img src="http://www.runoob.com/wp-content/uploads/2015/08/18364230.jpg" alt="Activity生命周期图"></p>
-<h3 id="Activity与Servlet的相似性和区别"><a href="#Activity与Servlet的相似性和区别" class="headerlink" title="Activity与Servlet的相似性和区别"></a>Activity与Servlet的相似性和区别</h3><p>相似性：</p>
-<ul>
-<li>Activity,Servlet的职责都是向用户呈现界面</li>
-<li>开发者开发Activity和Servlet都继承系统的基类</li>
-<li>Activity、Servlet开发出来都需要配置</li>
-<li>Activity开发用于Android、Servlet用于Web</li>
-<li>开发者无须创建Activity和Servlet的实例，无须调用它们的方法。它们的方法都由系统以回调的方式来调用</li>
-<li>Activity、Servlet都有各自的生命周期，他们的生命周期都由外部负责管理</li>
-<li>Activity、Servlet都不会直接相互调用，因此都不能直接进行数据交换。Servlet的数据交换需要借助于Web应用提供的requestScope、sessionScope等。Activity之间的数据交换借助于Bundle。</li>
-</ul>
-<p>差别：</p>
-<ul>
-<li>Activity是Android窗口的容器，因此Activity最终以窗口形式显示出来。而Servlet并不会生成应用界面，只是向浏览者生成文本响应</li>
-<li>Activity运行于Android应用中，因此Activity的本质还是通过各种界面组件来搭建界面；而Servlet则主要以IO流向浏览者生成文本响应，浏览者看到的界面其实是由浏览器负责生成的</li>
-<li>Activity之间的跳转主要通过Intent对象来控制；而Servlet之间的跳转主要由用户的请求来控制</li>
-</ul>
-<p>##　Fragment</p>
-<p>把Fragment理解成Activity片段。Fragment拥有自己的生命周期，也可以接受它自己的输入事件</p>
-<h3 id="Fragment概述"><a href="#Fragment概述" class="headerlink" title="Fragment概述"></a>Fragment概述</h3><p>Fragment必须被“嵌入”Activity中使用，因此，虽然Fragment也拥有自己的生命周期，但Fragment的生命周期会受它所在的Activity的生命周期控制。例如：当Activity暂停时，在Activity中的Fragment都会被暂停；当Activity被销毁时，在Activity中的Fragment都会被销毁。只有当该Activity处于活动状态时，程序员才可以通过方法独立地操作Fragment。</p>
-<p>Fragment有如下特征:</p>
-<ul>
-<li>Fragment总是作为Activity界面的组成部分。Fragment调用getActivity（）方法获取它所在的Activity，Activity调用FragmentManager的findFragmentById（）或findFragmentByTag（）方法获取Fragment</li>
-<li>在Activity运行过程中，可调用FragmentManager的add（）、remove（）、replace（）方法动态地添加、删除或者替换Fragment</li>
-<li>一个Activity可以同时组合多个Fragment，一个Fragment也可以被多个Activity复用</li>
-<li>Fragment可以响应自己的输入事件，并拥有自己的生命周期，但他们的生命周期直接被其所属的Activity的生命周期控制</li>
-</ul>
-<p>创建Fragment需要实现如下三个方法：</p>
-<ul>
-<li>onCreate（）：系统创建Fragment对象后回调该方法，在实现代码中只初始化想要在Fragment中保持的必要组件，当Fragment被暂停或停止后可以恢复</li>
-<li>onCreateView（）：当Fragment绘制界面组件时会回调该方法。该方法必须返回一个View，该View也就是该Fragment所显示的View</li>
-<li>onPause（）：当用户离开该Fragment时将会回调该方法</li>
-</ul>
-<h2 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h2><p>与Activity类似，Fragment的生命周期也存在与Activity一样的4个状态。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2166423-cef6bc37f8539eba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317" alt="Fragment生命周期"></p>
-<p>Fragment与Activity对比生命周期：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2166423-48e1c4b3805b32ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340" alt="对比"></p>
+          安卓基础Activity在Android应用中，以Activity栈形式管理，当前运行的Activity位于栈顶。随着不同应用的运行，每个Activity都有可能从活动状态转变为非活动状态，也可能从非活动状态转为活动状态。
+Activity的生命周期Activity大致会经历下面4种状态：
 
-          
+运行状态：当前Activity位于前台，用户可见，可以获得焦点
+暂停状态：其他Activity位于前台，该Activity依然可见，只是不能获得焦点
+停止状态：该Activity不可见，失去焦点
+销毁状态：该Activity结束，或Activity所在的进程被结束
+
+
+Activity与Servlet的相
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/15/8.15.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1920,7 +1767,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1982,6 +1829,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/15/8.15/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/15/8.15/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -2008,59 +1865,20 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="启动、关闭Activity"><a href="#启动、关闭Activity" class="headerlink" title="启动、关闭Activity"></a>启动、关闭Activity</h2><p>Activity启动其他Activity有两种方法：</p>
-<ul>
-<li>startActivity(Intent intent)：启动其他的Activity</li>
-<li>startActivityForResult(Intent intent,int requestCode)：以指定的请求码（requestCode）启动Activity，而且程序将会获取新启动的Activity返回的结果（通过重写onActivityResult(..)方法来获取）</li>
-</ul>
-<p>一个Activity通过Intent来表达自己“意图”——想要启动哪个组件，被启动的组件既可以是Activity组件，也可以是Service组件。</p>
-<p>Android关闭Activity准备了如下两种方法：</p>
-<ul>
-<li>finish()：结束当前Activity</li>
-<li>finishActivity(int requestCode)：结束以startActivityForResult(Intent intent,int requestCode)方法启动的Activity</li>
-</ul>
-<p>ps：finish()方法是将Activity移出栈，onDestroy()方法是销毁Activity。</p>
-<h2 id="使用Bundle在Activity之间交换数据"><a href="#使用Bundle在Activity之间交换数据" class="headerlink" title="使用Bundle在Activity之间交换数据"></a>使用Bundle在Activity之间交换数据</h2><p>当一个Activity启动另一个Activity时，需要传一些数据进去，这就像Servlet跳转另一个Servlet时，习惯把需要交换的数据放入requestScope、sessionScope中。对于Activity之间交换数据，我们主要将需要交换的数据放入Intent中即可。<br>Intent提供了多个重载的方法来“携带”额外的数据：</p>
-<ul>
-<li>putExtras(Bundle data)：向Intent中放入需要“携带”的数据包</li>
-<li>Bundle getExtras()：取出Intent中所“携带”的数据包</li>
-<li>putExtra(String name,Xxx value)：向Intent中按Key-value对的形式存入数据</li>
-<li>getXxxExtra(String name)：从Intent中按Key取出指定类型的数据</li>
-</ul>
-<p>上面方法中Bundle就是一个简单的数据携带包，该Bundle对象包含了多个方法来存入数据。</p>
-<ul>
-<li>putXxx(String key,Xxx data)：向Bundle中放入Int、Long等各种类型的数据</li>
-<li>putSerializable(String key,Serializable data)：向Bundle中放入一个可序列化的对象。</li>
-</ul>
-<p>为了取出Bundle数据携带包里的数据，Bundle提供了如下方法：</p>
-<ul>
-<li>getXxx(String key)：从Bundle中取出Int、Long等各种类型的数据。</li>
-<li>getSerializable(String key,Serializable data)：从Bundle中取出一个可序列化的对象。</li>
-</ul>
-<p><strong>ps：</strong></p>
-<p><code>@Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-    }</code></p>
-<p>与</p>
-<p><code>@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }</code></p>
-<p>有两个参数的方法不能关联到Layout界面。既不能显示布局，也不能完成Intent跳转。</p>
-<h2 id="启动其他Activity并返回结果"><a href="#启动其他Activity并返回结果" class="headerlink" title="启动其他Activity并返回结果"></a>启动其他Activity并返回结果</h2><p>这种请求用于：应用程序的第一个界面需要用户进行选择——但需要选择的列表数据比较复杂，必须启动另一个Activity让用户选择。当用户在第二个Activity中选择完成后，程序返回第一个Activity，第一个Activity必须能显示用户在第二个Activity中选择的结果。在这种场景下，也是用Bundle进行数据交换的。</p>
-<p>为了获取被启动的Activity所返回的结果：</p>
-<ul>
-<li>当前Activity需要重写onActivityResult(int requestCode,int resultCode,Intent intent)，而被启动的Activity返回结果时，该方法触发，其中requestCode和resultCode分别是请求码和结果码</li>
-<li>被启动的Activity需要调用setResult()方法设置处理结果</li>
-</ul>
-<h2 id="Activity的回调机制"><a href="#Activity的回调机制" class="headerlink" title="Activity的回调机制"></a>Activity的回调机制</h2><p>在开发通用性质的应用框架时，程序架构完成整个应用的通用功能、流程，但在某个特定的点上，需要一段业务相关的代码——通用的程序架构无法实现这段代码，那么程序架构会在这个点上留一个“空”。<br>对于Java程序来说，程序架构在某个点上留下的“空”，可以以如下两种方式存在。</p>
-<ul>
-<li>以接口形式存在</li>
-<li>以抽象方法（非抽象的方法）的形式存在：这就是Activity的实现方式。开发者直接重写已经被定义的方法，通用的程序架构就会回调该方法来完成业务相关的处理</li>
-</ul>
+          安卓基础启动、关闭ActivityActivity启动其他Activity有两种方法：
 
-          
+startActivity(Intent intent)：启动其他的Activity
+startActivityForResult(Intent intent,int requestCode)：以指定的请求码（requestCode）启动Activity，而且程序将会获取新启动的Activity返回的结果（通过重写onActivityResult(..)方法来获取）
+
+一个Activity通过Intent来表达自己“意图”——想要启动哪个组件，被启动的组件既可以是Activity组件，也可以是Servic
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/15/8.15/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2132,6 +1950,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/huaji.png"
+                alt="法外狂徒罗某人" />
             
               <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2224,7 +2046,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2275,6 +2097,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2311,6 +2136,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
 
   
 
@@ -2323,6 +2158,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2363,6 +2205,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
+        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

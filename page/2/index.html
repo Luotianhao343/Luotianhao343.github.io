@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,9 +93,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -264,7 +264,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -326,6 +326,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/05/9.5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/05/9.5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,35 +362,42 @@
       
         
           
-            <h1 id="项目实现"><a href="#项目实现" class="headerlink" title="项目实现"></a>项目实现</h1><h2 id="项目需要实现的功能"><a href="#项目需要实现的功能" class="headerlink" title="项目需要实现的功能"></a>项目需要实现的功能</h2><p>ZigBee传感器</p>
-<ul>
-<li><p>ZigBee需要的传感器获取数据</p>
-<ul>
-<li>通过温湿度传感器获取大棚温度和湿度</li>
-<li>光照传感器获取大棚内的光照强度</li>
-</ul>
-</li>
-<li><p>传感器数据发送包到协调器</p>
-</li>
-</ul>
-<p>服务器端</p>
-<ul>
-<li>服务器解析由协调器发送来的包得到三种属性值</li>
-<li>将三种属性值插入数据库</li>
-<li>接收客户端的指令，进行操作<ul>
-<li>对数据库进行查询操作</li>
-<li>对传感器发送指令，并让传感器做出相应的操作</li>
-</ul>
-</li>
-</ul>
-<p>客户端</p>
-<ul>
-<li>查询大棚的温湿度、光强</li>
-<li>读取天气预报</li>
-<li>农作物生长最适宜的温湿度和光强查询</li>
-</ul>
+          项目实现项目需要实现的功能ZigBee传感器
+
+ZigBee需要的传感器获取数据
+
+通过温湿度传感器获取大棚温度和湿度
+光照传感器获取大棚内的光照强度
+
+
+传感器数据发送包到协调器
+
+
+服务器端
+
+服务器解析由协调器发送来的包得到三种属性值
+将三种属性值插入数据库
+接收客户端的指令，进行操作
+对数据库进行查询操作
+对传感器发送指令，并让传感器做出相应的操作
+
+
+
+客户端
+
+查询大棚的温湿度、光强
+读取天气预报
+农作物生长最适宜的温湿度和光强查询
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/05/9.5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -432,7 +449,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -494,6 +511,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/04/9.4.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/04/9.4.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -520,15 +547,18 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="数据库、数据库系统和数据库管理系统三者之间的关系是"><a href="#数据库、数据库系统和数据库管理系统三者之间的关系是" class="headerlink" title="数据库、数据库系统和数据库管理系统三者之间的关系是(  )"></a>数据库、数据库系统和数据库管理系统三者之间的关系是(  )</h3><p>数据库系统包括数据库和数据库管理系统 [数据库系统&gt;数据库管理系统&gt;数据库]</p>
-<h3 id="若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为"><a href="#若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为" class="headerlink" title="若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为"></a>若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为</h3><p>2和4</p>
-<h3 id="求最短路径的FLOYD算法的时间复杂度为（）。"><a href="#求最短路径的FLOYD算法的时间复杂度为（）。" class="headerlink" title="求最短路径的FLOYD算法的时间复杂度为（）。"></a>求最短路径的FLOYD算法的时间复杂度为（）。</h3><p>O(n3)</p>
-<h3 id="对n-n≥2-个权值均不相同的字符构成哈夫曼树，-下列-关于该-哈弗曼-树的叙述中，错误的是（A）"><a href="#对n-n≥2-个权值均不相同的字符构成哈夫曼树，-下列-关于该-哈弗曼-树的叙述中，错误的是（A）" class="headerlink" title="对n(n≥2)个权值均不相同的字符构成哈夫曼树， 下列 关于该 哈弗曼 树的叙述中，错误的是（A）"></a>对n(n≥2)个权值均不相同的字符构成哈夫曼树， 下列 关于该 哈弗曼 树的叙述中，错误的是（A）</h3><p>A.该树一定是一棵完全二叉树<br>B.树中一定没有度为1的结点<br>C.树中两个权值最小的结点一定是兄弟结点<br>D.树中任一非叶结点的权值一定不小于下一层任一结点的权值</p>
-<h3 id="数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（-C）"><a href="#数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（-C）" class="headerlink" title="数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（ C）?"></a>数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（ C）?</h3><p>A.数据字典、应用程序、审计档案、数据库后备副本<br>B.数据字典、应用程序、日志文件、审计档案<br>C.日志文件、数据库后备副本<br>D.数据字典、应用程序、数据库后备副本</p>
-<h3 id="Which-method-you-define-as-the-starting-point-of-new-thread-in-a-class-from-which-n-thread-can-be-execution"><a href="#Which-method-you-define-as-the-starting-point-of-new-thread-in-a-class-from-which-n-thread-can-be-execution" class="headerlink" title="Which method you define as the starting point of new thread in a class from which n thread can be execution?"></a>Which method you define as the starting point of new thread in a class from which n thread can be execution?</h3><p>public void run()</p>
-<h3 id="以下哪些不是链表的特征-ACD-？"><a href="#以下哪些不是链表的特征-ACD-？" class="headerlink" title="以下哪些不是链表的特征(ACD)？"></a>以下哪些不是链表的特征(ACD)？</h3><p>A.数据在内存中一定是连续的<br>B.插入或删除时，无需移动其他元素<br>C.可以随机访问表内的元素<br>D.需要事先估计存储空间</p>
-
-          
+          日积月累数据库、数据库系统和数据库管理系统三者之间的关系是(  )数据库系统包括数据库和数据库管理系统 [数据库系统&gt;数据库管理系统&gt;数据库]
+若用一个大小为6的数组来实现循环队列，队尾指针是rear、队头是front。当前rear和front的值分别为0和3，当从队列中删除一个元素，再加入两个元素后，rear和front的值分别为2和4
+求最短路径的FLOYD算法的时间复杂度为（）。O(n3)
+对n(n≥2)个权值均不相同的字符构成哈夫曼树， 下列 关于该 哈弗曼 树的叙述中，错误的是（A）A.该树一定是一棵完全二叉树B.树中一定没有度为1的结点C.树中两个权值最小的结点一定是兄
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/04/9.4.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -580,7 +610,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -642,6 +672,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/04/9.4.1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/04/9.4.1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -668,14 +708,16 @@
       
         
           
-            <h1 id="日积月累"><a href="#日积月累" class="headerlink" title="日积月累"></a>日积月累</h1><h3 id="以下关于Object类的说法正确的是（A）"><a href="#以下关于Object类的说法正确的是（A）" class="headerlink" title="以下关于Object类的说法正确的是（A）"></a>以下关于Object类的说法正确的是（A）</h3><p>A.Java中所有的类都直接或间接继承自Object，无论是否明确的指明，无论其是否是抽象类。<br>B.Java中的接口(interface)也继承了Object类<br>C.利用“==”比较两个对象时，Java调用继承自Object的equals方法，判断是否相等。<br>D.如果类的定义中没有重新定义toString()方法，则该类创建的对象无法使用toStrig()方法。</p>
-<h3 id="给出以下代码"><a href="#给出以下代码" class="headerlink" title="给出以下代码"></a>给出以下代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class TestObj&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Object o=new Object()&#123;</span><br><span class="line">            public boolean equals(Object obj)&#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        System.out.println(o.equals(“Fred”));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">请给出结果:()</span><br></pre></td></tr></table></figure>
-<p>true</p>
-<h3 id="关于数据库连接的程序，以下哪个语句的注释是错误的（-）"><a href="#关于数据库连接的程序，以下哪个语句的注释是错误的（-）" class="headerlink" title="关于数据库连接的程序，以下哪个语句的注释是错误的（ ）"></a>关于数据库连接的程序，以下哪个语句的注释是错误的（ ）</h3><p>A.Class.forName(“sun.jdbc.odbc.JdbcOdbcDriver”); //指定MySQL JDBC驱动程序<br>B.String url=“jdbc:odbc:student_access”;  指定数据源为student_access<br>C.Connection con=DriverManager.getConnection(url); //创建连接指定数据库的对象<br>D.Statement stmt=con.creatStatement();//创建执行SQL语句的Statement对象</p>
-<h3 id="如下代码的输出是"><a href="#如下代码的输出是" class="headerlink" title="如下代码的输出是"></a>如下代码的输出是</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package Test;</span><br><span class="line">public class Test &#123;</span><br><span class="line">    private static void test(int[] arr) &#123;</span><br><span class="line">        for (int i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (arr[i] % 2 == 0) &#123;</span><br><span class="line">                    throw new NullPointerException();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    System.out.print(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                System.out.print(&quot;e&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[]args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            test(new int[] &#123;0, 1, 2, 3, 4, 5&#125;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.out.print(&quot;E&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以得到的结论是（ eE）   </p>
-
-          
+          日积月累以下关于Object类的说法正确的是（A）A.Java中所有的类都直接或间接继承自Object，无论是否明确的指明，无论其是否是抽象类。B.Java中的接口(interface)也继承了Object类C.利用“==”比较两个对象时，Java调用继承自Object的equals方法，判断是否相等。D.如果类的定义中没有重新定义toString()方法，则该类创建的对象无法使用toStrig()方法。
+给出以下代码1234567891011public class TestObj&#123;    public static void main(String[] args)&#123;  
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/04/9.4.1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -727,7 +769,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -789,6 +831,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/27/8.27/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/27/8.27/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -815,71 +867,21 @@
       
         
           
-            <h1 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h1><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="1-试述关系模型的三个组成部分"><a href="#1-试述关系模型的三个组成部分" class="headerlink" title="1.试述关系模型的三个组成部分"></a>1.试述关系模型的三个组成部分</h3><p>关系模型是由关系数据结构、关系操作集合和关系完整性约束三部分组成。</p>
-<h3 id="2-简述关系数据语言的特点和分类"><a href="#2-简述关系数据语言的特点和分类" class="headerlink" title="2.简述关系数据语言的特点和分类"></a>2.简述关系数据语言的特点和分类</h3><p>关系代数语言<br>关系演算语言：元组关系演算语言和域关系演算语言<br>SQL：具有关系代数和关系演算双重特点的语言。<br>这些关系数据语言的共同特点是，语言具有完备的表达能力，是非过程化的集合操作语言，功能强，能嵌入高级语言中使用</p>
-<h3 id="3-定义并理解下列术语，说明他们之间的联系与区别"><a href="#3-定义并理解下列术语，说明他们之间的联系与区别" class="headerlink" title="3.定义并理解下列术语，说明他们之间的联系与区别"></a>3.定义并理解下列术语，说明他们之间的联系与区别</h3><ol>
-<li>域，笛卡尔积，关系，元组，属性<ul>
-<li>域：是一组具有相同数据类型的值的集合</li>
-<li>笛卡尔积：是域上的一种集合运算</li>
-<li>关系：D1xD2xD3x…xDn的子集在域D1,D2,D3,…,Dn上的关系表示为R(D1,D2,D3…,Dn)</li>
-<li>元组：笛卡尔积中每一个元素(d1,d2,….,dn)叫做一个元组</li>
-<li>属性：</li>
-</ul>
-</li>
-<li>主码，候选码，外码<ul>
-<li>主码：若一个关系有多个候选码，则选定其中一个为主码</li>
-<li>候选码：关系中的某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码</li>
-<li>外码：在本关系中不是主码，在另一关系中是主码</li>
-</ul>
-</li>
-<li>关系模式，关系，关系数据库<ul>
-<li>关系模式：关系模式是型，关系是值。关系模式是对关系的描述</li>
-<li>关系：关系是元组的集合，是关系模式在某一时刻的状态和内容</li>
-<li>关系数据库：关系数据库的值是这些关系模式在某一时刻对应的关系的集合</li>
-</ul>
-</li>
-</ol>
-<h3 id="4-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空"><a href="#4-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空" class="headerlink" title="4.试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空"></a>4.试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可为空</h3><p>实体完整性规则是指若属性A是基本关系R的主属性，则属性A不能为空值。<br>若属性F是基本关系R的外码，它与基本关系S的主码Ks相对应，则对于R中每个元组在F上的值必须为：或者取空值（F上的每个属性值均为空值）；或者等于S中某个元组的主码值。即属性F本身不是主属性，则可以取空值，否则不能取空值。</p>
-<h3 id="5-试述等值连接和自然连接的区别和联系"><a href="#5-试述等值连接和自然连接的区别和联系" class="headerlink" title="5.试述等值连接和自然连接的区别和联系"></a>5.试述等值连接和自然连接的区别和联系</h3><p>连接运算符是“=”的连接运算称为等值连接。它是从关系R与S的广义笛卡尔积中选取A，B属性值相等的那些元组<br>自然连接是一种特殊的等值连接，它要求两个关系中进行比较的分量必须是相同的属性组，并在结果中把重复的属性列去掉</p>
-<h3 id="6-关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？"><a href="#6-关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？" class="headerlink" title="6.关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？"></a>6.关系代数的基本运算有哪些？如何用这些基本的运算来表示其他运算？</h3><p>并，差，笛卡尔积，投影和选择5种运算为基本的运算。其他三种运算，即交，连接和除，均可以用这5种基本运算来表达。</p>
-<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="1-试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式"><a href="#1-试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式" class="headerlink" title="1.试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式"></a>1.试述关系模型的概念，定义并解释以下术语：关系，属性，域，元组，码，分量，关系模式</h3><p>关系模型是最重要的一种数据模型。<br>关系：一个关系对应通常说的一张表<br>元组：表中的一行即为一个元组<br>属性：表中的一列即为一个属性，给每一个属性起一个名称即属性名<br>码：也称码键。表中的某个属性组，它可以唯一确定一个元组<br>域：域是一组具有相同数据类型的值的集合<br>分量：元组中的一个属性值<br>关系模式：对关系的描述，一般表示为R(D1,D2,…Dn)</p>
-<h3 id="2-试述数据库系统的三级模式结构，并说明这种结构的优点是什么"><a href="#2-试述数据库系统的三级模式结构，并说明这种结构的优点是什么" class="headerlink" title="2.试述数据库系统的三级模式结构，并说明这种结构的优点是什么"></a>2.试述数据库系统的三级模式结构，并说明这种结构的优点是什么</h3><p>数据库系统的三级模式结构：外模式，模式，内模式。<br>外模式：是数据库用户能看见和使用的局部数数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示<br>模式：是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。模式描述的是数据的全局逻辑结构。外模式涉及的是数据的局部逻辑结构，通常是模式的子集<br>内模式：亦称存储模式，是数据在数据库系统内部的表示，即对数据的物理结构和存储方式的描述。数据库系统的三级模式是对数据的三个抽象级别，它把数据的具体组织留给DBMS管理，使用户能逻辑抽象地处理数据而不必关心数据在计算机内的表示和存储。为了能在内部实现这三个抽象层次的联系和转换，数据库系统在咋还三级模式之间提供了两层映像：外模式/模式映像和模式/内模式映像。正是这两层映像保证了数据库系统中的数据能够具有较高的逻辑独立性和物理独立性。</p>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="1-试述SQL的特点"><a href="#1-试述SQL的特点" class="headerlink" title="1.试述SQL的特点"></a>1.试述SQL的特点</h3><p>①综合统一。SQL语言集数据定义语言DDL，数据操纵语言DML，数据控制语言DCL的功能于一体<br>②高度非过程化<br>③面向集合的操作方式<br>④以同一种语法结构提供两种使用方式。SQL语言既是自含式语言，又是嵌入式语言</p>
-<h3 id="2-什么是基本表？什么是视图？两者的区别和联系是什么？"><a href="#2-什么是基本表？什么是视图？两者的区别和联系是什么？" class="headerlink" title="2.什么是基本表？什么是视图？两者的区别和联系是什么？"></a>2.什么是基本表？什么是视图？两者的区别和联系是什么？</h3><p>基本表是本身独立存在的表，在SQL中一个关系就对应一个表。视图是从一个或几个基本表导出的表。视图本身不堵你存储在数据库中，是一个虚表。即数据库中只存放视图的定义而不存放视图对应的数据，这些数据仍放在导出视图的基本表中。视图在概念上与基本表等同，用户可以如同基本表那样使用视图，可以在视图上再定义视图。</p>
-<h3 id="3-试述视图的优点"><a href="#3-试述视图的优点" class="headerlink" title="3.试述视图的优点"></a>3.试述视图的优点</h3><p>①视图能简化用户的操作<br>②视图使用户能以多种角度看待同一数据<br>③视图对重构数据库提供了一定程度的逻辑独立性<br>④视图能对机密数据提供安全保护</p>
-<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="1-什么是数据库的安全性"><a href="#1-什么是数据库的安全性" class="headerlink" title="1.什么是数据库的安全性"></a>1.什么是数据库的安全性</h3><p>数据库的安全性是指保护数据库以防止不合法的使用所造成的数据泄露，更改或破坏</p>
-<h3 id="2-试述实现数据库安全性控制的常用方法和技术"><a href="#2-试述实现数据库安全性控制的常用方法和技术" class="headerlink" title="2.试述实现数据库安全性控制的常用方法和技术"></a>2.试述实现数据库安全性控制的常用方法和技术</h3><p>实现数据库安全性控制的常用方法和技术有：①用户标识和鉴别：该方法由系统提供一定的方式让用户标识自己的名字或身份。每次用户要求进入系统时，由系统进行核对，通过鉴定后才提供系统的使用权②存取控制：通过用户权限定义和合法权检查，确保只有合法权限的用户访问数据库，所有未被授权的人员无法存取数据。③视图机制：为不同的用户定义视图，通过视图机制把要保密的数据对无权存取的用户隐藏起来，从而自动地对数据提供一定程度的安全保护④审计：建立审计日志，把用户对数据库的所有操作自动记录下来放入审计日志中，DBA可以利用审计跟踪的信息，重现导致数据库现有状况的一系列事件，找出非法存取数据的人、时间和内容等。⑤数据加密：对存储和传输的数据进行加密处理，从而使得不知道解密算法的人无法获取数据的内容</p>
-<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="1-什么是数据库的完整性"><a href="#1-什么是数据库的完整性" class="headerlink" title="1.什么是数据库的完整性"></a>1.什么是数据库的完整性</h3><p>数据库的完整性是指数据的正确性和相容性</p>
-<h3 id="2-数据库的完整性概念和数据库的安全性概念有什么区别和联系"><a href="#2-数据库的完整性概念和数据库的安全性概念有什么区别和联系" class="headerlink" title="2.数据库的完整性概念和数据库的安全性概念有什么区别和联系"></a>2.数据库的完整性概念和数据库的安全性概念有什么区别和联系</h3><p>数据的完整性和安全性是两个不同的概念，但是有一定的联系。前者是为了防止数据库中存在不符合语义的数据；防止错误信息的输入和输出，即所谓的垃圾进垃圾出所造成的无效操作和错误结果。后者是为了保护数据库防止恶意的破坏和非法的存取。也就是说，安全性措施的防范对象是非法用户和非法操作，完整性措施的防范对象是不合语义的数据。</p>
-<h3 id="3-什么是数据库的完整性约束条件？可分为哪几类？"><a href="#3-什么是数据库的完整性约束条件？可分为哪几类？" class="headerlink" title="3.什么是数据库的完整性约束条件？可分为哪几类？"></a>3.什么是数据库的完整性约束条件？可分为哪几类？</h3><p>完整性约束条件是指数据库中的数据应该满足的语义约束条件。一般可以分为六类：静态列级约束、静态元组约束、静态关系约束、动态列级约束、动态元组约束、动态关系约束</p>
-<h3 id="4-DBMS的完整性控制机制应具有哪些功能？"><a href="#4-DBMS的完整性控制机制应具有哪些功能？" class="headerlink" title="4.DBMS的完整性控制机制应具有哪些功能？"></a>4.DBMS的完整性控制机制应具有哪些功能？</h3><p>DBMS的完整性控制机制应该具有三个方面的功能：①定义功能，即提供定义完整性约束条件的机制②检查功能，即检查用户发出的操作请求是否违背了完整性约束条件③违约反应，如果发现用户的操作请求使数据违背了完整性约束条件，则采取一定的动作来保证数据的完整性</p>
-<h2 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h2><h3 id="1-试述数据库设计过程"><a href="#1-试述数据库设计过程" class="headerlink" title="1.试述数据库设计过程"></a>1.试述数据库设计过程</h3><p>一、需求分析；二、概念结构设计；三、逻辑结构设计；四、数据库的物理设计；五、数据库实施；六、数据库运行和维护</p>
-<h3 id="2-试述数据库设计各个阶段上的设计描述"><a href="#2-试述数据库设计各个阶段上的设计描述" class="headerlink" title="2.试述数据库设计各个阶段上的设计描述"></a>2.试述数据库设计各个阶段上的设计描述</h3><p>一、需求分析：准确了解与分析用户需求（包括数据与处理）<br>二、概念结构设计：通过对用户需求进行综合、归纳与抽象，形成一个独立于具体DBMS的概念模型<br>三、逻辑结构设计：将概念模型转换为某个DBMS所支持的数据模型，并对其优化<br>四、数据库物理设计：为逻辑数据模型选取一个最适合应用环境的物理结构（包括存储结构和存取方法）<br>五、数据库实施：设计人员运用DBMS提供的数据语言、工具及宿主语言，根据逻辑设计和物理设计的结果建立数据库，编制与调试应用程序，组织数据入库，并进行试运行<br>六、数据库运行和维护：在数据库系统运行过程中对其进行评价、调整与修改</p>
-<h2 id="第十一章"><a href="#第十一章" class="headerlink" title="第十一章"></a>第十一章</h2><h3 id="1-在数据库中为什么要用并发控制"><a href="#1-在数据库中为什么要用并发控制" class="headerlink" title="1.在数据库中为什么要用并发控制"></a>1.在数据库中为什么要用并发控制</h3><p>数据库是共享资源，通常有许多个事务同时运行。当多个事务并发地存取数据库时就会产生同时读取和/或修改同一数据的情况。若对并发操作不加控制就可能会存取和存储不正确的数据，破坏数据库的一致性。所以数据库管理系统必须提供并发控制机制</p>
-<h3 id="2-并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况"><a href="#2-并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况" class="headerlink" title="2.并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况"></a>2.并发操作可能会产生哪几类数据不一致？用什么方法能避免各种不一致的情况</h3><p>并发操作带来的数据不一致性包括三类：丢失修改、不可重复读、脏数据。<br>丢失修改：两个事务T1和T2读入同一数据并修改，T2提交的结果破坏了（覆盖了）T1提交的结果，导致T1的修改被丢失<br>不可重复读：事务T1读取数据后，事务T2执行更新操作，使T1无法再现前一次读取结果<br>脏数据：事务T1修改某一数据后，将其写会磁盘，事务T2读取统同一数据，T1由于某种原因撤销更改，T2读到的数据就是不正确的数据    </p>
-<p>避免不一致性的方法和技术就是并发控制。最常用的技术是封锁技术。也可以用其他技术，例如在分布式数据库系统中可采用时间戳方法来进行并发控制</p>
-<h3 id="3-什么是封锁？基本的封锁类型有几种？试述他们的含义"><a href="#3-什么是封锁？基本的封锁类型有几种？试述他们的含义" class="headerlink" title="3.什么是封锁？基本的封锁类型有几种？试述他们的含义"></a>3.什么是封锁？基本的封锁类型有几种？试述他们的含义</h3><p>封锁就是事务T在对某个数据对象例如表、记录等操作之前，先向系统发出请求，对其加锁。加锁后事务T对该数据对象就有了一定的控制，在事务T释放它的锁之前，其他的事务不能更新此数据对象。封锁是实现并发控制的一个非常重要的技术</p>
-<p>封锁的技术有两种：读锁（S）和写锁（X）；若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放了A的锁。若事务T对数据对象A加上S锁，则事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁</p>
-<h2 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h2><h3 id="1-登记日志文件时为什么必须先写日志文件，后写数据库？"><a href="#1-登记日志文件时为什么必须先写日志文件，后写数据库？" class="headerlink" title="1.登记日志文件时为什么必须先写日志文件，后写数据库？"></a>1.登记日志文件时为什么必须先写日志文件，后写数据库？</h3><p>把对数据的修改写到数据库中和把表示这个修改的日志记录写到日志文件中是两个不同的操作。有可能在这两个操作之间发生故障，即这两个写操作只完成了一个。如果先写了数据库修改，而在运行记录中没有登记这个修改，则以后就无法恢复这个修改了。如果先写日志文件，但没有修改数据库，按日志文件恢复时只不过是多执行一次不必要的UNDO操作，并不会影响数据库的正确性。</p>
-<h3 id="2-针对不同的故障，试给出恢复的策略和方法"><a href="#2-针对不同的故障，试给出恢复的策略和方法" class="headerlink" title="2.针对不同的故障，试给出恢复的策略和方法"></a>2.针对不同的故障，试给出恢复的策略和方法</h3><p>事务故障的恢复：事务故障是指事务在运行至正常种终止点前被终止，这时恢复子系统应利用日志文件撤销（UNDO）此事务对数据库进行的修改。事务故障的恢复是由系统自动完成的，对用户是透明的。<br>恢复步骤：</p>
-<ol>
-<li>反向扫描日志文件，查找该事务的更新操作</li>
-<li>对事务的更新操作进行逆操作</li>
-<li>继续反向扫描日志文件，查找该事务的其他更新操作，并做同样处理</li>
-</ol>
-<p>系统故障的恢复：系统故障造成数据库不一致状态的原因有两个，一是未完成事务对数据库的更新可能已写入数据库，二是已提交事务对数据库的更新可能还留在缓冲区没来得及写入数据库。因此恢复操作就是要撤销故障发生时未完成的事务，重做已完成的事务。<br>恢复步骤：</p>
-<ol>
-<li>正向扫描日志文件，找出在故障发生前已经提交的事务将其事务标识记入重做队列。同时找出故障发生时尚未完成的事务，将其事务标识记入撤销队列</li>
-<li>对撤销队列中的各个事务进行撤销处理</li>
-<li>对重做队列的各个事务进行重做处理</li>
-</ol>
-<p>介质故障的恢复：发生介质故障后，磁盘上的物理数据和日志文件被破坏，这是严重的一种故障，恢复方法是重装数据库，然后重做已完成的事务。<br>恢复步骤：</p>
-<ol>
-<li>装入最新的数据库后备副本，使数据库恢复到最近一次转储的一致性状态</li>
-<li>装入相应的日志文件副本，重做已完成的事务</li>
-</ol>
-
-          
+          数据库基础第二章1.试述关系模型的三个组成部分关系模型是由关系数据结构、关系操作集合和关系完整性约束三部分组成。
+2.简述关系数据语言的特点和分类关系代数语言关系演算语言：元组关系演算语言和域关系演算语言SQL：具有关系代数和关系演算双重特点的语言。这些关系数据语言的共同特点是，语言具有完备的表达能力，是非过程化的集合操作语言，功能强，能嵌入高级语言中使用
+3.定义并理解下列术语，说明他们之间的联系与区别
+域，笛卡尔积，关系，元组，属性
+域：是一组具有相同数据类型的值的集合
+笛卡尔积：是域上的一种集合运算
+关系：D1xD2xD3x…xDn的子集在域D1,D2,D3,…,Dn上的关系表示为R(D
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/27/8.27/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -931,7 +933,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -993,6 +995,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/23/8.23.3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/23/8.23.3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1019,34 +1031,41 @@
       
         
           
-            <h1 id="健身基础"><a href="#健身基础" class="headerlink" title="健身基础"></a>健身基础</h1><h2 id="全身各块肌肉，较好的训练动作"><a href="#全身各块肌肉，较好的训练动作" class="headerlink" title="全身各块肌肉，较好的训练动作"></a>全身各块肌肉，较好的训练动作</h2><p>每块肌肉一个专属动作：</p>
-<ol>
-<li>最佳整体胸肌增长，哑铃平板卧推</li>
-<li>最佳背阔肌宽度增长，宽握高位下拉（宽距引体）</li>
-<li>最佳整体三角肌增长，哑铃推举</li>
-<li>最佳二头肌增长，窄距反握引体向上</li>
-<li>最佳三头肌增长，双杠臂屈伸</li>
-<li>最佳股四头肌训练，颈前深蹲</li>
-<li>最佳腘绳肌和臀部肌肉增长，罗马尼亚硬拉</li>
-<li>最佳斜方肌增长，杠铃耸肩</li>
-<li>最佳整体腹部训练，卷腹</li>
-<li>最佳核心力量训练，平板支撑</li>
-<li>最佳整体肌肉增长，深蹲</li>
-</ol>
-<h2 id="增肌9要点"><a href="#增肌9要点" class="headerlink" title="增肌9要点"></a>增肌9要点</h2><p>要点：</p>
-<ol>
-<li>1个小时（训练控制在1小时内）</li>
-<li>2个部位</li>
-<li>3个动作</li>
-<li>4组</li>
-<li>一日5餐</li>
-<li>6个部位（胸肩背腿腹臀）</li>
-<li>7天（一个周期7天）</li>
-<li>8RM</li>
-<li>9个星期（开始休息1星期）</li>
-</ol>
+          健身基础全身各块肌肉，较好的训练动作每块肌肉一个专属动作：
+
+最佳整体胸肌增长，哑铃平板卧推
+最佳背阔肌宽度增长，宽握高位下拉（宽距引体）
+最佳整体三角肌增长，哑铃推举
+最佳二头肌增长，窄距反握引体向上
+最佳三头肌增长，双杠臂屈伸
+最佳股四头肌训练，颈前深蹲
+最佳腘绳肌和臀部肌肉增长，罗马尼亚硬拉
+最佳斜方肌增长，杠铃耸肩
+最佳整体腹部训练，卷腹
+最佳核心力量训练，平板支撑
+最佳整体肌肉增长，深蹲
+
+增肌9要点要点：
+
+1个小时（训练控制在1小时内）
+2个部位
+3个动作
+4组
+一日5餐
+6个部位（胸肩背腿腹臀）
+7天（一个周期7天）
+8RM
+9个星期（开始休息1星期）
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/23/8.23.3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1098,7 +1117,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1160,6 +1179,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/23/8.23.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/23/8.23.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1186,140 +1215,16 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。   </p>
-<p>不仅如此，Android还内置了HttpClient，这样可以非常方便地发送HTTP请求，并获取HTTP响应，通过内置HttpClient，Android简化了与网站之间的交互。令人遗憾的是，Android并未内置对Web Service的支持，为了弥补这种不足，可以利用ksoap2-android项目在Android应用中调用远程Web Service。</p>
-<h2 id="基于TCP协议的网络通信"><a href="#基于TCP协议的网络通信" class="headerlink" title="基于TCP协议的网络通信"></a>基于TCP协议的网络通信</h2><p>TCP/IP通信协议是一种可靠的网络协议，它在通信的两端各建立一个Socket，从而在通信的两端之间形成了网络虚拟链路。一旦建立了它，两端的程序就可以通过它进行通信。Java对基于TCP协议的网络通信提供了良好的封装，Java使用Socket对象来代表两端的通信接口，并通过Socket产生IO流来进行网络通信。</p>
-<h3 id="TCP协议基础"><a href="#TCP协议基础" class="headerlink" title="TCP协议基础"></a>TCP协议基础</h3><p>IP协议是Internet上使用的一个关键协议，它的全称是Internet Protocol，即Internet协议，简称IP协议。通过使用IP协议，使Internet成为一个允许连接不同类型的计算机和不同的操作系统的网络。<br>要使两台计算机彼此之间进行通信，两台计算机必须使用同一种“语言”，IP协议只保证计算机能发送和接受分组数据。IP协议负责将消息从一个主机传送到另一个主机上，消息在传送的过程中被分割成一个个小包。<br>尽管计算机通过安装IP软件，保证了计算机之间可以发送和接收数据，但IP协议还不能解决数据分组在传输过程中可能出现的问题。因此，若要解决可能出现的问题，连接上Internet的计算机还需要安装TCP协议来提供可靠并且无差错的通信服务。<br>TCP协议被称为一种端对端协议。这是因为它为两台计算机之间的连接起了重要作用：当一台计算机需要与另一台远程计算机连接时，TCP协议会让它们建立一个连接——用于发送和接收数据的虚拟链路。<br>TCP协议负责收集这些信息包，并将其按适当的次序放好发送，在接收端收到后再将其正确地还原。TCP协议保证了数据包在传送中准确无误。TCP协议使用重发机制：当一个通信实体发送一个消息给另一个通信实体之后，需要收到另一个通信实体的确认信息，如果没有收到另一个通信实体的确认信息，则会再次重发刚才发送的消息。</p>
-<h3 id="使用ServerSocket创建TCP服务器端"><a href="#使用ServerSocket创建TCP服务器端" class="headerlink" title="使用ServerSocket创建TCP服务器端"></a>使用ServerSocket创建TCP服务器端</h3><p>Java中能接收其他通信实体连接请求的类是ServerSocket，ServerSocket对象用于监听来自客户端的Socket连接，如果没有连接，它将一直处于等待状态。ServerSocket包含一个监听来自客户端连接请求的方法：</p>
-<ul>
-<li>Socket accept()：如果接收到一个客户端Socket的连接请求，该方法将返回一个与连接客户端Socket对应的Socket；否则该方法将一直处于等待状态，线程也被阻塞</li>
-<li>ServerSocket(int port)：用指定的端口port来创建一个ServerSocket。该端口有效整数值：0~65535</li>
-<li>ServerSocket(int port,int backlog）：增加一个用来改变连接队列长度的参数backlog</li>
-<li>ServerSocket(int port,int backing,InetAddress localAddr)：在机器存在多个IP地址的情况下，允许通过localAddr这个参数来指定将该ServerSocket绑定到指定的IP地址</li>
-</ul>
-<p>当ServerSocket使用完毕后，调用close（）方法来关闭该ServerSocket。</p>
-<h3 id="使用Socket进行通信"><a href="#使用Socket进行通信" class="headerlink" title="使用Socket进行通信"></a>使用Socket进行通信</h3><p>客户端通常使用Socket的构造器来连接到指定服务器，Socket通常可提供如下两个构造器。 </p>
-<ul>
-<li>Socket(InetAddress/String remoteAddress,int port)：创建连接到指定远程主机、远程端口的Socket，该构造器没有指定本地地址、本地端口，默认使用本地主机的默认IP地址，默认使用系统动态分配的端口</li>
-<li>Socket(InetAddress/String remoteAddress,int port,InetAddress localAddr,int localPort)：创建连接到指定远程主机、远程端口的Socket，并指定本地IP地址和本地端口，适用于本地主机有多个IP地址的情形</li>
-</ul>
-<p>Socket提供了如下两个方法来获取输入流和输出流：</p>
-<ul>
-<li>InputStream getInputStream()：返回该Socket对象对应的输入流，让程序通过该输入流从Socket中取出数据</li>
-<li>OutputStream getOutputStream()：返回该Socket对象对应的输入流，让程序通过该输入流向Socket中输入数据</li>
-</ul>
-<p>Android已经不允许在UI线程中建立网络连接，需要启动新线程来建立网络连接。</p>
-<h3 id="加入多线程"><a href="#加入多线程" class="headerlink" title="加入多线程"></a>加入多线程</h3><p>使用传统的BufferedReader的readLine()方法读取数据时，在该方法成功返回之前，线程被阻塞，程序无法继续执行。考虑到这个原因，服务器应该为每个Socket单独启动一条线程，每条线程负责与一个客户端进行通信。<br>客户端读取服务器的线程同样会被阻塞，所以系统应该单独启动一条线程，该线程专门负责读取服务器数据。</p>
-<p>每个客户端应该包含两条线程：一条负责生成主界面，响应用户动作，并将用户输入的数据写入Socket对应的输出流中；另一条负责读取Socket对应输入流中的数据（从服务器发送过来的数据），并负责将这些数据在程序界面上显示出来</p>
-<h2 id="使用URL访问网络资源"><a href="#使用URL访问网络资源" class="headerlink" title="使用URL访问网络资源"></a>使用URL访问网络资源</h2><p>URL(Uniform Resource Locator)对象代表统一资源定位器，它是指向互联网“资源”的指针。资源可以是简单的文件或目录，也可以是对更复杂的对象的引用，例如对数据库或搜索引擎的查询。通常情况，URL可以有协议名、主机、端口和资源组成，即满足如下格式：<code>protocol://host:port/resourceName</code>我们可以把URL理解成URI的特例，Java的URI不能用于定位任何资源，它的唯一作用就是解析。URL包含一个可打开到达资源的输入流。</p>
-<p>URL类提供了多个构造器用于创建URL对象，一旦获得URL对象之后，可以调用如下常用方法来访问该URL对应的资源：</p>
-<ul>
-<li>String getFile()：获取此URL的资源名</li>
-<li>String getHost()：获取此URL的主机名</li>
-<li>String getPath()：获取此URL的路径部分</li>
-<li>int getPort()：获取此URL的端口号</li>
-<li>String getProtocol()：获取此URL的协议名称</li>
-<li>String getQuery()：获取此URL的查询字符串部分</li>
-<li>URLConnection openConnection()：返回一个URLConnection对象，它表示到URL所引用的远程对象的连接</li>
-<li>InputStream openStream()：打开与此URL的连接，并返回一个用于读取该URL资源的InputStream</li>
-</ul>
-<h3 id="使用URL读取网络资源"><a href="#使用URL读取网络资源" class="headerlink" title="使用URL读取网络资源"></a>使用URL读取网络资源</h3><p>URL对象提供的openStream()可以读取该URL资源的InputStream，通过该方法可以非常方便地读取远程资源。</p>
-<h3 id="使用URLConnection提交请求"><a href="#使用URLConnection提交请求" class="headerlink" title="使用URLConnection提交请求"></a>使用URLConnection提交请求</h3><p>URL的openConnection()方法将返回一个URLConnection对象，该对象表示应用程序和URL之间的通信连接。程序可以通过URLConnection实例向该URL发送请求，读取URL引用的资源。<br>通常创建一个和URL的连接，并发送请求、读取此URL引用的资源需要如下几个步骤。</p>
-<ol>
-<li>通过调用URL对象的openConnection()方法来创建URLConnection对象</li>
-<li>设置URLConnection的参数和普通请求属性</li>
-<li>如果只是发送GET请求，那么使用connect方法建立和远程资源之间的实际连接即可；如果需要发送POST方式的请求，则需要获取URLConnection实例对应的输出流来发送请求参数</li>
-<li>远程资源变为可用，程序可以访问远程资源的头字段，或者通过输入流读取远程资源的数据</li>
-</ol>
-<p>在建立和远程资源的实际连接之前，程序可以通过如下方法来设置请求头字段</p>
-<ul>
-<li>setAllowUserInteraction：设置该URLConnection的allowUserInteraction请求头字段的值</li>
-<li>setDoInput：设置该URLConnection的doInput请求头字段的值</li>
-<li>setDoOutput：设置该URLConnection的doOutput请求头字段的值</li>
-<li>setIfModifiedSince：设置该URLConnection的ifMOdifiedSince请求头字段的值</li>
-<li>setUseCaches：设置该URLConnection的useCaches请求头字段的值，除此之外，还可以使用如下方法来设置或者增加通用的头字段<ul>
-<li>setRequestProperty(String key,String value)：设置该URLConnection的key请求头字段的值为value</li>
-<li>addRequestProperty(String key,String value)：为该URLConnection的key请求头字段增加value值，该方法并不会覆盖原请求头字段的值，而是将新值追加到原请求头字段中</li>
-</ul>
-</li>
-</ul>
-<p>当远程资源可用之后，程序可以使用以下方法来访问头字段和内容</p>
-<ul>
-<li>Object getContent()：获取该URLConnection的内容</li>
-<li>String getHeaderField(String name)：获取指定响应头字段的值</li>
-<li>getInputStream()：返回该URLConnection对应的输入流，用于获取URLConnection响应的内容</li>
-<li>getOutputStream()：返回该URLConnection对应的输出流，用于向URLConnection发送请求参数</li>
-</ul>
-<p><strong>PS：如果既要使用输入流来读取URLConnection响应的内容，也要使用输出流发送请求参数，一定要先使用输出流，再使用输入流</strong></p>
-<h3 id="使用HttpURLConnection"><a href="#使用HttpURLConnection" class="headerlink" title="使用HttpURLConnection"></a>使用HttpURLConnection</h3><p>HttpURLConnection继承了URLConnection，因此也可用于向指定网站发送GET请求、POST请求。在URLConnection的基础上提供了如下便捷的方法</p>
-<ul>
-<li>int getResponseCode()：获取服务器的响应代码</li>
-<li>String getResponseMessage()：获取服务器的响应信息</li>
-<li>String getRequestMethod()：获取发送请求的方法</li>
-<li>void setRequestMethod(String method)：设置发送请求的方法</li>
-</ul>
-<p>为了实现多线程下载，步骤如下：</p>
-<ol>
-<li>创建URL对象</li>
-<li>获取指定URL对象所指向资源的大小（由getContentLength()方法实现），此处用到HttpURLConnection类</li>
-<li>在本地磁盘上创建一个与网络资源相同大小的空文件夹</li>
-<li>计算每条线程应该下载网络资源的哪个部分（从哪个字节开始，到哪个字节结束）</li>
-<li>依次创建、启动多条线程来下载网络资源的指定部分</li>
-</ol>
-<h3 id="使用Apache-HttpClient"><a href="#使用Apache-HttpClient" class="headerlink" title="使用Apache HttpClient"></a>使用Apache HttpClient</h3><p>在一般情况下，如果只是需要向Web站点的某个简单页面提交请求并获取服务器响应，则完全可以使用前面所介绍的HttpURLConnection完成。但在大多数情况下，Web网页可能没这么简单，这些页面不是通过一个简单的URL就可以访问的，可能需要用户登录，而且具有相应的权限才可以访问该界面。<br>为了更好地处理向Web站点请求，包括处理Session、Cookie等细节问题，Apache开源组织提供了一个HttpClient项目，它是一个简单的HTTP客户端，可以用于发送HTTP请求，接收HTTP响应。但不会缓存服务器的响应，不能执行HTML页面中嵌入的JavaScript代码；也不会对页面内容进行解析和处理。（HttpClient是一个增强的HttpURLConnection）<br>使用HttpClient发送请求、接收响应，步骤：</p>
-<ol>
-<li>创建HttpClient对象</li>
-<li>如果需要发送GET请求，则创建HttpGet对象；如果需要发送POST请求，则创建HttpPost对象</li>
-<li>如果需要发送请求参数，则可调用HttpGet、HttpPost共同的setParams(HttpParams params)方法来添加请求参数；对于HttpPost对象而言，也可调用setEntity(HttpEntity entity)方法来设置请求参数</li>
-<li>调用HttpClient对象的execute(HttpUriRequest request)方法发送请求，执行该方法返回一个HttpResponse</li>
-<li>调用HttpResponse的getAllHeaders()、getHeaders(String name)等方法可获取服务器的响应头；调用HttpResponse的getEntity()方法可获取HttpEntity对象，该对象包装了服务器的响应内容。程序可通过该对象获取服务器的响应内容</li>
-</ol>
-<p>程序只要第一次通过HttpClient登录系统，接下来即可通过该HttpClient访问被保护的资源。</p>
-<h3 id="使用WebView浏览网页"><a href="#使用WebView浏览网页" class="headerlink" title="使用WebView浏览网页"></a>使用WebView浏览网页</h3><p>WebView的用法与普通ImageView组件的用法基本相似，它提供了大量方法来执行浏览器操作，例如如下常用方法：</p>
-<ul>
-<li>void goBack()：后退</li>
-<li>void goForward()：前进</li>
-<li>void loadUrl(String url)：加载指定URL对应的网页</li>
-<li>boolean zoomln()：放大网页</li>
-<li>boolean zoomOut()：缩小网页</li>
-</ul>
-<p>通过WebView的loadUrl()方法来加载显示指定URL对应的页面</p>
-<h3 id="使用WebView加载HTML代码"><a href="#使用WebView加载HTML代码" class="headerlink" title="使用WebView加载HTML代码"></a>使用WebView加载HTML代码</h3><p>WebView提供了一个loadData(String data,String mimeType,String encoding)方法，该方法用于加载并显示HTML代码。但在实际使用过程中，当它加载包含中文的HTML内容时，WebView将会显示乱码。<br>不过loadDataWithBaseURL(String baseUrl,String data,String mimeType,String encoding,String historyUrl)方法，该方法是loadData(String data,String mimeType,String encoding)方法的增强版，他不会产生乱码。</p>
-<p>参数：</p>
-<ul>
-<li>data：指定需要加载的HTML代码</li>
-<li>mimeType：指定HTML代码的MIME类型，对于HTML代码可指定为text/html</li>
-<li>encoding：指定HTML代码编码所使用的字符集，比如GBK</li>
-</ul>
-<h3 id="使用WebView中的JavaScript调用Android方法"><a href="#使用WebView中的JavaScript调用Android方法" class="headerlink" title="使用WebView中的JavaScript调用Android方法"></a>使用WebView中的JavaScript调用Android方法</h3><p>很多时候，WebView加载的页面是带有JavaScript脚步的，比如页面上有一个按钮，用户单击按钮时将会弹出一个提示框，或打开一个列表框。由于该按钮是HTML页面上的按钮，它只能激发一段JavaScript脚步，这就要让JavaScript脚步来调用Android方法。<br>在WebView的JavaScript中调用Android方法只要如下三个步骤：</p>
-<ol>
-<li>调用WebView关联的WebSettings的setJavaScriptEnabled(true)启用JavaScript调用功能</li>
-<li>调用WebView的addJavascriptInterface(Object object,String name)方法将object对象暴露给JavaScript脚步</li>
-<li>在JavaScript脚本中通过刚才暴露的name对象调用Android方法</li>
-</ol>
-<p>JavaScript脚本可以直接调用Java对象的方法</p>
-<h2 id="使用Web-Service进行网络编程"><a href="#使用Web-Service进行网络编程" class="headerlink" title="使用Web Service进行网络编程"></a>使用Web Service进行网络编程</h2><p>为了让Android应用与远程服务器进行交互，可以借助于Java的RMI技术，但这要求远程服务器程序必须采用Java实现；也可以借助于CORBA技术，但是这种技术显得过于复杂。除此之外，Web Service是一种不错的选择。</p>
-<h3 id="Web-Service平台概述"><a href="#Web-Service平台概述" class="headerlink" title="Web Service平台概述"></a>Web Service平台概述</h3><p>Web Service平台主要涉及的技术有SOAP（Simple Object Access Protocol，简单对象访问协议）,WSDL（Web Service Description Language，Web Service描述语言）,UDDI（Universal Description,Description and Integration，统一描述、发现和整合协议）</p>
-<ol>
-<li><p>SOAP是一种具有扩展性的XML消息协议。SOAP允许一个应用程序向另一个应用程序发送XML消息，SOAP消息是从SOAP发送者传至SOAP接收者的单路消息，任何应用程序均可作为发送者或接收者。SOAP仅定义消息结构和消息处理的协议，与底层的传输协议独立。因此，SOAP协议能通过HTTP,JMS,SMTP协议传输</p>
-<ul>
-<li>&lt;Envelope…/&gt;根元素，SOAP消息对应的XML文档以该元素作为根元素</li>
-<li>可选的&lt;Header../&gt;元素，包含SOAP消息的头信息</li>
-<li>必须的&lt;Body../&gt;元素，包含所有的调用和响应信息</li>
-</ul>
-</li>
-<li><p>WSDL使用XML描述Web Service，包括访问和使用Web Service所必须的信息，定义该Web Service的位置、功能及如何通信等描述信息</p>
-<ul>
-<li>WHAT部分：用于定义Web Service所提供的操作或者方法。由WSDL中&lt;type../&gt;,&lt;message../&gt;和&lt;portType../&gt;元素定义</li>
-<li>HOW部分：用于定义如何访问Web Service，包括数据格式详情和访问Web Service操作的必要协议</li>
-<li>WHERE部分：用于定义Web Service位于何处。该部分使用&lt;service…/&gt;元素定义</li>
-</ul>
-</li>
-<li><p>UDDI是一套信息注册规范，它基于Web，是分布式。</p>
-</li>
-</ol>
-
-          
+          安卓基础Android完全支持JDK本身的TCP,UDP网络通信API，也可以使用ServerSocket、Socket来建立基于TCP/IP协议的网络通信，还可以使用DatagramSocaket、Datagrampacket、MulticastSocket来建立基于UDP协议的网络通信。Android也支持JDK提供的URL、URLConnection等网络通信API。   
+不仅如此，Android还内置了HttpClient，这样可以非常方便地发送HTTP请求，并获取HTTP响应，通过内置HttpClient，Android简化了与网站之间的交互。令人遗憾的是，Android并未内置对
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/23/8.23.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1371,7 +1276,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1433,6 +1338,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/23/8.23/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/23/8.23/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1459,144 +1374,24 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="音频和视频的播放"><a href="#音频和视频的播放" class="headerlink" title="音频和视频的播放"></a>音频和视频的播放</h2><h3 id="使用MediaPlayer播放音频"><a href="#使用MediaPlayer播放音频" class="headerlink" title="使用MediaPlayer播放音频"></a>使用MediaPlayer播放音频</h3><p>当程序控制MediaPlayer对象装载音频完成之后，程序可以调用MediaPlayer的如下三个方法进行播放控制：</p>
-<ul>
-<li>start()：开始或恢复播放</li>
-<li>stop()</li>
-<li>pause()</li>
-</ul>
-<p>为了让MediaPlayer来装载指定音频文件，MediaPlayer提供了如下简单的静态方法：</p>
-<ul>
-<li>static MediaPlayer create(Context context,Uri uri)：从指定Uri来装载音频文件，并返回新创建的MediaPlayer对象</li>
-<li>static MediaPlayer create(Context context,int resid)：从resid资源ID对应的资源文件中装载音频文件，并返回新创建的MediaPlayer对象</li>
-</ul>
-<p>上面两个方法不适用于MediaPlayer循环播放多个音频文件，因为每次都会返回新创建的MediaPlayer对象。此时可通过MediaPlayer的setDataSource()方法来装载指定的音频文件。MediaPlayer提供了如下方法：</p>
-<ul>
-<li>setDataSource(String path)：指定装载path路径下所代表的文件</li>
-<li>setDataSource(FileDescriptor fd,long offset,long length)：指定装载fd所代表的文件中从offset开始、长度为length的文件内容</li>
-<li>setDataSource(FileDescriptor fd)：指定装载fd所代表的文件</li>
-<li>setDataSource(Context context,Uri uri)：指定装载uri所代表的文件</li>
-</ul>
-<p>执行了上面的setDataSource（）方法后，MediaPlayer并未真正去装载那些音频文件，还需要调用MediaPlayer的prepare（）方法去真正装载音频文件。</p>
-<p>MediaPlayer还提供了一些绑定事件监听器的方法，用于监听MediaPlayer播放过程中所发生的特定事件。绑定事件监听器的方法如下：</p>
-<ul>
-<li>setOnCompletionListener(MediaPlayer.OnCompletionListener listener)：为MediaPlayer的播放完成事件绑定事件监听器</li>
-<li>setOnErrorListener(MediaPlayer.OnErrorListener listener)：为MediaPlayer的播放错误事件绑定事件监听器</li>
-<li>setOnPreparedListener(MediaPlayer.OnpreparedListener listener)：当MediaPlayer调用prepare()方法时触发该监听器</li>
-<li>setOnSeekCompleteListener(MediaPlayer.OnSeekCompleteListener listener)：当MediaPlayer调用seek()方法时触发该监听器</li>
-</ul>
-<p>1.播放应用的资源文件，播放应用的资源文件需要两步（音频资源文件一般放在Android应用中的/res/raw目录下）：</p>
-<ol>
-<li>调用MediaPlayer的creat（Context Context,int resid）方法装载指定的资源文件</li>
-<li>调用MediaPlayer的start(),pause(),stop()等方法控制播放即可</li>
-</ol>
-<p>2.播放应用的原始资源文件：</p>
-<ol>
-<li>调用Context的getAssets（）方法获取应用的AsserManager</li>
-<li>调用AssetManager对象的openFd（String name）方法打开指定的原始资源文件，该方法返回一个AssetFileDescriptor对象</li>
-<li>调用AssetFileDescriptor的getFileDescriptor（）、getStartOffset（）、getLength（）方法来获取音频文件的FileDescriptor、开始位置、长度等。</li>
-<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource(FileDescriptor fd,long offset,long length)方法来装载音频资源</li>
-<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
-<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
-</ol>
-<p>3.播放外部存储器上的音频文件</p>
-<ol>
-<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource（String path）方法装载指定的音频文件</li>
-<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
-<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
-</ol>
-<p>4.播放来自网络的音频文件</p>
-<p>方式：①直接使用MediaPlayer的静态create（Context context，Uri uri<br>）方法②调用MediaPlayer的setDataSource(Context context,Uri uri)方法装载指定Uri对应的音频文件</p>
-<p>以第二种方式播放来自网络的音频文件的步骤如下：</p>
-<ol>
-<li>根据网络的音频文件所在的文字创建Uri对象</li>
-<li>创建MediaPlayer对象，并调用MediaPlayer对象的setDataSource(Context context,Uri uri)方法装载Uri对应的音频文件</li>
-<li>调用MediaPlayer对象的prepare（）方法准备音频</li>
-<li>调用MediaPlayer的start（），pause（），stop（）方法控制播放</li>
-</ol>
-<p>MediaPlayer除了调用prepare（）方法来准备声音之外，还可以调用prepareAsync（）来准备声音。prepareAsync（）是异步的，他不会阻塞当前的UI进程</p>
-<p>MediaPlayer的状态图：</p>
-<p><img src="https://img-blog.csdn.net/20160828235015958" alt="MediaPlayer状态图"></p>
-<h3 id="音乐特效控制"><a href="#音乐特效控制" class="headerlink" title="音乐特效控制"></a>音乐特效控制</h3><p>Android播放音乐的均衡器靠AudioEffect及其子类完成的。它的子类如下：</p>
-<ul>
-<li>AcousticEchoCanceler：取消回声控制器</li>
-<li>AutomaticGainControl：自动增益控制器</li>
-<li>NoiseSuppressor：噪声压制控制器</li>
-<li>BassBoost：重低音控制器（setStrength（short strength）方法来设置重低音的强度）</li>
-<li>Equalizer：均衡控制器（getNumberOfPresets()方法获取该均衡器所有预设的音场并提供了getPresetName()方法获取预设音场名称。获取Equalizer对象后，可调用它的getNumberOfBands()方法获取该均衡器支持的总频率，再调用getCenterFreq(short band)方法根据索引来获取频率。当用户想为某个频率的均衡器设置参数值时，可调用setBandLevel(Short band,short level)方法进行设置</li>
-<li>PresetReverb：预设音场控制器（调用setPreset(short preset)方法设置使用预设置的音场。</li>
-<li>Visualizer：示波器（它不用于控制音乐播放效果，他只是显示音乐的播放波形。为了实时显示该示波器的数据需要为该组件设置一个OnDataCaptureListener监听器，该监听器将负责更新波形显示组件的界面）</li>
-</ul>
-<p>上述前三个子类的用法很简单，只要调用它们的静态create（）方法创建相应的实例，然后调用它们的isAvailable（）方法判断是否可用，再调用setEnabled（boolean enable）方法启动相应效果即可。</p>
-<p>后四个类，都需要调用构造器来创建实例。创建实例时，同样需要传入一个audioSession参数，为了启用他们，同样需要调用AudioEffect基类的setEnabled（true）方法。</p>
-<h3 id="使用SoundPool播放音效"><a href="#使用SoundPool播放音效" class="headerlink" title="使用SoundPool播放音效"></a>使用SoundPool播放音效</h3><p>MediaPlayer存在如下缺点：</p>
-<ul>
-<li>资源占用量较高，延迟时间较长</li>
-<li>不支持多个音频同时播放</li>
-</ul>
-<p>Android系统SoundPool提供了一个Builder内部类，该内部类专门用于创建SoundPool。<br>SoundPool提供了如下4个load()重载方法：</p>
-<ul>
-<li>int load(Context context,int resId,int priority)：从resId所对应的资源加载声音</li>
-<li>int load(FileDescriptor fd,long offset,long length,int priority)：加载fd所对应的文件中从offset开始、长度为length的声音</li>
-<li>int load(AssetFileDescriptor afd,int priority)：从afd所对应的文件中加载声音</li>
-<li>int load(String path,int priority)：从path对应的文件去加载声音</li>
-</ul>
-<p>该priority参数目前没有任何作用，Android建议将该参数设为1，保持和未来的兼容性。上面4个方法加载声音之后，都会返回该声音的ID，以后程序就可以通过该声音的ID来播放指定声音了。SoundPool提供的播放指定声音的方法如下：</p>
-<ul>
-<li>int play(int soundID,float leftVolume,float rightVolume,int priority,int loop,float rate)：该方法的第一个参数指定播放哪个声音；priority指定播放声音的优先级，数值越大，优先级越高；loop指定是否循环，0为不循环，-1为循环；rate指定播放的比率，数字可从0.5到2,1为正常比率。</li>
-</ul>
-<p>归纳起来，使用SoundPool播放声音的步骤如下：</p>
-<ol>
-<li>调用SoundPool.Builder的构造器创建SoundPool.Builder对象，并可通过该Builder对象为SoundPool设置属性</li>
-<li>调用SoundPool的构造器创建SoundPool对象</li>
-<li>调用SoundPool对象的load()方法从指定资源、文件中加载声音。最好使用HashMap&lt;Integer,Integer&gt;来管理所加载的声音</li>
-<li>调用SoundPool的play()方法播放声音</li>
-</ol>
-<p>实际使用SoundPool播放声音时有如下几点需要注意：SoundPool虽然可以一次性加载多个声音，但由于内存限制，因此避免使用SoundPool来播放歌曲或者做游戏背景音乐，只有那些短促、密集的声音才考虑用SoundPool进行播放。</p>
-<h3 id="使用VideoView播放视频"><a href="#使用VideoView播放视频" class="headerlink" title="使用VideoView播放视频"></a>使用VideoView播放视频</h3><p>使用步骤：</p>
-<ol>
-<li>在界面布局文件中定义VideoView组件，或者在程序中创建VideoView组件</li>
-<li>调用VideoView的如下两个方法来加载指定视频<ul>
-<li>setVideoPath(String path)</li>
-<li>setVideoUri(Uri uri)</li>
-</ul>
-</li>
-<li>调用VideoView的start(),stop(),pause()方法来控制视频播放</li>
-</ol>
-<p>实际上与VideoView结合使用的还有一个MediaController类，它提供一个友好的图形控制界面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//获得对象</span><br><span class="line">MediaController mController = new MediaController(this);</span><br><span class="line">//设置videoView与mController建立关联</span><br><span class="line">videoView.setVideoPath(video.getAbsolutePath());</span><br><span class="line">videoView.setMediaController(mController);</span><br><span class="line">mController.setMediaPlayer(videoView);</span><br><span class="line">videoView.requestFocus();</span><br></pre></td></tr></table></figure>
-<h3 id="使用MediaRecorder录制音频"><a href="#使用MediaRecorder录制音频" class="headerlink" title="使用MediaRecorder录制音频"></a>使用MediaRecorder录制音频</h3><p>使用步骤：</p>
-<ol>
-<li>创建MediaRecorder对象</li>
-<li>调用MediaRecorder对象的setAudioSoruce()方法设置声音来源，一般传入MediaRecorder.AudioSource.MIC参数指定录制来自麦克风的声音</li>
-<li>调用MediaRecorder对象的setOutputFormat()方法设置所录制的音频文件格式</li>
-<li>调用MediaRecorder对象的setAudioEncoder(),setAudioEncodingBitRate(int bitRate),setAudioSamplingRate(int samplingRate)方法设置所录制的声音编码格式、编码位率、采样率等，这些参数将可以控制所录制的声音品质、文件大小。一般来说，声音品质越好，声音文件越大</li>
-<li>调用MediaRecorder的setOutputFile(String path)方法设置所录制的音频文件的保存位置</li>
-<li>调用MediaRecorder的prepare()方法准备录制</li>
-<li>调用MediaRecorder对象的start()方法开始录制</li>
-<li>录制完成，调用MediaRecorder对象的stop()方法停止录制，并调用release()方法释放资源</li>
-</ol>
-<p><strong>ps：第三步和第四步不能反；需要录制声音的权限和向外部存储器写入数据的权限</strong></p>
-<p>MediaRecorder的状态图：</p>
-<p><img src="https://www.2cto.com/uploadfile/Collfiles/20140815/2014081509185897.jpg" alt="MediaRecorder的状态图"></p>
-<h2 id="控制摄像头拍照"><a href="#控制摄像头拍照" class="headerlink" title="控制摄像头拍照"></a>控制摄像头拍照</h2><h3 id="使用Android5-0的Camera-v2拍照"><a href="#使用Android5-0的Camera-v2拍照" class="headerlink" title="使用Android5.0的Camera v2拍照"></a>使用Android5.0的Camera v2拍照</h3><p>Android5.0的Camera v2涉及如下API：</p>
-<ul>
-<li>CameraManager：摄像头管理器</li>
-<li>CameraCharacteristics：摄像头特性</li>
-<li>CameraDevice：代表系统摄像头</li>
-<li>CameraCaptureSession：这是一个非常重要的API，当程序需要预览、拍照时，都需要先通过该类的实例创建Session。该对象控制预览的方法为setRepeatingRequest()；控制拍照的方法为capture()</li>
-<li>CameraRequest和CameraRequest.Builder：当程序调用setRepeatingRequest()方法进行预览时，或调用capture()方法进行拍照时，都需要传入CameraRequest参数</li>
-</ul>
-<h3 id="录制视频短片"><a href="#录制视频短片" class="headerlink" title="录制视频短片"></a>录制视频短片</h3><p>MediaRecorder还可用于录制视频。为了让MediaRecorder录制时采集图像，应该在调用setAudioSource(int audio_source)方法时再调用setVideoSource(int video_source)方法来设置图像来源</p>
-<h2 id="Android-5-0-新增的屏幕捕捉"><a href="#Android-5-0-新增的屏幕捕捉" class="headerlink" title="Android 5.0 新增的屏幕捕捉"></a>Android 5.0 新增的屏幕捕捉</h2><p>Android 5.0 新增了MediaProjectionManager管理器，该管理器可以非常方便地实现了屏幕捕捉功能。<br>使用步骤：</p>
-<ol>
-<li>以MEDIA_PROJECTION_SERVICE为参数，调用Context.getSystemService()方法即可获取MediaProjectionManager实例</li>
-<li>调用MediaProjectionManager对象的createScreenCaptureIntent()方法创建一个屏幕捕捉的Intent</li>
-<li>调用startActivityForResult()方法启动第2步得到的Intent，这样即可启动屏幕捕捉的Intent</li>
-<li>重写onActivityResult()方法，在该方法中通过MediaProjectionManager对象来获得MediaProjection对象，在该对象中即可获取被捕捉的屏幕</li>
-</ol>
+          安卓基础音频和视频的播放使用MediaPlayer播放音频当程序控制MediaPlayer对象装载音频完成之后，程序可以调用MediaPlayer的如下三个方法进行播放控制：
 
-          
+start()：开始或恢复播放
+stop()
+pause()
+
+为了让MediaPlayer来装载指定音频文件，MediaPlayer提供了如下简单的静态方法：
+
+static MediaPlayer create(Context context,Uri uri)：从指定Uri来装载音频文件，并返回新创建的MediaPlayer对象
+static MediaPlayer create(Context context,i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/23/8.23/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1648,7 +1443,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1710,6 +1505,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/22/8.22.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/22/8.22.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1736,47 +1541,19 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h2 id="接受广播消息"><a href="#接受广播消息" class="headerlink" title="接受广播消息"></a>接受广播消息</h2><p>BroadcastReceiver本质上就是一个全局监听器，用于监听系统全局的广播消息。由于BroadcastReceiver是一个全局监听器，因此它可以非常方便地实现系统中不同组件之间的通信。</p>
-<h3 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h3><p>BroadcastReceiver用于接受程序（包括用户开发的程序和系统内建的程序）所发出的Broadcast Intent，与应用程序启动Activity、Service相同的是，程序启动BroadcastReceiver也只需要两步：</p>
-<ol>
-<li>创建需要启动的BroadcastReceiver的Intent</li>
-<li>调用Context的sendBroadcast()或sendOrderedBroadcast()方法来启动指定的BroadcastReceiver</li>
-</ol>
-<p>与Activity、Service具有完整的生命周期不同，BroadcastReceiver本质上只是一个系统级的监听器——它专门负责监听各程序所发出的Broadcast。<br>前面介绍的各种OnXxxListener只是程序级别的监听器，这些监听器运行在指定程序所在进程中，当程序退出时，OnXxxListener监听器也就随之关闭了。但BroadcastReceiver属于系统级的监听器，他拥有自己的进程，只要存在与之匹配的Intent被广播出来，BroadcastReceiver就会被激发。<br>实现BroadcastReceiver的方法十分简单，只要重写BroadcastReceiver的onReceive(Context context,Intent intent)方法即可。<br>一旦实现了BroadcastReceiver，接下来就应该指定该BroadcastReceiver能匹配的Intent，此时有两种方式：</p>
-<ul>
-<li>使用代码进行指定，调用BroadcastReceiver的Context的registerReceiver(BroadcastReceiver receiver,IntentFilter filter)方法指定</li>
-<li>在AndroidManifest.xml中配置。例如如下代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.IncomingSMSReceiver&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">       &lt;action android:name=&quot;android.provider.Telephony.SMS_RECEIVED&quot;/&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/receiver&gt;</span><br></pre></td></tr></table></figure>
-<p>每次系统Broadcast事件发生后，系统就会创建相应的BroadcastReceiver实例，并自动触发它的onReceive()方法，onReceive()方法执行完之后，BroadcastReceiver实例就会被销毁。<br>如果BroadcastReceiver的onReceive（）方法不能再10秒内执行完成，Android会认为该程序无响应。所以不要在BroadcastReceiver的onReceive（）方法里执行一些耗时的操作；否则就会弹出ANR（Application No Response）对话框。<br>**如果确实需要根据Broadcast来完成一项比较耗时的操作，则可以考虑通过Intent启动一个Service来完成该操作。不应考虑使用新线程去完成耗时的操作，因为BroadcastReceiver本身的生命周期就很短，可能出现的情况是子线程可能还没有结束，BroadcastReceiver就已经退出了。虽然该进程内还有用户启动的新线程，但由于该进程内不包含任何活动组件，因此系统可能在内存紧张时优先结束该进程。这样就可能导致BroadcastReceiver启动的子线程不能执行完成。</p>
-<h3 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h3><p>只要调用Context的sendBroadcast(Intent intent)方法即可，这条广播将会启动intent参数对应的BroadcastReceiver。</p>
-<h3 id="有序广播"><a href="#有序广播" class="headerlink" title="有序广播"></a>有序广播</h3><p>Broadcast分为两种：</p>
-<ul>
-<li>Normal Broadcast(普通广播)：Normal Broadcast是完全异步的，可以在同一时刻（逻辑上）被所有接受者接收到，消息传递的效率比较高。缺点是接受者不能将处理结果传递给下一个接收者，并且无法终止Broadcast Intent的传播</li>
-<li>Ordered Broadcast(有序广播)：Ordered Broadcast的接受者将按预先声明的优先级高低依次接收Broadcast。优先级别声明在&lt;intent-filter…/&gt;元素的android:priority属性中，数越大优先级别越高，取值范围为-1000~1000；也可以调用IntentFilter对象的setPriority（）设置优先级别。Ordered Broadcast接收者可以终止Broadcast Intent的传播，Broadcast Intent传播一旦终止，后面的接收者就无法接收到Broadcast。另外，OrderedBroadcast的接受者可以将数据传递给下一个接收者。</li>
-</ul>
-<p>对于Ordered Broadcast而言，调用BroadcastReceiver的abortBroadcast()方法即可终止Broadcast；优先接受到Broadcast的接收者可以通过setResultExtras(Bundle)方法将处理结果存入Broadcast中，然后传给下一个接收者，下一个接收者通过代码Bundle bundle = getResultExtras(true)可以获取上一个接收者存入的数据。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>比如程序有一个Activity和Service，而且Service是通过startService（）方法气动的，正常情况下，这个Activity与通过startService（）方法启动的Service之间无法通信，但借助BroadcastReceiver的帮助，程序就可以实现两者之间的通信。</p>
-<p><strong>PS：对于BroadcastReceiver程序实现过程：①当实现sendBroadcast（intent）方法 ②与之intent对应绑定的BroadcastReceiver会被自动调用。</strong></p>
-<h2 id="接收系统广播消息"><a href="#接收系统广播消息" class="headerlink" title="接收系统广播消息"></a>接收系统广播消息</h2><p>除了可以接收用户发送的广播之外，还可以接收系统广播。<br>Android的大量系统事件会对外发送标准广播。下面是Android常见的广播Action常量：</p>
-<ul>
-<li>ACTION_TIME_CHANGED：系统时间被改变</li>
-<li>ACTION_DATE_CHANGED：系统日期被改变</li>
-<li>ACTION_TIMEZONE_CHANGED：系统时区被改变</li>
-<li>ACTION_BOOT_COMPLETED：系统启动完成</li>
-<li>ACTION_PACKAGE_ADDED：系统添加包</li>
-<li>ACTION_PACKAGE_CHANGED：系统包的改变</li>
-<li>ACTION_PACKAGE_REMOVED：系统包的删除</li>
-<li>ACTION_PACKAGE_RESTARTED：系统的包被重启</li>
-<li>ACTION_PACKAGE_DATA_CLEARED：系统的包数据被清空</li>
-<li>ACTION_BATTERY_CHANGED：电池电量改变</li>
-<li>ACTION_BATTERY_LOW：电池电量低</li>
-<li>ACTION_POWER_CONNECTED：系统连接电源</li>
-<li>ACTION_POWWER_DISCONNECTED：系统与电源断开</li>
-<li>ACTION_SHUTDOWN：系统被关</li>
-</ul>
+          安卓基础接受广播消息BroadcastReceiver本质上就是一个全局监听器，用于监听系统全局的广播消息。由于BroadcastReceiver是一个全局监听器，因此它可以非常方便地实现系统中不同组件之间的通信。
+BroadcastReceiverBroadcastReceiver用于接受程序（包括用户开发的程序和系统内建的程序）所发出的Broadcast Intent，与应用程序启动Activity、Service相同的是，程序启动BroadcastReceiver也只需要两步：
 
-          
+创建需要启动的BroadcastReceiver的Intent
+调用Context的sendBroadcas
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/22/8.22.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1828,7 +1605,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1890,6 +1667,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/22/8.22/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/22/8.22/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1916,101 +1703,17 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><h3 id="Service的生命周期"><a href="#Service的生命周期" class="headerlink" title="Service的生命周期"></a>Service的生命周期</h3><p>Service生命周期图：<br><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456" alt="Service生命周期"></p>
-<p>与多次调用startService()方法启动Service，就多次回调Service的onStartCommand()方法不同的是，多次调用bindService()方法并不会重复绑定，且只会回调一次onBind()方法。</p>
-<p><strong>当Activity调用bindService()绑定一个已启动的Service时</strong>，系统只是把Service内部IBinder对象传给Activity，并不会把该Service生命周期完全“绑定”到该Activity，因而当Activity调用unBindService()方法取消与该Service的绑定时，也只是切断该Activity与Service之间的关联，并不能停止该Service组件。</p>
-<h3 id="使用IntentService"><a href="#使用IntentService" class="headerlink" title="使用IntentService"></a>使用IntentService</h3><p>IntentService是Service的子类。<br>Service本身存在两个问题：</p>
-<ul>
-<li>Service不会专门启动一个单独的进程，Service与它所在应用位于同一个进程中。</li>
-<li>Service不是一条新的线程，因此不应该在Service中直接处理耗时任务。</li>
-</ul>
-<p>如果开发者需要在Service中处理耗时任务，建议在Service中另外启动一条新的线程来处理该耗时任务。<br>直接在其他程序组件中启动子线程来处理耗时任务不行吗？这种方式也不可靠，由于Activity可能会被用户退出，而BroadcastReceiver的生命周期本来就很短。可能出现：在子线程还没有结束的情况下，Activity就已经被用户退出了，或者BroadcastReceiver已经结束了。在Activity已经退出、BroadcastReceiver已经结束的情况下，此时他们所在的进程就变成了空进程（没有任何活动组件的进程），系统需要内存时可能会优先终止该进程。如果宿主进程被终止，那么该进程内的所有子线程也会被终止，这样就可能导致子线程无法执行完成。<br>而IntentService正好可以弥补Service的上面的两个不足：<strong>IntentService将会使用队列来管理请求Intent，每当客户端代码通过Intent请求启动IntentService时，IntentService会将该Intent加入队列中，然后开启一条新的worker线程来处理该Intent。对于异步的startService()请求，IntentService会按次序依次处理队列中的Intent，该线程保证同一时刻只处理一个Intent。由于IntentService使用新的worker线程处理Intent请求，因此IntentService不会阻塞主线程，所以IntentService自己就可以处理耗时任务。</strong><br>归纳起来，IntentService有如下特征：</p>
-<ul>
-<li>IntentService会创建单独的worker线程来处理所有的Intent请求</li>
-<li>IntentService会创建单独的worker线程来处理onHandleIntent()方法实现的代码，因此开发者无须处理多线程问题</li>
-<li>当所有请求处理完成后，IntentService会自动停止，因此开发者无须调用stopSelf()方法来停止该Service</li>
-<li>为Service的onBind()方法提供了默认实现，默认实现的onBind()方法返回null</li>
-<li>为Service的onStartCommand()方法提供了默认实现，该实现将请求Intent添加到队列中</li>
-</ul>
-<p>扩展IntentService实现Service无须重写onBind()和onStartCommand()方法，只要重写onHandleIntent()方法即可，在该方法中定义该Service需要完成的任务。</p>
-<p>如果用继承Service子类的MyService来执行耗时操作，会导致UI线程阻塞（ANR异常）。</p>
-<h2 id="电话管理器（TelephonyManager）"><a href="#电话管理器（TelephonyManager）" class="headerlink" title="电话管理器（TelephonyManager）"></a>电话管理器（TelephonyManager）</h2><p>TelephonyManager是一个管理手机通话状态、电话网络信息的服务类，该类提供了大量getXxx()方法获取网络状态和SIM卡的相关信息。<br>在程序中获取TelephonyManager：<code>TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE)</code></p>
-<p>TelephonyManager还提供了一个listen(PhoneStateListener listener,int events)方法来监听通话状态。程序中要首先取得TelephonyManager对象，再创建一个PhoneStateListener，它是一个通话状态监听器，该监听器可用于对TelephonyManager进行监听。</p>
-<p>##短信管理器（SmsManager）</p>
-<p>SmsManager提供了一系列sendXxxMessage()方法用于发送短信，发送普通文本内容调用sendTextMessage()方法即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//获取SmsManager</span><br><span class="line">sManager = SmsManager.getDefault()</span><br><span class="line">//创建一个PendingIntent对象</span><br><span class="line">PendingIntent pi = PengingIntent.getActivity(MainActivity.this,0,new Intent(),0)</span><br><span class="line">//发送短信</span><br><span class="line">sManager.sendTextManage(number.getText().toString(),null,content.getText().toString(),pi,null)</span><br></pre></td></tr></table></figure>
-<p><strong>PendingIntent是对Intent的包装，一般通过调用PendingIntent的getActivity()、getService（）、getBroadcastReceiver（）静态方法来获取PendingIntent对象。与Intent对象不同的是，PendingIntent通常会传给其他应用组件，从而有其他应用程序来执行PendingIntent所包装的“Intent”。</strong></p>
-<h2 id="音频管理器（AudioManager）"><a href="#音频管理器（AudioManager）" class="headerlink" title="音频管理器（AudioManager）"></a>音频管理器（AudioManager）</h2><p>程序如果需要管理系统音量，或者让系统静音，这就可借助于Android提供的AudioManager来实现。程序一样是调用getSystemService()方法来获取系统的音频管理器。</p>
-<h3 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h3><p>AudioManager对象调整手机指定类型的声音的方法：</p>
-<ul>
-<li>adjustStreamVolume(int streamType,int direction,int flags)。<br>其中第一个参数streamType指定声音类型，它的值如下：<ul>
-<li>STREAM_ALARM：闹钟</li>
-<li>STREAM_DTMF：DTMF音调的声音</li>
-<li>STREAM_MUSIC：音乐</li>
-<li>STREAM_NOTIFICATION：系统提示</li>
-<li>STREAM_RING：电话铃声</li>
-<li>STREAM_SYSTEM：手机系统</li>
-<li>STREAM_VOICE_CALL：语音电话</li>
-</ul>
-</li>
-</ul>
-<p>第二个参数对声音进行增大或者减小；第三个参数是调整声音时的标志，指定为FLAG_SHOW_UI，则调整声音时显示音量进度条。</p>
-<ul>
-<li>setMicrophoneMute(boolean on)：设置是否让麦克风静音</li>
-<li>setMode(int mode)：设置声音模式，值可为：NORMAL,RINGTONE,IN_CALL</li>
-<li><p>setRingerMode(int ringerMode)：设置手机的电话铃声模式。值可为：</p>
-<ul>
-<li>RINGER_MODE_NORMAL：正常的手机铃声</li>
-<li>RINGER_MODE_SILENT：手机铃声静音</li>
-<li>RINGER_MODE_VIBRATE：手机振动</li>
-</ul>
-</li>
-<li><p>setSpeakeerphoneOn(boolean on)：设置是否打开扩音器</p>
-</li>
-<li>setStreamMute(int streamType,boolean state)：将手机的指定类型的声音调整为静音。</li>
-<li>setStreamVolume(int streamType,int index,int flags)：直接设置手机的指定类型的音量值。</li>
-</ul>
-<h2 id="振动器（Vibrator）"><a href="#振动器（Vibrator）" class="headerlink" title="振动器（Vibrator）"></a>振动器（Vibrator）</h2><p>有时候程序需要启动振动器，比如手机静音时使用振动提示用户；当玩游戏时，当系统碰撞、爆炸时使用振动带给用户更逼真的体验。<br>系统获取Vibrator也是调用了context的getSystemService()方法。</p>
-<h3 id="Vibrator简介"><a href="#Vibrator简介" class="headerlink" title="Vibrator简介"></a>Vibrator简介</h3><p>Vibrator的使用：</p>
-<ul>
-<li>vibrate(long milliseconds)：控制手机振动milliseconds毫秒</li>
-<li>vibrate(long[] pattern,int repeat)：指定手机以pattern指定的模式振动。例如指定pattern为new int[400,800,1200,1600]，也就是在400ms、800ms、1200ms、1600ms这些时间点交替启动、关闭手机振动器；其中repeat指定pattern数组的索引，指定对pattern数组中从repeat索引开始的振动进行循环</li>
-<li>cancel()：关闭手机振动</li>
-</ul>
-<p>程序控制手机振动需要得到相应的权限，在AndroidManifest.xml文件中加授权代码：`<!-- 授予程序访问振动的权限 --></p>
-<p><uses-permission android:name="android.premission.VIBRATE">`</uses-permission></p>
-<h2 id="手机闹钟服务（AlarmManager）"><a href="#手机闹钟服务（AlarmManager）" class="headerlink" title="手机闹钟服务（AlarmManager）"></a>手机闹钟服务（AlarmManager）</h2><p>AlarmManager通常用来开发手机闹钟。但是，它的本质是一个全局定时器，AlarmManager可以在指定时间或者指定周期启动其他组件（包括Activity，Service，BroadcastReceiver）。</p>
-<h3 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h3><p>在Android应用程序中也是通过Context的getSystemService()方法来获取AlarmManager对象的。获得AlarmManager对象后，可调用如下方法来设置定时启动指定组件：</p>
-<ul>
-<li><p>set(int type,long triggerAtTime,PendingIntent operation):设置在triggerAtTime时间启动由operation参数指定的组件。其中第一个参数指定定时服务的类型，该参数有如下值：</p>
-<ul>
-<li>ELAPSED_REALTIME:指定从现在开始时间过了一定时间后启动operation所对应的组件。</li>
-<li>ELAPSED_REALTIME_WAKEUP：指定从现在开始时间过了一定时间后启动operation所对应的组件。即使系统处于休眠状态也会启动相应组件</li>
-<li>RTC：指定当系统调用System.currentTimeMillis()方法的返回值与triggerAtTime相等时启动operation所对应的组件</li>
-<li>RTC_WAKEUP：指定当系统调用System.currentTimeMillis()方法的返回值与triggerAtTime相等时启动operation所对应的组件。即使系统处于休眠状态也会执行operation所对应的组件</li>
-</ul>
-</li>
-<li><p>setInexactRepeating(int type,long triggerAtTime,long interval,PendingIntent operation):设置一个非精确的周期性任务。</p>
-</li>
-<li>setRepeating(int type,long triggerAtTime,long interval,PendingIntent operation)：设置一个周期性执行的定时任务</li>
-<li>cancel(PendingIntent operation)：取消AlarmManager的定时任务</li>
-</ul>
-<p>AlarmManager新增的如下两个方法支持精确激发：</p>
-<ul>
-<li>setExact(int type,long triggerAtMillis,PendingIntent operation)：设置闹钟将在精确的时间被触发</li>
-<li>setWindow(int type,long windowStartMillis,long windowLengthMillis,PendingIntent operation)：设置闹钟将在精确的时间段内被触发</li>
-</ul>
-<h2 id="其他（System-currentTimeMillis-方法）"><a href="#其他（System-currentTimeMillis-方法）" class="headerlink" title="其他（System.currentTimeMillis()方法）"></a>其他（System.currentTimeMillis()方法）</h2><p>在开发过程中，通常很多人都习惯使用new Date()来获取当前时间。new Date()所做的事情其实就是调用了System.currentTimeMillis()。如果仅仅是需要或者毫秒数，那么完全可以使用System.currentTimeMillis()去代替new Date()，效率上会高一点。如果需要在同一个方法里面多次使用new Date()，通常性能就是这样一点一点地消耗掉。<br>System.currentTimeMillis()+3600*1000)可以这样解读：System.currentTimeMillis()相当于是毫秒为单位，但是，后头成了1000，就变成了以秒为单位。那么，3600秒=1小时，所以输出为当前时间的1小时后；<br>我们可以这样控制时间：System.currentTimeMillis()+time*1000)，里面传入的time是以秒为单位，当传入60，则输出：当前时间的一分钟后。</p>
-<p>Calendar.getInstance()是获取一个Calendar对象并可以进行时间的计算，时区的指定；Calendar的对象和new Date()对象可以相互转化：Calendar calendar = Calendar.getInstance();Date date = calendar.getTime();</p>
-<h2 id="更换壁纸（WallpaperManager）"><a href="#更换壁纸（WallpaperManager）" class="headerlink" title="更换壁纸（WallpaperManager）"></a>更换壁纸（WallpaperManager）</h2><p>它提供了clear()方法来清除壁纸，还提供了如下方法来设置系统的壁纸：</p>
-<ul>
-<li>serBitmap(Bitmap bitmap)：将壁纸设置为bitmap所代表的位图</li>
-<li>setResource(int resid)：将壁纸设置为resid资源所代表的图片</li>
-<li>setStream(InputStream data)：将壁纸设置为data数据所代表的图片</li>
-</ul>
-<h2 id="markdown语法中转义字符"><a href="#markdown语法中转义字符" class="headerlink" title="markdown语法中转义字符"></a>markdown语法中转义字符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\\ 反斜杠</span><br><span class="line">\` 反引号</span><br><span class="line">\* 星号</span><br><span class="line">\_ 下划线</span><br><span class="line">\&#123;\&#125; 大括号</span><br><span class="line">\[\] 中括号</span><br><span class="line">\(\) 小括号</span><br><span class="line">\# 井号</span><br><span class="line">\+ 加号</span><br><span class="line">\- 减号</span><br><span class="line">\. 英文句号</span><br><span class="line">\! 感叹号</span><br></pre></td></tr></table></figure>
-
-          
+          安卓基础Service的生命周期Service生命周期图：
+与多次调用startService()方法启动Service，就多次回调Service的onStartCommand()方法不同的是，多次调用bindService()方法并不会重复绑定，且只会回调一次onBind()方法。
+当Activity调用bindService()绑定一个已启动的Service时，系统只是把Service内部IBinder对象传给Activity，并不会把该Service生命周期完全“绑定”到该Activity，因而当Activity调用unBindService()方法取消与该Service的绑定时，也只是
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/22/8.22/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2062,7 +1765,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="法外狂徒罗某人">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/huaji.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2124,6 +1827,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/21/8.21.2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/21/8.21.2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -2150,42 +1863,20 @@
       
         
           
-            <h1 id="安卓基础"><a href="#安卓基础" class="headerlink" title="安卓基础"></a>安卓基础</h1><p>Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。<br>程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Service。</p>
-<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service组件也是可执行的程序，它也有自己的生命周期。</p>
-<h3 id="创建配置Service"><a href="#创建配置Service" class="headerlink" title="创建配置Service"></a>创建配置Service</h3><p>步骤：</p>
-<ol>
-<li>定义一个继承Service的子类</li>
-<li>在AndroidManifest.xml文件中配置该Service</li>
-</ol>
-<p>Service和Activity都是从Context派生出来的，因此他们都可调用Context里定义的如getResources(),getContentResolver()等方法。</p>
-<p>Service生命周期图：<br><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456" alt="Service生命周期"></p>
-<p>Service生命周期方法：</p>
-<ul>
-<li>IBinder onBind(Intent intent)：该方法是Service子类必须实现的方法。该方法必须返回一个IBinder对象，应用程序可以通过该对象与Service组件通信。</li>
-<li>void onCreate()：在该Service第一次被创建后将会立即回调该方法</li>
-<li>void onDestroy()：在该Service被关闭之前回调该方法</li>
-<li>void onStartCommand(Intent intent,int flags,int startId)：该方法的早期版本是void onStart(Intent intent,int startId)，每次客户端调用startService(Intent intent)方法启动该Service时都会回调该方法</li>
-<li>boolean onUnbind(Intent intent)：当该Service上绑定的所有客户端都断开连接时将会回调该方法</li>
-</ul>
-<p>在AndroidManifest.xml中配置Service组件：</p>
-<figure class="highlight plain"><figcaption><span>配置一个Service组件 --></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;service android:name=&quot;&quot;&gt;</span><br><span class="line">&lt;/service&gt;</span><br></pre></td></tr></table></figure>
-<p>配置Service无须指定android:label属性——Service没有界面，指定标签意义不大。</p>
-<p>在Android系统中运行Service有如下两种方式。</p>
-<ul>
-<li>通过Context的startService()方法：访问者与Service之间没有关联，即使<br>访问者退出了，Service仍然运行</li>
-<li>通过Context的bindService()方法：访问者与Service之间绑定在一起，访问者退出，Service也就终止了</li>
-</ul>
-<h3 id="启动和停止Service"><a href="#启动和停止Service" class="headerlink" title="启动和停止Service"></a>启动和停止Service</h3><p>调用Context里定义的statService(),stopService()方法即可启动，关闭Service。<br>每当Service被创建时会回调onCreate()方法，每次Service被启动时都会回调onStartCommand()方法——多次启动一个已有的Service组件将不会再回调onCreate()方法，但每次启动时都会回调onStartCommand()方法。</p>
-<h3 id="绑定本地Service并与之通信"><a href="#绑定本地Service并与之通信" class="headerlink" title="绑定本地Service并与之通信"></a>绑定本地Service并与之通信</h3><p>当程序通过startService(),stopService()启动，关闭Service时，Service与访问者之间基本上不存在太多的关联，因此Service和访问者之间也无法进行通信、交换数据。<br>如果Service和访问者之间需要进行方法调用或交换数据，则应该使用bindService()和unbindService()方法启动、关闭Service。</p>
-<p>Context的bindService()方法的完整方法签名为：bindService(Intent service,ServiceConnection conn,int flags)，该方法的三个参数为：</p>
-<ul>
-<li>service:通过Intent指定要启动的Service。</li>
-<li>conn：该参数是一个ServiceConnection对象，该对象用于监听访问者与Service之间的连接情况。当访问者与Service之间连接成功时回调该ServiceConnection对象的onServiceConnected(ComponentName name,IBinder service)方法，该binder对象即可实现与被绑定Service之间的通信；当Service所在的宿主进程由于异常中止或其他原因终止，导致该Service与访问者之间断开连接时回调该ServiceConnection对象的onServiceDisconnected(ComponentName name)方法。</li>
-<li>flags：指定绑定时是否自动创建Service(如果Service还未创建）。该参数可指定为0（不自动创建）或BIND_AUTO_CREATE（自动创建）</li>
-</ul>
-<p>在开发子类时提供的一个IBinder onBinder(Intent intent)方法，在绑定本地Service的情况下，onBind(Intent intent)方法所返回的IBinder对象将会传给ServiceConnection对象里onServiceConnected(ComponentName name,IBinder service)方法的service参数，这样访问者就可以通过该IBinder对象与Service进行通信了。<br>IBinder对象相当于Service组件的内部钩子，该钩子关联到绑定的Service组件，当其他程序组件绑定到该Service时，Service将会把该IBinder对象返回给其他程序组件，其他程序组件通过该IBinder对象即可与Service组件进行实时通信。</p>
+          安卓基础Service与Activity十分相似，都代表可执行的程序；区别在于：Service一直在后台运行，它没有用户界面，不会到前台来。一旦Service被启动起来，它就与Activity一样，它完全有自己的生命周期。程序中Activity与Service的选择标准是，如果某个程序组件需要在运行时间向用户呈现某种界面，或者该程序需要与用户交互，就需要使用Activity。否则就使用Service。
+ServiceService组件也是可执行的程序，它也有自己的生命周期。
+创建配置Service步骤：
 
-          
+定义一个继承Service的子类
+在AndroidManifest.xml文件中配置该S
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/21/8.21.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2257,6 +1948,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/huaji.png"
+                alt="法外狂徒罗某人" />
             
               <p class="site-author-name" itemprop="name">法外狂徒罗某人</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -2349,7 +2044,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2400,6 +2095,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2436,6 +2134,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
 
   
 
@@ -2448,6 +2156,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2488,6 +2203,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7HLliIdzmoQbjE3d7zsrpvM8-gzGzoHsz',
+        appKey: 'fGmrlfK2mPp7SsPplBu5j3G6',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
