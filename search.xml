@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[体测]]></title>
     <url>%2F2018%2F09%2F10%2Ftest%2F</url>
     <content type="text"><![CDATA[]]></content>
-      <categories>
-        <category>MarkDown语法</category>
-      </categories>
-      <tags>
-        <tag>博客编写</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[JAVA基础（九）]]></title>
