@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
 <meta property="og:description" content="日积月累集合类 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。 Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&amp;lt;?&amp;gt; c):移除collectio">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-10T07:12:36.743Z">
+<meta property="og:updated_time" content="2018-09-11T02:27:15.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA基础（十）">
 <meta name="twitter:description" content="日积月累集合类 为什么会出现这么多的容器呢？因为每一个容器对数据的存储方式都有不同，我们称之为：数据结构。 Collection接口：add(E e):add方法的参数类型是Object，以便于接受任意类型对象。集合中存储的的地址remove(Object o):从此collection中移除指定元素的单个实例removeAll(Collection&amp;lt;?&amp;gt; c):移除collectio">
@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-10 15:12:36" itemprop="dateModified" datetime="2018-09-10T15:12:36+08:00">2018-09-10</time>
+                <time title="修改时间：2018-09-11 10:27:15" itemprop="dateModified" datetime="2018-09-11T10:27:15+08:00">2018-09-11</time>
               
             
           </span>
@@ -515,7 +515,11 @@
 <ul>
 <li>常见子类：<ul>
 <li>HashSet:底层数据结构是哈希表。HashSet是如何保证元素唯一性的呢？是通过元素的两个方法，hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true。如果元素的HashCode值不同，不会调用equals。    注意对于判断元素是否存在以及删除等操作，依赖的方法是元素的hashCode和equels方法。</li>
-<li>TreeSet:可以对Set集合中的元素进行排序。 排序时，当主要条件相同时，一定要判断一下次要条件。</li>
+<li>TreeSet:可以对Set集合中的元素进行排序。 排序时，当主要条件相同时，一定要判断一下次要条件。底层数据结构是二叉树，保证元素唯一性的依据：compareTo方法返回0。<ul>
+<li>TreeSet排序的第一种方式：让元素自身具备比较性。元素需要实现Comparable接口，覆盖compareTo方法；这种方式也成为元素的自然顺序，或者叫默认顺序。</li>
+<li>第二种排序方式：当元素自身不具备比较性，或者具备的比较性不是所需要的。这时就需要让集合自身具备比较性，在集合一初始化时，就有了比较方式。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -661,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -673,14 +677,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
@@ -935,7 +931,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">109</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">111</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
