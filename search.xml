@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[简历规范]]></title>
+    <url>%2F2018%2F09%2F15%2F9.15%2F</url>
+    <content type="text"><![CDATA[安卓基础开发基础设施软件开发基础设施： 安装金山打字通，现场测速测规范 常用Windows快捷键 win + D显示桌面 win + E打开文件资源管理器 win + R ncpa.cpl打开网络连接 firewall.cpl打开防火墙 calc打开计算器 contorl打开控制面板 services.msc打开服务 mspaint打开画板 notepad打卡记事本 msconfig打开系统配置 regdit打开注册表 文本编辑器 Atom Notepad++ Subline UltraEdit VS Code Xmind 专业浏览器 Chrome FireFox Opera 如何高效搜索网络资源 需要学习的网站 dzone.com csdn.net 51cto.com.cn iteye.com Git基础操作 代码规范检查工具CheckStyle、代码缺陷检查工具PMD WLS，IDM Linux云端部署]]></content>
+      <categories>
+        <category>就业</category>
+      </categories>
+      <tags>
+        <tag>简历</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据结构（一）]]></title>
     <url>%2F2018%2F09%2F13%2F9.13%2F</url>
     <content type="text"><![CDATA[数据结构概论数据结构基本概念 数据类型由数据属性和运算集合组成。反映了数据的取值范围和对这类数据可以施加的运算。 面向对象：每一种基本的数据类型都有一组与其相关的运算，而这组运算的具体实现都被封装起来，人们不知道也不必去关心这些细节。 时间复杂度和空间复杂度采用算法执行过程中其基本操作的执行次数，即计算量来度量。]]></content>
