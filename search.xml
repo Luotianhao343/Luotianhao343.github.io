@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql8.0.12版本安装]]></title>
+    <url>%2F2018%2F09%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[mysql8.0.12版本zip格式安装mysql8.0.12下载地址:https://dev.mysql.com/downloads/mysql/5.5.html#downloads 安装步骤：1. 解压。2. 新建配置文件my.ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my.ini配置文件。123456789101112131415161718192021222324[mysqld]# 设置3306端口port=3306# 设置mysql的安装目录basedir=D:\mysql-8.0.12-winx64# 设置mysql数据库的数据的存放目录datadir=D:\mysql-8.0.12-winx64\data# 允许最大连接数max_connections=200# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统max_connect_errors=10# 服务端使用的字符集默认为UTF8character-set-server=utf8# 创建新表时将使用的默认存储引擎default-storage-engine=INNODB# 默认使用“mysql_native_password”插件认证default_authentication_plugin=mysql_native_password[mysql]# 设置mysql客户端默认字符集default-character-set=utf8[client]# 设置mysql客户端连接服务端时默认使用的端口port=3306default-character-set=utf8 3. 数据库配置通过管理员权限进入CMD（必须使用管理员权限），进入mysql安装目录下的bin目录下。按照如下步骤依次输入命令行：①输入mysqld –initialize –console，在root@localhost: 后的就是root用户的初始密码，必须要记下它，下面的登录步骤会用到。如果不小心没记住，可以删掉初始化的data目录，再执行一遍初始化命令又会重新生成。②输入mysqld –install安装mysql服务，输入net start mysql启动服务。（mysqld –remove是卸载MySql服务，net stop mysql是停止服务。）③输入mysql -u root -p，会提示让输入之前第一步中root的密码，输入正确后会提示Welcome to the MySQL monitor.④输入ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;。如果出现了Query OK,0 rows affected表示更改成功 —mysql8.0.12安装完成— 4.数据库相关配置查看默认数据库：show databases;选择mysql数据库: use mysql查看默认MySQL用户： select host,user,authentication_string,plugin from user;创建新用户： CREATE USER ‘用户名‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘密码’;给新用户授权： GRANT ALL PRIVILEGES ON . TO ‘用户名‘@’localhost’;刷新权限： FLUSH PRIVILEGES; 本文参考CSDN文章MySQL8.0.12 安装及配置]]></content>
+      <categories>
+        <category>DataBase</category>
+      </categories>
+      <tags>
+        <tag>mysql安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[课设传感器]]></title>
+    <url>%2F2018%2F09%2F17%2F9.17%E8%AF%BE%E8%AE%BE%2F</url>
+    <content type="text"><![CDATA[传感器的网络地址与数据单独只开光照传感器 第一次取样：02 08 18 00 F1 FD 66 01 7F AE AA02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 B8 9F 5C02 08 18 00 F1 FD 66 01 32 9E D7第二次取样：02 08 18 00 F1 FD 66 01 9A AB 4A02 08 18 00 F1 FD 66 01 FE AA 2F02 08 18 00 F1 FD 66 01 9A AB 4A02 08 18 00 F1 FD 66 01 5D AC 8A02 08 18 00 F1 FD 66 01 C1 AB 11 66 FD是光照传感器的网络地址（第6,7个字符串)。 123456789AE 7F 44671AD BC 444769F B8 408889E 32 40498AB 9A 43930AA FE 43774AB 9A 43930AC 5D 44125AB C1 43969 分析可知，第9,10个字符串的逆序就是传感器采集出的光照数据。 单独只开温湿度传感器 第一次取样：02 08 18 00 F1 F5 3D 01 84 F0 5C02 08 18 00 F1 F5 3D 02 10 27 1C02 14 18 00 F1 A1 92 01 02 5D E053 05 00 4B 12 00 00 00 63 F0 0B E702 08 18 00 F1 F5 3D 01 84 F0 5C02 08 18 00 F1 F5 3D 02 10 27 1C02 08 18 00 F1 F5 3D 01 84 F0 5C02 08 18 00 F1 F5 3D 02 10 27 1C 其中3D F5是网络地址（第6,7个字符）01 代表温度传感器 02 代表湿度传感器 12345F0 84 6157227 10 100005D 02 23810F0 84 6157227 10 10000 分析可知，第9,10个字符串的逆序表示温度或者湿度。 02 08 18 00 F1 26 87 01 84 F0 3502 08 18 00 F1 26 87 01 84 F0 3502 08 18 00 F1 26 87 02 10 27 7502 08 18 00 F1 26 87 01 84 F0 3502 08 18 00 F1 26 87 02 10 27 75 02 08 18 00 F1 B3 56 01 BC AD 1402 08 18 00 F1 B3 56 01 E3 AD 4B02 08 18 00 F1 B3 56 01 0A AE A1 读取zigbee传感器数据的jar包参考文章： Java使用开源Rxtx实现串口通讯(串口开发) Rxtx开源包下载地址]]></content>
+      <categories>
+        <category>大四课设</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[简历规范]]></title>
     <url>%2F2018%2F09%2F15%2F9.15%2F</url>
-    <content type="text"><![CDATA[安卓基础开发基础设施软件开发基础设施： 安装金山打字通，现场测速测规范 常用Windows快捷键 win + D显示桌面 win + E打开文件资源管理器 win + R ncpa.cpl打开网络连接 firewall.cpl打开防火墙 calc打开计算器 contorl打开控制面板 services.msc打开服务 mspaint打开画板 notepad打卡记事本 msconfig打开系统配置 regdit打开注册表 文本编辑器 Atom Notepad++ Subline UltraEdit VS Code Xmind 专业浏览器 Chrome FireFox Opera 如何高效搜索网络资源 需要学习的网站 dzone.com csdn.net 51cto.com.cn iteye.com Git基础操作 代码规范检查工具CheckStyle、代码缺陷检查工具PMD WLS，IDM Linux云端部署]]></content>
+    <content type="text"><![CDATA[安卓基础开发基础设施 软件开发基础设施 安装金山打字通，现场测速测规范 常用Windows快捷键 win + D显示桌面 win + E打开文件资源管理器 win + R ncpa.cpl打开网络连接 firewall.cpl打开防火墙 calc打开计算器 contorl打开控制面板 services.msc打开服务 mspaint打开画板 notepad打卡记事本 msconfig打开系统配置 regdit打开注册表 文本编辑器 Atom Notepad++ Subline UltraEdit VS Code Xmind 专业浏览器 Chrome FireFox Opera 如何高效搜索网络资源 需要学习的网站 dzone.com csdn.net 51cto.com.cn iteye.com Git基础操作 代码规范检查工具CheckStyle、代码缺陷检查工具PMD WLS，IDM Linux云端部署]]></content>
       <categories>
         <category>就业</category>
       </categories>
@@ -747,13 +766,13 @@
     <url>%2F2018%2F07%2F14%2F7.14%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
     <content type="text"><![CDATA[1.数据库的4个基本概念数据(data)描述数据的符号记录称为数据。 数据库(DataBase,DB)数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、、描述和储存，具有较小的冗余度、较高的数据独立性和易扩展性，并可为各种用户共享。 数据库管理系统(DataBase Management System,DBMS)数据库管理系统是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件。主要功能： 数据定义功能 数据组织、存储和管理 数据操纵功能 数据库的事务管理和运行管理 数据库的建立和维护功能 其他 数据库系统(DataBase System,DBS)数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员(DataBase Administrator,DBA)组成的存储、管理、处理和维护数据的系统。 2.数据管理技术的发展 人工管理阶段 文件系统阶段 数据库系统阶段 3.数据模型两类数据模型 概念模型 按照用户的观点来对数据建模，用于数据库设计 逻辑模型和物理模型 包括层次模型、网状模型、关系模型等等，它是按照计算机系统观点对数据建模，用于数据库管理系统的实现。 数据模型的组成要素 数据结构 数据操作 数据的完整性约束条件]]></content>
       <categories>
-        <category>数据库</category>
+        <category>DataBase</category>
       </categories>
   </entry>
   <entry>
     <title><![CDATA[博客编写注意事项（2）]]></title>
     <url>%2F2018%2F07%2F13%2F7.13%2F</url>
-    <content type="text"><![CDATA[浅谈Markdown语法在GitHub博客中的应用 第二个注意事项markdown语句书写细节在诸如#,:等特殊符号后，应添加空格，以保证语句在编译时的正确性。 ‘标亮’的使用在输入法为英文的情况下，我们使用的tab键正上方的那个键来表示标亮。例如：你好，我是标亮符号的表现形式。 ‘加粗’的使用我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。例如： 你好我是加粗的表现形式。 ‘无序列表项’的使用列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。例如：（此处需要空一行才可以实现无序列表） 无序列表项1 无序列表项1.1 无序列表项2 无序列表项3 ‘有序列表项’的使用有序列表项通过“1.”引号其中的数字+一个英文句点实现。例如： 有序列表项1 有序列表项2 有序列表项3 ‘列表缩进’的使用缩进的符号用“*/+/-”都可以实现，在缩进符号后面紧跟一个空格或者tab制表符。在文本中的换行用两个空格即可实现。例如： 蜀相丞相祠堂何处寻，锦官城外白森森。映阶碧草自春色，隔叶黄鹂空好音。三顾频烦天下计，两朝开济老臣心。出事未捷身先死，长使英雄泪满襟。 ‘图片，超链接，视频’在博客中的插入剑门关ps：在网页中的图片，只需要右击鼠标，点击复制图片地址，再插入博客中，图片插入的网址粘贴上就行。 ‘代码块’的插入在英文键盘输入的模式下,使用tab键上面的键，文本首尾连按三次就行。例如： 12345public class Speak()&#123; public static void main(String args[])&#123; System.out.println(&quot;你好&quot;); &#125;&#125; ‘表格’的插入推荐一个能生成多种列表的网址：http://www.tablesgenerator.com/markdown_tables#点此进入 ‘tags’多标签实现通过在tags的叙述中使用“- 标签1- 标签2”来实现，标签1与2之间需要换行。例如：123tags: - Activity - View]]></content>
+    <content type="text"><![CDATA[浅谈Markdown语法在GitHub博客中的应用 第二个注意事项markdown语句书写细节在诸如#,:等特殊符号后，应添加空格，以保证语句在编译时的正确性。 ‘标亮’的使用在输入法为英文的情况下，我们使用的tab键正上方的那个键来表示标亮。例如：你好，我是标亮符号的表现形式。 ‘加粗’的使用我们仅仅只需要在需要加粗的文本前后各加2个*就可以实现。例如： 你好我是加粗的表现形式。 ‘无序列表项’的使用列表项通过“-/*/+ 文本描述”引号其中的表达方式实现。二级无序列表项只需要在缩进符号前，加一个空格。例如：（此处需要空一行才可以实现无序列表） 无序列表项1 无序列表项1.1 无序列表项2 无序列表项3 ‘有序列表项’的使用有序列表项通过“1.”引号其中的数字+一个英文句点实现。例如： 有序列表项1 有序列表项2 有序列表项3 ‘列表缩进’的使用缩进的符号用“*/+/-”都可以实现，在缩进符号后面紧跟一个空格或者tab制表符。在文本中的换行用两个空格即可实现。例如： 蜀相丞相祠堂何处寻，锦官城外白森森。映阶碧草自春色，隔叶黄鹂空好音。三顾频烦天下计，两朝开济老臣心。出事未捷身先死，长使英雄泪满襟。 ‘图片，超链接，视频’在博客中的插入剑门关ps：在网页中的图片，只需要右击鼠标，点击复制图片地址，再插入博客中，图片插入的网址粘贴上就行。 ‘代码块’的插入在英文键盘输入的模式下,使用tab键上面的键，文本首尾连按三次就行。例如： 12345public class Speak()&#123; public static void main(String args[])&#123; System.out.println(&quot;你好&quot;); &#125;&#125; ‘表格’的插入推荐一个能生成多种列表的网址：http://www.tablesgenerator.com/markdown_tables#点此进入 ‘tags’多标签实现通过在tags的叙述中使用“- 标签1- 标签2”来实现，标签1与2之间需要换行。例如：123tags: - Activity - View >的使用 实验室服务于全体学生，用于科技创新和国家比赛，承担公司项目开发 -–的使用-–代表一条横线 - []的使用- []用来代表是否选中]]></content>
       <categories>
         <category>MarkDown语法</category>
       </categories>
@@ -788,11 +807,8 @@
     <url>%2F2018%2F07%2F10%2FViewPager%E8%AE%A4%E8%AF%86%2F</url>
     <content type="text"><![CDATA[ViewPager的认识ViewPager是怎么样的一个控件 它是一个用于页面切换的组件，我们可以向它的布局内填充多个View，我们可以通过在触摸屏上左右滑动来切换不同的View。我们需要一个适配器Adapter，将要显示的View和我们的ViewPager进行绑定。ViewPager有自己的Adapter——PagerAdapter。其中，Google建议使用Fragment来填充ViewPager的，这样可以更加方便的生成每个Page以及管理每个Page的生命周期，就是FragmentPageAdapter和FragmentStatePagerAdapter两个不同的Adapter。除此之外，ViewPager会缓存当前页，前一页，以及后一页，比如有1，2，3，4这四个页面，当我们处于第一页：缓存1，2；当我们处于第二页：缓存1，2，3；当我们处于第三页：缓存2，3，4；当我们处于第四页缓存3，4。 PagerAdapter使用重写方法：getCount()：获得viewpager中有多少个viewdestroyItem()：移除一个给定位置的页面。适配器有责任从容器中删除这个视图。这是为了确保在finishUpdate(ViewGroup)返回时视图能被移除。instantiateItem()：①将给定位置的view添加到ViewGroup(容器)中，创建并显示出来②返回一个代表新增页面的Object(key),通常都是直接返回view本身就可以了。当然也可以自己自定义key，但是key和每一个view要一一对应。isViewFromObject()：判断instantiateItem(ViewGroup,int)函数所返回的key与一个页面视图是否是代表的同一个视图(即它俩是否是对应，对应的表示同一个View)，通常我们直接写return view ==object；就可以了。貌似因为ViewPager中有个存储view状态信息的ArrayList，根据View取出对应信息。ps：不一定要重写所有方法。]]></content>
       <categories>
-        <category>Fragment</category>
+        <category>Android</category>
       </categories>
-      <tags>
-        <tag>Test</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Markdown练习]]></title>
