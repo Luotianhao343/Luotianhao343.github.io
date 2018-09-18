@@ -115,10 +115,12 @@
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
 <meta property="og:description" content="传感器的网络地址与数据单独只开光照传感器 第一次取样：02 08 18 00 F1 FD 66 01 7F AE AA02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 B8 9F 5C02 08 18 00 F1 FD 66 01 32 9E D7第二次取样：02 08 1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-17T13:24:06.912Z">
+<meta property="og:image" content="http://yoursite.com/images/keshe.png">
+<meta property="og:updated_time" content="2018-09-18T12:46:15.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="课设传感器">
 <meta name="twitter:description" content="传感器的网络地址与数据单独只开光照传感器 第一次取样：02 08 18 00 F1 FD 66 01 7F AE AA02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 BC AD 6A02 08 18 00 F1 FD 66 01 B8 9F 5C02 08 18 00 F1 FD 66 01 32 9E D7第二次取样：02 08 1">
+<meta name="twitter:image" content="http://yoursite.com/images/keshe.png">
 
 
 
@@ -383,6 +385,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-18 20:46:15" itemprop="dateModified" datetime="2018-09-18T20:46:15+08:00">2018-09-18</time>
+              
+            
           </span>
 
           
@@ -443,21 +461,23 @@
 
       
         <h2 id="传感器的网络地址与数据"><a href="#传感器的网络地址与数据" class="headerlink" title="传感器的网络地址与数据"></a>传感器的网络地址与数据</h2><h3 id="单独只开光照传感器"><a href="#单独只开光照传感器" class="headerlink" title="单独只开光照传感器"></a>单独只开光照传感器</h3><blockquote>
-<p>第一次取样：<br>02 08 18 00 F1 FD 66 01 7F AE AA<br>02 08 18 00 F1 FD 66 01 BC AD 6A<br>02 08 18 00 F1 FD 66 01 BC AD 6A<br>02 08 18 00 F1 FD 66 01 B8 9F 5C<br>02 08 18 00 F1 FD 66 01 32 9E D7<br>第二次取样：<br>02 08 18 00 F1 FD 66 01 9A AB 4A<br>02 08 18 00 F1 FD 66 01 FE AA 2F<br>02 08 18 00 F1 FD 66 01 9A AB 4A<br>02 08 18 00 F1 FD 66 01 5D AC 8A<br>02 08 18 00 F1 FD 66 01 C1 AB 11     </p>
+<p>第一次取样：<br>02 08 18 00 F1 <em>FD 66</em> 01 7F AE AA<br>02 08 18 00 F1 <em>FD 66</em> 01 BC AD 6A<br>02 08 18 00 F1 <em>FD 66</em> 01 BC AD 6A<br>02 08 18 00 F1 <em>FD 66</em> 01 B8 9F 5C<br>02 08 18 00 F1 <em>FD 66</em> 01 32 9E D7<br>第二次取样：<br>02 08 18 00 F1 <em>FD 66</em> 01 9A AB 4A<br>02 08 18 00 F1 <em>FD 66</em> 01 FE AA 2F<br>02 08 18 00 F1 <em>FD 66</em> 01 9A AB 4A<br>02 08 18 00 F1 <em>FD 66</em> 01 5D AC 8A<br>02 08 18 00 F1 <em>FD 66</em> 01 C1 AB 11     </p>
 </blockquote>
 <p>66 FD是光照传感器的网络地址（第6,7个字符串)。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AE 7F 44671</span><br><span class="line">AD BC 44476</span><br><span class="line">9F B8 40888</span><br><span class="line">9E 32 40498</span><br><span class="line">AB 9A 43930</span><br><span class="line">AA FE 43774</span><br><span class="line">AB 9A 43930</span><br><span class="line">AC 5D 44125</span><br><span class="line">AB C1 43969</span><br></pre></td></tr></table></figure>
 <p>分析可知，第9,10个字符串的逆序就是传感器采集出的光照数据。</p>
 <hr>
 <h3 id="单独只开温湿度传感器"><a href="#单独只开温湿度传感器" class="headerlink" title="单独只开温湿度传感器"></a>单独只开温湿度传感器</h3><blockquote>
-<p>第一次取样：<br>02 08 18 00 F1 F5 3D 01 84 F0 5C<br>02 08 18 00 F1 F5 3D 02 10 27 1C<br>02 14 18 00 F1 A1 92 01 02 5D E0<br>53 05 00 4B 12 00 00 00 63 F0 0B E7<br>02 08 18 00 F1 F5 3D 01 84 F0 5C<br>02 08 18 00 F1 F5 3D 02 10 27 1C<br>02 08 18 00 F1 F5 3D 01 84 F0 5C<br>02 08 18 00 F1 F5 3D 02 10 27 1C   </p>
+<p>第一次取样：<br>02 08 18 00 F1 <em>F5 3D</em> 01 84 F0 5C<br>02 08 18 00 F1 <em>F5 3D</em> 02 10 27 1C<br>02 14 18 00 F1 <em>A1 92</em> 01 02 5D E0<br>53 05 00 4B 12 00 00 00 63 F0 0B E7<br>02 08 18 00 F1 <em>F5 3D</em> 01 84 F0 5C<br>02 08 18 00 F1 <em>F5 3D</em> 02 10 27 1C<br>02 08 18 00 F1 <em>F5 3D</em> 01 84 F0 5C<br>02 08 18 00 F1 <em>F5 3D</em> 02 10 27 1C   </p>
 </blockquote>
 <p>其中3D F5是网络地址（第6,7个字符）<br>01 代表温度传感器 02 代表湿度传感器  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">F0 84 61572</span><br><span class="line">27 10 10000</span><br><span class="line">5D 02 23810</span><br><span class="line">F0 84 61572</span><br><span class="line">27 10 10000</span><br></pre></td></tr></table></figure>
 <p>分析可知，第9,10个字符串的逆序表示温度或者湿度。</p>
 <hr>
-<p>02 08 18 00 F1 26 87 01 84 F0 35<br>02 08 18 00 F1 26 87 01 84 F0 35<br>02 08 18 00 F1 26 87 02 10 27 75<br>02 08 18 00 F1 26 87 01 84 F0 35<br>02 08 18 00 F1 26 87 02 10 27 75  </p>
-<p>02 08 18 00 F1 B3 56 01 BC AD 14<br>02 08 18 00 F1 B3 56 01 E3 AD 4B<br>02 08 18 00 F1 B3 56 01 0A AE A1  </p>
+<p>02 08 18 00 F1 26 87 01 <strong>84 F0</strong> 35<br>02 08 18 00 F1 26 87 01 <strong>84 F</strong>0 35<br>02 08 18 00 F1 26 87 02 <strong>10 27</strong> 75<br>02 08 18 00 F1 26 87 01 <strong>84 F0</strong> 35<br>02 08 18 00 F1 26 87 02 <strong>10 27</strong> 75  </p>
+<p>02 08 18 00 F1 B3 56 01 <strong>BC AD</strong> 14<br>02 08 18 00 F1 B3 56 01 <strong>E3 AD</strong> 4B<br>02 08 18 00 F1 B3 56 01 <strong>0A AE</strong> A1  </p>
+<h2 id="控制器的控制"><a href="#控制器的控制" class="headerlink" title="控制器的控制"></a>控制器的控制</h2><p>4个指示灯全部关闭<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>00</strong> 5C<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>00</strong> 5C<br>开D10<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>04</strong> 58<br>开D10,D5<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>05</strong> 59<br>全开<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>0F</strong> 53<br>开D5,D7<br>02 07 18 00 F1 <em>82 31</em> 01 <strong>03</strong> 5F    </p>
+<p>可以得出在控制器上，四个指示灯对应4位二进制数，表示了控制器状态的16进制数据。<br><img src="/images/keshe.png" alt="zigbee控制节点"></p>
 <h2 id="读取zigbee传感器数据的jar包"><a href="#读取zigbee传感器数据的jar包" class="headerlink" title="读取zigbee传感器数据的jar包"></a>读取zigbee传感器数据的jar包</h2><p><strong>参考文章：</strong></p>
 <p><a href="https://blog.csdn.net/daditao/article/details/24620365" target="_blank" rel="noopener">Java使用开源Rxtx实现串口通讯(串口开发)</a></p>
 <p><a href="http://users.frii.com/jarvi/rxtx/download.html" target="_blank" rel="noopener">Rxtx开源包下载地址</a></p>
@@ -597,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -873,7 +893,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">114</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">116</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -909,7 +933,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传感器的网络地址与数据"><span class="nav-number">1.</span> <span class="nav-text">传感器的网络地址与数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单独只开光照传感器"><span class="nav-number">1.1.</span> <span class="nav-text">单独只开光照传感器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单独只开温湿度传感器"><span class="nav-number">1.2.</span> <span class="nav-text">单独只开温湿度传感器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取zigbee传感器数据的jar包"><span class="nav-number">2.</span> <span class="nav-text">读取zigbee传感器数据的jar包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传感器的网络地址与数据"><span class="nav-number">1.</span> <span class="nav-text">传感器的网络地址与数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单独只开光照传感器"><span class="nav-number">1.1.</span> <span class="nav-text">单独只开光照传感器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单独只开温湿度传感器"><span class="nav-number">1.2.</span> <span class="nav-text">单独只开温湿度传感器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器的控制"><span class="nav-number">2.</span> <span class="nav-text">控制器的控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取zigbee传感器数据的jar包"><span class="nav-number">3.</span> <span class="nav-text">读取zigbee传感器数据的jar包</span></a></li></ol></div>
             
 
           </div>
