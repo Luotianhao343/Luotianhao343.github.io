@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
 <meta property="og:description" content="mysql8.0.12版本zip格式安装mysql8.0.12下载地址:https://dev.mysql.com/downloads/mysql/5.5.html#downloads 安装步骤：1. 解压。2. 新建配置文件my.ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my.ini配置文件。1234567891011121314151617">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-17T13:16:19.125Z">
+<meta property="og:updated_time" content="2018-09-20T12:19:02.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql8.0.12版本安装">
 <meta name="twitter:description" content="mysql8.0.12版本zip格式安装mysql8.0.12下载地址:https://dev.mysql.com/downloads/mysql/5.5.html#downloads 安装步骤：1. 解压。2. 新建配置文件my.ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my.ini配置文件。1234567891011121314151617">
@@ -380,12 +380,24 @@
                 
               
 
-              <time title="创建时间：2018-09-17 21:39:38 / 修改时间：21:16:19" itemprop="dateCreated datePublished" datetime="2018-09-17T21:39:38+08:00">2018-09-17</time>
+              <time title="创建时间：2018-09-17 21:39:38" itemprop="dateCreated datePublished" datetime="2018-09-17T21:39:38+08:00">2018-09-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-20 20:19:02" itemprop="dateModified" datetime="2018-09-20T20:19:02+08:00">2018-09-20</time>
               
             
           </span>
@@ -451,7 +463,7 @@
 <h2 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h2><h3 id="1-解压。"><a href="#1-解压。" class="headerlink" title="1. 解压。"></a>1. 解压。</h3><h3 id="2-新建配置文件my-ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my-ini配置文件。"><a href="#2-新建配置文件my-ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my-ini配置文件。" class="headerlink" title="2. 新建配置文件my.ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my.ini配置文件。"></a>2. 新建配置文件my.ini文件（有则不建）；将如下代码中的mysql安装目录和mysql数据库的存放目录修改后，拷入my.ini配置文件。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># 设置3306端口</span><br><span class="line">port=3306</span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=D:\mysql-8.0.12-winx64</span><br><span class="line"># 设置mysql数据库的数据的存放目录</span><br><span class="line">datadir=D:\mysql-8.0.12-winx64\data</span><br><span class="line"># 允许最大连接数</span><br><span class="line">max_connections=200</span><br><span class="line"># 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统</span><br><span class="line">max_connect_errors=10</span><br><span class="line"># 服务端使用的字符集默认为UTF8</span><br><span class="line">character-set-server=utf8</span><br><span class="line"># 创建新表时将使用的默认存储引擎</span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line"># 默认使用“mysql_native_password”插件认证</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">[mysql]</span><br><span class="line"># 设置mysql客户端默认字符集</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[client]</span><br><span class="line"># 设置mysql客户端连接服务端时默认使用的端口</span><br><span class="line">port=3306</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
 <h3 id="3-数据库配置"><a href="#3-数据库配置" class="headerlink" title="3. 数据库配置"></a>3. 数据库配置</h3><p><strong>通过管理员权限进入CMD（必须使用管理员权限），进入mysql安装目录下的bin目录下。</strong><br>按照如下步骤依次输入命令行：<br>①输入<strong>mysqld –initialize –console</strong>，在<strong>root@localhost:</strong> 后的就是root用户的初始密码，必须要记下它，下面的登录步骤会用到。如果不小心没记住，可以删掉初始化的data目录，再执行一遍初始化命令又会重新生成。<br>②输入<strong>mysqld –install</strong>安装mysql服务，输入<strong>net start mysql</strong>启动服务。<em>（<strong>mysqld –remove</strong>是卸载MySql服务，<strong>net stop mysql</strong>是停止服务。）</em><br>③输入<strong>mysql -u root -p</strong>，会提示让输入之前第一步中root的密码，输入正确后会提示Welcome to the MySQL monitor.<br>④输入<strong>ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;</strong>。如果出现了Query OK,0 rows affected表示更改成功    </p>
 <p>—mysql8.0.12安装完成—</p>
-<h3 id="4-数据库相关配置"><a href="#4-数据库相关配置" class="headerlink" title="4.数据库相关配置"></a>4.数据库相关配置</h3><p>查看默认数据库：<strong>show databases;</strong><br>选择mysql数据库: <strong>use mysql</strong><br>查看默认MySQL用户： <strong>select host,user,authentication_string,plugin from user;</strong><br>创建新用户： <strong>CREATE USER ‘用户名‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘密码’;</strong><br>给新用户授权： <strong>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘用户名‘@’localhost’;<br>刷新权限： FLUSH PRIVILEGES;</strong></p>
+<h3 id="4-数据库相关配置"><a href="#4-数据库相关配置" class="headerlink" title="4.数据库相关配置"></a>4.数据库相关配置</h3><p>查看默认数据库：<strong>show databases;</strong><br>选择mysql数据库: <strong>use mysql</strong><br>查看默认MySQL用户： <strong>select host,user,authentication_string,plugin from user;</strong><br>创建新用户： <strong>CREATE USER ‘用户名‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘密码’;</strong><br>给新用户授权： <strong>GRANT ALL PRIVILEGES ON *.* TO ‘用户名‘@’localhost’;<br>刷新权限： FLUSH PRIVILEGES;</strong></p>
 <h2 id="本文参考CSDN文章"><a href="#本文参考CSDN文章" class="headerlink" title="本文参考CSDN文章"></a>本文参考CSDN文章</h2><p><a href="https://blog.csdn.net/missing2011/article/details/81474857" target="_blank" rel="noopener">MySQL8.0.12 安装及配置</a></p>
 
       
@@ -595,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -607,8 +619,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -877,7 +887,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">116</span>
+                      
+                    
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
