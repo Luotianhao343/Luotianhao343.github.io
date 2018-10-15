@@ -108,19 +108,19 @@
 
 
 
-  <meta name="description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以0111 1111是最大的数：127；计算机中存储的是补码，正数的补码、反码还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。下面解释-128从哪">
+  <meta name="description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程基础笔记（一）">
 <meta property="og:url" content="http://yoursite.com/2018/10/13/编程基础笔记1/index.html">
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
-<meta property="og:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以0111 1111是最大的数：127；计算机中存储的是补码，正数的补码、反码还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。下面解释-128从哪">
+<meta property="og:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-7bf28310c43636dff07c4e297a97f1ca_b.jpg">
-<meta property="og:updated_time" content="2018-10-13T13:25:28.447Z">
+<meta property="og:image" content="g:/blog/source/images/访问控制修饰符.png">
+<meta property="og:updated_time" content="2018-10-14T02:05:52.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程基础笔记（一）">
-<meta name="twitter:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以0111 1111是最大的数：127；计算机中存储的是补码，正数的补码、反码还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。下面解释-128从哪">
-<meta name="twitter:image" content="https://pic3.zhimg.com/v2-7bf28310c43636dff07c4e297a97f1ca_b.jpg">
+<meta name="twitter:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下">
+<meta name="twitter:image" content="g:/blog/source/images/访问控制修饰符.png">
 
 
 
@@ -381,12 +381,24 @@
                 
               
 
-              <time title="创建时间：2018-10-13 21:25:21 / 修改时间：21:25:28" itemprop="dateCreated datePublished" datetime="2018-10-13T21:25:21+08:00">2018-10-13</time>
+              <time title="创建时间：2018-10-13 21:25:21" itemprop="dateCreated datePublished" datetime="2018-10-13T21:25:21+08:00">2018-10-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-14 10:05:52" itemprop="dateModified" datetime="2018-10-14T10:05:52+08:00">2018-10-14</time>
               
             
           </span>
@@ -448,9 +460,34 @@
       
 
       
-        <h3 id="byte类型取值范围为什么是127到-128？"><a href="#byte类型取值范围为什么是127到-128？" class="headerlink" title="byte类型取值范围为什么是127到-128？"></a>byte类型取值范围为什么是127到-128？</h3><p>因为第一位是符号位，所以0111 1111是最大的数：127；计算机中存储的是补码，正数的补码、反码还是原码，0111 1111 。<br>既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。下面解释-128从哪来的:-0的原码 1000 0000，反码 1111 1111 ，补码: 反码加1以后就是1 0000 0000， 因为byte仅识别8位字节，所以补码是0000 0000。 +0的原码 0000 0000 反码补码都0000 0000 。因为日常生活中没有-0， 所以规定0在计算机中表示为0000 0000。</p>
-<p>以0开头的补码已经全部使用，因为正数原码补码都一样，所以0000 0000到0111 1111补码已经全部占用。<br>以1开头的原码，<br> 原码  -1是1000 0001    -127是1111 1111<br> 补码          1111 1111               1000 0001<br>即补码1000 0001到补码1111 1111是表示-127到-1，<br>这时还剩下一串补码 1000 0000就把这串码表示成-128，<br>也可以这样想</p>
-<p><img src="https://pic3.zhimg.com/v2-7bf28310c43636dff07c4e297a97f1ca_b.jpg" data-rawwidth="4096" data-rawheight="1213" class="origin_image zh-lightbox-thumb" width="4096" data-original="https://pic3.zhimg.com/v2-7bf28310c43636dff07c4e297a97f1ca_r.jpg"> 127……1存在，所以也有相应的，-1……-127存在，除去0，补码还剩一串 1000 0000所以规定为-128。还有就是-128只有补码10000000，没有反码和原码。</p>
+        <h3 id="byte类型取值范围为什么是127到-128？"><a href="#byte类型取值范围为什么是127到-128？" class="headerlink" title="byte类型取值范围为什么是127到-128？"></a>byte类型取值范围为什么是127到-128？</h3><p>因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。<br>既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。</p>
+<p>下面解释-128从哪来的:</p>
+<p>-0的原码 1000 0000，反码 1111 1111 ，补码: 反码加1以后就是1000 0000。 +0的原码 0000 0000 反码补码都0000 0000 。因为日常生活中没有-0， 所以规定0在计算机中表示为0000 0000。</p>
+<p>以0开头的补码已经全部使用，因为正数原码补码都一样，所以0000 0000到0111 1111补码已经全部占用，表示0~127。<br>以1开头的原码，即补码1000 0001到补码1111 1111是表示-127到-1，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">-1</th>
+<th style="text-align:center">-127</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">原码</td>
+<td style="text-align:center">1000 0001</td>
+<td style="text-align:center">1111 1111</td>
+</tr>
+<tr>
+<td style="text-align:center">补码</td>
+<td style="text-align:center">1111 1111</td>
+<td style="text-align:center">1000 0001</td>
+</tr>
+</tbody>
+</table>
+<p>这时还剩下一串补码 1000 0000就把这串码表示成-128，<br>也可以这样想，127……1存在，所以也有相应的，-1……-127存在，除去0，补码还剩一串 1000 0000所以规定为-128。</p>
+<h3 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h3><p><img src="G:\blog\source\images\访问控制修饰符.png" alt="访问控制修饰符"></p>
+<p>即访问权限排序：public&gt;protected&gt;default&gt;private</p>
 
       
     </div>
@@ -510,6 +547,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/15/HTML/" rel="prev" title="HTML">
+                HTML <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -583,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -905,7 +946,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#byte类型取值范围为什么是127到-128？"><span class="nav-number">1.</span> <span class="nav-text">byte类型取值范围为什么是127到-128？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#byte类型取值范围为什么是127到-128？"><span class="nav-number">1.</span> <span class="nav-text">byte类型取值范围为什么是127到-128？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">2.</span> <span class="nav-text">访问控制修饰符</span></a></li></ol></div>
             
 
           </div>

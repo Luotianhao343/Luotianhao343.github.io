@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTML]]></title>
+    <url>%2F2018%2F10%2F15%2FHTML%2F</url>
+    <content type="text"><![CDATA[HTMLHypeerText Markup Language:超文本 标记 语言 &lt;html&gt;&lt;/html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt; 一个简单的html表单12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="utf-8"&gt; &lt;title&gt;表单&lt;/title&gt;&lt;/head&gt;&lt;body&gt; &lt;form action=""&gt; &lt;input type="text" name="这是一个输入框" maxlength="10" /&gt; &lt;br&gt; &lt;input type="password" value="我是默认密码"&gt; &lt;br&gt; &lt;input type="radio" checked="" name="gender"&gt;男 &lt;input type="radio" name="gender"&gt;女 &lt;br&gt; &lt;input type="checkbox" name="" value="0"&gt;电影 &lt;input type="checkbox" checked name="" value="1"&gt;音乐 &lt;input type="checkbox" name="" value="2"&gt;美术 &lt;br&gt; &lt;input type="button" name="" value="我是按钮"&gt; &lt;br&gt; &lt;input type="number" name=""&gt; &lt;br&gt; &lt;input type="date" name=""&gt; &lt;br&gt; &lt;input type="color" name=""&gt; &lt;br&gt; &lt;input type="range" name="" max="5" min="1"&gt; &lt;br&gt; &lt;input type="email" name=""&gt; &lt;br&gt; &lt;input type="submit" name=""&gt; &lt;br&gt; &lt;input type="url" name=""&gt; &lt;br&gt; &lt;input type="file" name="" multiple="multiple"&gt; &lt;br&gt; &lt;select&gt; &lt;option value="0"&gt;苹果&lt;/option&gt; &lt;option value="1"&gt;葡萄&lt;/option&gt; &lt;option value="2"&gt;香蕉&lt;/option&gt; &lt;/select&gt; &lt;br&gt; &lt;style&gt; textarea&#123; resize: none; &#125; &lt;/style&gt; &lt;textarea cols="12" rows="2"&gt;我是一段文本&lt;/textarea&gt; &lt;/form&gt;&lt;/body&gt;&lt;/html&gt; 如下是当前html的表现： 如下是表单&lt;form&gt;中的属性使用： 如下是html表格： html总结： CSSCascading Style Sheets:层叠样式表 可以让相同的一个页面在不同的浏览器中呈现相同的样式。 为什么使用CSS？ 样式定义如何显示HTML元素 是为了解决内容与表现分离的问题 内容主要指HTML中的元素 表现是内容在浏览器中呈现的样式]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[编程基础笔记（一）]]></title>
     <url>%2F2018%2F10%2F13%2F%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B01%2F</url>
-    <content type="text"><![CDATA[byte类型取值范围为什么是127到-128？因为第一位是符号位，所以0111 1111是最大的数：127；计算机中存储的是补码，正数的补码、反码还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。下面解释-128从哪来的:-0的原码 1000 0000，反码 1111 1111 ，补码: 反码加1以后就是1 0000 0000， 因为byte仅识别8位字节，所以补码是0000 0000。 +0的原码 0000 0000 反码补码都0000 0000 。因为日常生活中没有-0， 所以规定0在计算机中表示为0000 0000。 以0开头的补码已经全部使用，因为正数原码补码都一样，所以0000 0000到0111 1111补码已经全部占用。以1开头的原码， 原码 -1是1000 0001 -127是1111 1111 补码 1111 1111 1000 0001即补码1000 0001到补码1111 1111是表示-127到-1，这时还剩下一串补码 1000 0000就把这串码表示成-128，也可以这样想 127……1存在，所以也有相应的，-1……-127存在，除去0，补码还剩一串 1000 0000所以规定为-128。还有就是-128只有补码10000000，没有反码和原码。]]></content>
+    <content type="text"><![CDATA[byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下面解释-128从哪来的: -0的原码 1000 0000，反码 1111 1111 ，补码: 反码加1以后就是1000 0000。 +0的原码 0000 0000 反码补码都0000 0000 。因为日常生活中没有-0， 所以规定0在计算机中表示为0000 0000。 以0开头的补码已经全部使用，因为正数原码补码都一样，所以0000 0000到0111 1111补码已经全部占用，表示0~127。以1开头的原码，即补码1000 0001到补码1111 1111是表示-127到-1， -1 -127 原码 1000 0001 1111 1111 补码 1111 1111 1000 0001 这时还剩下一串补码 1000 0000就把这串码表示成-128，也可以这样想，127……1存在，所以也有相应的，-1……-127存在，除去0，补码还剩一串 1000 0000所以规定为-128。 访问控制修饰符 即访问权限排序：public&gt;protected&gt;default&gt;private]]></content>
       <categories>
         <category>编程基础</category>
       </categories>
