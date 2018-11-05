@@ -117,7 +117,10 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Java反射/Java反射.png">
 <meta property="og:image" content="http://yoursite.com/images/Java反射/Java反射1.png">
-<meta property="og:updated_time" content="2018-10-19T09:11:11.562Z">
+<meta property="og:image" content="http://yoursite.com/images/Java反射/Java反射2.png">
+<meta property="og:image" content="http://yoursite.com/images/Java反射/Java反射3.png">
+<meta property="og:image" content="http://yoursite.com/images/Java反射/Java反射4.png">
+<meta property="og:updated_time" content="2018-10-25T10:00:50.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java反射机制">
 <meta name="twitter:description" content="Java反射机制Java反射机制是在运行状态中，对于任意一个类，都能知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能成为Java语言的反射机制。 用来编写一些通用性较高的代码或者框架的时候使用。 Java反射对象：  Class：Class类的实例表示正在运行的Java应用程序中的类和接口 Constructor：类的单个构造方">
@@ -407,7 +410,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-19 17:11:11" itemprop="dateModified" datetime="2018-10-19T17:11:11+08:00">2018-10-19</time>
+                <time title="修改时间：2018-10-25 18:00:50" itemprop="dateModified" datetime="2018-10-25T18:00:50+08:00">2018-10-25</time>
               
             
           </span>
@@ -484,6 +487,34 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.Constructor;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">public class ConstructorTest &#123;</span><br><span class="line">	@Test</span><br><span class="line">	/**</span><br><span class="line">	 * 获得无参数的构造方法</span><br><span class="line">	 *</span><br><span class="line">	 */</span><br><span class="line">	public void demo1() throws Exception &#123;</span><br><span class="line">		Class class1 = Class.forName(&quot;reflect.Person&quot;);</span><br><span class="line">		Constructor c = class1.getConstructor();</span><br><span class="line">		//相当于Person person = new Person();</span><br><span class="line">		Person person = (Person) c.newInstance();</span><br><span class="line">		person.eat();</span><br><span class="line">	&#125;</span><br><span class="line">	@Test</span><br><span class="line">	/*</span><br><span class="line">	 * 获得有参数的构造方法</span><br><span class="line">	 */</span><br><span class="line">	public void demo2() throws Exception&#123;</span><br><span class="line">		Class class2 = Class.forName(&quot;reflect.Person&quot;);</span><br><span class="line">		Constructor constructor = class2.getConstructor(String.class,String.class);</span><br><span class="line">		//Person person = new Person(&quot;张三&quot;,&quot;男&quot;);</span><br><span class="line">		Person person = (Person) constructor.newInstance(&quot;张三&quot;,&quot;男&quot;);</span><br><span class="line">		System.out.println(person);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Person类：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">	</span><br><span class="line">	private String name;</span><br><span class="line">	private String sex;</span><br><span class="line"></span><br><span class="line">	public Person() &#123;</span><br><span class="line">		super();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Person(String name, String sex) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String getSex() &#123;</span><br><span class="line">		return sex;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setSex(String sex) &#123;</span><br><span class="line">		this.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void eat() &#123;</span><br><span class="line">		System.out.println(&quot;吃饭&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;Person [name=&quot; + name + &quot;, sex=&quot; + sex + &quot;]&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Constructor类"><a href="#Constructor类" class="headerlink" title="Constructor类"></a>Constructor类</h2><p><img src="/images/Java反射/Java反射2.png" alt="Java反射"><br>c是字节码文件。getDeclaredFields()获得私有的。</p>
+<p>反射Constructor类的步骤：</p>
+<ol>
+<li>先加载字节码文件(Class.forName(“”))</li>
+<li>获得构造方法(class1.getConstructor(“”)/class1.getConstructors()获得所有构造方法)</li>
+<li>通过构造方法对象调用newInstance()方法实例化对象</li>
+<li>此对象可以调用它的方法</li>
+</ol>
+<h2 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h2><p><img src="/images/Java反射/Java反射3.png" alt="Java反射"></p>
+<p>反射Filed类的步骤（包括私有变量）：</p>
+<ol>
+<li>先加载字节码文件(Class.forName(“”))</li>
+<li>通过字节码文件获得Field对象(class1.getField(“”)/class1.getDeclaredField(“”)获得私有/class1.getFields()获得所有成员变量)</li>
+<li>如果是私有变量需要添加这一步：Field对象调用setAccessible(boolean)设置是否可以访问</li>
+<li>通过字节码文件调用newInstance()方法实例化对象</li>
+<li>Field对象调用set(obj,value)方法来设置变量值。这里的obj参数就是上面实例化的对象</li>
+<li>Field对象调用get(obj)方法来获取变量值。这里的obj参数就是上面实例化的对象</li>
+</ol>
+<h2 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h2><p><img src="/images/Java反射/Java反射4.png" alt="Java反射"></p>
+<p>反射Method类的步骤：</p>
+<ol>
+<li>先加载字节码文件(Class.forName(“”))</li>
+<li>实例化对象：class1.newInstance()</li>
+<li>获得Method类对象，通过getMethod(“”)/getDeclaredMethod(“”)</li>
+<li>如果方法是私有的必须要设置访问权限：method.setAccessible(true)</li>
+<li>方法执行，method.invoke(person,参数);这里的invoke方法返回的是一个obj对象</li>
+</ol>
+
       
     </div>
 
@@ -619,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -948,7 +979,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java反射机制"><span class="nav-number">1.</span> <span class="nav-text">Java反射机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class类"><span class="nav-number">1.1.</span> <span class="nav-text">Class类</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java反射机制"><span class="nav-number">1.</span> <span class="nav-text">Java反射机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class类"><span class="nav-number">1.1.</span> <span class="nav-text">Class类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constructor类"><span class="nav-number">1.2.</span> <span class="nav-text">Constructor类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field类"><span class="nav-number">1.3.</span> <span class="nav-text">Field类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method类"><span class="nav-number">1.4.</span> <span class="nav-text">Method类</span></a></li></ol></li></ol></div>
             
 
           </div>

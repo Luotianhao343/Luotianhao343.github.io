@@ -116,7 +116,7 @@
 <meta property="og:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="g:/blog/source/images/访问控制修饰符.png">
-<meta property="og:updated_time" content="2018-10-14T02:05:52.792Z">
+<meta property="og:updated_time" content="2018-10-29T03:42:58.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程基础笔记（一）">
 <meta name="twitter:description" content="byte类型取值范围为什么是127到-128？因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。 下">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-14 10:05:52" itemprop="dateModified" datetime="2018-10-14T10:05:52+08:00">2018-10-14</time>
+                <time title="修改时间：2018-10-29 11:42:58" itemprop="dateModified" datetime="2018-10-29T11:42:58+08:00">2018-10-29</time>
               
             
           </span>
@@ -468,7 +468,7 @@
       
 
       
-        <h3 id="byte类型取值范围为什么是127到-128？"><a href="#byte类型取值范围为什么是127到-128？" class="headerlink" title="byte类型取值范围为什么是127到-128？"></a>byte类型取值范围为什么是127到-128？</h3><p>因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。<br>既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。</p>
+        <h2 id="byte类型取值范围为什么是127到-128？"><a href="#byte类型取值范围为什么是127到-128？" class="headerlink" title="byte类型取值范围为什么是127到-128？"></a>byte类型取值范围为什么是127到-128？</h2><p>因为第一位是符号位，所以二进制数0111 1111是表示最大的正数：127；计算机中存储的是补码，正数的补码（反码）还是原码，0111 1111 。<br>既然有127那么就有-127。 -127的原码是1111 1111，负数的补码是原码取反(符号位不取反)加1。 -127的原码 1111 1111，反码 1000 0000 ，补码 1000 0001。</p>
 <p>下面解释-128从哪来的:</p>
 <p>-0的原码 1000 0000，反码 1111 1111 ，补码: 反码加1以后就是1000 0000。 +0的原码 0000 0000 反码补码都0000 0000 。因为日常生活中没有-0， 所以规定0在计算机中表示为0000 0000。</p>
 <p>以0开头的补码已经全部使用，因为正数原码补码都一样，所以0000 0000到0111 1111补码已经全部占用，表示0~127。<br>以1开头的原码，即补码1000 0001到补码1111 1111是表示-127到-1，</p>
@@ -494,8 +494,48 @@
 </tbody>
 </table>
 <p>这时还剩下一串补码 1000 0000就把这串码表示成-128，<br>也可以这样想，127……1存在，所以也有相应的，-1……-127存在，除去0，补码还剩一串 1000 0000所以规定为-128。</p>
-<h3 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h3><p><img src="G:\blog\source\images\访问控制修饰符.png" alt="访问控制修饰符"></p>
+<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h3 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h3><p><img src="G:\blog\source\images\访问控制修饰符.png" alt="访问控制修饰符"></p>
 <p>即访问权限排序：public&gt;protected&gt;default&gt;private</p>
+<h3 id="Java运算符"><a href="#Java运算符" class="headerlink" title="Java运算符"></a>Java运算符</h3><h4 id="算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组-和–。"><a href="#算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组-和–。" class="headerlink" title="算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组++和–。"></a>算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组++和–。</h4><p>例如：下面的Test类运算结果是：a++ = 10;a– = 11;d++ = 25;++d = 27;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">     <span class="keyword">int</span> d = <span class="number">25</span>;</span><br><span class="line">     System.out.println(<span class="string">"a++   = "</span> +  (a++) );</span><br><span class="line">     System.out.println(<span class="string">"a--   = "</span> +  (a--) );</span><br><span class="line">     <span class="comment">// 查看  d++ 与 ++d 的不同</span></span><br><span class="line">     System.out.println(<span class="string">"d++   = "</span> +  (d++) );</span><br><span class="line">     System.out.println(<span class="string">"++d   = "</span> +  (++d) );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此例能看出，++与–是一种运算，在输出语句中，它的运算优先级和++与–所在的位置前后有关。当运算符在前，就先对这个数进行操作再进行输出语句；运算符在后，就先运行输出语句，再计算。而且a++与++a的运行结果都是a+1。</p>
+<p>例如：selfAddMinus类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">selfAddMinus</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">5</span>;<span class="comment">//定义一个变量；</span></span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">2</span>*++a;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">2</span>*b++;</span><br><span class="line">        System.out.println(<span class="string">"自增运算符前缀运算后a="</span>+a+<span class="string">",x="</span>+x);</span><br><span class="line">        System.out.println(<span class="string">"自增运算符后缀运算后b="</span>+b+<span class="string">",y="</span>+y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是a=6,x=12;b=6,y=10;</p>
+<h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>!= ; &gt;= ; &lt;=;</p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>+= ：他把左操作数和右操作数相加赋值给左操作数。c+=a等价于c=c+a。-=、*=、/=、&lt;&lt;=、&gt;&gt;=、&amp;=、^=、|= 都是类似的，左操作数在前，右操作数在后，操作符在中间。不过这里的&gt;&gt;=和&lt;&lt;=是箭尖指的方向就是这个数的十六进制中每一位的位移方向。</p>
+<h3 id="Java循环"><a href="#Java循环" class="headerlink" title="Java循环"></a>Java循环</h3><h4 id="do…while循环"><a href="#do…while循环" class="headerlink" title="do…while循环"></a>do…while循环</h4><p>它于while的区别是，do…while语句能在即使条件不满足的情况下，也执行一次。</p>
+<h4 id="Java增强for循环"><a href="#Java增强for循环" class="headerlink" title="Java增强for循环"></a>Java增强for循环</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句 : 表达式)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//代码句子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>声明语句：声明新的局部变量，该变量的类型必须和数组元素的类型匹配。它的限定域在循环代码块，它的值和此时数组元素的值相同。</p>
+<p>表达式：是要访问的数组名，或者是能返回数组的方法。</p>
+<h4 id="continue关键字"><a href="#continue关键字" class="headerlink" title="continue关键字"></a>continue关键字</h4><p>在do..while语句中，执行continue就跳转到while判断语句；</p>
+<p>在for循环中，执行continue就跳转到更新语句。</p>
+<h2 id="数据库初识"><a href="#数据库初识" class="headerlink" title="数据库初识"></a>数据库初识</h2><h3 id="数据库表可以使用什么赋予别名？"><a href="#数据库表可以使用什么赋予别名？" class="headerlink" title="数据库表可以使用什么赋予别名？"></a>数据库表可以使用什么赋予别名？</h3><ul>
+<li>tbl_name alias_name</li>
+<li>tbl_name AS alias_name</li>
+</ul>
+<h3 id="有关预编译SQL的说法错误的是哪一个？（A）"><a href="#有关预编译SQL的说法错误的是哪一个？（A）" class="headerlink" title="有关预编译SQL的说法错误的是哪一个？（A）"></a>有关预编译SQL的说法错误的是哪一个？（A）</h3><p>A:预编译SQL的占位符既可以代替数据库，也可以替代表达式的数据，甚至是子查询语句</p>
+<p>B:预编译SQL可以被PreparedStatement反复执行</p>
+<p>C:预编译SQL语句在PreparedStatement对象创建之后就被传递给数据库解析，之后PreparedStatement执行预编译的时候，其实传递给数据库的只有占位符的参数</p>
+<p>D:预编译SQL的安全性好，可以低于数据库脚本的注入攻击，而这是Statement不具备的</p>
+<h3 id="不是MySql的退出命令的是？（C）"><a href="#不是MySql的退出命令的是？（C）" class="headerlink" title="不是MySql的退出命令的是？（C）"></a>不是MySql的退出命令的是？（C）</h3><p>A: mysql &gt; quit;</p>
+<p>B: mysql &gt; \q;</p>
+<p>C: mysql &gt; die;</p>
+<p>D: mysql &gt; exit;</p>
+<h3 id="以下关于数据库连接池的说法错误的是？（B）"><a href="#以下关于数据库连接池的说法错误的是？（B）" class="headerlink" title="以下关于数据库连接池的说法错误的是？（B）"></a>以下关于数据库连接池的说法错误的是？（B）</h3><p>A: 不适用数据库连接池，每次访问都需要创建连接，极大地浪费数据库资源，造成数据库服务器的内存溢出</p>
+<p>B: 使用数据库连接池相对于传统方式并不会提高系统的执行效率</p>
+<p>C: 数据库连接池是创建和管理连接欸数据库缓冲池的技术，这些连接准备好被任何需要使用它们的线程使用</p>
+<p>D: C3P0也是数据库连接池的一种</p>
+<h3 id="如何创建C3P0的数据库连接池对象？"><a href="#如何创建C3P0的数据库连接池对象？" class="headerlink" title="如何创建C3P0的数据库连接池对象？"></a>如何创建C3P0的数据库连接池对象？</h3><p>ComboPooledDataSource</p>
+<h3 id="有关Connection描述错误的是？（B）"><a href="#有关Connection描述错误的是？（B）" class="headerlink" title="有关Connection描述错误的是？（B）"></a>有关Connection描述错误的是？（B）</h3><p>A: 只有MySQL数据库的JDBC程序需要创建Connection对象，其他数据库的JDBC程序不需要创建Connection对象就可以执行</p>
+<p>B: Connection是Java程序与数据库建立的连接对象，这个对象只能用来连接数据库，不能执行SQL语句</p>
+<p>C: JDBC的数据库事务控制要靠Connection对象完成</p>
+<p>D: Connection对象使用完毕后要及时关闭，否则会对数据库造成负担</p>
+<h3 id="以下关于Class对象说法正确的是？（B）"><a href="#以下关于Class对象说法正确的是？（B）" class="headerlink" title="以下关于Class对象说法正确的是？（B）"></a>以下关于Class对象说法正确的是？（B）</h3><p>A: 类的构造方法编译后可以通过class对象获取</p>
+<p>B: 类的字节码文件被加载到内存中所形成的一个对象，称为Class对象</p>
+<p>C: 类中的属性和普通方法编译为字节码后可以通过class对象获取</p>
+<p>D: 类文件就可以成为class对象</p>
+<h3 id="包含事务控制方法setAutoCommit-commit-rollback的类是Connection"><a href="#包含事务控制方法setAutoCommit-commit-rollback的类是Connection" class="headerlink" title="包含事务控制方法setAutoCommit,commit,rollback的类是Connection"></a>包含事务控制方法setAutoCommit,commit,rollback的类是Connection</h3><h3 id="在测试方法中，如果某个方法要优先执行，需要使用-Before注解"><a href="#在测试方法中，如果某个方法要优先执行，需要使用-Before注解" class="headerlink" title="在测试方法中，如果某个方法要优先执行，需要使用@Before注解"></a>在测试方法中，如果某个方法要优先执行，需要使用@Before注解</h3><p>## </p>
 
       
     </div>
@@ -632,7 +672,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -961,7 +1001,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#byte类型取值范围为什么是127到-128？"><span class="nav-number">1.</span> <span class="nav-text">byte类型取值范围为什么是127到-128？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">2.</span> <span class="nav-text">访问控制修饰符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#byte类型取值范围为什么是127到-128？"><span class="nav-number">1.</span> <span class="nav-text">byte类型取值范围为什么是127到-128？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java基础"><span class="nav-number">2.</span> <span class="nav-text">Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">2.1.</span> <span class="nav-text">访问控制修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java运算符"><span class="nav-number">2.2.</span> <span class="nav-text">Java运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组-和–。"><span class="nav-number">2.2.1.</span> <span class="nav-text">算术运算符：例如数学中的运算符，它和数学中的作用是一样的。不过它多了一组++和–。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系运算符"><span class="nav-number">2.2.2.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.2.3.</span> <span class="nav-text">赋值运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java循环"><span class="nav-number">2.3.</span> <span class="nav-text">Java循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#do…while循环"><span class="nav-number">2.3.1.</span> <span class="nav-text">do…while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java增强for循环"><span class="nav-number">2.3.2.</span> <span class="nav-text">Java增强for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continue关键字"><span class="nav-number">2.3.3.</span> <span class="nav-text">continue关键字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库初识"><span class="nav-number">3.</span> <span class="nav-text">数据库初识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库表可以使用什么赋予别名？"><span class="nav-number">3.1.</span> <span class="nav-text">数据库表可以使用什么赋予别名？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有关预编译SQL的说法错误的是哪一个？（A）"><span class="nav-number">3.2.</span> <span class="nav-text">有关预编译SQL的说法错误的是哪一个？（A）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不是MySql的退出命令的是？（C）"><span class="nav-number">3.3.</span> <span class="nav-text">不是MySql的退出命令的是？（C）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下关于数据库连接池的说法错误的是？（B）"><span class="nav-number">3.4.</span> <span class="nav-text">以下关于数据库连接池的说法错误的是？（B）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何创建C3P0的数据库连接池对象？"><span class="nav-number">3.5.</span> <span class="nav-text">如何创建C3P0的数据库连接池对象？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有关Connection描述错误的是？（B）"><span class="nav-number">3.6.</span> <span class="nav-text">有关Connection描述错误的是？（B）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下关于Class对象说法正确的是？（B）"><span class="nav-number">3.7.</span> <span class="nav-text">以下关于Class对象说法正确的是？（B）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含事务控制方法setAutoCommit-commit-rollback的类是Connection"><span class="nav-number">3.8.</span> <span class="nav-text">包含事务控制方法setAutoCommit,commit,rollback的类是Connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在测试方法中，如果某个方法要优先执行，需要使用-Before注解"><span class="nav-number">3.9.</span> <span class="nav-text">在测试方法中，如果某个方法要优先执行，需要使用@Before注解</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
 <meta property="og:description" content="快捷键搜索action：ctrl+shift+a 定位代码 Alt+数字 :用来跳转例如project的窗口 文件之间跳转 Ctrl+N ： 快速搜索打开指定class 文件和编辑的跳转：Alt+1和esc 文件搜索：ctrl+shift+n shift+f6：重构变量（名称） 抽取： 抽取变量：ctrl+v 抽取静态变量：ctrl+c 抽取成员变量：ctrl+f 抽取函数：ctrl+alt+m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-13T02:13:35.256Z">
+<meta property="og:updated_time" content="2018-10-26T04:12:11.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA使用技巧">
 <meta name="twitter:description" content="快捷键搜索action：ctrl+shift+a 定位代码 Alt+数字 :用来跳转例如project的窗口 文件之间跳转 Ctrl+N ： 快速搜索打开指定class 文件和编辑的跳转：Alt+1和esc 文件搜索：ctrl+shift+n shift+f6：重构变量（名称） 抽取： 抽取变量：ctrl+v 抽取静态变量：ctrl+c 抽取成员变量：ctrl+f 抽取函数：ctrl+alt+m">
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-13 10:13:35" itemprop="dateModified" datetime="2018-10-13T10:13:35+08:00">2018-10-13</time>
+                <time title="修改时间：2018-10-26 12:12:11" itemprop="dateModified" datetime="2018-10-26T12:12:11+08:00">2018-10-26</time>
               
             
           </span>
@@ -482,6 +482,15 @@
 </ul>
 </li>
 </ul>
+<h2 id="IDEA添加方法注释"><a href="#IDEA添加方法注释" class="headerlink" title="IDEA添加方法注释"></a>IDEA添加方法注释</h2><ol>
+<li>ctrl+shift+a搜索live temp；（带setting的）</li>
+<li>在template text:中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *@Description $description$</span><br><span class="line">$param$</span><br><span class="line"> *@return $return$</span><br><span class="line"> **/</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>点击edit variables，在param中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groovyScript(&quot;def result=&apos;&apos;; def params=\&quot;$&#123;_1&#125;\&quot;.replaceAll(&apos;[\\\\[|\\\\]|\\\\s]&apos;, &apos;&apos;).split(&apos;,&apos;).toList(); for(i = 0; i &lt; params.size(); i++) &#123;result+=&apos; * @param &apos; + params[i] + &apos;\\t&apos; + ((i &lt; params.size() - 1) ? &apos;\\n&apos; : &apos;&apos;)&#125;; return result&quot;, methodParameters())</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -618,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -947,7 +956,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定位代码"><span class="nav-number">1.1.</span> <span class="nav-text">定位代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定位代码"><span class="nav-number">1.1.</span> <span class="nav-text">定位代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA添加方法注释"><span class="nav-number">1.2.</span> <span class="nav-text">IDEA添加方法注释</span></a></li></ol></li></ol></div>
             
 
           </div>
