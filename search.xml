@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[maven初识]]></title>
     <url>%2F2018%2F11%2F06%2Fmaven%E5%88%9D%E8%AF%86%2F</url>
-    <content type="text"><![CDATA[Maven命令 mvn compile编译 mvn install编译，运行和发布 mvn package 编译、运行但不发布，就是不会把target内容发布到本地仓库 mvn test编译，负责编译test包下面有相关java和运行，但是不会发布到本地仓库中 mvn clean清除，清除target内容 mvn archetype:generate生成一个maven工程目录以及pom文件等等 1234mvn archetype:generate -DgroupId=[your project's group id] -DartifactId=[your project's artifact id] -DarchetypeArtifactId=maven-archetype-archetype IDEA创建Maven项目1.先创建好一个Maven项目第一步： 第二步： 第三步： 2.将项目下的main目录下Java目录加载为sources root和test目录下Java目录加载为test sources root3.最右侧工具栏Maven：Projects代替CMD命令行下的命令操作重写index.jsp文件使用!+[Tab键]可以快速生成一个html模板 使用pom.xml文件导入新的依赖（导入包）]]></content>
+    <content type="text"><![CDATA[Maven命令 mvn compile编译 mvn install编译，运行和发布 mvn package 编译、运行但不发布，就是不会把target内容发布到本地仓库 mvn test编译，负责编译test包下面有相关java和运行，但是不会发布到本地仓库中 mvn clean清除，清除target内容 mvn archetype:generate生成一个maven工程目录以及pom文件等等 1234mvn archetype:generate -DgroupId=[your project's group id] -DartifactId=[your project's artifact id] -DarchetypeArtifactId=maven-archetype-archetype IDEA创建Maven项目1.先创建好一个Maven项目第一步： 第二步： 第三步： 2.将项目下的main目录下Java目录加载为sources root和test目录下Java目录加载为test sources root3.最右侧工具栏Maven：Projects代替CMD命令行下的命令操作重写index.jsp文件使用!+[Tab键]可以快速生成一个html模板 使用pom.xml文件导入新的依赖（导入包） 写Html的一些注意事项 在写表单的时候注意是form pom文件中jar包的导入]]></content>
       <categories>
         <category>Java</category>
       </categories>
