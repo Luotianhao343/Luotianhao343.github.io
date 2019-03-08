@@ -116,7 +116,7 @@
 <meta property="og:description" content="什么是FreemarkerFreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。    它不是面向最终用户的，而是一个Java类库，是一款程序员可以嵌入他们所开发产品的组件。 FreeMarker是免费的，基于Apache许可证2.0版本发布。其模板编写为FreeMarker Template Lan">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://freemarker.foofun.cn/figures/overview.png">
-<meta property="og:updated_time" content="2019-03-05T13:19:31.395Z">
+<meta property="og:updated_time" content="2019-03-05T14:11:36.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Freemarker">
 <meta name="twitter:description" content="什么是FreemarkerFreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。    它不是面向最终用户的，而是一个Java类库，是一款程序员可以嵌入他们所开发产品的组件。 FreeMarker是免费的，基于Apache许可证2.0版本发布。其模板编写为FreeMarker Template Lan">
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-03-05 21:19:43 / 修改时间：21:19:31" itemprop="dateCreated datePublished" datetime="2019-03-05T21:19:43+08:00">2019-03-05</time>
+              <time title="创建时间：2019-03-05 21:19:43 / 修改时间：22:11:36" itemprop="dateCreated datePublished" datetime="2019-03-05T21:19:43+08:00">2019-03-05</time>
             
 
             
@@ -512,13 +512,14 @@
 <li>FTL标签：FTL标签和HTML标签很相似，但是它们却是给FreeMarker的指示， 而且不会打印在输出内容中。 </li>
 <li>注释：注释和HTML的注释也很相似，但它们是由 <code>&lt;#--</code> 和 <code>--&gt;</code>来分隔的。注释会被FreeMarker直接忽略， 更不会在输出内容中显示。 </li>
 </ul>
-<h3 id="Maven构建Fremarker项目"><a href="#Maven构建Fremarker项目" class="headerlink" title="Maven构建Fremarker项目"></a>Maven构建Fremarker项目</h3><ol>
-<li><p>配置文件：</p>
-<ol>
-<li>Spring 配置文件 applicationContext.xml</li>
-<li>Spring Freemarker Servlet 配置文件 spring-servlet.xml</li>
-</ol>
+<h3 id="Maven构建Fremarker项目（入门）"><a href="#Maven构建Fremarker项目（入门）" class="headerlink" title="Maven构建Fremarker项目（入门）"></a>Maven构建Fremarker项目（入门）</h3><ol>
+<li><p>创建Configuration实例。</p>
+<p>应该创建一个 <code>freemarker.template.Configuration</code> 实例， 然后调整它的设置。<code>Configuration</code>实例是存储 FreeMarker 应用级设置的核心部分。同时，它也处理创建和 <em>缓存</em> 预解析模板(比如 <code>Template</code> 对象)的工作。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create your Configuration instance, and specify if up to what FreeMarker</span></span><br><span class="line"><span class="comment">// version (here 2.3.22) do you want to apply the fixes that are not 100%</span></span><br><span class="line"><span class="comment">// backward-compatible. See the Configuration JavaDoc for details.</span></span><br><span class="line">Configuration cfg = <span class="keyword">new</span> Configuration(Configuration.VERSION_2_3_22);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Specify the source where the template files come from. Here I set a</span></span><br><span class="line"><span class="comment">// plain directory for it, but non-file-system sources are possible too:</span></span><br><span class="line">cfg.setDirectoryForTemplateLoading(<span class="keyword">new</span> File(<span class="string">"/where/you/store/templates"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set the preferred charset template files are stored in. UTF-8 is</span></span><br><span class="line"><span class="comment">// a good choice in most applications:</span></span><br><span class="line">cfg.setDefaultEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Sets how errors will appear.</span></span><br><span class="line"><span class="comment">// During web page *development* TemplateExceptionHandler.HTML_DEBUG_HANDLER is better.</span></span><br><span class="line">cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol start="2">
+<li></li>
 </ol>
 
       
@@ -985,7 +986,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Freemarker"><span class="nav-number">1.</span> <span class="nav-text">什么是Freemarker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板指令（配合插值使用（-…-））"><span class="nav-number">2.</span> <span class="nav-text">模板指令（配合插值使用（${…}））</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内建函数"><span class="nav-number">2.1.</span> <span class="nav-text">内建函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总体结构"><span class="nav-number">3.</span> <span class="nav-text">总体结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven构建Fremarker项目"><span class="nav-number">4.</span> <span class="nav-text">Maven构建Fremarker项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Freemarker"><span class="nav-number">1.</span> <span class="nav-text">什么是Freemarker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板指令（配合插值使用（-…-））"><span class="nav-number">2.</span> <span class="nav-text">模板指令（配合插值使用（${…}））</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内建函数"><span class="nav-number">2.1.</span> <span class="nav-text">内建函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总体结构"><span class="nav-number">3.</span> <span class="nav-text">总体结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven构建Fremarker项目（入门）"><span class="nav-number">4.</span> <span class="nav-text">Maven构建Fremarker项目（入门）</span></a></li></ol></div>
             
 
           </div>
