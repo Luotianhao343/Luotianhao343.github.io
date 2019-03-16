@@ -29,7 +29,7 @@
     <url>%2F2019%2F02%2F25%2Fwin10%E4%B8%8Bjava%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[需要配置三个系统变量 JAVA_HOME:跟jdk的绝对路径 CLASSPATH:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; Path:jdk的绝对路径下的bin目录和jdk绝对路径下jre目录下的bin目录 其中第三步中改用绝对路径能够避免win10下的cmd命令中出现javac不是内部或外部命令问题]]></content>
       <categories>
-        <category>JAVA</category>
+        <category>Java</category>
       </categories>
   </entry>
   <entry>

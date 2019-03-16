@@ -95,7 +95,7 @@
     <link href="http://yoursite.com/2019/02/25/win10%E4%B8%8Bjava%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2019/02/25/win10下java环境配置/</id>
     <published>2019-02-25T08:11:48.021Z</published>
-    <updated>2019-02-25T08:12:54.722Z</updated>
+    <updated>2019-03-16T09:44:31.265Z</updated>
     
     <content type="html"><![CDATA[<h3 id="需要配置三个系统变量"><a href="#需要配置三个系统变量" class="headerlink" title="需要配置三个系统变量"></a>需要配置三个系统变量</h3><ol><li>JAVA_HOME:跟jdk的绝对路径</li><li>CLASSPATH:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</li><li>Path:jdk的绝对路径下的bin目录和jdk绝对路径下jre目录下的bin目录</li></ol><p>其中第三步中改用绝对路径能够避免win10下的cmd命令中出现javac不是内部或外部命令问题</p>]]></content>
     
@@ -110,7 +110,7 @@
     
     </summary>
     
-      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
   </entry>
