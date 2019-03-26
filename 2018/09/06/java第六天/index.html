@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。 java中有23种设计模式：    单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建">
+  <meta name="description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。  java中有23种设计模式：     单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程">
 <meta name="keywords" content="第六天">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础（二）">
 <meta property="og:url" content="http://yoursite.com/2018/09/06/java第六天/index.html">
 <meta property="og:site_name" content="JackLuo&#39;s Blog">
-<meta property="og:description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。 java中有23种设计模式：    单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建">
+<meta property="og:description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。  java中有23种设计模式：     单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-19T07:53:21.803Z">
+<meta property="og:updated_time" content="2019-03-26T14:06:34.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础（二）">
-<meta name="twitter:description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。 java中有23种设计模式：    单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建">
+<meta name="twitter:description" content="日积月累静态代码块 格式：     1234static&amp;#123;  静态代码块中的执行语句&amp;#125; 特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。  设计模式 其实是一种思想，用来解决问题最有效的方法。  java中有23种设计模式：     单例设计模式：解决一个类在内存中只存在一个对象。想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程">
 
 
 
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-19 15:53:21" itemprop="dateModified" datetime="2018-09-19T15:53:21+08:00">2018-09-19</time>
+                <time title="修改时间：2019-03-26 22:06:34" itemprop="dateModified" datetime="2019-03-26T22:06:34+08:00">2019-03-26</time>
               
             
           </span>
@@ -473,14 +473,28 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static</span><br><span class="line">&#123;</span><br><span class="line">  静态代码块中的执行语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>特点：随着类的加载而执行，只执行一次，并优先于主函数执行。用于给类进行初始化的。 </p>
 <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ol>
-<li>其实是一种思想，用来解决问题最有效的方法。</li>
-<li>java中有23种设计模式：   <ul>
+<li><p>其实是一种思想，用来解决问题最有效的方法。</p>
+</li>
+<li><p>java中有23种设计模式：   </p>
+<ul>
 <li>单例设计模式：解决一个类在内存中只存在一个对象。<br>想要保证对象唯一：①为了避免其他程序过多建立该类对象，先禁止其他程序建立该类对象②还为了想让其他程序可以访问到该类对象，只好在本类中，自定义一个对象③为了方便其他程序对自定义对象的访问，可以对外提供一些访问方式。<br>怎么用代码体现这三步？<br>①将构造函数私有化②在类中创建一个本类对象③提供一个方法可以获取到该对象<ul>
 <li>对于事物该怎么描述，还怎么描述。当需要将事物的对象保证在内存中唯一时，就将以上三步加上即可。如果方法要被调用，要用类.方法名()获得一个实例化，必须使用static关键字来修饰方法；该方法只能使用静态成员变量。  </li>
 <li>区分饿汉式和懒汉式：懒汉式对象初始化为null（延时加载）。饿汉式：类一进内存，就已经创建好了对象。懒汉式：类进内存，对象还没有存在，只有调用了获取对象方法时，才建立对象。开发时其实经常用饿汉式，这样比较安全；因为懒汉式被多个人同时调用时，会同时进行，被卡住，但是可以用synchronized关键字进行锁住，并多重判断；</li>
 <li>记住原则：定义单例，建议使用饿汉式</li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>懒汉式代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//懒汉式单例模式</span></span><br><span class="line">    <span class="comment">//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;<span class="comment">//静态私用成员，没有初始化</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//私有构造函数</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span>    <span class="comment">//静态，同步，公开访问点</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(intance == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>饿汉式代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//饿汉单例模式</span></span><br><span class="line">    <span class="comment">//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();<span class="comment">//静态私有成员，已初始化</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//私有构造函数</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span>    <span class="comment">//静态，不用同步（类加载时已初始化，不会有多线程的问题）</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>工厂模式：</p>
+<ul>
+<li>简单工厂模式：定义一个接口，该接口有多个不同功能的子类，通过工厂类中的判断能够生成对应的对象，在主函数中能够根据条件参数产生对应的对象</li>
+<li>工厂设计模式：定义一个接口，该接口有多种功能和它的不同实现。再定义一个工厂接口，在以后需要增加接口新的功能时，只需要新建对应的工厂类实现工厂接口即可。</li>
 </ul>
 </li>
 </ol>
@@ -626,7 +640,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">100</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
